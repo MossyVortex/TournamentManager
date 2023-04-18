@@ -30,7 +30,7 @@ public class Match {
 
     public void updateDate(Date newDate){
 
-        // why does this exist in the class diagram?
+        // why does this exist in the class diagram ?
     }
 
     public int[] returnScore(){
