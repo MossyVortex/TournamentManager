@@ -26,11 +26,11 @@ public class RoundRobin extends Tournament {
     public void getPlaces(){ // return type was written dictionary in the class diagram
 
     }
-
-    public Team[] getTeams(){
-        Team[] teamsArray = new Team[999999];
-        return teamsArray;
-    }
+//
+//    public Team[] getTeams(){
+//        Team[] teamsArray = new Team[999999];
+//        return teamsArray;
+//    }
 
     public void udpateMatchHistory(){
 
