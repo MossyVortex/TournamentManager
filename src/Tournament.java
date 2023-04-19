@@ -10,6 +10,24 @@ public abstract class Tournament {
     private int numOfTeams; private Dictionary<Integer,Team> teamPlace; private Dictionary<String,Match[]> matchHistory;
     private String[] bannedStudentsIDs; private ArrayList<Student> students;
 
+
+    public Tournament(String name, String gameType, String tournamentID, String winner, Date startingDate, Date endingDate,
+     ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students){ // abstract constructor
+
+        this.name = name;
+        this.gameType = gameType;
+        this.tournamentID = tournamentID;
+        this.winner = winner;
+        this.startingDate = startingDate;
+        this.endingDate = endingDate;
+        this.teams = teams;
+        this.numOfTeams = numOfTeams;
+        this.bannedStudentsIDs = bannedStudentsIDs;
+        this.students = students;
+
+    }
+
+
     public ArrayList<Team> getTeams() {
         return teams;
     }

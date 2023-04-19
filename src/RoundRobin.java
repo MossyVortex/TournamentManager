@@ -1,10 +1,13 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class RoundRobin extends Tournament {
     
-    // public RoundRobin(){
-    //     super(String name, String gameType, .....) // after tournament class is coded!                       
-    // }
+    public RoundRobin(String name, String gameType, String tournamentID, String winner,  Date startingDate, Date endingDate,
+    ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students){ // constructor
+
+        super(name, gameType, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, bannedStudentsIDs, students);                   
+    }
 
     public void createRoundRobin(){
 
