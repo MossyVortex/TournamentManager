@@ -1,14 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="TournamentApplication"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="380.0" style="-fx-background-color: #3D405B;">
+               <center>
+                  <VBox alignment="CENTER" prefHeight="600.0" prefWidth="380.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="382.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../logoIcon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../KFUPMLogo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </center>
+            </BorderPane>
+            <Pane prefHeight="600.0" prefWidth="11.0" style="-fx-background-color: #99999D;" />
+            <Pane prefHeight="600.0" prefWidth="510.0" style="-fx-background-color: #F4F1DE;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="600.0" prefWidth="510.0">
+                     <children>
+                        <Label alignment="CENTER" text="Login">
+                           <font>
+                              <Font name="System Bold Italic" size="61.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="0.8712121356617321" endY="0.9280303084489071" startX="0.8068181800119805" startY="0.5179924170176189">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.239215686917305" green="0.250980406999588" blue="0.35686275362968445" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Pane prefHeight="70.0" prefWidth="510.0" />
+                        <Pane prefHeight="251.0" prefWidth="510.0">
+                           <children>
+                              <VBox layoutX="111.0" layoutY="21.0" prefHeight="209.0" prefWidth="305.0">
+                                 <children>
+                                    <Label text="Email">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField promptText="Enter your email">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <Pane prefHeight="46.0" prefWidth="306.0" />
+                                    <Label text="Password">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField promptText="Enter your password">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
