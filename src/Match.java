@@ -44,10 +44,10 @@ public class Match {
 
     public String returnWinner(){
         if(scoreOne>scoreTwo){
-            return "Team " + teamOne.name + " is the winner";
+            return "Team " + teamOne.getTeamName() + " is the winner";
         }
         else{
-            return "Team " + teamTwo.name + " is the winner";
+            return "Team " + teamTwo.getTeamName() + " is the winner";
         }
     }
 

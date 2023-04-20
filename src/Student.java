@@ -1,12 +1,18 @@
 public class Student extends Person{
+
     private int wins;
     private int losses;
     private int ties;
     private double weight;
-    private int hight;
+    private int height;
 
-    public Student(){
-        super();
+    public Student(String name, String phoneNumber, String email, int ID, String password,int weight, int height, int wins, int losses, int ties){
+        super(name,phoneNumber,email,ID,password);
+        this.height =height;
+        this.weight = weight;
+        this.wins = wins;
+        this.losses = losses;
+        this.ties = ties;
     }
 
     @Override
@@ -31,7 +37,7 @@ public class Student extends Person{
     public void setWeight(double weight) {
         this.weight = weight;
     }
-    public void setHight(int hight) {
-        this.hight = hight;
+    public void setHeight(int height) {
+        this.height = height;
     }
 }
