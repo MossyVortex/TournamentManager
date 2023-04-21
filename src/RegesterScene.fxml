@@ -35,6 +35,9 @@
                </children>
             </Pane>
          </left>
+         <right>
+            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </top>
    <center>

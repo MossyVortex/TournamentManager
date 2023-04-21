@@ -108,7 +108,7 @@
                                     </Button>
                                     <HBox alignment="CENTER" prefHeight="43.0" prefWidth="308.0">
                                        <children>
-                                          <Label text="Don't have existing acount?">
+                                          <Label text="Don't have existing acount? ">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
