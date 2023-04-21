@@ -15,7 +15,6 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -72,12 +71,12 @@
                               </LinearGradient>
                            </textFill>
                         </Label>
-                        <Pane prefHeight="70.0" prefWidth="510.0" />
-                        <Pane prefHeight="254.0" prefWidth="510.0">
+                        <Pane prefHeight="61.0" prefWidth="510.0" />
+                        <Pane prefHeight="282.0" prefWidth="510.0">
                            <children>
-                              <VBox alignment="CENTER" layoutX="111.0" layoutY="19.0" prefHeight="219.0" prefWidth="308.0">
+                              <VBox alignment="CENTER" layoutX="111.0" prefHeight="247.0" prefWidth="308.0">
                                  <children>
-                                    <VBox prefHeight="209.0" prefWidth="305.0">
+                                    <VBox prefHeight="176.0" prefWidth="308.0">
                                        <children>
                                           <Label text="Email" textFill="#386641">
                                              <font>
@@ -89,7 +88,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </TextField>
-                                          <Pane prefHeight="30.0" prefWidth="308.0" />
+                                          <Pane prefHeight="20.0" prefWidth="308.0" />
                                           <Label text="Password" textFill="#386641">
                                              <font>
                                                 <Font size="21.0" />
@@ -102,18 +101,19 @@
                                           </TextField>
                                        </children>
                                     </VBox>
-                                    <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="104.0" style="-fx-background-color: #386641;" text="Login" textFill="#f4f1de">
+                                    <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="104.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Login" textFill="#f4f1de">
                                        <font>
                                           <Font size="19.0" />
                                        </font>
                                     </Button>
-                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                    <HBox alignment="CENTER" prefHeight="43.0" prefWidth="308.0">
                                        <children>
-                                          <Label text="Don't h">
+                                          <Label text="Don't have existing acount?">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font size="13.0" />
                                              </font>
                                           </Label>
+                                          <Label text="Regester" textFill="#6a994e" />
                                        </children>
                                     </HBox>
                                  </children>
