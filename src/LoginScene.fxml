@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -101,7 +101,7 @@
                                           </TextField>
                                        </children>
                                     </VBox>
-                                    <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="104.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Login" textFill="#f4f1de">
+                                    <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="132.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Login" textFill="#f4f1de">
                                        <font>
                                           <Font size="19.0" />
                                        </font>
@@ -113,7 +113,7 @@
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label text="Regester" textFill="#6a994e" />
+                                          <Label text="Register" textFill="#6a994e" />
                                        </children>
                                     </HBox>
                                  </children>

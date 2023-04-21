@@ -77,7 +77,7 @@
          <top>
             <BorderPane prefHeight="136.0" prefWidth="900.0" BorderPane.alignment="CENTER">
                <center>
-                  <Label text="Regester as" textFill="#386641" BorderPane.alignment="CENTER">
+                  <Label text="Register as" textFill="#386641" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="Calisto MT Bold" size="46.0" />
                      </font>
