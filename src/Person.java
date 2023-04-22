@@ -12,7 +12,10 @@ public class Person {
         this.ID = ID;
         this.password = password;
     }
-    
+    public Person(String name){
+        this.name = name;
+    }
+
     private String generateID(int ID){
         return Integer.toString((int) (Math.random() * 10000)+200000);
     }

@@ -1,5 +1,5 @@
 public class Student extends Person{
-
+    private String name;
     private int wins;
     private int losses;
     private int ties;
@@ -13,6 +13,9 @@ public class Student extends Person{
         this.wins = wins;
         this.losses = losses;
         this.ties = ties;
+    }
+    public Student(String name){
+        super(name);
     }
 
     @Override

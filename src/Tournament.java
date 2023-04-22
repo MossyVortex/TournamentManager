@@ -26,6 +26,27 @@ public abstract class Tournament {
         this.students = students;
 
     }
+    public Tournament(){ // abstract constructor
+
+        this.name = "";
+        this.gameType = "" ;
+        this.tournamentID = "";
+        this.winner = "";
+        this.startingDate = null;
+        this.endingDate = null;
+        this.teams = new ArrayList<>();
+        this.numOfTeams = 0;
+        this.bannedStudentsIDs = null;
+        this.students = null;
+
+    }
+    public void addTeam(Team team){
+        teams.add(team);
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+
 
 
     public ArrayList<Team> getTeams() {
@@ -36,7 +57,9 @@ public abstract class Tournament {
         Date[] dates = {startingDate,endingDate};
         return dates;
     }
-
+    public int getTeamsLength(){
+        return teams.size();
+    }
     public void leave(int ID){
 //        students.remove()
     }

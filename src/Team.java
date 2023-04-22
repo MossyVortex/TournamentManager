@@ -1,5 +1,9 @@
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class Team {
-    private String TeamName;
+    private ArrayList<Student> teamMembers;
+    private String teamName;
     private int numberOfMembers;
     private int numberOfWins;
     private int numberOfLosses;
@@ -12,6 +16,15 @@ public class Team {
     public Team(){
 
     }
+    public Team(ArrayList<Student> teamMembers , String teamName){
+        this.teamMembers = teamMembers;
+        this.teamName  = teamName;
+    }
+
+    public Team(ArrayList<Student> e) {
+        this.teamMembers = e;
+    }
+
     public String[] getNameOfEachMember() {
         return nameOfEachMember;
     }
@@ -28,7 +41,7 @@ public class Team {
         return "Member name " + member +" is not exist";
     }
     public String getTeamName() {
-        return TeamName;
+        return teamName;
     }
     public int getNumberOFTie() {
         return numberOFTie;
