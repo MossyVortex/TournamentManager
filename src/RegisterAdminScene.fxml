@@ -35,6 +35,9 @@
                </children>
             </Pane>
          </left>
+         <right>
+            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </top>
    <center>
@@ -42,16 +45,15 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="36.0" prefWidth="282.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="260.0">
                            <children>
-                              <Label text="Name:" textFill="#386641">
+                              <Label prefHeight="28.0" prefWidth="90.0" text="Name:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="100.0" prefWidth="14.0" />
                               <TextField prefWidth="158.0" promptText="Enter your name" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
@@ -59,15 +61,14 @@
                               </TextField>
                            </children>
                         </HBox>
-                        <Pane prefHeight="100.0" prefWidth="67.0" />
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="370.0">
+                        <Pane prefHeight="100.0" prefWidth="20.0" />
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
                            <children>
-                              <Label text="Phone Number:" textFill="#386641">
+                              <Label prefHeight="35.0" prefWidth="120.0" text="Phone:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="100.0" prefWidth="14.0" />
                               <TextField prefWidth="158.0" promptText="Enter your phone " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
@@ -77,16 +78,15 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="212.0" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="212.0" prefHeight="80.0" prefWidth="722.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="36.0" prefWidth="282.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="260.0">
                            <children>
-                              <Label text="Email:" textFill="#386641">
+                              <Label prefWidth="90.0" text="Email:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="100.0" prefWidth="14.0" />
                               <TextField prefWidth="158.0" promptText="Enter your email" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
@@ -94,15 +94,14 @@
                               </TextField>
                            </children>
                         </HBox>
-                        <Pane prefHeight="100.0" prefWidth="67.0" />
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="370.0">
+                        <Pane prefHeight="100.0" prefWidth="20.0" />
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
                            <children>
-                              <Label text="Password:" textFill="#386641">
+                              <Label prefHeight="35.0" prefWidth="120.0" text="Password:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Pane prefHeight="100.0" prefWidth="14.0" />
                               <TextField prefWidth="158.0" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
@@ -112,7 +111,8 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <BorderPane prefHeight="72.0" prefWidth="722.0">
+                  <BorderPane prefHeight="30.0" prefWidth="722.0" />
+                  <BorderPane layoutX="10.0" layoutY="305.0" prefHeight="47.0" prefWidth="722.0">
                      <center>
                         <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Register" textFill="#f2e8cf" BorderPane.alignment="CENTER">
                            <font>
