@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <center>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,14 +23,14 @@
                <center>
                   <VBox alignment="CENTER" prefHeight="600.0" prefWidth="380.0" BorderPane.alignment="CENTER">
                      <children>
-                        <ImageView fitHeight="382.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iconLogo" fitHeight="382.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../logoIcon.png" />
+                              <Image url="@../Images/logoIcon.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="KFUPMIcon" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../KFUPMLogo.png" />
+                              <Image url="@../Images/KFUPMLogo.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -45,7 +45,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="600.0" prefWidth="510.0">
                      <children>
-                        <Label alignment="CENTER" text="Login">
+                        <Label fx:id="loginLable" alignment="CENTER" text="Login">
                            <font>
                               <Font name="System Bold Italic" size="61.0" />
                            </font>
@@ -78,42 +78,42 @@
                                  <children>
                                     <VBox prefHeight="176.0" prefWidth="308.0">
                                        <children>
-                                          <Label text="Email" textFill="#386641">
+                                          <Label fx:id="emailLable" text="Email" textFill="#386641">
                                              <font>
                                                 <Font size="21.0" />
                                              </font>
                                           </Label>
-                                          <TextField promptText="Enter your email" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                          <TextField fx:id="emailTextF" promptText="Enter your email" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </TextField>
                                           <Pane prefHeight="20.0" prefWidth="308.0" />
-                                          <Label text="Password" textFill="#386641">
+                                          <Label fx:id="passwordLable" text="Password" textFill="#386641">
                                              <font>
                                                 <Font size="21.0" />
                                              </font>
                                           </Label>
-                                          <TextField promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                          <TextField fx:id="passwordTextF" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </TextField>
                                        </children>
                                     </VBox>
-                                    <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="132.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Login" textFill="#f4f1de">
+                                    <Button fx:id="loginButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="132.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Login" textFill="#f4f1de">
                                        <font>
                                           <Font size="19.0" />
                                        </font>
                                     </Button>
                                     <HBox alignment="CENTER" prefHeight="43.0" prefWidth="308.0">
                                        <children>
-                                          <Label text="Don't have existing acount? ">
+                                          <Label fx:id="existingLable" text="Don't have existing acount? ">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label text="Register" textFill="#6a994e" />
+                                          <Label fx:id="registerLable" onMouseClicked="#registerLabelOnClicked" text="Register" textFill="#6a994e" />
                                        </children>
                                     </HBox>
                                  </children>
