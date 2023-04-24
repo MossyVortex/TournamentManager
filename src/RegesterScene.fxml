@@ -26,7 +26,7 @@
          <left>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setBackButton" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/backArrow.png" />
                      </image>
@@ -61,12 +61,12 @@
                   <Pane prefHeight="502.0" prefWidth="112.0" />
                   <VBox alignment="TOP_CENTER" layoutX="339.0" layoutY="10.0" prefHeight="399.0" prefWidth="242.0">
                      <children>
-                        <ImageView fx:id="studentImage" fitHeight="191.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="studentViwe" fitHeight="191.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Images/Student.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="studentImage" mnemonicParsing="false" onAction="#studentButtonOnclicked" prefHeight="52.0" prefWidth="135.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Student" textFill="#f2e8cf">
+                        <Button fx:id="studentButton" mnemonicParsing="false" onAction="#studentButtonOnclicked" prefHeight="52.0" prefWidth="135.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Student" textFill="#f2e8cf">
                            <font>
                               <Font name="System Bold" size="25.0" />
                            </font>
