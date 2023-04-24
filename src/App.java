@@ -11,16 +11,14 @@ public class App {
         stu.add(new Student("sads"));
         stu.add(new Student("aads"));
         Team t1 = new Team(stu,"ssd");
-        tourney.addTeam(t1);
-        tourney.addTeam(t1);
-        tourney.addTeam(t1);
-        tourney.addTeam(t1);
-        tourney.addTeam(t1);
-        tourney.addTeam(t1);
-        tourney.addTeam(t1);
-        tourney.addTeam(t1);
+        addTeams(tourney,t1);
 
         tourney.createMatchHistory();
         System.out.println(tourney.printMatchHistory());
+    }
+    public static void addTeams(Elimination tour, Team team){
+        for(int i = 0 ; i < 16 ; i++){
+            tour.addTeam(team);
+        }
     }
 }

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="bio.singa.javafx" type="repository">
+    <properties include-transitive-deps="false" maven-id="bio.singa:singa-javafx:0.7.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/bio/singa/singa-javafx/0.7.0/singa-javafx-0.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
