@@ -25,12 +25,12 @@
                      <children>
                         <ImageView fx:id="iconLogo" fitHeight="382.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Images/logoIcon.png" />
+                              <Image url="@/Images/logoIcon.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="KFUPMIcon" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Images/KFUPMLogo.png" />
+                              <Image url="@/Images/KFUPMLogo.png" />
                            </image>
                         </ImageView>
                      </children>
