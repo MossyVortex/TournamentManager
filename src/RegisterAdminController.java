@@ -9,6 +9,10 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.paint.Paint;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class RegisterAdminController {
 
     @FXML
@@ -43,9 +47,15 @@ public class RegisterAdminController {
 
     @FXML
     void regesterButtonOnclicked(ActionEvent event) {
-        if (allFilled()){
-
-        }
+        if (allFilled()){}
+//            try {
+//                File file = new File("AdminsFile.csv");
+//
+//            }
+//            catch (IOException e){
+//                System.out.println(e.getCause());
+//            }
+//        }
     }
 
     public boolean allFilled(){

@@ -4,7 +4,9 @@ public class CSVFiles {
 
     private File file;
 
-    public CSVFiles(File file){
-        this.file = file;
+   public CSVFiles(){}
+
+    public void writeRow(Object[] row){
+
     }
 }
