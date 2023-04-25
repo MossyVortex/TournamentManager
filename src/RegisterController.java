@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -62,16 +63,18 @@ public class RegisterController {
         stage.show();
     }
 
-    public void setBackButton(ActionEvent event){
+
+    @FXML
+    void setBackButton(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
             fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene registerStudentPage = new Scene(fxmlLoader);
+        Scene loginStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-        stage.setScene(registerStudentPage);
+        stage.setScene(loginStudentPage);
         stage.setTitle("Tournament Manager - Login");
         stage.show();
     }
