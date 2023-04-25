@@ -78,7 +78,7 @@
                            <children>
                               <VBox alignment="CENTER" layoutX="111.0" prefHeight="247.0" prefWidth="308.0">
                                  <children>
-                                    <VBox prefHeight="176.0" prefWidth="308.0">
+                                    <VBox prefHeight="207.0" prefWidth="308.0">
                                        <children>
                                           <Label fx:id="emailLable" text="Email" textFill="#386641">
                                              <font>
@@ -90,12 +90,22 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </TextField>
-                                          <Pane prefHeight="20.0" prefWidth="308.0" />
-                                          <Label fx:id="passwordLable" text="Password" textFill="#386641">
-                                             <font>
-                                                <Font size="21.0" />
-                                             </font>
-                                          </Label>
+                                          <Pane prefHeight="60.0" prefWidth="308.0" />
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="passwordLable" text="Password" textFill="#386641">
+                                                   <font>
+                                                      <Font size="21.0" />
+                                                   </font>
+                                                </Label>
+                                                <Pane prefHeight="44.0" prefWidth="195.0" />
+                                                <ImageView fx:id="passwordEye" fitHeight="24.0" fitWidth="21.0" onMouseClicked="#passwordEyeOnClicked" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@Images/eyePassword.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </HBox>
                                           <PasswordField fx:id="passwordTextF" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                              <font>
                                                 <Font size="15.0" />
@@ -118,7 +128,7 @@
                                           </RadioButton>
                                        </children>
                                     </HBox>
-                                    <Button fx:id="loginButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="132.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Login" textFill="#f4f1de">
+                                    <Button fx:id="loginButton" mnemonicParsing="false" onAction="#loginButtonOnClicked" prefHeight="41.0" prefWidth="132.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Login" textFill="#f4f1de">
                                        <font>
                                           <Font size="19.0" />
                                        </font>

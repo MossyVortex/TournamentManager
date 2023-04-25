@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -63,16 +64,16 @@ public class RegisterStudentController {
     private TextField weightTextField;
 
     @FXML
-    void backButtonOnClicked(KeyEvent event) {
+    void backButtonOnClicked(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
             fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene loginStudentPage = new Scene(fxmlLoader);
+        Scene registerStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-        stage.setScene(loginStudentPage);
+        stage.setScene(registerStudentPage);
         stage.setTitle("Tournament Manager - Register");
         stage.show();
     }

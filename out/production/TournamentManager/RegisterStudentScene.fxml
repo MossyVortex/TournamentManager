@@ -27,7 +27,7 @@
          <left>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onKeyPressed="#backButtonOnClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#backButtonOnClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/Images/backArrow.png" />
                      </image>
