@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterStudentController">
    <top>
       <BorderPane prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
          <center>
@@ -27,7 +27,7 @@
          <left>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onKeyPressed="#backButtonOnClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/Images/backArrow.png" />
                      </image>
@@ -49,12 +49,12 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="260.0">
                            <children>
-                              <Label prefHeight="28.0" prefWidth="90.0" text="Name:" textFill="#386641">
+                              <Label fx:id="nameLable" prefHeight="28.0" prefWidth="90.0" text="Name:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField prefWidth="158.0" promptText="Enter your name" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="nameTextField" prefWidth="158.0" promptText="Enter your name" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -64,12 +64,12 @@
                         <Pane prefHeight="100.0" prefWidth="20.0" />
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="120.0" text="Phone:" textFill="#386641">
+                              <Label fx:id="phoneLable" prefHeight="35.0" prefWidth="120.0" text="Phone:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField prefWidth="158.0" promptText="Enter your phone " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="phoneTextField" prefWidth="158.0" promptText="Enter your phone " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -82,12 +82,12 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="260.0">
                            <children>
-                              <Label prefWidth="90.0" text="Height:" textFill="#386641">
+                              <Label fx:id="heightLable" prefWidth="90.0" text="Height:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField prefWidth="158.0" promptText="Enter your height" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="heightTextField" prefWidth="158.0" promptText="Enter your height" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -97,12 +97,12 @@
                         <Pane prefHeight="100.0" prefWidth="20.0" />
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
                            <children>
-                              <Label prefWidth="120.0" text="Weight:" textFill="#386641">
+                              <Label fx:id="weightLable" prefWidth="120.0" text="Weight:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField prefWidth="158.0" promptText="Enter your weight " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="weightTextField" prefWidth="158.0" promptText="Enter your weight " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -115,12 +115,12 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="260.0">
                            <children>
-                              <Label prefWidth="90.0" text="Email:" textFill="#386641">
+                              <Label fx:id="emailLable" prefWidth="90.0" text="Email:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField prefWidth="158.0" promptText="Enter your email" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="emailTextField" prefWidth="158.0" promptText="Enter your email" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -130,12 +130,12 @@
                         <Pane prefHeight="100.0" prefWidth="20.0" />
                         <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="120.0" text="Password:" textFill="#386641">
+                              <Label fx:id="passwordLable" prefHeight="35.0" prefWidth="120.0" text="Password:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField prefWidth="158.0" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="passwordTextField" prefWidth="158.0" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -147,7 +147,7 @@
                   <BorderPane prefHeight="30.0" prefWidth="722.0" />
                   <BorderPane prefHeight="50.0" prefWidth="722.0">
                      <center>
-                        <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Register" textFill="#f2e8cf" BorderPane.alignment="CENTER">
+                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButtonOnClicked" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Register" textFill="#f2e8cf" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>
