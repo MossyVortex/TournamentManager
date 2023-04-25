@@ -16,7 +16,7 @@
          <center>
             <ImageView fx:id="logoImage" fitHeight="88.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
-                  <Image url="@../Images/HIcon.png" />
+                  <Image url="@/Images/HIcon.png" />
                </image>
             </ImageView>
          </center>
@@ -28,7 +28,7 @@
                <children>
                   <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setBackButton" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/backArrow.png" />
+                        <Image url="@/Images/backArrow.png" />
                      </image>
                   </ImageView>
                </children>
@@ -48,7 +48,7 @@
                      <children>
                         <ImageView fx:id="adminImage" fitHeight="191.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Images/administrator.png" />
+                              <Image url="@/Images/administrator.png" />
                            </image>
                         </ImageView>
                         <Button fx:id="adminButton" mnemonicParsing="false" onAction="#adminButtonOnclicked" prefHeight="52.0" prefWidth="135.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Admin" textFill="#f2e8cf">
@@ -63,7 +63,7 @@
                      <children>
                         <ImageView fx:id="studentViwe" fitHeight="191.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Images/Student.png" />
+                              <Image url="@/Images/Student.png" />
                            </image>
                         </ImageView>
                         <Button fx:id="studentButton" mnemonicParsing="false" onAction="#studentButtonOnclicked" prefHeight="52.0" prefWidth="135.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Student" textFill="#f2e8cf">
