@@ -1,11 +1,10 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,6 +16,13 @@ public class LoginController {
 
     @FXML
     private ImageView KFUPMIcon;
+
+    @FXML
+    private RadioButton adminRadioButton;
+
+    @FXML
+    private RadioButton studentRadioButton;
+
 
     @FXML
     private Label emailLable;
@@ -58,6 +64,16 @@ public class LoginController {
         stage.setScene(registerPage);
         stage.setTitle("Tournament Manager - Register");
         stage.show();
+    }
+
+    @FXML
+    void adminRadioButtonOnClicked(ActionEvent event) {
+        studentRadioButton.setSelected(false);
+    }
+
+    @FXML
+    void studentRadioButtonOnClicked(ActionEvent event) {
+        adminRadioButton.setSelected(false);
     }
 
 }

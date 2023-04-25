@@ -3,6 +3,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -94,13 +96,28 @@
                                                 <Font size="21.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="passwordTextF" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                          <PasswordField fx:id="passwordTextF" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
-                                          </TextField>
+                                          </PasswordField>
                                        </children>
                                     </VBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <RadioButton fx:id="adminRadioButton" mnemonicParsing="false" onAction="#adminRadioButtonOnClicked" text="Admin" textFill="#386641">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </RadioButton>
+                                          <Pane prefHeight="56.0" prefWidth="50.0" />
+                                          <RadioButton fx:id="studentRadioButton" mnemonicParsing="false" onAction="#studentRadioButtonOnClicked" text="Student" textFill="#386641">
+                                             <font>
+                                                <Font name="System Bold" size="15.0" />
+                                             </font>
+                                          </RadioButton>
+                                       </children>
+                                    </HBox>
                                     <Button fx:id="loginButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="132.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Login" textFill="#f4f1de">
                                        <font>
                                           <Font size="19.0" />
