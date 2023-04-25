@@ -72,10 +72,16 @@ public class Elimination extends Tournament{
         }
         this.matchHistory = matchHistory;
     }
+    public void updateMatch(){
+
+    }
+    public void calcuateWinnersMatches(){
+        
+    }
     private void calculateRounds(){
         this.rounds = (int) Math.ceil((Math.log(getTeams().size())/Math.log(2)));
     }
-    public Dictionary printMatchHistory(){
+    public Hashtable<Integer, ArrayList<Match>> printMatchHistory(){
        return matchHistory;
     }
 }
