@@ -155,12 +155,19 @@ public class RegisterStudentController {
                 e.printStackTrace();
             }
 
+            // after successful registeration send the user to log in page
+            
             Parent fxmlLoader = null;
-        try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            try {
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene loginPage = new Scene(fxmlLoader);
+            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+            stage.setScene(loginPage);
+            stage.setTitle("Tournament Manager - Login");
+            stage.show();
 
         }
 
