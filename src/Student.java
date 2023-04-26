@@ -6,7 +6,7 @@ public class Student extends Person{
     private double weight;
     private int height;
 
-    public Student(String name, String phoneNumber, String email, int ID, String password,int weight, int height, int wins, int losses, int ties){
+    public Student(String name, String phoneNumber, String email, String ID, String password,int weight, int height, int wins, int losses, int ties){
         super(name,phoneNumber,email,ID,password);
         this.height =height;
         this.weight = weight;
@@ -24,7 +24,7 @@ public class Student extends Person{
         return super.getName();
     }
     @Override
-    public int getID() {
+    public String getID() {
         // TODO Auto-generated method stub
         return super.getID();
     }

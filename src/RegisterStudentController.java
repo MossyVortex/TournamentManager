@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
@@ -17,14 +18,12 @@ import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
 
-public class RegisterAdminController {
+public class RegisterStudentController {
 
     @FXML
     private ImageView backButton;
@@ -34,6 +33,12 @@ public class RegisterAdminController {
 
     @FXML
     private TextField emailTextField;
+
+    @FXML
+    private Label heightLable;
+
+    @FXML
+    private TextField heightTextField;
 
     @FXML
     private Label nameLable;
@@ -54,28 +59,54 @@ public class RegisterAdminController {
     private TextField phoneTextField;
 
     @FXML
-    private Button regesterButton;
+    private Button registerButton;
 
     @FXML
-    void regesterButtonOnclicked(ActionEvent event) {
+    private Label weightLable;
+
+    @FXML
+    private TextField weightTextField;
+
+    @FXML
+    void backButtonOnClicked(MouseEvent event) {
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerStudentPage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(registerStudentPage);
+        stage.setTitle("Tournament Manager - Register");
+        stage.show();
+    }
+
+    @FXML
+    void registerButtonOnClicked(ActionEvent event) {
+
         if (allFilled()){
 
-            Person adminObject = new Person(nameTextField.getText());
-            adminObject.generateID("Admin");
+            Person studentObject = new Person(nameTextField.getText());
+            studentObject.generateID("Student");
 
-            String csvFile = "src\\AdminsFile.csv";
+            String csvFile = "src\\StudentsFile.csv";
             try {
                 FileWriter writer = new FileWriter(csvFile, true);
                 BufferedWriter bw = new BufferedWriter(writer);
 
-                String name, ID, email, phoneNum, password, tournamentsCreated, isAuthorized;
+                String name, ID, phoneNum, email, password, tournamentsCreated, weight, height, wins, losses, ties;
                 name = nameTextField.getText();
-                ID = adminObject.getID();
+                ID = studentObject.getID();
                 email = emailTextField.getText();
                 phoneNum = phoneTextField.getText();
                 password = passwordTextField.getText();
                 tournamentsCreated = "0";
-                isAuthorized = "true";
+                weight = weightTextField.getText();
+                height = heightTextField.getText();
+                wins = "0";
+                losses = "0";
+                ties = "0";
 
                 // check if the email is already available
 
@@ -96,7 +127,7 @@ public class RegisterAdminController {
                 catch (IOException e) {
                     e.printStackTrace();
                 }
-
+                
                 if (emailExists) {
                     // make the email box red
 
@@ -107,9 +138,9 @@ public class RegisterAdminController {
                     validEmail = false;
                 } 
                 else {
-
                     // collect data into a string
-                    String dataToWrite = name + "," + ID + "," + phoneNum + "," + email + "," + password + "," + tournamentsCreated + "," + isAuthorized;
+                    String dataToWrite = name + "," + ID + "," + phoneNum + "," + email + "," + password + "," + tournamentsCreated + "," + weight + "," + height + 
+                    "," + wins + "," + losses + "," + ties;
                     
                     // Write data rows
                     bw.write(dataToWrite);
@@ -118,23 +149,34 @@ public class RegisterAdminController {
                     // Close resources
                     bw.close();
                     writer.close();
-               }
-            }
+                }
+            } 
             catch (IOException e) {
                 e.printStackTrace();
             }
 
+            Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        }
+
     }
 
     public boolean allFilled(){
         boolean allFilled = true;
         nameLable.setTextFill(Paint.valueOf("#386641")); phoneLable.setTextFill(Paint.valueOf("#386641"));
         passwordLable.setTextFill(Paint.valueOf("#386641")); emailLable.setTextFill(Paint.valueOf("#386641"));
+        weightLable.setTextFill(Paint.valueOf("#386641")); heightLable.setTextFill(Paint.valueOf("#386641"));
         nameTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         emailTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         passwordTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         phoneTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
+        weightTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
+        heightTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
 
         if (nameTextField.getText().isEmpty()){
             nameLable.setTextFill(Paint.valueOf("#BC4749"));
@@ -156,23 +198,17 @@ public class RegisterAdminController {
             phoneTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
             allFilled = false;
         }
+        if (weightTextField.getText().isEmpty()){
+            weightLable.setTextFill(Paint.valueOf("#BC4749"));
+            weightTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+            allFilled = false;
+        }
+        if (heightTextField.getText().isEmpty()){
+            heightLable.setTextFill(Paint.valueOf("#BC4749"));
+            heightTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+            allFilled = false;
+        }
+
         return allFilled;
     }
-
-    @FXML
-    void setBackButton(MouseEvent event) {
-        Parent fxmlLoader = null;
-        try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene loginStudentPage = new Scene(fxmlLoader);
-        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-        stage.setScene(loginStudentPage);
-        stage.setTitle("Tournament Manager - Register");
-        stage.show();
-    }
-
-
 }

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterController">
+   <top>
+      <BorderPane prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
+         <center>
+            <ImageView fx:id="logoImage" fitHeight="88.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@/Images/HIcon.png" />
+               </image>
+            </ImageView>
+         </center>
+         <bottom>
+            <Pane prefHeight="9.0" prefWidth="900.0" style="-fx-background-color: #6A994E;" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setBackButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Images/backArrow.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </left>
+         <right>
+            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="399.0" prefWidth="242.0">
+                     <children>
+                        <ImageView fx:id="adminImage" fitHeight="191.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/Images/administrator.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="adminButton" mnemonicParsing="false" onAction="#adminButtonOnclicked" prefHeight="52.0" prefWidth="135.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Admin" textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <Pane prefHeight="502.0" prefWidth="112.0" />
+                  <VBox alignment="TOP_CENTER" layoutX="339.0" layoutY="10.0" prefHeight="399.0" prefWidth="242.0">
+                     <children>
+                        <ImageView fx:id="studentViwe" fitHeight="191.0" fitWidth="192.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/Images/Student.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="studentButton" mnemonicParsing="false" onAction="#studentButtonOnclicked" prefHeight="52.0" prefWidth="135.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Student" textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+         <top>
+            <BorderPane prefHeight="136.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+               <center>
+                  <Label fx:id="regLable" text="Register as" textFill="#386641" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="Calisto MT Bold" size="46.0" />
+                     </font>
+                  </Label>
+               </center>
+            </BorderPane>
+         </top>
+      </BorderPane>
+   </center>
+</BorderPane>

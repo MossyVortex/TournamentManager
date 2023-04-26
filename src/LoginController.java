@@ -14,15 +14,12 @@ import java.util.Objects;
 
 public class LoginController {
 
+
     @FXML
     private ImageView KFUPMIcon;
 
     @FXML
     private RadioButton adminRadioButton;
-
-    @FXML
-    private RadioButton studentRadioButton;
-
 
     @FXML
     private Label emailLable;
@@ -43,13 +40,19 @@ public class LoginController {
     private Label loginLable;
 
     @FXML
+    private ImageView passwordEye;
+
+    @FXML
     private Label passwordLable;
 
     @FXML
-    private TextField passwordTextF;
+    private PasswordField passwordTextF;
 
     @FXML
     private Label registerLable;
+
+    @FXML
+    private RadioButton studentRadioButton;
 
     @FXML
     void registerLabelOnClicked(MouseEvent event) {
@@ -76,4 +79,13 @@ public class LoginController {
         adminRadioButton.setSelected(false);
     }
 
+    @FXML
+    void passwordEyeOnClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void loginButtonOnClicked(ActionEvent event) {
+
+    }
 }
