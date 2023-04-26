@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Objects;
 
 public class Match {
     private Team teamOne;
@@ -37,7 +38,7 @@ public class Match {
 
         this.scoreOne = score1;
         this.scoreTwo = score2;
-        System.out.println("Updated the sc ore for match number " + this.matchNum);
+
 
     }
     public void addTeam(Team team){
@@ -47,7 +48,11 @@ public class Match {
         else if(teamTwo == null){
             teamTwo = team;
         }
-        else System.out.println("probleim");
+        else{
+            System.out.println("probleim");
+            System.out.println("teamOne name " +teamOne.getTeamName());
+            System.out.println("teamTwo name " + teamTwo.getTeamName());
+        }
     }
 
     public void updateDate(Date newDate){
@@ -72,13 +77,14 @@ public class Match {
             return "Team " + teamTwo.getTeamName() + " is the winner";
         }
     }
-    public Team returnWinnerTeam(){
+    public Object returnWinnerTeam(){
         if(scoreOne>scoreTwo){
             return teamOne;
         }
-        else{
+        else if(scoreOne < scoreTwo){
             return teamTwo;
         }
+        else return "draw";
     }
 
     @Override
