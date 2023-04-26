@@ -70,7 +70,6 @@ public class Person {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(csvSplitBy);
-                System.out.println("test: " + data[0]);
                 lastID = data[1]; // Assuming ID is in the second column
             }
         } catch (IOException e) {
