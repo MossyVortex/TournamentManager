@@ -1,6 +1,6 @@
 Name,ID,Phone Number,Email,Password,Tournaments Created,IsAuthorized
 tester1,22000000001,+966123456459,testermail@gmail.com,test123,1,true
-ALI,2222000000002,+966123475884,JASOTest@gmail.com,test333,0,true
-JSOM,222222000000003,+966478561147,test2@gmail.com,test444,0,true
-RODY,22222222000000004,+996456781123,rodyTest@gmail.com,test4545,0,true
-lastTest,2222222222000000005,+966141234577,fred@gmail.com,test4422,0,true
+tester2,22000000002,+966123456559,testermai2l@gmail.com,test123,1,true
+adsf,22000000003,adsf,adsfs,asdf,0,true
+asdf,22000000004,asdf,asdf,asdf,0,true
+gtgt,22000000005,gtgt,gtgt,gtgt,0,true

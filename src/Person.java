@@ -70,6 +70,7 @@ public class Person {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(csvSplitBy);
+                System.out.println("test: " + data[0]);
                 lastID = data[1]; // Assuming ID is in the second column
             }
         } catch (IOException e) {
@@ -80,7 +81,7 @@ public class Person {
 
     public static String incrementString(String oldStr){
 
-        String shortenedStr = oldStr.substring(0, oldStr.length() - 1); // remove last digit
+        String shortenedStr = oldStr.substring(2, oldStr.length() - 1); // remove last digit and first two digits
 
         String lastDigit = oldStr.substring(oldStr.length() - 1);
 
