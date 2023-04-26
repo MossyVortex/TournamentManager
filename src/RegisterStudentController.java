@@ -16,6 +16,8 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -81,7 +83,49 @@ public class RegisterStudentController {
     @FXML
     void registerButtonOnClicked(ActionEvent event) {
 
-        if (allFilled()){}
+        if (allFilled()){
+
+            Person studentObject = new Person(nameTextField.getText());
+            studentObject.generateID("Student");
+
+            String csvFile = "src\\StudentsFile.csv";
+            try {
+                FileWriter writer = new FileWriter(csvFile, true);
+                BufferedWriter bw = new BufferedWriter(writer);
+
+                String name, ID, phoneNum, email, password, tournamentsCreated, weight, height, wins, losses, ties;
+                name = nameTextField.getText();
+                ID = studentObject.getID();
+                email = emailTextField.getText();
+                phoneNum = phoneTextField.getText();
+                password = passwordTextField.getText();
+                tournamentsCreated = "0";
+                weight = weightTextField.getText();
+                height = heightTextField.getText();
+                wins = "0";
+                losses = "0";
+                ties = "0";
+
+                
+
+
+                // collect data into a string
+                String dataToWrite = name + "," + ID + "," + phoneNum + "," + email + "," + password + "," + tournamentsCreated + "," + weight + "," + height + 
+                "," + wins + "," + losses + "," + ties;
+                
+                // Write data rows
+                bw.write(dataToWrite);
+                bw.newLine();
+                
+                // Close resources
+                bw.close();
+                writer.close();
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 

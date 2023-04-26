@@ -15,8 +15,10 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -54,15 +56,42 @@ public class RegisterAdminController {
 
     @FXML
     void regesterButtonOnclicked(ActionEvent event) {
-        if (allFilled()){}
-//            try {
-//                File file = new File("AdminsFile.csv");
-//
-//            }
-//            catch (IOException e){
-//                System.out.println(e.getCause());
-//            }
-//        }
+        if (allFilled()){
+
+            Person adminObject = new Person(nameTextField.getText());
+            adminObject.generateID("Admin");
+
+            String csvFile = "src\\AdminsFile.csv";
+            try {
+                FileWriter writer = new FileWriter(csvFile, true);
+                BufferedWriter bw = new BufferedWriter(writer);
+
+                String name, ID, email, phoneNum, password, tournamentsCreated, isAuthorized;
+                name = nameTextField.getText();
+                ID = adminObject.getID();
+                email = emailTextField.getText();
+                phoneNum = phoneTextField.getText();
+                password = passwordTextField.getText();
+                tournamentsCreated = "0";
+                isAuthorized = "true";
+
+
+                // collect data into a string
+                String dataToWrite = name + "," + ID + "," + phoneNum + "," + email + "," + password + "," + tournamentsCreated + "," + isAuthorized;
+                
+                // Write data rows
+                bw.write(dataToWrite);
+                bw.newLine();
+                
+                // Close resources
+                bw.close();
+                writer.close();
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
     public boolean allFilled(){

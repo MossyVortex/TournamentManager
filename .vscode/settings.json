@@ -2,6 +2,14 @@
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
-        "lib/**/*.jar"
+        "lib/**/*.jar",
+        "c:\\Users\\mossa\\Desktop\\javafx-sdk-20\\lib\\javafx.base.jar",
+        "c:\\Users\\mossa\\Desktop\\javafx-sdk-20\\lib\\javafx.controls.jar",
+        "c:\\Users\\mossa\\Desktop\\javafx-sdk-20\\lib\\javafx.fxml.jar",
+        "c:\\Users\\mossa\\Desktop\\javafx-sdk-20\\lib\\javafx.graphics.jar",
+        "c:\\Users\\mossa\\Desktop\\javafx-sdk-20\\lib\\javafx.media.jar",
+        "c:\\Users\\mossa\\Desktop\\javafx-sdk-20\\lib\\javafx.swing.jar",
+        "c:\\Users\\mossa\\Desktop\\javafx-sdk-20\\lib\\javafx.web.jar",
+        "c:\\Users\\mossa\\Desktop\\javafx-sdk-20\\lib\\javafx-swt.jar"
     ]
 }
