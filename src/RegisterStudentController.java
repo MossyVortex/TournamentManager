@@ -16,7 +16,9 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Objects;
@@ -106,24 +108,59 @@ public class RegisterStudentController {
                 losses = "0";
                 ties = "0";
 
-                
+                // check if the email is already available
 
+                String newEmail = email;
+                String line = "";
+                String cvsSplitBy = ",";
+                boolean emailExists = false;
 
-                // collect data into a string
-                String dataToWrite = name + "," + ID + "," + phoneNum + "," + email + "," + password + "," + tournamentsCreated + "," + weight + "," + height + 
-                "," + wins + "," + losses + "," + ties;
+                try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+                    while ((line = br.readLine()) != null) {
+                        String[] data = line.split(cvsSplitBy);
+                        if (data.length >= 4 && data[3].equals(newEmail)) {
+                            emailExists = true;
+                            break;
+                        }
+                    }
+                } 
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
                 
-                // Write data rows
-                bw.write(dataToWrite);
-                bw.newLine();
-                
-                // Close resources
-                bw.close();
-                writer.close();
+                if (emailExists) {
+                    // make the email box red
+
+                    boolean validEmail = true;
+                    emailTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
+                    emailLable.setTextFill(Paint.valueOf("#BC4749"));
+                    emailTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+                    validEmail = false;
+                } 
+                else {
+                    // collect data into a string
+                    String dataToWrite = name + "," + ID + "," + phoneNum + "," + email + "," + password + "," + tournamentsCreated + "," + weight + "," + height + 
+                    "," + wins + "," + losses + "," + ties;
+                    
+                    // Write data rows
+                    bw.write(dataToWrite);
+                    bw.newLine();
+                    
+                    // Close resources
+                    bw.close();
+                    writer.close();
+                }
             } 
             catch (IOException e) {
                 e.printStackTrace();
             }
+
+            Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         }
 
