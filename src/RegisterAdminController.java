@@ -124,6 +124,20 @@ public class RegisterAdminController {
                 e.printStackTrace();
             }
 
+            // after successful registration send the user to log in page
+
+            Parent fxmlLoader = null;
+            try {
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene loginPage = new Scene(fxmlLoader);
+            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+            stage.setScene(loginPage);
+            stage.setTitle("Tournament Manager - Login");
+            stage.show();
+
         }
     }
 
