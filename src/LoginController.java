@@ -105,7 +105,7 @@ public class LoginController {
                             e.printStackTrace();
                         }
                         Scene homePage = new Scene(fxmlLoader);
-                        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
                         stage.setScene(homePage);
                         stage.setTitle("Tournament Manager - Home Page");
                         stage.show();
@@ -129,7 +129,7 @@ public class LoginController {
                             e.printStackTrace();
                         }
                         Scene homePage = new Scene(fxmlLoader);
-                        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
                         stage.setScene(homePage);
                         stage.setTitle("Tournament Manager - Home Page");
                         stage.show();
