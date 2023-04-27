@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -86,6 +87,11 @@ public class LoginController {
 
     @FXML
     void loginButtonOnClicked(ActionEvent event) {
+       if(!emailTextF.getText().isEmpty() && !passwordTextF.getText().isEmpty()){
+        if(studentRadioButton.isSelected()){
+            
+        }
+       }
 
     }
 }
