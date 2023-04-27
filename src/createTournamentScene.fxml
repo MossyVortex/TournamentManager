@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="createTournamentController">
+   <center>
+      <HBox alignment="CENTER" prefHeight="600.0" prefWidth="924.0" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #386641;">
+               <center>
+                  <ImageView fx:id="createTournamentLogo" fitHeight="207.0" fitWidth="217.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@Images/TournamentCreatIcon.png" />
+                     </image>
+                  </ImageView>
+               </center>
+            </BorderPane>
+            <Pane prefHeight="600.0" prefWidth="23.0" style="-fx-background-color: #6A994E;" />
+            <Pane prefHeight="600.0" prefWidth="662.0" style="-fx-background-color: #F2E8CF;">
+               <children>
+                  <VBox alignment="TOP_CENTER" layoutX="-3.0" prefHeight="606.0" prefWidth="659.0">
+                     <children>
+                        <Pane prefHeight="47.0" prefWidth="660.0" />
+                        <Label fx:id="createTournamentLabel" alignment="CENTER" prefHeight="95.0" prefWidth="626.0" text="Create a tournament">
+                           <font>
+                              <Font name="System Bold Italic" size="61.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="0.8712121356617321" endY="0.9280303084489071" startX="0.8068181800119805" startY="0.5179924170176189">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.21960784494876862" green="0.4000000059604645" blue="0.2549019753932953" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.006729475100942127">
+                                       <color>
+                                          <Color red="0.21960784494876862" green="0.4000000059604645" blue="0.2549019753932953" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <HBox alignment="BASELINE_LEFT" prefHeight="53.0" prefWidth="659.0">
+                           <children>
+                              <Pane prefHeight="38.0" prefWidth="68.0" />
+                              <TextField fx:id="tournamentNameTextField" prefHeight="33.0" prefWidth="521.0" promptText="Enter tournament's name" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="51.0" prefWidth="660.0">
+                           <children>
+                              <Label fx:id="chooseTournamentTypeLabel" layoutX="71.0" layoutY="12.0" prefHeight="31.0" prefWidth="243.0" text="Choose tournament type:" textFill="#386641">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <HBox prefHeight="48.0" prefWidth="660.0">
+                           <children>
+                              <Pane prefHeight="48.0" prefWidth="146.0" />
+                              <RadioButton fx:id="eliminationRadioButton" mnemonicParsing="false" onAction="#eliminationRadioButtonOnClicked" prefHeight="31.0" prefWidth="185.0" text="Elimination" textFill="#386641">
+                                 <font>
+                                    <Font name="System Bold" size="21.0" />
+                                 </font>
+                              </RadioButton>
+                              <Pane prefHeight="100.0" prefWidth="44.0" />
+                              <RadioButton fx:id="roundRobinRadioButton" mnemonicParsing="false" onAction="#roundRobinRadioButtonOnClicked" prefHeight="31.0" prefWidth="194.0" text="RoundRobin" textFill="#386641">
+                                 <font>
+                                    <Font name="System Bold" size="21.0" />
+                                 </font>
+                              </RadioButton>
+                              <Pane prefHeight="100.0" prefWidth="132.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="67.0" prefWidth="659.0">
+                           <children>
+                              <Pane prefHeight="100.0" prefWidth="94.0" />
+                              <TextField fx:id="gameTypeTextField" prefWidth="270.0" promptText="Enter the game i.e. basketball" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                              <Pane prefHeight="100.0" prefWidth="65.0" />
+                              <TextField fx:id="maxNumOfTeamsTextField" prefWidth="270.0" promptText="enter the max number of teams" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </TextField>
+                              <Pane prefHeight="100.0" prefWidth="94.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="36.0" prefWidth="659.0">
+                           <children>
+                              <Pane prefHeight="200.0" prefWidth="70.0" />
+                              <Label fx:id="startDateLabel" prefHeight="31.0" prefWidth="233.0" text="Start date:" textFill="#386641">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Pane prefHeight="200.0" prefWidth="44.0" />
+                              <Label fx:id="endDateLabel" prefHeight="31.0" prefWidth="233.0" text="End date:" textFill="#386641">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="10.0" prefWidth="659.0" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Pane prefHeight="100.0" prefWidth="70.0" />
+                              <DatePicker fx:id="startDatePicker" onAction="#getStartDate" prefHeight="25.0" prefWidth="240.0" promptText="Enter start date" />
+                              <Pane prefHeight="100.0" prefWidth="44.0" />
+                              <DatePicker fx:id="endDatePicker" onAction="#getEndDate" prefHeight="25.0" prefWidth="240.0" promptText="Enter end date" />
+                              <Pane prefHeight="100.0" prefWidth="70.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
