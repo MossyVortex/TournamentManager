@@ -10,6 +10,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -86,10 +89,14 @@ public class LoginController {
     }
 
     @FXML
-    void loginButtonOnClicked(ActionEvent event) {
+    void loginButtonOnClicked(ActionEvent event) throws IOException {
        if(!emailTextF.getText().isEmpty() && !passwordTextF.getText().isEmpty()){
         if(studentRadioButton.isSelected()){
-            
+            FileReader student = new FileReader("StudentsFile.csv");
+            BufferedReader readStudentFile = new BufferedReader(student);
+            while(readStudentFile.readLine() != null){
+                
+            }
         }
        }
 
