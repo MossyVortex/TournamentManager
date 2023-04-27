@@ -42,6 +42,9 @@ public class createTournamentController {
     private DatePicker startDatePicker;
 
     @FXML
+    private Label tournamentNameLabel;
+
+    @FXML
     private TextField tournamentNameTextField;
 
     @FXML
