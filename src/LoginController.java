@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -90,81 +93,73 @@ public class LoginController {
 
     @FXML
     void loginButtonOnClicked(ActionEvent event) throws IOException {
-     if((! emailTextF.getText().isEmpty() && !passwordTextF.getText().isEmpty())||(studentRadioButton.isSelected() || adminRadioButton.isSelected())){
+     if(allFilled()){
         if(studentRadioButton.isSelected()){
-            File student = new File("StudentsFile.csv");
-            Scanner studentRead = new Scanner(student);
-            studentRead.useDelimiter(",|\n");
-            String line = studentRead.nextLine();
+            File StudentForEmail = new File("StudentsFile.csv");
+            Scanner studentRead1 = new Scanner(StudentForEmail);
+            studentRead1.useDelimiter(",|\n");
+            String line1 = studentRead1.nextLine();
             String emailFound = "";
-            String passwordFound = "";
-            while(studentRead.hasNext()){
-                System.out.println(studentRead.nextLine());
-                if(studentRead.next().equals(emailTextF.getText())){
-                    emailFound = studentRead.next();
+            while(studentRead1.hasNext()){
+                if(studentRead1.next().equals(emailTextF.getText())){
+                    emailFound = emailFound + emailTextF.getText();
                 }
             }
-            System.out.println(emailFound);
-            File student2 = new File("StudentsFile.csv");
-            Scanner studentRead2 = new Scanner(student2);
+            String passwordFound = "";
+            File studentForPassword = new File("StudentsFile.csv");
+            Scanner studentRead2 = new Scanner(studentForPassword);
             studentRead2.useDelimiter(",|\n");
             String line2 = studentRead2.nextLine();
             while(studentRead2.hasNext()){
                 if(studentRead2.next().equals(passwordTextF.getText())){
-                    passwordFound = studentRead2.next();
+                    passwordFound = passwordFound + passwordTextF.getText();
                 }
             }
-            if(!emailFound.equals("")&& !passwordFound.equals("")){
-                            Parent fxmlLoader = null;
-                            try {
-                                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            Scene homePage = new Scene(fxmlLoader);
-                            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-                            stage.setScene(homePage);
-                            stage.setTitle("Tournament Manager - Home Page");
-                            stage.show();
-            }else{
-                System.out.println("Email or Password is/are incorrect");
-            }
-        }else if(adminRadioButton.isSelected()){
-            File admin = new File("AdminsFile.csv");
-            Scanner adminRead = new Scanner(admin);
-            adminRead.useDelimiter(",|\n");
-            while(adminRead.hasNext()){
-                if(adminRead.next().equals(emailTextF.getText())){
-                    while(adminRead.hasNext()){
-                        if(adminRead.next().equals(passwordTextF.getText())){
-                            Parent fxmlLoader = null;
-                            try {
-                                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            Scene homePage = new Scene(fxmlLoader);
-                            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-                            stage.setScene(homePage);
-                            stage.setTitle("Tournament Manager - Home Page");
-                            stage.show();
-                        }
-                    }
+            if(!emailFound.equals("") && !passwordFound.equals("")){
+                Parent fxmlLoader = null;
+                try {
+                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+                Scene registerPage = new Scene(fxmlLoader);
+                Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+                stage.setScene(registerPage);
+                stage.setTitle("Tournament Manager - Register");
+                stage.show();
             }
-            System.out.println("Email or Password is/are incorrect");
         }
-     } else if(! emailTextF.getText().isEmpty() && !passwordTextF.getText().isEmpty()){
-        System.out.println("Which one will log in ");
-     }
-     if(emailTextF.getText().isEmpty()){
-        System.out.println("Email is missing");
-        emailLable.setTextFill(Paint.valueOf("#FF0000"));
-     }
-     if(passwordTextF.getText().isEmpty()){
-        System.out.println("passowrd is missing");
-        emailLable.setTextFill(Paint.valueOf("#FF0000"));
      }
 
+    }
+
+
+
+
+    public boolean allFilled(){
+        boolean allFilled = true;
+        passwordLable.setTextFill(Paint.valueOf("#386641")); emailLable.setTextFill(Paint.valueOf("#386641"));
+        emailTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
+        passwordTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
+        if(studentRadioButton.isSelected() || adminRadioButton.isSelected()){
+            allFilled = true;
+        }else{
+            allFilled = false;
+        }
+
+
+        if(emailTextF.getText().isEmpty()){
+            emailLable.setTextFill(Paint.valueOf("#BC4749"));
+            emailTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+            allFilled = false;
+        }
+
+
+        if(passwordTextF.getText().isEmpty()){
+            passwordLable.setTextFill(Paint.valueOf("#BC4749"));
+            passwordTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+            allFilled = false;
+        }
+        return allFilled;
     }
 }

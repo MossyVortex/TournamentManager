@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "TournamentManager_9c4af4d7"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "TournamentManager_9c4af4d7"
+        },
+        {
+            "type": "java",
             "name": "TournamentApplication",
             "request": "launch",
             "mainClass": "TournamentApplication",
