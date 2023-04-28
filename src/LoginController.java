@@ -94,10 +94,27 @@ public class LoginController {
         if(studentRadioButton.isSelected()){
             File student = new File("StudentsFile.csv");
             Scanner studentRead = new Scanner(student);
+            studentRead.useDelimiter(",|\n");
+            String line = studentRead.nextLine();
+            String emailFound = "";
+            String passwordFound = "";
             while(studentRead.hasNext()){
+                System.out.println(studentRead.nextLine());
                 if(studentRead.next().equals(emailTextF.getText())){
-                    while(studentRead.hasNext()){
-                        if(studentRead.next().equals(passwordTextF.getText())){
+                    emailFound = studentRead.next();
+                }
+            }
+            System.out.println(emailFound);
+            File student2 = new File("StudentsFile.csv");
+            Scanner studentRead2 = new Scanner(student2);
+            studentRead2.useDelimiter(",|\n");
+            String line2 = studentRead2.nextLine();
+            while(studentRead2.hasNext()){
+                if(studentRead2.next().equals(passwordTextF.getText())){
+                    passwordFound = studentRead2.next();
+                }
+            }
+            if(!emailFound.equals("")&& !passwordFound.equals("")){
                             Parent fxmlLoader = null;
                             try {
                                     fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
@@ -109,14 +126,13 @@ public class LoginController {
                             stage.setScene(homePage);
                             stage.setTitle("Tournament Manager - Home Page");
                             stage.show();
-                        }
-                    }
-                }
+            }else{
+                System.out.println("Email or Password is/are incorrect");
             }
-            System.out.println("Email or Password is/are incorrect");
         }else if(adminRadioButton.isSelected()){
             File admin = new File("AdminsFile.csv");
             Scanner adminRead = new Scanner(admin);
+            adminRead.useDelimiter(",|\n");
             while(adminRead.hasNext()){
                 if(adminRead.next().equals(emailTextF.getText())){
                     while(adminRead.hasNext()){
