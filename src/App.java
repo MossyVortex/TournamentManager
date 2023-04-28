@@ -15,8 +15,7 @@ public class App {
 
         tourney.createMatchHistory();
         tourney.updateMatch(0,0,21,0);
-        tourney.updateMatch(0,1,22,0);
-        tourney.updateMatch(0,3,21,0);
+
 
         System.out.println(tourney.printMatchHistory());
         tourney.calcuateWinnersMatches();
@@ -32,13 +31,13 @@ public class App {
         tour.addTeam(new Team(stu,"team6"));
         tour.addTeam(new Team(stu,"team7"));
         tour.addTeam(new Team(stu,"team8"));
-//        tour.addTeam(new Team(stu,"team9"));
-//        tour.addTeam(new Team(stu,"team10"));
-//        tour.addTeam(new Team(stu,"team11"));
-//        tour.addTeam(new Team(stu,"team12"));
-//        tour.addTeam(new Team(stu,"team13"));
-//        tour.addTeam(new Team(stu,"team14"));
-//        tour.addTeam(new Team(stu,"team15"));
+        tour.addTeam(new Team(stu,"team9"));
+        tour.addTeam(new Team(stu,"team10"));
+        tour.addTeam(new Team(stu,"team11"));
+        tour.addTeam(new Team(stu,"team12"));
+        tour.addTeam(new Team(stu,"team13"));
+        tour.addTeam(new Team(stu,"team14"));
+        tour.addTeam(new Team(stu,"team15"));
 //        tour.addTeam(new Team(stu,"team16"));
 //        for(int i = 0 ; i < 16 ; i++){
 //            tour.addTeam(team);
