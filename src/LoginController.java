@@ -10,11 +10,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
+
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class LoginController {
 
@@ -89,59 +90,65 @@ public class LoginController {
 
     @FXML
     void loginButtonOnClicked(ActionEvent event) throws IOException {
-       if(!emailTextF.getText().isEmpty() && !passwordTextF.getText().isEmpty()){
+     if((! emailTextF.getText().isEmpty() && !passwordTextF.getText().isEmpty())||(studentRadioButton.isSelected() || adminRadioButton.isSelected())){
         if(studentRadioButton.isSelected()){
-            FileReader student = new FileReader("StudentsFile.csv");
-            BufferedReader readStudentFile = new BufferedReader(student);
-            String line = readStudentFile.readLine();
-            while(line != null){
-                String[] valuesOfStudentFile = line.split(",");
-                if(valuesOfStudentFile[3].equals(emailTextF.getText())){
-                    if(valuesOfStudentFile[4].equals(passwordTextF.getText())){
-                        Parent fxmlLoader = null;
-                    try {
-                         fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
-                    } catch (IOException e) {
-                            e.printStackTrace();
+            File student = new File("StudentsFile.csv");
+            Scanner studentRead = new Scanner(student);
+            while(studentRead.hasNext()){
+                if(studentRead.next().equals(emailTextF.getText())){
+                    while(studentRead.hasNext()){
+                        if(studentRead.next().equals(passwordTextF.getText())){
+                            Parent fxmlLoader = null;
+                            try {
+                                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Scene homePage = new Scene(fxmlLoader);
+                            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                            stage.setScene(homePage);
+                            stage.setTitle("Tournament Manager - Home Page");
+                            stage.show();
                         }
-                        Scene homePage = new Scene(fxmlLoader);
-                        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
-                        stage.setScene(homePage);
-                        stage.setTitle("Tournament Manager - Home Page");
-                        stage.show();
                     }
-                        
                 }
             }
-        System.out.println("One of the email or password is/are not correct");
+            System.out.println("Email or Password is/are incorrect");
         }else if(adminRadioButton.isSelected()){
-            FileReader Admin = new FileReader("AdminsFile.csv");
-            BufferedReader readAdmins = new BufferedReader(Admin);
-            String line = readAdmins.readLine();
-            while(line != null){
-                String[] valuesOfAdminFile = line.split(",");
-                if(valuesOfAdminFile[3].equals(emailTextF.getText())){
-                    if(valuesOfAdminFile[4].equals(passwordTextF.getText())){
-                        Parent fxmlLoader = null;
-                    try {
-                         fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
-                    } catch (IOException e) {
-                            e.printStackTrace();
+            File admin = new File("AdminsFile.csv");
+            Scanner adminRead = new Scanner(admin);
+            while(adminRead.hasNext()){
+                if(adminRead.next().equals(emailTextF.getText())){
+                    while(adminRead.hasNext()){
+                        if(adminRead.next().equals(passwordTextF.getText())){
+                            Parent fxmlLoader = null;
+                            try {
+                                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Scene homePage = new Scene(fxmlLoader);
+                            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                            stage.setScene(homePage);
+                            stage.setTitle("Tournament Manager - Home Page");
+                            stage.show();
                         }
-                        Scene homePage = new Scene(fxmlLoader);
-                        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
-                        stage.setScene(homePage);
-                        stage.setTitle("Tournament Manager - Home Page");
-                        stage.show();
                     }
                 }
-
             }
-            System.out.println("One of the email or password is/are not correct");
+            System.out.println("Email or Password is/are incorrect");
         }
-       }else{
-        System.out.println("fill the blank");
-       }
+     } else if(! emailTextF.getText().isEmpty() && !passwordTextF.getText().isEmpty()){
+        System.out.println("Which one will log in ");
+     }
+     if(emailTextF.getText().isEmpty()){
+        System.out.println("Email is missing");
+        emailLable.setTextFill(Paint.valueOf("#FF0000"));
+     }
+     if(passwordTextF.getText().isEmpty()){
+        System.out.println("passowrd is missing");
+        emailLable.setTextFill(Paint.valueOf("#FF0000"));
+     }
 
     }
 }
