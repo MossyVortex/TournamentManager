@@ -96,7 +96,7 @@ public class LoginController {
     void loginButtonOnClicked(ActionEvent event) throws IOException {
      if(allFilled()){
         if(studentRadioButton.isSelected()){
-        String path = "StudentsFile.csv";
+        String path = "src/StudentsFile.csv";
         String line = "";
         String emailFound = "";
         String passwordFound = "";
@@ -116,14 +116,14 @@ public class LoginController {
             if(! emailFound.equals("") && ! passwordFound.equals("")){
                 Parent fxmlLoader = null;
                 try {
-                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
+                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Scene registerPage = new Scene(fxmlLoader);
-                Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-                stage.setScene(registerPage);
-                stage.setTitle("Tournament Manager - Register");
+                Scene homePage = new Scene(fxmlLoader);
+                Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                stage.setScene(homePage);
+                stage.setTitle("Tournament Manager - Home Page");
                 stage.show();
             }else{
                 System.out.println("Email or password is/are incorrect");
@@ -133,7 +133,41 @@ public class LoginController {
         }catch(IOException e){
             e.printStackTrace();
         }
+    }else if(adminRadioButton.isSelected()){
+        String path = "src/AdminsFile.csv";
+        String line = "";
+        String emailFound = "";
+        String passwordFound = "";
+
+        BufferedReader AdminRead = new BufferedReader(new FileReader(path));
+
+        while((line = AdminRead.readLine())!= null){
+            String[] values = line.split(",");
+            if(values[3].equals(emailTextF.getText())){
+                emailFound = emailFound + emailTextF.getText();
+            }
+            if(values[4].equals(passwordTextF.getText())){
+                passwordFound = passwordFound + passwordTextF.getText();
+            }
+        }
+        if(! emailFound.equals("") && ! passwordFound.equals("")){
+            Parent fxmlLoader = null;
+            try {
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene homePage = new Scene(fxmlLoader);
+            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+            stage.setScene(homePage);
+            stage.setTitle("Tournament Manager - Home Page");
+            stage.show();
+        }else{
+            System.out.println("Email or password is/are incorrect");
+        }
     }
+    } else{
+        System.out.println("Fill the missing values");
     }
     }
 
