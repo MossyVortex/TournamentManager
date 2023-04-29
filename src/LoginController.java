@@ -13,9 +13,10 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
@@ -95,27 +96,24 @@ public class LoginController {
     void loginButtonOnClicked(ActionEvent event) throws IOException {
      if(allFilled()){
         if(studentRadioButton.isSelected()){
-            File StudentForEmail = new File("StudentsFile.csv");
-            Scanner studentRead1 = new Scanner(StudentForEmail);
-            studentRead1.useDelimiter(",|\n");
-            String line1 = studentRead1.nextLine();
-            String emailFound = "";
-            while(studentRead1.hasNext()){
-                if(studentRead1.next().equals(emailTextF.getText())){
+        String path = "StudentsFile.csv";
+        String line = "";
+        String emailFound = "";
+        String passwordFound = "";
+        try{
+            BufferedReader readStudent = new BufferedReader(new FileReader(path));
+
+            while((line = readStudent.readLine()) != null){
+                String[] values = line.split(",");
+                if(values[3].equals(emailTextF.getText())){
                     emailFound = emailFound + emailTextF.getText();
                 }
-            }
-            String passwordFound = "";
-            File studentForPassword = new File("StudentsFile.csv");
-            Scanner studentRead2 = new Scanner(studentForPassword);
-            studentRead2.useDelimiter(",|\n");
-            String line2 = studentRead2.nextLine();
-            while(studentRead2.hasNext()){
-                if(studentRead2.next().equals(passwordTextF.getText())){
+                if(values[4].equals(passwordTextF.getText())){
                     passwordFound = passwordFound + passwordTextF.getText();
                 }
+                
             }
-            if(!emailFound.equals("") && !passwordFound.equals("")){
+            if(! emailFound.equals("") && ! passwordFound.equals("")){
                 Parent fxmlLoader = null;
                 try {
                     fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
@@ -127,11 +125,19 @@ public class LoginController {
                 stage.setScene(registerPage);
                 stage.setTitle("Tournament Manager - Register");
                 stage.show();
+            }else{
+                System.out.println("Email or password is/are incorrect");
             }
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
         }
-     }
-
     }
+    }
+    }
+
+    
 
 
 
