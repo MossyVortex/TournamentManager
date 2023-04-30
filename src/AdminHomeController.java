@@ -3,7 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
-public class HomeController {
+public class AdminHomeController {
 
     @FXML
     private Button TButto;

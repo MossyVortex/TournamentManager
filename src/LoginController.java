@@ -14,12 +14,10 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Objects;
-import java.util.Scanner;
 
 public class LoginController {
 
@@ -116,7 +114,7 @@ public class LoginController {
             if(! emailFound.equals("") && ! passwordFound.equals("")){
                 Parent fxmlLoader = null;
                 try {
-                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
+                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -153,7 +151,7 @@ public class LoginController {
         if(! emailFound.equals("") && ! passwordFound.equals("")){
             Parent fxmlLoader = null;
             try {
-                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeScene.fxml")));
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
             } catch (IOException e) {
                 e.printStackTrace();
             }
