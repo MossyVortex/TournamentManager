@@ -25,7 +25,7 @@
                <top>
                   <BorderPane prefHeight="83.0" prefWidth="190.0" BorderPane.alignment="CENTER">
                      <left>
-                        <ImageView fitHeight="59.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="signOutIcon" fitHeight="59.0" fitWidth="59.0" onMouseClicked="#signOutIconOnClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                            <image>
                               <Image url="@Images/logout.png" />
                            </image>
@@ -46,13 +46,13 @@
                               <Image url="@Images/administrator.png" />
                            </image>
                         </ImageView>
-                        <Label text="UserName" textFill="#f2e8cf">
+                        <Label fx:id="nameLable" text="UserName" textFill="#f2e8cf">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                         <Pane prefHeight="14.0" prefWidth="190.0" />
-                        <BorderPane prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #2C5033;">
+                        <BorderPane fx:id="ViewProfilePane" onMouseClicked="#ViewProfilePaneOnClicked" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #2C5033;">
                            <center>
                               <Label text="View Profile" textFill="#f2e8cf" BorderPane.alignment="CENTER">
                                  <font>
@@ -75,7 +75,7 @@
                <right>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutX="-7.0" layoutY="44.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Create Tournament" textFill="#f2e8cf">
+                        <Button fx:id="CreateTournamentButton" layoutX="-57.0" layoutY="44.0" mnemonicParsing="false" onAction="#CreateTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Create Tournament" textFill="#f2e8cf">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -86,7 +86,7 @@
                <left>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutX="25.0" layoutY="44.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Edit Tournament" textFill="#f2e8cf">
+                        <Button fx:id="EditTournamentButton" layoutX="72.0" layoutY="44.0" mnemonicParsing="false" onAction="#EditTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Edit Tournament" textFill="#f2e8cf">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -97,7 +97,7 @@
             </BorderPane>
          </top>
          <center>
-            <TableView prefHeight="482.0" prefWidth="600.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER">
+            <TableView fx:id="tournamentTableView" prefHeight="482.0" prefWidth="600.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER">
                <columns>
                   <TableColumn prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Name" />
                   <TableColumn prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="Game" />

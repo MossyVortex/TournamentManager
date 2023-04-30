@@ -7,11 +7,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminHomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StudentHomeController">
    <left>
       <BorderPane prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
          <right>
@@ -25,7 +26,7 @@
                <top>
                   <BorderPane prefHeight="83.0" prefWidth="190.0" BorderPane.alignment="CENTER">
                      <left>
-                        <ImageView fitHeight="59.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="signOutIcon" fitHeight="59.0" fitWidth="59.0" onMouseClicked="#signOutIconOncklicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                            <image>
                               <Image url="@Images/logout.png" />
                            </image>
@@ -46,13 +47,13 @@
                               <Image url="@Images/Student.png" />
                            </image>
                         </ImageView>
-                        <Label text="UserName" textFill="#f2e8cf">
+                        <Label fx:id="nameLable" text="UserName" textFill="#f2e8cf">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                         <Pane prefHeight="14.0" prefWidth="190.0" />
-                        <BorderPane prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #2C5033;">
+                        <BorderPane fx:id="ViewProfilePane" onMouseClicked="#ViewProfilePaneOnClicked" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #2C5033;">
                            <center>
                               <Label text="View Profile" textFill="#f2e8cf" BorderPane.alignment="CENTER">
                                  <font>
@@ -72,39 +73,34 @@
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
             <BorderPane prefHeight="118.0" prefWidth="700.0" BorderPane.alignment="CENTER">
-               <right>
-                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <center>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="700.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutX="-7.0" layoutY="44.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Your Tournaments" textFill="#f2e8cf">
+                        <Button fx:id="JoinTournamentButton" mnemonicParsing="false" onAction="#JoinTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Join Tournament" textFill="#f2e8cf">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Pane prefHeight="118.0" prefWidth="180.0" />
+                        <Button fx:id="YourTournamentsButton" mnemonicParsing="false" onAction="#YourTournamentsButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Your Tournaments" textFill="#f2e8cf">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
                      </children>
-                  </Pane>
-               </right>
-               <left>
-                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button layoutX="25.0" layoutY="44.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Join Tournament" textFill="#f2e8cf">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </Pane>
-               </left>
+                  </HBox>
+               </center>
             </BorderPane>
          </top>
          <center>
-            <TableView prefHeight="482.0" prefWidth="600.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER">
+            <TableView fx:id="tournamentTableView" prefHeight="435.0" prefWidth="554.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER">
                <columns>
                   <TableColumn prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Name" />
                   <TableColumn prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="Game" />
+                  <TableColumn prefWidth="89.99996948242188" style="-fx-background-color: #C8A038;" text="Starting Date" />
+                  <TableColumn prefWidth="67.00003051757812" style="-fx-background-color: #D6B86A;" text="Ending Date" />
                   <TableColumn prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Type" />
                   <TableColumn prefWidth="97.60006713867188" style="-fx-background-color: #D6B86A;" text="Status" />
-                  <TableColumn prefWidth="97.60006713867188" style="-fx-background-color: #C8A038;" text="Starting Date" />
-                  <TableColumn prefWidth="97.60006713867188" style="-fx-background-color: #D6B86A;" text="Ending Date" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

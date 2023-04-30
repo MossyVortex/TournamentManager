@@ -98,6 +98,7 @@ public class LoginController {
         String line = "";
         String emailFound = "";
         String passwordFound = "";
+
         try{
             BufferedReader readStudent = new BufferedReader(new FileReader(path));
 
@@ -114,7 +115,7 @@ public class LoginController {
             if(! emailFound.equals("") && ! passwordFound.equals("")){
                 Parent fxmlLoader = null;
                 try {
-                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -177,6 +178,7 @@ public class LoginController {
     public boolean allFilled(){
         boolean allFilled = true;
         passwordLable.setTextFill(Paint.valueOf("#386641")); emailLable.setTextFill(Paint.valueOf("#386641"));
+        studentRadioButton.setTextFill(Paint.valueOf("#386641"));adminRadioButton.setTextFill(Paint.valueOf("#386641"));
         emailTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         passwordTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         if(studentRadioButton.isSelected() || adminRadioButton.isSelected()){
@@ -196,6 +198,11 @@ public class LoginController {
         if(passwordTextF.getText().isEmpty()){
             passwordLable.setTextFill(Paint.valueOf("#BC4749"));
             passwordTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+            allFilled = false;
+        }
+        if (!(studentRadioButton.isSelected()||adminRadioButton.isSelected())){
+            studentRadioButton.setTextFill(Paint.valueOf("#BC4749"));
+            adminRadioButton.setTextFill(Paint.valueOf("#BC4749"));
             allFilled = false;
         }
         return allFilled;
