@@ -1,14 +1,22 @@
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class createTournamentController {
 
@@ -44,6 +52,10 @@ public class createTournamentController {
 
     @FXML
     private Label startDateLabel;
+
+
+    @FXML
+    private ImageView backButton;
 
     @FXML
     private DatePicker startDatePicker;
@@ -114,4 +126,19 @@ public class createTournamentController {
 
     }
 
+    @FXML
+    void backButtonOnClicked(MouseEvent event) {
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene loginPage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(loginPage);
+        stage.setTitle("classes.Tournament Manager - Login");
+        stage.show();
+
+    }
 }
