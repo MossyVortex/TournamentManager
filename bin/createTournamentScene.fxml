@@ -18,13 +18,41 @@
       <HBox alignment="CENTER" prefHeight="600.0" prefWidth="924.0" BorderPane.alignment="CENTER">
          <children>
             <BorderPane prefHeight="600.0" prefWidth="250.0" style="-fx-background-color: #386641;">
+               <top>
+                  <BorderPane prefHeight="57.0" prefWidth="238.0" BorderPane.alignment="CENTER">
+                     <left>
+                        <Pane prefHeight="58.0" prefWidth="78.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fx:id="backButton" fitHeight="49.0" fitWidth="73.0" layoutX="22.0" layoutY="16.0" onMouseClicked="#backButtonOnClicked" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/backArrow.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </left>
+                  </BorderPane>
+               </top>
                <center>
-                  <ImageView fx:id="createTournamentLogo" fitHeight="207.0" fitWidth="217.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@Images/TournamentCreatIcon.png" />
-                     </image>
-                  </ImageView>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/HIcon.png" />
+                           </image>
+                        </ImageView>
+                        <Pane prefHeight="20.0" prefWidth="238.0" />
+                        <ImageView fx:id="createTournamentLogo" fitHeight="184.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Images/TournamentCreatIcon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
                </center>
+               <bottom>
+                  <Pane prefHeight="57.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </bottom>
             </BorderPane>
             <Pane prefHeight="600.0" prefWidth="23.0" style="-fx-background-color: #6A994E;" />
             <Pane prefHeight="600.0" prefWidth="662.0" style="-fx-background-color: #F2E8CF;">

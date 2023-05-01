@@ -23,7 +23,7 @@ public class TournamentApplication extends Application {
             }
             Scene loginPage = new Scene(fxmlLoader);
             primaryStage.setScene(loginPage);
-            primaryStage.setTitle("classes.Tournament Manager - Login");
+            primaryStage.setTitle("Tournament Manager - Login");
             primaryStage.show();
     }
 

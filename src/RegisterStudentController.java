@@ -82,7 +82,7 @@ public class RegisterStudentController {
         Scene registerStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(registerStudentPage);
-        stage.setTitle("classes.Tournament Manager - Register");
+        stage.setTitle("Tournament Manager - Register");
         stage.show();
     }
 
@@ -92,7 +92,7 @@ public class RegisterStudentController {
         if (allFilled()){
 
             Person studentObject = new Person(nameTextField.getText());
-            studentObject.generateID("classes.Student");
+            studentObject.generateID("Student");
 
             HashMap<String, ArrayList<Object>> studentInfoMap = new HashMap<>();
 

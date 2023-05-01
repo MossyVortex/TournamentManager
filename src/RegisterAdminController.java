@@ -203,7 +203,7 @@ public class RegisterAdminController {
         Scene loginStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(loginStudentPage);
-        stage.setTitle("classes.Tournament Manager - Register");
+        stage.setTitle("Tournament Manager - Register");
         stage.show();
     }
 

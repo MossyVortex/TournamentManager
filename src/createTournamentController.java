@@ -80,7 +80,7 @@ public class createTournamentController {
 
             // create elimination tournament
 
-            // classes.Elimination elimTourObj = new classes.Elimination();
+            // Elimination elimTourObj = new Elimination();
 
             // elimTourObj.setName(tournamentNameTextField.getText());
             // elimTourObj.setStartDate // we need these setters in both elimination and roundrobin!
@@ -137,7 +137,7 @@ public class createTournamentController {
         Scene loginPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(loginPage);
-        stage.setTitle("classes.Tournament Manager - Login");
+        stage.setTitle("Tournament Manager - Login");
         stage.show();
 
     }
