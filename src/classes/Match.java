@@ -36,12 +36,20 @@ public class Match {
 
 
     }
-    public void updateScore(int score1, int score2){
+    public void updateScores(int score1, int score2){
 
         this.scoreOne = score1;
         this.scoreTwo = score2;
 
-
+    }
+    public void updateScoreSingleTeam(int score, int teamIndex){
+        if(teamIndex == 0){
+            this.scoreOne = score;
+        }
+        else if(teamIndex == 1){
+            this.scoreTwo = score;
+        }
+        else System.out.println("error");
     }
     public void addTeam(Team team){
         if(teamOne ==null){

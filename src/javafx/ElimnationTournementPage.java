@@ -38,23 +38,25 @@ public class ElimnationTournementPage extends Application {
         tourney.updateMatch(0,0,21,0);
 
 
-
-        VBox elimnationVbox = new VBox(createTourney(tourney));
+        ArrayList<TextField> textFields = new ArrayList<>();
+        VBox elimnationVbox = new VBox(createTourney(tourney,textFields));
+        System.out.println(textFields);
 
         Button updateScoreButton = new Button();
-        updateScoreButton.setText("hellasdasdo");
+        updateScoreButton.setText("calcuateWinners");
 
         VBox mainTourney = new VBox(updateScoreButton, elimnationVbox);
+
 
         Scene scene = new Scene(mainTourney,1000,800);
 
         updateScoreButton.setOnAction(e ->{
-            VBox elimnationVboxUpdated = new VBox(createTourney(tourney));
+            updateMatches(tourney, textFields);
+            tourney.calcuateWinnersMatches();
+            VBox elimnationVboxUpdated = new VBox(createTourney(tourney, textFields));
             mainTourney.getChildren().remove(1);
             mainTourney.getChildren().add(elimnationVboxUpdated);
-//            stage.close();
-//            stage.setScene(updatedScene);
-//            stage.show();
+
             System.out.println("no errors");
         });
 
@@ -83,12 +85,13 @@ public class ElimnationTournementPage extends Application {
 //            tour.addTeam(team);
 //        }
     }
-    public static VBox createMatchUP(Match match){
+    public static VBox createMatchUP(Match match ,int roundIndex ,int matchIndex , ArrayList<TextField> textFields){
         VBox matchup = new VBox();
 
         Label team1Label = new Label(match.getTeamOneName() + " ");
         Text team1Score = new Text(match.getScoreOne() +"");
         TextField team1TextField = new TextField();
+        team1TextField.setId(roundIndex + "-" + matchIndex + "-" + 0);
         HBox team1HBox = new HBox();
         team1HBox.getChildren().addAll(team1Label,team1Score,team1TextField);
         team1HBox.setSpacing(10);
@@ -96,32 +99,51 @@ public class ElimnationTournementPage extends Application {
         Label team2Label = new Label(match.getTeamTwoName() + "");
         Text team2Score = new Text(match.getScoreTwo() +"");
         TextField team2TextField = new TextField();
+        team2TextField.setId(roundIndex + "-" + matchIndex + "-" + 1 );
         HBox team2HBox = new HBox();
         team2HBox.getChildren().addAll(team2Label,team2Score ,team2TextField);
         team2HBox.setSpacing(10);
 
+        textFields.add(team1TextField);
+        textFields.add(team2TextField);
         matchup.getChildren().addAll(team1HBox, team2HBox);
         return matchup;
     }
-    public static VBox createRound(ArrayList<Match> matches){
+    public static VBox createRound(ArrayList<Match> matches, int roundIndex , ArrayList<TextField> textFields  ){
         VBox round = new VBox();
         round.setSpacing(20);
         for(int i = 0 ; i < matches.size() ; i++){
-            round.getChildren().add(createMatchUP(matches.get(i)));
+            round.getChildren().add(createMatchUP(matches.get(i),roundIndex , i , textFields));
         }
         return round;
     }
-    public static VBox createTourney(Elimination tourney){
+    public static VBox createTourney(Elimination tourney, ArrayList<TextField> textFields){
+        textFields.clear();
         HBox tourneyHbox = new HBox();
         tourneyHbox.setSpacing(20);
         Hashtable<Integer, ArrayList<Match>> matchHistory = tourney.printMatchHistory();
         for(int i = 0 ; i < matchHistory.size() ; i++){
-            tourneyHbox.getChildren().add(createRound(matchHistory.get(i)));
+            tourneyHbox.getChildren().add(createRound(matchHistory.get(i) , i , textFields));
         }
 
         VBox tourneyVbox = new VBox(new Text("tournement"));
         tourneyVbox.getChildren().add(tourneyHbox);
         return tourneyVbox;
+    }
+    public static void updateMatches(Elimination tourney, ArrayList<TextField> textFields){
+        for(int i = 0 ; i < textFields.size() ; i++){
+            String textInput = textFields.get(i).getText();
+            if(textInput.isEmpty()){
+                continue;
+            }
+            int score =Integer.parseInt(textFields.get(i).getText()) ;
+
+            String[] info =  textFields.get(i).getId().split("-");
+            int roundIndex = Integer.parseInt(info[0])  ;
+            int matchIndex = Integer.parseInt(info[1])  ;
+            int teamIndex = Integer.parseInt(info[2])  ;
+            tourney.updateMatchSingleteam(roundIndex , matchIndex, score , teamIndex );
+        }
     }
 //    public static Button createUpdateButton(){
 //        Button updateButton = new Button("update");
