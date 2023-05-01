@@ -33,6 +33,7 @@ public class Match {
     }
     public Match(){
 
+
     }
     public void updateScore(int score1, int score2){
 
@@ -111,5 +112,22 @@ public class Match {
 
 
         return teamOneName + " " + teamOneScore + " VS " + teamTwoName + " " + teamTwoScore;
+    }
+    public String getTeamOneName(){
+        if (teamOne != null)
+            return teamOne.getTeamName();
+        return "undefined";
+    }
+    public String getTeamTwoName(){
+        if(teamTwo != null)
+            return teamTwo.getTeamName();
+        return "undefined";
+    }
+    public int getScoreOne(){
+
+        return scoreOne;
+    }
+    public int getScoreTwo(){
+        return scoreTwo;
     }
 }
