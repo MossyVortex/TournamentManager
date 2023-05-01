@@ -1,3 +1,5 @@
+package classes;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.BufferedReader;

@@ -75,7 +75,7 @@
                <right>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="CreateTournamentButton" layoutX="-57.0" layoutY="44.0" mnemonicParsing="false" onAction="#CreateTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Create Tournament" textFill="#f2e8cf">
+                        <Button fx:id="CreateTournamentButton" layoutX="-57.0" layoutY="44.0" mnemonicParsing="false" onAction="#CreateTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Create classes.Tournament" textFill="#f2e8cf">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -86,7 +86,7 @@
                <left>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="EditTournamentButton" layoutX="72.0" layoutY="44.0" mnemonicParsing="false" onAction="#EditTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Edit Tournament" textFill="#f2e8cf">
+                        <Button fx:id="EditTournamentButton" layoutX="72.0" layoutY="44.0" mnemonicParsing="false" onAction="#EditTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Edit classes.Tournament" textFill="#f2e8cf">
                            <font>
                               <Font size="18.0" />
                            </font>

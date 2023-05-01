@@ -1,3 +1,7 @@
+import classes.Elimination;
+import classes.Student;
+import classes.Team;
+
 import java.util.ArrayList;
 import java.util.Collection;
 

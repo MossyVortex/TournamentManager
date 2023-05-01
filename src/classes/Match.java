@@ -1,5 +1,6 @@
+package classes;
+
 import java.util.Date;
-import java.util.Objects;
 
 public class Match {
     private Team teamOne;
@@ -72,10 +73,10 @@ public class Match {
 
     public String returnWinner(){
         if(scoreOne>scoreTwo){
-            return "Team " + teamOne.getTeamName() + " is the winner";
+            return "classes.Team " + teamOne.getTeamName() + " is the winner";
         }
         else{
-            return "Team " + teamTwo.getTeamName() + " is the winner";
+            return "classes.Team " + teamTwo.getTeamName() + " is the winner";
         }
     }
     public Object returnWinnerTeam(){

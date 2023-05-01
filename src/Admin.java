@@ -1,4 +1,6 @@
-public class Admin extends Person{
+import classes.Person;
+
+public class Admin extends Person {
     private int tournamentsCreated;
     private boolean IsAuthorized;
     private String club;

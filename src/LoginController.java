@@ -71,7 +71,7 @@ public class LoginController {
         Scene registerPage = new Scene(fxmlLoader);
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
-        stage.setTitle("Tournament Manager - Register");
+        stage.setTitle("classes.Tournament Manager - Register");
         stage.show();
     }
 
@@ -122,7 +122,7 @@ public class LoginController {
                 Scene homePage = new Scene(fxmlLoader);
                 Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
                 stage.setScene(homePage);
-                stage.setTitle("Tournament Manager - Home Page");
+                stage.setTitle("classes.Tournament Manager - Home Page");
                 stage.show();
             }else{
                 System.out.println("Email or password is/are incorrect");
@@ -159,7 +159,7 @@ public class LoginController {
             Scene homePage = new Scene(fxmlLoader);
             Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
             stage.setScene(homePage);
-            stage.setTitle("Tournament Manager - Home Page");
+            stage.setTitle("classes.Tournament Manager - Home Page");
             stage.show();
         }else{
             System.out.println("Email or password is/are incorrect");

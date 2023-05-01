@@ -68,7 +68,7 @@ public class createTournamentController {
 
             // create elimination tournament
 
-            // Elimination elimTourObj = new Elimination();
+            // classes.Elimination elimTourObj = new classes.Elimination();
 
             // elimTourObj.setName(tournamentNameTextField.getText());
             // elimTourObj.setStartDate // we need these setters in both elimination and roundrobin!

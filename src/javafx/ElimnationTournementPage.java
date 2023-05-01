@@ -1,4 +1,9 @@
+package javafx;
 
+import classes.Elimination;
+import classes.Match;
+import classes.Student;
+import classes.Team;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -73,7 +78,7 @@ public class ElimnationTournementPage extends Application {
         tour.addTeam(new Team(stu,"team13"));
         tour.addTeam(new Team(stu,"team14"));
         tour.addTeam(new Team(stu,"team15"));
-//        tour.addTeam(new Team(stu,"team16"));
+//        tour.addTeam(new classes.Team(stu,"team16"));
 //        for(int i = 0 ; i < 16 ; i++){
 //            tour.addTeam(team);
 //        }

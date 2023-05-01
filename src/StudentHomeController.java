@@ -46,7 +46,7 @@ public class StudentHomeController {
         Scene registerPage = new Scene(fxmlLoader);
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
-        stage.setTitle("Tournament Manager - Join Tournament");
+        stage.setTitle("classes.Tournament Manager - Join classes.Tournament");
         stage.show();
 
     }
@@ -62,7 +62,7 @@ public class StudentHomeController {
         Scene registerPage = new Scene(fxmlLoader);
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
-        stage.setTitle("Tournament Manager - Edit Profile (Student)");
+        stage.setTitle("classes.Tournament Manager - Edit Profile (classes.Student)");
         stage.show();
 
     }
@@ -78,7 +78,7 @@ public class StudentHomeController {
         Scene registerPage = new Scene(fxmlLoader);
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
-        stage.setTitle("Tournament Manager - View Your Tournaments");
+        stage.setTitle("classes.Tournament Manager - View Your Tournaments");
         stage.show();
 
     }
@@ -94,7 +94,7 @@ public class StudentHomeController {
         Scene loginStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(loginStudentPage);
-        stage.setTitle("Tournament Manager - Login");
+        stage.setTitle("classes.Tournament Manager - Login");
         stage.show();
     }
 

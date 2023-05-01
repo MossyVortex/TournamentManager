@@ -1,5 +1,9 @@
+import classes.Elimination;
+import classes.RoundRobin;
+import classes.Student;
+import classes.Team;
+
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -47,7 +51,7 @@ public class App {
         tour.addTeam(new Team(stu,"team15"));
 
         
-//        tour.addTeam(new Team(stu,"team16"));
+//        tour.addTeam(new classes.Team(stu,"team16"));
 //        for(int i = 0 ; i < 16 ; i++){
 //            tour.addTeam(team);
 //        }

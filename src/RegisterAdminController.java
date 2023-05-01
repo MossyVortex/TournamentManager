@@ -1,3 +1,4 @@
+import classes.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +18,6 @@ import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -135,7 +134,7 @@ public class RegisterAdminController {
             Scene loginPage = new Scene(fxmlLoader);
             Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
             stage.setScene(loginPage);
-            stage.setTitle("Tournament Manager - Login");
+            stage.setTitle("classes.Tournament Manager - Login");
             stage.show();
 
         }
@@ -184,7 +183,7 @@ public class RegisterAdminController {
         Scene loginStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(loginStudentPage);
-        stage.setTitle("Tournament Manager - Register");
+        stage.setTitle("classes.Tournament Manager - Register");
         stage.show();
     }
 
