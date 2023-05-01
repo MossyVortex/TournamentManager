@@ -99,6 +99,9 @@ public class RegisterStudentController {
 
 
             String csvFile = "src\\StudentsFile.csv";
+
+            boolean registered = false;
+
             try {
                 FileWriter writer = new FileWriter(csvFile, true);
                 BufferedWriter bw = new BufferedWriter(writer);
@@ -164,6 +167,8 @@ public class RegisterStudentController {
                     // Close resources
                     bw.close();
                     writer.close();
+
+                    registered = true;
                 }
             } 
             catch (IOException e) {
@@ -172,18 +177,19 @@ public class RegisterStudentController {
 
             // after successful registeration send the user to log in page
             
-            Parent fxmlLoader = null;
-            try {
-                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(registered){
+                Parent fxmlLoader = null;
+                try {
+                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene loginPage = new Scene(fxmlLoader);
+                Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                stage.setScene(loginPage);
+                stage.setTitle("Tournament Manager - Login");
+                stage.show();
             }
-            Scene loginPage = new Scene(fxmlLoader);
-            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-            stage.setScene(loginPage);
-            stage.setTitle("Tournament Manager - Login");
-            stage.show();
-
         }
 
     }

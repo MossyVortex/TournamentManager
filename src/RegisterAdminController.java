@@ -19,9 +19,13 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class RegisterAdminController {
@@ -63,7 +67,12 @@ public class RegisterAdminController {
             Person adminObject = new Person(nameTextField.getText());
             adminObject.generateID("Admin");
 
+            HashMap<String, ArrayList<Object>> adminInfoMap = new HashMap<>();
+
             String csvFile = "src\\AdminsFile.csv";
+
+            boolean registered = false;
+
             try {
                 FileWriter writer = new FileWriter(csvFile, true);
                 BufferedWriter bw = new BufferedWriter(writer);
@@ -76,6 +85,9 @@ public class RegisterAdminController {
                 password = passwordTextField.getText();
                 tournamentsCreated = "0";
                 isAuthorized = "true";
+
+                // check the email in the binary file
+
 
                 // check if the email is already available
 
@@ -108,6 +120,10 @@ public class RegisterAdminController {
                 } 
                 else {
 
+                    ArrayList<Object> temp = new ArrayList<>();
+                    adminInfoMap.put(ID, temp);
+                    addAdminInfo(ID, adminInfoMap, name, phoneNum, email, password, tournamentsCreated, isAuthorized);
+
                     // collect data into a string
                     String dataToWrite = name + "," + ID + "," + phoneNum + "," + email + "," + password + "," + tournamentsCreated + "," + isAuthorized;
                     
@@ -118,6 +134,8 @@ public class RegisterAdminController {
                     // Close resources
                     bw.close();
                     writer.close();
+
+                    registered = true;
                }
             }
             catch (IOException e) {
@@ -125,19 +143,19 @@ public class RegisterAdminController {
             }
 
             // after successful registration send the user to log in page
-
-            Parent fxmlLoader = null;
-            try {
-                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(registered){
+                Parent fxmlLoader = null;
+                try {
+                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene loginPage = new Scene(fxmlLoader);
+                Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                stage.setScene(loginPage);
+                stage.setTitle("Tournament Manager - Login");
+                stage.show();
             }
-            Scene loginPage = new Scene(fxmlLoader);
-            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-            stage.setScene(loginPage);
-            stage.setTitle("Tournament Manager - Login");
-            stage.show();
-
         }
     }
 
@@ -186,6 +204,38 @@ public class RegisterAdminController {
         stage.setScene(loginStudentPage);
         stage.setTitle("Tournament Manager - Register");
         stage.show();
+    }
+
+    public static void addAdminInfo(String adminID, HashMap<String, ArrayList<Object>> adminInfoMap,
+     String name, String phoneNum, String email, String password, String tournamentsCreated,
+      String isAuthorized) {            
+
+        ArrayList<Object> adminData = adminInfoMap.get(adminID);
+        adminData.add(name);
+        adminData.add(adminID);
+        adminData.add(phoneNum);
+        adminData.add(email);
+        adminData.add(password);
+        adminData.add(tournamentsCreated);
+        adminData.add(isAuthorized);
+
+        try {
+            // Open the file in binary append mode
+            FileOutputStream fileOutputStream = new FileOutputStream("src\\adminInfoBinFile.bin", true);
+
+            // Create an ObjectOutputStream to write objects to the file
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            // Write the hashmap to the file
+            objectOutputStream.writeObject(adminInfoMap);
+
+            // Close the object output stream and file output stream
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
