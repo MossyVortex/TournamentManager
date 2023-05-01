@@ -4,14 +4,14 @@ import java.util.HashMap;
 public class test2 {
     public static void main(String[] args) {
         // // Create a HashMap to store student IDs and AVL trees of tournament IDs
-        HashMap<String, AVLTree<String>> studentMap = new HashMap<>();
+        HashMap<String, AVLTree<String>> joinedTournamentsMap = new HashMap<>();
 
         // Add some student IDs and tournament IDs to the map
-        addTournament("202016000", "tournament1", studentMap);
-        addTournament("202016000", "tournament2", studentMap);
-        addTournament("202016000", "tournament3", studentMap);
+        addTournament("202016000", "tournament1", joinedTournamentsMap);
+        addTournament("202016000", "tournament2", joinedTournamentsMap);
+        addTournament("202016000", "tournament3", joinedTournamentsMap);
 
-        System.out.println(studentMap.get("202016000").getElements());
+        System.out.println(joinedTournamentsMap.get("202016000").getElements());
 
         // // Print the tournament IDs for a given student ID
         // String studentID = "202016000";
