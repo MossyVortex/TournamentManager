@@ -20,6 +20,13 @@ public class App {
         System.out.println(tourney.printMatchHistory());
         tourney.calcuateWinnersMatches();
         tourney.printMatchHistoryBeautified();
+
+        RoundRobin rr1 = new RoundRobin();
+
+        rr1.freezeRegisteration();
+        System.out.println(rr1.getRegisterationStatus());
+        rr1.unfreezeRegisteration();
+        System.out.println(rr1.getRegisterationStatus());
     }
     public static void addTeams(Elimination tour, Team team , ArrayList<Student> stu){
 
@@ -38,6 +45,8 @@ public class App {
         tour.addTeam(new Team(stu,"team13"));
         tour.addTeam(new Team(stu,"team14"));
         tour.addTeam(new Team(stu,"team15"));
+
+        
 //        tour.addTeam(new Team(stu,"team16"));
 //        for(int i = 0 ; i < 16 ; i++){
 //            tour.addTeam(team);

@@ -4,9 +4,9 @@ public class Elimination extends Tournament{
     private Hashtable<Integer, ArrayList<Match>> matchHistory;
     private int rounds;
     public Elimination(String name, String gameType, String tournamentID, String winner,  Date startingDate, Date endingDate,
-    ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students){ // constructor
+    ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students, boolean registerationStatus){ // constructor
 
-        super(name, gameType, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, bannedStudentsIDs, students);                   
+        super(name, gameType, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, bannedStudentsIDs, students, registerationStatus);                   
     }
     public Elimination(){
         super();
