@@ -17,10 +17,10 @@ public class test2 {
         // String studentID = "202016000";
         // AVLTree<String> tournamentTree = studentMap.get(studentID);
         // if (tournamentTree != null) {
-        //     System.out.println("Tournament IDs for student " + studentID + ":");
+        //     System.out.println("classes.Tournament IDs for student " + studentID + ":");
         //     tournamentTree.inOrderTraversal();
         // } else {
-        //     System.out.println("Student " + studentID + " not found");
+        //     System.out.println("classes.Student " + studentID + " not found");
         // }
     }
 

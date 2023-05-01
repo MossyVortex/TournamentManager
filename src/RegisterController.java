@@ -44,7 +44,7 @@ public class RegisterController {
         Scene registerAdminPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(registerAdminPage);
-        stage.setTitle("Tournament Manager - Register - Admin");
+        stage.setTitle("classes.Tournament Manager - Register - Admin");
         stage.show();
     }
 
@@ -59,7 +59,7 @@ public class RegisterController {
         Scene registerStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(registerStudentPage);
-        stage.setTitle("Tournament Manager - Register - Student");
+        stage.setTitle("classes.Tournament Manager - Register - classes.Student");
         stage.show();
     }
 
@@ -75,7 +75,7 @@ public class RegisterController {
         Scene loginStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(loginStudentPage);
-        stage.setTitle("Tournament Manager - Login");
+        stage.setTitle("classes.Tournament Manager - Login");
         stage.show();
     }
 

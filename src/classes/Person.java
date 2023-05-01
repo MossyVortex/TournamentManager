@@ -1,3 +1,5 @@
+package classes;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.BufferedReader;
@@ -26,7 +28,7 @@ public class Person {
         this.name = name;
     }
 
-    protected void generateID(String registerType){
+    public void generateID(String registerType){
 
         String csvFileStudent = "src\\StudentsFile.csv";
         String csvFileAdmin = "src\\AdminsFile.csv";

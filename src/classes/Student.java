@@ -1,3 +1,5 @@
+package classes;
+
 public class Student extends Person{
     private String name;
     private int wins;

@@ -1,3 +1,4 @@
+import classes.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
@@ -82,7 +82,7 @@ public class RegisterStudentController {
         Scene registerStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(registerStudentPage);
-        stage.setTitle("Tournament Manager - Register");
+        stage.setTitle("classes.Tournament Manager - Register");
         stage.show();
     }
 
@@ -92,7 +92,7 @@ public class RegisterStudentController {
         if (allFilled()){
 
             Person studentObject = new Person(nameTextField.getText());
-            studentObject.generateID("Student");
+            studentObject.generateID("classes.Student");
 
             HashMap<String, ArrayList<Object>> studentInfoMap = new HashMap<>();
 

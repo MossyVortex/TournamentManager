@@ -1,3 +1,4 @@
+import classes.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -202,7 +203,7 @@ public class RegisterAdminController {
         Scene loginStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(loginStudentPage);
-        stage.setTitle("Tournament Manager - Register");
+        stage.setTitle("classes.Tournament Manager - Register");
         stage.show();
     }
 
@@ -237,6 +238,5 @@ public class RegisterAdminController {
         }
 
     }
-
 
 }

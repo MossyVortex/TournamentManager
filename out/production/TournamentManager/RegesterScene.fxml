@@ -66,7 +66,7 @@
                               <Image url="@/Images/Student.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="studentButton" mnemonicParsing="false" onAction="#studentButtonOnclicked" prefHeight="52.0" prefWidth="135.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Student" textFill="#f2e8cf">
+                        <Button fx:id="studentButton" mnemonicParsing="false" onAction="#studentButtonOnclicked" prefHeight="52.0" prefWidth="135.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="classes.Student" textFill="#f2e8cf">
                            <font>
                               <Font name="System Bold" size="25.0" />
                            </font>

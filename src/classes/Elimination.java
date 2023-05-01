@@ -1,3 +1,5 @@
+package classes;
+
 import java.util.*;
 
 public class Elimination extends Tournament{
@@ -72,10 +74,13 @@ public class Elimination extends Tournament{
         }
         this.matchHistory = matchHistory;
     }
-    public void updateMatch(int round , int matchIndex , int scoreOne , int scoreTwo){
-        Match currentMatch =  matchHistory.get(round).get(matchIndex);
-        currentMatch.updateScore(scoreOne, scoreTwo);
-
+    public void updateMatch(int roundIndex , int matchIndex , int scoreOne , int scoreTwo){
+        Match currentMatch =  matchHistory.get(roundIndex).get(matchIndex);
+        currentMatch.updateScores(scoreOne, scoreTwo);
+    }
+    public void updateMatchSingleteam(int roundIndex , int matchIndex , int score, int teamIndex){
+        Match currentMatch =  matchHistory.get(roundIndex).get(matchIndex);
+        currentMatch.updateScoreSingleTeam(score,teamIndex);
     }
     public void calcuateWinnersMatches(){
         for(int i = 0  ; i < rounds - 1 ; i++){
