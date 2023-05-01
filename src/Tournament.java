@@ -9,10 +9,10 @@ public abstract class Tournament {
     private ArrayList<Team> teams; private Boolean tournamentRegistrationStatus;
     private int numOfTeams; private Dictionary<Integer,Team> teamPlace; private Dictionary<String,Match[]> matchHistory;
     private String[] bannedStudentsIDs; private ArrayList<Student> students;
-
+    private boolean registerationStatus;
 
     public Tournament(String name, String gameType, String tournamentID, String winner, Date startingDate, Date endingDate,
-     ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students){ // abstract constructor
+     ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students, boolean registerationStatus){ // abstract constructor
 
         this.name = name;
         this.gameType = gameType;
@@ -24,6 +24,7 @@ public abstract class Tournament {
         this.numOfTeams = numOfTeams;
         this.bannedStudentsIDs = bannedStudentsIDs;
         this.students = students;
+        this.registerationStatus = registerationStatus;
 
     }
     public Tournament(){ // abstract constructor
@@ -69,6 +70,19 @@ public abstract class Tournament {
     public void finishTournement(File file){
 
     }
+
+    public void freezeRegisteration(){
+        this.registerationStatus = false;
+    }
+
+    public void unfreezeRegisteration(){
+        this.registerationStatus = true;
+    }
+
+    public boolean getRegisterationStatus(){
+        return this.registerationStatus;
+    }
+
     public String generateTournamentID(){
         return Integer.toString((int) (Math.random() * 10000)+100000);
     }

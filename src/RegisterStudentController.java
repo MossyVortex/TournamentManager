@@ -18,9 +18,13 @@ import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class RegisterStudentController {
@@ -90,6 +94,10 @@ public class RegisterStudentController {
             Person studentObject = new Person(nameTextField.getText());
             studentObject.generateID("Student");
 
+            HashMap<String, ArrayList<Object>> studentInfoMap = new HashMap<>();
+
+
+
             String csvFile = "src\\StudentsFile.csv";
             try {
                 FileWriter writer = new FileWriter(csvFile, true);
@@ -107,6 +115,8 @@ public class RegisterStudentController {
                 wins = "0";
                 losses = "0";
                 ties = "0";
+
+                // check the email in the binary file
 
                 // check if the email is already available
 
@@ -138,6 +148,11 @@ public class RegisterStudentController {
                     validEmail = false;
                 } 
                 else {
+
+                    ArrayList<Object> temp = new ArrayList<>();
+                    studentInfoMap.put(ID, temp);
+                    addStudentInfo(ID, studentInfoMap, name, phoneNum, newEmail, password, tournamentsCreated, weight, height, wins, losses, ties);
+
                     // collect data into a string
                     String dataToWrite = name + "," + ID + "," + phoneNum + "," + email + "," + password + "," + tournamentsCreated + "," + weight + "," + height + 
                     "," + wins + "," + losses + "," + ties;
@@ -217,5 +232,41 @@ public class RegisterStudentController {
         }
 
         return allFilled;
+    }
+
+    public static void addStudentInfo(String studentID, HashMap<String, ArrayList<Object>> studentsInfoMap,
+     String name, String phoneNum, String email, String password, String tournamentsCreated, String weight,
+      String height, String wins, String losses, String ties ) {            
+
+        ArrayList<Object> studentData = studentsInfoMap.get(studentID);
+        studentData.add(name);
+        studentData.add(studentID);
+        studentData.add(phoneNum);
+        studentData.add(email);
+        studentData.add(password);
+        studentData.add(tournamentsCreated);
+        studentData.add(weight);
+        studentData.add(height);
+        studentData.add(wins);
+        studentData.add(losses);
+        studentData.add(ties);
+
+        try {
+            // Open the file in binary append mode
+            FileOutputStream fileOutputStream = new FileOutputStream("src\\studentInfoBinFile.bin", true);
+
+            // Create an ObjectOutputStream to write objects to the file
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            // Write the hashmap to the file
+            objectOutputStream.writeObject(studentsInfoMap);
+
+            // Close the object output stream and file output stream
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

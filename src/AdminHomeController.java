@@ -38,15 +38,50 @@ public class AdminHomeController {
     @FXML
     void CreateTournamentButtonOnClicked(ActionEvent event) {
 
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("createTournamentScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerPage = new Scene(fxmlLoader);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(registerPage);
+        stage.setTitle("Tournament Manager - Create Tournament");
+        stage.show();
+
     }
 
     @FXML
     void EditTournamentButtonOnClicked(ActionEvent event) {
 
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("editTournamentScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerPage = new Scene(fxmlLoader);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(registerPage);
+        stage.setTitle("Tournament Manager - Edit Tournament");
+        stage.show();
+
     }
 
     @FXML
     void ViewProfilePaneOnClicked(MouseEvent event) {
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditAdminProfileScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerPage = new Scene(fxmlLoader);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(registerPage);
+        stage.setTitle("Tournament Manager - Edit Profile (Admin)");
+        stage.show();
 
     }
 
