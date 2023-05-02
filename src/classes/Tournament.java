@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Dictionary;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
 public abstract class Tournament {
     private String name, type, gameType, tournamentID, winner;
@@ -85,7 +88,19 @@ public abstract class Tournament {
         return this.registerationStatus;
     }
 
-    public String generateTournamentID(){
-        return Integer.toString((int) (Math.random() * 10000)+100000);
+    public static String generateID() {
+        Set<String> existingIDs = new HashSet<>(); // Keep track of existing IDs
+        int uniqueIDLength = 5;
+        String uniqueID = null;
+
+        Random randomizer = new Random();
+
+        // Generate a new unique ID that doesn't exist in the set of existing IDs
+        do {
+            uniqueID = String.format("%05d", randomizer.nextInt(100000)); // Generate a 5-digit number with leading zeros
+        } while (existingIDs.contains(uniqueID));
+
+        existingIDs.add(uniqueID); // Add the new ID to the set of existing IDs
+        return uniqueID;
     }
 }
