@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditStudentProfileController">
    <top>
       <BorderPane prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
          <center>
-            <ImageView fx:id="logoImage" fitHeight="88.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="88.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
                   <Image url="@Images/HIcon.png" />
                </image>
@@ -37,16 +43,238 @@
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <center>
-                  <ImageView fitHeight="223.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@Images/administrator.png" />
-                     </image>
-                  </ImageView>
-               </center>
-            </BorderPane>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label fx:id="nameLable" prefHeight="28.0" prefWidth="90.0" text="Name" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nameTextField" prefWidth="158.0" promptText="Name" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="80.0" prefWidth="109.0" />
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label fx:id="phoneLable" prefHeight="28.0" prefWidth="90.0" text="Phone" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="phoneTextField" prefWidth="158.0" promptText="Phone" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="80.0" prefWidth="109.0" />
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label fx:id="IDLabel" prefHeight="28.0" prefWidth="90.0" text="ID" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="IDTextField" prefWidth="158.0" promptText="Phone" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;" text="ID">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="18.0" prefWidth="722.0" />
+                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label fx:id="emailLabel" prefHeight="28.0" prefWidth="90.0" text="Email" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="EmailTextField" prefWidth="158.0" promptText="Email" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="80.0" prefWidth="109.0" />
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label fx:id="passwordLable" prefHeight="35.0" prefWidth="102.0" text="Password" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="passwordTextField" prefWidth="158.0" promptText="Password" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="80.0" prefWidth="109.0" />
+                        <VBox alignment="CENTER">
+                           <children>
+                              <Label fx:id="HeightLabel" prefHeight="28.0" prefWidth="90.0" text="Height" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="heightLabel" prefWidth="158.0" promptText="Height" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Pane prefHeight="18.0" prefWidth="722.0" />
+                  <BorderPane prefHeight="30.0" prefWidth="722.0">
+                     <bottom>
+                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="WinsLabel" prefHeight="28.0" prefWidth="90.0" text="Wins" textFill="#386641">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="WinsTextField" prefWidth="158.0" promptText="Wins" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <Pane prefHeight="80.0" prefWidth="109.0" />
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="LossesLabel" prefHeight="35.0" prefWidth="102.0" text="Losses" textFill="#386641">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="LossesTextField" prefWidth="158.0" promptText="Losses" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <Pane prefHeight="80.0" prefWidth="109.0" />
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="TiesLabel" prefHeight="35.0" prefWidth="102.0" text="Ties" textFill="#386641">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="TiesTextField" prefWidth="158.0" promptText="Ties" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </bottom>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="305.0" prefHeight="47.0" prefWidth="722.0">
+                     <top>
+                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="WeightLabel" prefHeight="28.0" prefWidth="90.0" text="Weight" textFill="#386641">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="WeightTextField" prefWidth="158.0" promptText="Weight" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <Pane prefHeight="80.0" prefWidth="109.0" />
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="TournamentsNumLabel" prefHeight="35.0" prefWidth="163.0" text="Tournaments #" textFill="#386641">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="TournamentsNumTextField" prefWidth="158.0" promptText="Tournaments Joined" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <Pane prefHeight="80.0" prefWidth="109.0" />
+                              <VBox alignment="CENTER" visible="false">
+                                 <children>
+                                    <Label fx:id="nameLable11111" prefHeight="35.0" prefWidth="102.0" text="Password" textFill="#386641">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="nameTextField11111" prefWidth="158.0" promptText="Password" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </top>
+                  </BorderPane>
+                  <Button fx:id="EditButton" mnemonicParsing="false" onAction="#regesterButtonOnclicked" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Edit Profile" textFill="#f2e8cf">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
          </center>
       </BorderPane>
    </center>
+   <left>
+      <BorderPane prefHeight="502.0" prefWidth="178.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Student Profile" textFill="#f2e8cf">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/Student.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </left>
 </BorderPane>

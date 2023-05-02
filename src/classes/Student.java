@@ -10,7 +10,7 @@ public class Student extends Person{
 
     public Student(String name, String phoneNumber, String email, String ID, String password,int weight, int height, int wins, int losses, int ties){
         super(name,phoneNumber,email,ID,password);
-        this.height =height;
+        this.height = height;
         this.weight = weight;
         this.wins = wins;
         this.losses = losses;
