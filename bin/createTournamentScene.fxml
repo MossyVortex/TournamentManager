@@ -67,7 +67,7 @@
                         </Label>
                         <HBox alignment="CENTER" prefHeight="74.0" prefWidth="659.0">
                            <children>
-                              <Label fx:id="tournamentNameLabel" prefWidth="240.0" text="classes.Tournament's name: " textFill="#386641">
+                              <Label fx:id="tournamentNameLabel" prefWidth="240.0" text="Tournament's name: " textFill="#386641">
                                  <font>
                                     <Font size="21.0" />
                                  </font>
@@ -88,13 +88,13 @@
                                  </font>
                               </Label>
                               <Pane prefHeight="48.0" prefWidth="11.0" />
-                              <RadioButton fx:id="eliminationRadioButton" mnemonicParsing="false" onAction="#eliminationRadioButtonOnClicked" prefHeight="31.0" prefWidth="110.0" text="classes.Elimination" textFill="#386641">
+                              <RadioButton fx:id="eliminationRadioButton" mnemonicParsing="false" onAction="#eliminationRadioButtonOnClicked" prefHeight="31.0" prefWidth="110.0" text="Elimination" textFill="#386641">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </RadioButton>
                               <Pane prefHeight="63.0" prefWidth="26.0" />
-                              <RadioButton fx:id="roundRobinRadioButton" mnemonicParsing="false" onAction="#roundRobinRadioButtonOnClicked" prefHeight="31.0" prefWidth="131.0" text="classes.RoundRobin" textFill="#386641">
+                              <RadioButton fx:id="roundRobinRadioButton" mnemonicParsing="false" onAction="#roundRobinRadioButtonOnClicked" prefHeight="31.0" prefWidth="131.0" text="RoundRobin" textFill="#386641">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>

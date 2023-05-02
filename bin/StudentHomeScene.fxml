@@ -76,7 +76,7 @@
                <center>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="700.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="JoinTournamentButton" mnemonicParsing="false" onAction="#JoinTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Join classes.Tournament" textFill="#f2e8cf">
+                        <Button fx:id="JoinTournamentButton" mnemonicParsing="false" onAction="#JoinTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Join Tournament" textFill="#f2e8cf">
                            <font>
                               <Font size="18.0" />
                            </font>
