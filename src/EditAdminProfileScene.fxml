@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterAdminController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditAdminProfileController">
    <top>
       <BorderPane prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
          <center>
@@ -119,12 +119,12 @@
                            <children>
                               <VBox alignment="CENTER">
                                  <children>
-                                    <Label fx:id="emailLable11" prefHeight="28.0" prefWidth="90.0" text="Email" textFill="#386641">
+                                    <Label fx:id="emailLable11" prefHeight="35.0" prefWidth="125.0" text="Authorized" textFill="#386641">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="nameTextField11" prefWidth="158.0" promptText="Email" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                    <TextField fx:id="nameTextField11" prefWidth="158.0" promptText="Authorized" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -134,12 +134,12 @@
                               <Pane prefHeight="80.0" prefWidth="109.0" />
                               <VBox alignment="CENTER">
                                  <children>
-                                    <Label fx:id="nameLable111" prefHeight="35.0" prefWidth="102.0" text="Password" textFill="#386641">
+                                    <Label fx:id="nameLable111" prefHeight="35.0" prefWidth="168.0" text="Tournaments #" textFill="#386641">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="nameTextField111" prefWidth="158.0" promptText="Password" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                    <TextField fx:id="nameTextField111" prefWidth="158.0" promptText="Tournaments number" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -150,14 +150,47 @@
                         </HBox>
                      </bottom></BorderPane>
                   <BorderPane layoutX="10.0" layoutY="305.0" prefHeight="47.0" prefWidth="722.0">
-                     <center>
-                        <Button fx:id="regesterButton" mnemonicParsing="false" onAction="#regesterButtonOnclicked" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Edit Profile" textFill="#f2e8cf" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Button>
-                     </center>
+                     <top>
+                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="emailLable111" prefHeight="35.0" prefWidth="125.0" text="ID" textFill="#386641">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="nameTextField111" prefWidth="158.0" promptText="ID" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <Pane prefHeight="80.0" prefWidth="109.0" />
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label fx:id="nameLable1111" prefHeight="35.0" prefWidth="168.0" text="Tournaments #" textFill="#386641" visible="false">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="nameTextField1111" prefWidth="158.0" promptText="Password" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;" visible="false">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </top>
                   </BorderPane>
+                  <Button fx:id="regesterButton" mnemonicParsing="false" onAction="#regesterButtonOnclicked" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Edit Profile" textFill="#f2e8cf">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </center>

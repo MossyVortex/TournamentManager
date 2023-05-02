@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class EditAdminProfileController {
+public class EditStudentProfileController {
 
     @FXML
     private ImageView backButton;
@@ -26,40 +26,73 @@ public class EditAdminProfileController {
     private TextField nameTextField;
 
     @FXML
-    private Label nameLable1;
+    private Label phoneLable;
 
     @FXML
-    private TextField nameTextField1;
+    private TextField phoneTextField;
 
     @FXML
-    private Label emailLable1;
+    private Label IDLabel;
 
     @FXML
-    private Label nameLable11;
+    private TextField IDTextField;
 
     @FXML
-    private TextField nameTextField11;
+    private Label emailLabel;
 
     @FXML
-    private Label emailLable11;
+    private TextField EmailTextField;
 
     @FXML
-    private Label nameLable111;
+    private Label passwordLable;
 
     @FXML
-    private TextField nameTextField111;
+    private TextField passwordTextField;
 
     @FXML
-    private Label emailLable111;
+    private Label HeightLabel;
 
     @FXML
-    private Label nameLable1111;
+    private TextField heightLabel;
 
     @FXML
-    private TextField nameTextField1111;
+    private Label WinsLabel;
 
     @FXML
-    private Button regesterButton;
+    private TextField WinsTextField;
+
+    @FXML
+    private Label LossesLabel;
+
+    @FXML
+    private TextField LossesTextField;
+
+    @FXML
+    private Label TiesLabel;
+
+    @FXML
+    private TextField TiesTextField;
+
+    @FXML
+    private Label WeightLabel;
+
+    @FXML
+    private TextField WeightTextField;
+
+    @FXML
+    private Label TournamentsNumLabel;
+
+    @FXML
+    private TextField TournamentsNumTextField;
+
+    @FXML
+    private Label nameLable11111;
+
+    @FXML
+    private TextField nameTextField11111;
+
+    @FXML
+    private Button EditButton;
 
     @FXML
     void regesterButtonOnclicked(ActionEvent event) {
@@ -70,14 +103,14 @@ public class EditAdminProfileController {
     void setBackButton(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Scene loginStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(loginStudentPage);
-        stage.setTitle("Tournament Manager - Admin Home");
+        stage.setTitle("Tournament Manager - Student Home");
         stage.show();
 
     }
