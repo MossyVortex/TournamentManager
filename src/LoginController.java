@@ -14,9 +14,15 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class LoginController {
@@ -119,6 +125,61 @@ public class LoginController {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                // read the person information from the bin file 
+                HashMap<String, ArrayList<String>> myHashMap = new HashMap<>();
+                
+                try {
+
+                    String readFile;
+                    if(adminRadioButton.isSelected()){
+                        readFile = "src\\studentInfoBinFile.bin";
+                    }
+                    else{
+                        readFile = "src\\adminInfoBinFile.bin";
+                    }
+
+                    // Open the file in binary mode
+                    FileInputStream fileInputStream = new FileInputStream(readFile);
+        
+                    // Create an ObjectInputStream to read objects from the file
+                    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        
+                    // Read the object from the file
+                    Object obj = objectInputStream.readObject();
+        
+                    // Close the object input stream and file input stream
+                    objectInputStream.close();
+                    fileInputStream.close();
+        
+                    // Cast the object to the desired type (in this case, a HashMap)
+                    if (obj instanceof HashMap) {
+                        myHashMap = (HashMap<String, ArrayList<String>>) obj;
+
+                    }
+                } catch (IOException | ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                // write the info of the logged-in person in a binary file
+
+                try {
+                    // Open the file in binary append mode
+                    FileOutputStream fileOutputStream = new FileOutputStream("src\\loggedInPerson.bin", true);
+        
+                    // Create an ObjectOutputStream to write objects to the file
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        
+                    // Write the hashmap to the file
+                    objectOutputStream.writeObject(myHashMap);
+        
+                    // Close the object output stream and file output stream
+                    objectOutputStream.close();
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 Scene homePage = new Scene(fxmlLoader);
                 Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
                 stage.setScene(homePage);
