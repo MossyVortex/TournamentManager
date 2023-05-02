@@ -39,14 +39,14 @@ public class StudentHomeController {
     void JoinTournamentButtonOnClicked(ActionEvent event) {
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("joinTournamentScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("JoinTournamentScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Scene registerPage = new Scene(fxmlLoader);
-        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        Stage stage = new Stage();
         stage.setScene(registerPage);
-        stage.setTitle("classes.Tournament Manager - Join classes.Tournament");
+        stage.setTitle("classes.Tournament Manager - Join Tournament");
         stage.show();
 
     }
