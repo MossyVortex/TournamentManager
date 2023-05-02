@@ -121,7 +121,7 @@
                                              </font>
                                           </RadioButton>
                                           <Pane prefHeight="56.0" prefWidth="50.0" />
-                                          <RadioButton fx:id="studentRadioButton" mnemonicParsing="false" onAction="#studentRadioButtonOnClicked" text="classes.Student" textFill="#386641">
+                                          <RadioButton fx:id="studentRadioButton" mnemonicParsing="false" onAction="#studentRadioButtonOnClicked" text="Student" textFill="#386641">
                                              <font>
                                                 <Font name="System Bold" size="15.0" />
                                              </font>
