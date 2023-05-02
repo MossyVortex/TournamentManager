@@ -84,7 +84,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="IDTextField" prefWidth="158.0" promptText="Phone" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;" text="ID">
+                              <TextField fx:id="IDTextField" prefWidth="158.0" promptText="ID" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
