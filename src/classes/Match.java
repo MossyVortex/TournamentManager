@@ -59,6 +59,10 @@ public class Match {
             if(teamOne != team)
                 teamTwo = team;
         }
+        else if(teamOne == null){
+            if(teamTwo != team)
+                teamOne =team;
+        }
         else{
             System.out.println("probleim");
             System.out.println("teamOne name " +teamOne.getTeamName());
