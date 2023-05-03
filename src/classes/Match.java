@@ -52,11 +52,12 @@ public class Match {
         else System.out.println("error");
     }
     public void addTeam(Team team){
-        if(teamOne ==null){
+        if(teamOne ==null && teamTwo == null){
             teamOne = team;
         }
         else if(teamTwo == null){
-            teamTwo = team;
+            if(teamOne != team)
+                teamTwo = team;
         }
         else{
             System.out.println("probleim");
