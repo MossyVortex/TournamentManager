@@ -1,3 +1,4 @@
+import classes.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,14 +14,7 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -34,10 +28,10 @@ public class LoginController {
     private RadioButton adminRadioButton;
 
     @FXML
-    private Label emailLable;
+    private Label IDLable;
 
     @FXML
-    private TextField emailTextF;
+    private TextField IDTextF;
 
     @FXML
     private Label existingLable;
@@ -96,151 +90,78 @@ public class LoginController {
 
     }
 
+
     @FXML
     void loginButtonOnClicked(ActionEvent event) throws IOException {
-     if(allFilled()){
-        if(studentRadioButton.isSelected()){
-        String path = "src/StudentsFile.csv";
-        String line = "";
-        String emailFound = "";
-        String passwordFound = "";
-
-        try{
-            BufferedReader readStudent = new BufferedReader(new FileReader(path));
-
-            while((line = readStudent.readLine()) != null){
-                String[] values = line.split(",");
-                if(values[3].equals(emailTextF.getText())){
-                    emailFound = emailFound + emailTextF.getText();
-                }
-                if(values[4].equals(passwordTextF.getText())){
-                    passwordFound = passwordFound + passwordTextF.getText();
-                }
-                
-            }
-            if(! emailFound.equals("") && ! passwordFound.equals("")){
-                Parent fxmlLoader = null;
-                try {
-                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                // read the person information from the bin file 
-                HashMap<String, ArrayList<String>> myHashMap = new HashMap<>();
-                
-                try {
-
-                    String readFile;
-                    if(adminRadioButton.isSelected()){
-                        readFile = "src\\studentInfoBinFile.bin";
-                    }
-                    else{
-                        readFile = "src\\adminInfoBinFile.bin";
-                    }
-
-                    // Open the file in binary mode
-                    FileInputStream fileInputStream = new FileInputStream(readFile);
-        
-                    // Create an ObjectInputStream to read objects from the file
-                    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        
-                    // Read the object from the file
-                    Object obj = objectInputStream.readObject();
-        
-                    // Close the object input stream and file input stream
-                    objectInputStream.close();
-                    fileInputStream.close();
-        
-                    // Cast the object to the desired type (in this case, a HashMap)
-                    if (obj instanceof HashMap) {
-                        myHashMap = (HashMap<String, ArrayList<String>>) obj;
-
-                    }
-                } catch (IOException | ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                // write the info of the logged-in person in a binary file
-
-                try {
-                    // Open the file in binary append mode
-                    FileOutputStream fileOutputStream = new FileOutputStream("src\\loggedInPerson.bin", true);
-        
-                    // Create an ObjectOutputStream to write objects to the file
-                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        
-                    // Write the hashmap to the file
-                    objectOutputStream.writeObject(myHashMap);
-        
-                    // Close the object output stream and file output stream
-                    objectOutputStream.close();
-                    fileOutputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                Scene homePage = new Scene(fxmlLoader);
-                Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-                stage.setScene(homePage);
-                stage.setTitle("Tournament Manager - Home Page");
-                stage.show();
-            }else{
-                System.out.println("Email or password is/are incorrect");
-            }
-        }catch(FileNotFoundException e){
-            e.printStackTrace();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }else if(adminRadioButton.isSelected()){
-        String path = "src/AdminsFile.csv";
-        String line = "";
-        String emailFound = "";
-        String passwordFound = "";
-
-        BufferedReader AdminRead = new BufferedReader(new FileReader(path));
-
-        while((line = AdminRead.readLine())!= null){
-            String[] values = line.split(",");
-            if(values[3].equals(emailTextF.getText())){
-                emailFound = emailFound + emailTextF.getText();
-            }
-            if(values[4].equals(passwordTextF.getText())){
-                passwordFound = passwordFound + passwordTextF.getText();
-            }
-        }
-        if(! emailFound.equals("") && ! passwordFound.equals("")){
-            Parent fxmlLoader = null;
+        if(allFilled()) {
             try {
-                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
-            } catch (IOException e) {
+                ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
+                if (adminRadioButton.isSelected()){
+                    ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
+                    HashMap<String, Admin> readAdminInfoMap = (HashMap<String, Admin>) objInStream.readObject();
+                    objInStream.close();
+                    if (readAdminInfoMap.containsKey(IDTextF.getText())){
+                        if (readAdminInfoMap.get(IDTextF.getText()).getPassword().equals(passwordTextF.getText())) {
+                            outputStream.writeObject(readAdminInfoMap.get(IDTextF.getText()));
+                            Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+                            Scene homePage = new Scene(fxmlLoader);
+                            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                            stage.setScene(homePage);
+                            stage.setTitle("Tournament Manager - Home Page");
+                            stage.show();
+
+                        }
+                        else
+                            Alert("Wrong Password!");
+                    }
+                    else
+                        Alert("Your ID is Not Valid");
+                }
+                else if (studentRadioButton.isSelected()){
+                    ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
+                    HashMap<String, Student> readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
+                    objInStream.close();
+                    if (readStudentInfoMap.containsKey(IDTextF.getText())){
+                        if (readStudentInfoMap.get(IDTextF.getText()).getPassword().equals(passwordTextF.getText())) {
+                            outputStream.writeObject(readStudentInfoMap.get(IDTextF.getText()));
+                            Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
+                            Scene homePage = new Scene(fxmlLoader);
+                            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                            stage.setScene(homePage);
+                            stage.setTitle("Tournament Manager - Home Page");
+                            stage.show();
+                        }
+                        else
+                            Alert("Wrong Password!");
+                    }
+                    else
+                        Alert("Your ID is Not Valid");
+                }
+                outputStream.close();
+
+
+            }
+            catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            Scene homePage = new Scene(fxmlLoader);
-            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-            stage.setScene(homePage);
-            stage.setTitle("Tournament Manager - Home Page");
-            stage.show();
-        }else{
-            System.out.println("Email or password is/are incorrect");
+
         }
     }
-    } else{
-        System.out.println("Fill the missing values");
-    }
-    }
 
-    
-
+    public void Alert(String error){
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setHeaderText("Input not valid");
+        errorAlert.setContentText(error);
+        errorAlert.showAndWait();
+    }
 
 
 
     public boolean allFilled(){
         boolean allFilled = true;
-        passwordLable.setTextFill(Paint.valueOf("#386641")); emailLable.setTextFill(Paint.valueOf("#386641"));
+        passwordLable.setTextFill(Paint.valueOf("#386641")); IDLable.setTextFill(Paint.valueOf("#386641"));
         studentRadioButton.setTextFill(Paint.valueOf("#386641"));adminRadioButton.setTextFill(Paint.valueOf("#386641"));
-        emailTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
+        IDTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         passwordTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         if(studentRadioButton.isSelected() || adminRadioButton.isSelected()){
             allFilled = true;
@@ -249,9 +170,9 @@ public class LoginController {
         }
 
 
-        if(emailTextF.getText().isEmpty()){
-            emailLable.setTextFill(Paint.valueOf("#BC4749"));
-            emailTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+        if(IDTextF.getText().isEmpty()){
+            IDLable.setTextFill(Paint.valueOf("#BC4749"));
+            IDTextF.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
             allFilled = false;
         }
 

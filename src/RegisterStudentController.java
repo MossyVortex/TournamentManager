@@ -205,17 +205,14 @@ public class RegisterStudentController {
                 ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
                 ArrayList<Tournament> joinedTournamentsTournament = new ArrayList<>();
 
-                System.out.println("Y");
                 HashMap<String, Student> studentHashMap ;
                 studentHashMap = (HashMap<String, Student>) objInStream.readObject();
-                System.out.println("X");
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\StudentsBFile.dat");
                 ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
 
                 if (!studentHashMap.containsKey(IDTextField.getText())){
                     studentHashMap.put(IDTextField.getText(),new Student(nameTextField.getText(),phoneTextField.getText(),emailTextField.getText(), IDTextField.getText(),
                             phoneTextField.getText(), Integer.parseInt(weightTextField.getText()),Integer.parseInt(heightTextField.getText()),joinedTournamentsTournament,0,0,0));
-//                    new FileOutputStream("src\\StudentsBFile.dat").close();
                     objOutStream.writeObject(studentHashMap);
 
                     Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
@@ -225,9 +222,6 @@ public class RegisterStudentController {
                     stage.setTitle("Tournament Manager - Login");
                     stage.show();
             }
-
-
-
                 objInStream.close();
                 objOutStream.close();
             }
@@ -236,9 +230,7 @@ public class RegisterStudentController {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-
         }
-
     }
 
     public boolean allFilled(){

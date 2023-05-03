@@ -44,6 +44,15 @@ public class Student extends Person implements Serializable {
     public int getTies() {
         return ties;
     }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public void setWeight(int weight) {
         this.weight = weight;
     }

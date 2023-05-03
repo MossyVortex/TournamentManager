@@ -23,16 +23,16 @@ public class HussainTest {
 
             ArrayList<Tournament> tournaments = new ArrayList<>();
 
-            Student student = new Student("Hussain","0565000000","hussain@hotmail.com","202010000","12345",90,180,tournaments,0,0,0);
-            Student student1 = new Student("Ali","0565000000","Ali@hotmail.com","202110000","12345",90,180,tournaments,0,0,0);
-            HashMap<String, Student> studentInfoMap = new HashMap<>();
-            studentInfoMap.put(student.getID(),student);
+//            Student student = new Student("Hussain","0565000000","hussain@hotmail.com","202010000","12345",90,180,tournaments,0,0,0);
+//            Student student1 = new Student("Ali","0565000000","Ali@hotmail.com","202110000","12345",90,180,tournaments,0,0,0);
+            HashMap<String, Admin> adminInfoMap = new HashMap<>();
+//            studentInfoMap.put(student.getID(),student);
 //            new FileOutputStream("src\\StudentsBFile.dat").close();
-            objOutStream.writeObject(studentInfoMap);
+            objOutStream.writeObject(adminInfoMap);
 
 //            HashMap<String, Student> studentInfoMap = new HashMap<>();
-            HashMap<String, Student> readStudentInfoMap ;
-            readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
+            HashMap<String, Admin> readStudentInfoMap ;
+            readStudentInfoMap = (HashMap<String, Admin>) objInStream.readObject();
             readStudentInfoMap.forEach((x,y) -> System.out.println(y));
 
                 objInStream.close();

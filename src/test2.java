@@ -66,6 +66,7 @@ public static void main(String[] args) {
         HashMap<String, Student> readStudentInfoMap ;
         readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
         readStudentInfoMap.forEach((x,y) -> System.out.println(y));
+        objInStream.close();
     } catch (FileNotFoundException e) {
         System.out.println(e.getCause());
     } catch (IOException e) {

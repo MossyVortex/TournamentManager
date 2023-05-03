@@ -1,5 +1,13 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
+
+import classes.Student;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 
 import javafx.event.ActionEvent;
@@ -14,7 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class EditStudentProfileController {
+public class EditStudentProfileController implements Initializable {
 
     @FXML
     private ImageView backButton;
@@ -115,4 +123,28 @@ public class EditStudentProfileController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+            Student student = (Student) objInStream.readObject();
+            nameTextField.setText(student.getName());
+            IDTextField.setText(student.getID());
+            EmailTextField.setText(student.getEmail());
+            WinsTextField.setText(String.valueOf(student.getWins()));
+            LossesTextField.setText(String.valueOf(student.getLosses()));
+            TiesTextField.setText(String.valueOf(student.getTies()));
+            WeightTextField.setText(String.valueOf(student.getWeight()));
+            heightLabel.setText(String.valueOf(student.getHeight()));
+            phoneTextField.setText(student.getPhoneNumber());
+            objInStream.close();
+//            TournamentsNumTextField.setText(student.getJoinedTournamentsID());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -47,7 +47,7 @@
                               <Image url="@Images/Student.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="nameLable" text="UserName" textFill="#f2e8cf">
+                        <Label fx:id="nameLable" onInputMethodTextChanged="#nameLableSetText" text="UserName" textFill="#f2e8cf">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
