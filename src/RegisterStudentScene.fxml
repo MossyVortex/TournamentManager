@@ -144,6 +144,26 @@
                         </HBox>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="262.0" prefHeight="80.0" prefWidth="722.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="260.0">
+                           <children>
+                              <Label fx:id="IDLable" prefWidth="90.0" text="ID:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="IDTextField" prefWidth="158.0" promptText="Enter your ID" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="20.0" />
+                     </children>
+                  </HBox>
                   <BorderPane prefHeight="30.0" prefWidth="722.0" />
                   <BorderPane prefHeight="50.0" prefWidth="722.0">
                      <center>

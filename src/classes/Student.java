@@ -1,24 +1,25 @@
 package classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Student extends Person{
+public class Student extends Person implements Serializable {
     private String name;
     private int wins;
     private int losses;
     private int ties;
-    private double weight;
+    private int weight;
     private int height;
-    private ArrayList<String> joinedTournamentsID;
+    private ArrayList<Tournament> joinedTournamentsTournament;
 
-    public Student(String name, String phoneNumber, String email, String ID, String password,int weight, int height,ArrayList<String> joinedTournamentsID, int wins, int losses, int ties){
+    public Student(String name, String phoneNumber, String email, String ID, String password,int weight, int height,ArrayList<Tournament> joinedTournamentsTournament, int wins, int losses, int ties){
         super(name,phoneNumber,email,ID,password);
         this.height = height;
         this.weight = weight;
         this.wins = wins;
         this.losses = losses;
         this.ties = ties;
-        this.joinedTournamentsID = joinedTournamentsID;
+        this.joinedTournamentsTournament = joinedTournamentsTournament;
     }
     public Student(String name){
         super(name);
@@ -43,27 +44,27 @@ public class Student extends Person{
     public int getTies() {
         return ties;
     }
-    public void setWeight(double weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
     public void setHeight(int height) {
         this.height = height;
     }
 
-    public ArrayList<String> getJoinedTournamentsID() {
-        return joinedTournamentsID;
+    public ArrayList<Tournament> getJoinedTournamentsID() {
+        return joinedTournamentsTournament;
     }
 
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
+                super.toString() + '\'' +
                 ", wins=" + wins +
                 ", losses=" + losses +
                 ", ties=" + ties +
                 ", weight=" + weight +
                 ", height=" + height +
-                ", joinedTournamentsID=" + joinedTournamentsID +
+                ", joinedTournamentsID=" + getJoinedTournamentsID().toString() +
                 '}';
     }
 }

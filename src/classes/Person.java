@@ -1,16 +1,10 @@
 package classes;
 
+import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 
-public class Person {
+public class Person implements Serializable {
     private String name;
     private String phoneNumber;
     private String email;
@@ -125,5 +119,14 @@ public class Person {
             return incrementString(shortenedStr, recursiveCount+1); 
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return  "name='" + name + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", ID='" + ID + '\'' +
+                ", password='" + password + '\'' ;
     }
 }
