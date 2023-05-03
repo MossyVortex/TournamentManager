@@ -64,7 +64,7 @@ public class LoginController {
     void registerLabelOnClicked(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegisterStudentScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

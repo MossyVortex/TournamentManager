@@ -137,6 +137,11 @@ public class EditStudentProfileController implements Initializable {
             WeightTextField.setText(String.valueOf(student.getWeight()));
             heightLabel.setText(String.valueOf(student.getHeight()));
             phoneTextField.setText(student.getPhoneNumber());
+            passwordTextField.setText(student.getPassword());
+            WinsTextField.setEditable(false);
+            LossesTextField.setEditable(false);
+            TiesTextField.setEditable(false);
+            IDTextField.setEditable(false);
             objInStream.close();
 //            TournamentsNumTextField.setText(student.getJoinedTournamentsID());
         } catch (FileNotFoundException e) {

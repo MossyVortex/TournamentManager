@@ -32,6 +32,9 @@ public class StudentHomeController implements Initializable {
     private BorderPane ViewProfilePane;
 
     @FXML
+    private ComboBox<?> combo;
+
+    @FXML
     private Button YourTournamentsButton;
 
     @FXML

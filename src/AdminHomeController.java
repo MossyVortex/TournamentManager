@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
@@ -21,7 +22,10 @@ public class AdminHomeController {
     private Button CreateTournamentButton;
 
     @FXML
-    private Button EditTournamentButton;
+    private Button viewTournamentButton;
+
+    @FXML
+    private ComboBox<?> combo;
 
     @FXML
     private BorderPane ViewProfilePane;
@@ -53,18 +57,18 @@ public class AdminHomeController {
     }
 
     @FXML
-    void EditTournamentButtonOnClicked(ActionEvent event) {
+    void ViewTournamentButtonOnClicked(ActionEvent event) {
 
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("editTournamentScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewTournamentScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Scene registerPage = new Scene(fxmlLoader);
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
-        stage.setTitle("classes.Tournament Manager - Edit classes.Tournament");
+        stage.setTitle("classes.Tournament Manager - View Tournament");
         stage.show();
 
     }

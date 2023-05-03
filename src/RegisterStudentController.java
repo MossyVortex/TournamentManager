@@ -77,14 +77,14 @@ public class RegisterStudentController {
     void backButtonOnClicked(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RegesterScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LoginScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Scene registerStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(registerStudentPage);
-        stage.setTitle("Tournament Manager - Register");
+        stage.setTitle("Tournament Manager - Login");
         stage.show();
     }
 
