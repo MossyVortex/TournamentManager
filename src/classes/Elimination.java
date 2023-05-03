@@ -90,13 +90,10 @@ public class Elimination extends Tournament{
             for(int j = 0 ; j < currentRound.size() ; j++ ){
                 Match currentMatch = currentRound.get(j);
                 if(currentMatch.returnWinnerTeam().equals("draw")){
-                    System.out.println("draw");
                     continue;
                 }
                 Team winnerTeam = (Team) currentMatch.returnWinnerTeam();
                 Match nextMatch = nextRound.get((int) Math.floor(j/2));
-                System.out.println("this match " + currentMatch);
-                System.out.println("next match " + nextMatch);
                 nextMatch.addTeam(winnerTeam);
 
             }
