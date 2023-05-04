@@ -7,30 +7,32 @@ import java.util.ArrayList;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-        Elimination tourney = new Elimination();
-        tourney.setName("tour");
-        ArrayList<Student> stu = new ArrayList<>();
-        stu.add(new Student("mads"));
-        stu.add(new Student("sads"));
-        stu.add(new Student("aads"));
-        Team t1 = new Team(stu,"ssd");
-        addTeams(tourney, t1 , stu);
 
-        tourney.createMatchHistory();
-        tourney.updateMatch(0,0,21,0);
-
-
-        System.out.println(tourney.printMatchHistory());
-        tourney.calcuateWinnersMatches();
-        tourney.printMatchHistoryBeautified();
-
-        RoundRobin rr1 = new RoundRobin();
-
-        rr1.freezeRegisteration();
-        System.out.println(rr1.getRegisterationStatus());
-        rr1.unfreezeRegisteration();
-        System.out.println(rr1.getRegisterationStatus());
+//        System.out.println("Hello, World!");
+//        Elimination tourney = new Elimination();
+//        tourney.setName("tour");
+//        ArrayList<Student> stu = new ArrayList<>();
+//        stu.add(new Student("mads"));
+//        stu.add(new Student("sads"));
+//        stu.add(new Student("aads"));
+//        Team t1 = new Team(stu,"ssd");
+//        addTeams(tourney, t1 , stu);
+//
+//        tourney.createMatchHistory();
+//        tourney.updateMatch(0,0,21,0);
+//        tourney.updateMatch(0,1,21,0);
+//
+//
+//        System.out.println(tourney.printMatchHistory());
+//        tourney.calcuateWinnersMatches();
+//        tourney.printMatchHistoryBeautified();
+//
+//        RoundRobin rr1 = new RoundRobin();
+//
+//        rr1.freezeRegisteration();
+//        System.out.println(rr1.getRegisterationStatus());
+//        rr1.unfreezeRegisteration();
+//        System.out.println(rr1.getRegisterationStatus());
     }
     public static void addTeams(Elimination tour, Team team , ArrayList<Student> stu){
 

@@ -34,34 +34,52 @@ public class ElimnationTournementPage extends Application {
         stu.add(new Student("aads"));
         Team t1 = new Team(stu,"ssd");
         addTeams(tourney, t1 , stu);
-        tourney.createMatchHistory();
-        tourney.updateMatch(0,0,21,0);
+//        tourney.createMatchHistory();
+//        ArrayList<TextField> textFields = new ArrayList<>();
+//        VBox elimnationVbox = new VBox(createTourney(tourney,textFields));
+//        System.out.println(textFields);
+//        Button updateScoreButton = new Button();
+//        updateScoreButton.setText("calcuateWinners");
+//        VBox mainTourney = new VBox(updateScoreButton, elimnationVbox);
 
-
-        ArrayList<TextField> textFields = new ArrayList<>();
-        VBox elimnationVbox = new VBox(createTourney(tourney,textFields));
-        System.out.println(textFields);
-
-        Button updateScoreButton = new Button();
-        updateScoreButton.setText("calcuateWinners");
-
-        VBox mainTourney = new VBox(updateScoreButton, elimnationVbox);
+        VBox mainTourney = createTourneyPage(tourney);
 
 
         Scene scene = new Scene(mainTourney,1000,800);
 
+//        updateScoreButton.setOnAction(e ->{
+//            updateMatches(tourney, textFields);
+//            tourney.calcuateWinnersMatches();
+//            tourney.printMatchHistoryBeautified();
+//            VBox elimnationVboxUpdated = new VBox(createTourney(tourney, textFields));
+//            mainTourney.getChildren().remove(1);
+//            mainTourney.getChildren().add(elimnationVboxUpdated);
+//
+//            System.out.println("no errors");
+//        });
+
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static VBox createTourneyPage(Elimination tourney){
+        tourney.createMatchHistory();
+        ArrayList<TextField> textFields = new ArrayList<>();
+        VBox elimnationVbox = new VBox(createTourney(tourney,textFields));
+        System.out.println(textFields);
+        Button updateScoreButton = new Button();
+        updateScoreButton.setText("calcuateWinners");
+        VBox mainTourney = new VBox(updateScoreButton, elimnationVbox);
         updateScoreButton.setOnAction(e ->{
             updateMatches(tourney, textFields);
             tourney.calcuateWinnersMatches();
+            tourney.printMatchHistoryBeautified();
             VBox elimnationVboxUpdated = new VBox(createTourney(tourney, textFields));
             mainTourney.getChildren().remove(1);
             mainTourney.getChildren().add(elimnationVboxUpdated);
 
             System.out.println("no errors");
         });
-
-        stage.setScene(scene);
-        stage.show();
+        return mainTourney;
     }
     public static void addTeams(Elimination tour, Team team , ArrayList<Student> stu){
 
@@ -125,7 +143,6 @@ public class ElimnationTournementPage extends Application {
         for(int i = 0 ; i < matchHistory.size() ; i++){
             tourneyHbox.getChildren().add(createRound(matchHistory.get(i) , i , textFields));
         }
-
         VBox tourneyVbox = new VBox(new Text("tournement"));
         tourneyVbox.getChildren().add(tourneyHbox);
         return tourneyVbox;
@@ -139,9 +156,9 @@ public class ElimnationTournementPage extends Application {
             int score =Integer.parseInt(textFields.get(i).getText()) ;
 
             String[] info =  textFields.get(i).getId().split("-");
-            int roundIndex = Integer.parseInt(info[0])  ;
-            int matchIndex = Integer.parseInt(info[1])  ;
-            int teamIndex = Integer.parseInt(info[2])  ;
+            int roundIndex = Integer.parseInt(info[0]) ;
+            int matchIndex = Integer.parseInt(info[1]) ;
+            int teamIndex = Integer.parseInt(info[2]) ;
             tourney.updateMatchSingleteam(roundIndex , matchIndex, score , teamIndex );
         }
     }

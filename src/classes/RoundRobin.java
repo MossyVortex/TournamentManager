@@ -2,9 +2,12 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Hashtable;
 
 public class RoundRobin extends Tournament {
-    
+    private Hashtable<Integer, ArrayList<Match>> matchHistory;
+    private Hashtable<Team, Integer> pointsTable;
+
     public RoundRobin(String name, String gameType, String tournamentID, String winner,  Date startingDate, Date endingDate,
     ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students){ // constructor
 
@@ -15,8 +18,21 @@ public class RoundRobin extends Tournament {
         super();
     }
 
-    public void createRoundRobin(){
-
+    public void createMatchHistory(){
+        Hashtable<Integer, ArrayList<Match>> matchHistory = new Hashtable<>();
+        ArrayList<Team> teams = new ArrayList<>();
+//        int incremental = teams.size()/2
+//        teams are even
+        if(teams.size() + 1 % 2 == 0){
+            for(int i = 0 ; i < teams.size()  - 1 ; i++){
+                ArrayList<Match> currentRound = new ArrayList<>();
+                for(int j = 0 ; j < (teams.size()+1 / 2)  ; j++){
+                    Match currentMatch = new Match();
+                    currentMatch.addTeam(teams.get(i));
+                    currentMatch.addTeam(teams.get(j));
+                }
+            }
+        }
     }
 
     public double calculatePoints(){
