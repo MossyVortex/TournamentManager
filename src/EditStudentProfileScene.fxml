@@ -199,20 +199,6 @@
                   </HBox>
                   <VBox alignment="CENTER" prefHeight="22.0" prefWidth="178.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label fx:id="TiesLabel" prefHeight="50.0" prefWidth="51.0" text="Ties" textFill="#f2e8cf">
-                                 <font>
-                                    <Font name="System Bold Italic" size="15.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="TiesTextField" prefHeight="30.0" prefWidth="71.0" promptText="Ties" style="-fx-background-color: #386641; -fx-border-color: F2E8CF; -fx-border-width: 0px 0px 0px 2px; -fx-font-size: 15px; -fx-font-style: italic; -fx-font-weight: bold;">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </HBox>
                         <HBox alignment="CENTER" prefHeight="10.0" prefWidth="178.0">
                            <children>
                               <Label fx:id="WinsLabel" prefHeight="35.0" prefWidth="51.0" text="Wins" textFill="#f2e8cf">
@@ -221,6 +207,20 @@
                                  </font>
                               </Label>
                               <TextField fx:id="WinsTextField" prefHeight="30.0" prefWidth="71.0" promptText="Wins" style="-fx-background-color: #386641; -fx-border-color: #F2E8CF; -fx-border-width: 0px 0px 0px 2px; -fx-font-size: 15px; -fx-font-style: italic; -fx-font-weight: bold;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="13.0" prefWidth="178.0">
+                           <children>
+                              <Label fx:id="TiesLabel" prefHeight="50.0" prefWidth="51.0" text="Ties" textFill="#f2e8cf">
+                                 <font>
+                                    <Font name="System Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="TiesTextField" prefHeight="30.0" prefWidth="71.0" promptText="Ties" style="-fx-background-color: #386641; -fx-border-color: F2E8CF; -fx-border-width: 0px 0px 0px 2px; -fx-font-size: 15px; -fx-font-style: italic; -fx-font-weight: bold;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
