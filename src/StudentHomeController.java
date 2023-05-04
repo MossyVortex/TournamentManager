@@ -35,13 +35,13 @@ public class StudentHomeController implements Initializable {
     private ComboBox<?> combo;
 
     @FXML
-    private Button YourTournamentsButton;
-
-    @FXML
     private Label nameLable;
 
     @FXML
     private ImageView signOutIcon;
+
+    @FXML
+    private Button viewTournamentsButton;
 
     @FXML
     private TableView<?> tournamentTableView;
@@ -83,18 +83,7 @@ public class StudentHomeController implements Initializable {
     }
 
     @FXML
-    void YourTournamentsButtonOnClicked(ActionEvent event) {
-        Parent fxmlLoader = null;
-        try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("yourTournamentsScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene registerPage = new Scene(fxmlLoader);
-        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-        stage.setScene(registerPage);
-        stage.setTitle("classes.Tournament Manager - View Your Tournaments");
-        stage.show();
+    void viewTournamentsButtonOnClicked(ActionEvent event) {
 
     }
 

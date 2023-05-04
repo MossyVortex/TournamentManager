@@ -14,55 +14,61 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+
 public class EditAdminProfileController {
+
+    @FXML
+    private Label IDLabel;
+
+    @FXML
+    private Label authorizedLabel;
+
+    @FXML
+    private TextField authorizedTextField;
 
     @FXML
     private ImageView backButton;
 
     @FXML
-    private Label nameLable;
+    private Label emailLable1;
 
     @FXML
-    private TextField nameTextField;
+    private Label nameLable;
 
     @FXML
     private Label nameLable1;
 
     @FXML
-    private TextField nameTextField1;
-
-    @FXML
-    private Label emailLable1;
-
-    @FXML
     private Label nameLable11;
+
+    @FXML
+    private TextField nameTextField;
+
+    @FXML
+    private TextField nameTextField1;
 
     @FXML
     private TextField nameTextField11;
 
     @FXML
-    private Label emailLable11;
-
-    @FXML
-    private Label nameLable111;
-
-    @FXML
-    private TextField nameTextField111;
-
-    @FXML
-    private Label emailLable111;
-
-    @FXML
-    private Label nameLable1111;
-
-    @FXML
-    private TextField nameTextField1111;
-
-    @FXML
     private Button regesterButton;
 
     @FXML
+    private Label tournamentsNumLabel;
+
+    @FXML
+    private TextField tournamentsNumTextField;
+
+    @FXML
+    private Button saveButton;
+
+    @FXML
     void regesterButtonOnclicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SaveButtonOnClicked(ActionEvent event) {
 
     }
 

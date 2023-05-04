@@ -31,6 +31,9 @@ public class EditStudentProfileController implements Initializable {
     private Label nameLable;
 
     @FXML
+    private Button saveButton;
+
+    @FXML
     private TextField nameTextField;
 
     @FXML
@@ -104,6 +107,11 @@ public class EditStudentProfileController implements Initializable {
 
     @FXML
     void regesterButtonOnclicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saveButtonOnClicked(ActionEvent event) {
 
     }
 

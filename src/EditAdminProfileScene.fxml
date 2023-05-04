@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditAdminProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditAdminProfileController">
    <top>
       <BorderPane prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
          <center>
@@ -36,7 +36,14 @@
             </Pane>
          </left>
          <right>
-            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="saveButton" layoutX="-97.0" layoutY="21.0" mnemonicParsing="false" onAction="#SaveButtonOnClicked" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #F2E8CF; -fx-background-radius: 12;" text="Save" textFill="#386641">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
          </right>
       </BorderPane>
    </top>
@@ -112,80 +119,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Pane prefHeight="18.0" prefWidth="722.0" />
-                  <BorderPane prefHeight="30.0" prefWidth="722.0">
-                     <bottom>
-                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <Label fx:id="emailLable11" prefHeight="35.0" prefWidth="125.0" text="Authorized" textFill="#386641">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="nameTextField11" prefWidth="158.0" promptText="Authorized" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <Pane prefHeight="80.0" prefWidth="109.0" />
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <Label fx:id="nameLable111" prefHeight="35.0" prefWidth="168.0" text="Tournaments #" textFill="#386641">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="nameTextField111" prefWidth="158.0" promptText="Tournaments number" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                     </bottom></BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="305.0" prefHeight="47.0" prefWidth="722.0">
-                     <top>
-                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <Label fx:id="emailLable111" prefHeight="35.0" prefWidth="125.0" text="ID" textFill="#386641">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="nameTextField111" prefWidth="158.0" promptText="ID" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <Pane prefHeight="80.0" prefWidth="109.0" />
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <Label fx:id="nameLable1111" prefHeight="35.0" prefWidth="168.0" text="Tournaments #" textFill="#386641" visible="false">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="nameTextField1111" prefWidth="158.0" promptText="Password" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;" visible="false">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                     </top>
-                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="305.0" prefHeight="47.0" prefWidth="722.0" />
                   <Button fx:id="regesterButton" mnemonicParsing="false" onAction="#regesterButtonOnclicked" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Edit Profile" textFill="#f2e8cf">
                      <font>
                         <Font size="19.0" />
@@ -211,6 +145,48 @@
                         <Image url="@Images/administrator.png" />
                      </image>
                   </ImageView>
+                  <HBox alignment="CENTER" prefHeight="18.0" prefWidth="178.0">
+                     <children>
+                        <Label text="ID: " textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="IDLabel" text="xxxxxxxxx" textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="13.0" prefWidth="178.0">
+                     <children>
+                        <Label fx:id="authorizedLabel" alignment="CENTER" prefHeight="31.0" prefWidth="110.0" text="Authorized" textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="authorizedTextField" prefHeight="30.0" prefWidth="54.0" promptText="Y/N" style="-fx-background-color: #386641; -fx-border-color: F2E8CF; -fx-border-width: 0px 0px 0px 2px; -fx-font-size: 15px; -fx-font-style: italic; -fx-font-weight: bold;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="10.0" prefWidth="178.0">
+                     <children>
+                        <Label fx:id="tournamentsNumLabel" prefHeight="31.0" prefWidth="110.0" text="Tournaments #" textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tournamentsNumTextField" prefHeight="31.0" prefWidth="54.0" promptText="#" style="-fx-background-color: #386641; -fx-border-color: #F2E8CF; -fx-border-width: 0px 0px 0px 2px; -fx-font-size: 15px; -fx-font-style: italic; -fx-font-weight: bold;">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </center>
