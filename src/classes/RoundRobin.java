@@ -23,6 +23,7 @@ public class RoundRobin extends Tournament {
         ArrayList<Team> teams = new ArrayList<>();
 //        int incremental = teams.size()/2
 //        teams are even
+//        comment
         if(teams.size() + 1 % 2 == 0){
             for(int i = 0 ; i < teams.size()  - 1 ; i++){
                 ArrayList<Match> currentRound = new ArrayList<>();
