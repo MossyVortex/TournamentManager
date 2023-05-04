@@ -1,9 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -74,6 +71,46 @@ public class ViewTournamentController {
     private HBox teamsPane;
 
     @FXML
+    private HBox generatedPane;
+
+    @FXML
+    private TableColumn<?, ?> HeightC;
+
+    @FXML
+    private TableColumn<?, ?> IDC;
+
+    @FXML
+    private TableColumn<?, ?> WeightC;
+
+    @FXML
+    private TableColumn<?, ?> emailC;
+
+    @FXML
+    private HBox infoPane;
+
+    @FXML
+    private TableColumn<?, ?> phoneC;
+
+    @FXML
+    private TableColumn<?, ?> studentNameC;
+
+    @FXML
+    private TableView<?> teamsTableView;
+
+    @FXML
+    private TableColumn<?, ?> teamNameC;
+
+    @FXML
+    private TextField typeTextField;
+
+
+    @FXML
+    void infoPaneOnCklicked(MouseEvent event) {
+
+    }
+
+
+    @FXML
     void editButtonOnClicked(MouseEvent event) {
 
     }
@@ -95,6 +132,11 @@ public class ViewTournamentController {
 
     @FXML
     void teamsPaneOnCklicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void generatedPaneOnClicked(MouseEvent event) {
 
     }
 
