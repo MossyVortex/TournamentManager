@@ -8,9 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -88,6 +87,11 @@ public class LoginController {
     @FXML
     void passwordEyeOnClicked(MouseEvent event) {
 
+    }
+
+    @FXML
+    void loginButtonMovedOn(MouseEvent event) {
+        loginButton.setBackground(new Background(new BackgroundFill(Color.GREEN,new CornerRadii(12),null)));
     }
 
 

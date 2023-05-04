@@ -76,7 +76,7 @@
                <left>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="YourTournamentsButton" layoutX="72.0" layoutY="44.0" mnemonicParsing="false" onAction="#YourTournamentsButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="View Tournaments" textFill="#f2e8cf">
+                        <Button fx:id="viewTournamentsButton" layoutX="72.0" layoutY="44.0" mnemonicParsing="false" onAction="#viewTournamentsButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="View Tournaments" textFill="#f2e8cf">
                            <font>
                               <Font size="18.0" />
                            </font>
