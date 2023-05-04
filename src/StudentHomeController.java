@@ -78,9 +78,8 @@ public class StudentHomeController implements Initializable {
         Scene registerPage = new Scene(fxmlLoader);
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
-        stage.setTitle("classes.Tournament Manager - Edit Profile (classes.Student)");
+        stage.setTitle("Tournament Manager - View Profile");
         stage.show();
-
     }
 
     @FXML

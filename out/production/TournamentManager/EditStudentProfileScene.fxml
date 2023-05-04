@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditStudentProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditStudentProfileController">
    <top>
       <BorderPane prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
          <center>
@@ -76,21 +76,6 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <Pane prefHeight="80.0" prefWidth="109.0" />
-                        <VBox alignment="CENTER">
-                           <children>
-                              <Label fx:id="IDLabel" prefHeight="28.0" prefWidth="90.0" text="ID" textFill="#386641">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="IDTextField" prefWidth="158.0" promptText="ID" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </VBox>
                      </children>
                   </HBox>
                   <Pane prefHeight="18.0" prefWidth="722.0" />
@@ -125,21 +110,6 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <Pane prefHeight="80.0" prefWidth="109.0" />
-                        <VBox alignment="CENTER">
-                           <children>
-                              <Label fx:id="HeightLabel" prefHeight="28.0" prefWidth="90.0" text="Height" textFill="#386641">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="heightLabel" prefWidth="158.0" promptText="Height" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </VBox>
                      </children>
                   </HBox>
                   <Pane prefHeight="18.0" prefWidth="722.0" />
@@ -149,56 +119,20 @@
                            <children>
                               <VBox alignment="CENTER">
                                  <children>
-                                    <Label fx:id="WinsLabel" prefHeight="28.0" prefWidth="90.0" text="Wins" textFill="#386641">
+                                    <Label fx:id="HeightLabel" prefHeight="28.0" prefWidth="90.0" text="Height" textFill="#386641">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="WinsTextField" prefWidth="158.0" promptText="Wins" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                    <TextField fx:id="heightLabel" prefWidth="158.0" promptText="Height" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
                                  </children>
                               </VBox>
+                              <VBox alignment="CENTER" />
                               <Pane prefHeight="80.0" prefWidth="109.0" />
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <Label fx:id="LossesLabel" prefHeight="35.0" prefWidth="102.0" text="Losses" textFill="#386641">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="LossesTextField" prefWidth="158.0" promptText="Losses" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <Pane prefHeight="80.0" prefWidth="109.0" />
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <Label fx:id="TiesLabel" prefHeight="35.0" prefWidth="102.0" text="Ties" textFill="#386641">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="TiesTextField" prefWidth="158.0" promptText="Ties" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </HBox>
-                     </bottom>
-                  </BorderPane>
-                  <BorderPane layoutX="10.0" layoutY="305.0" prefHeight="47.0" prefWidth="722.0">
-                     <top>
-                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                           <children>
                               <VBox alignment="CENTER">
                                  <children>
                                     <Label fx:id="WeightLabel" prefHeight="28.0" prefWidth="90.0" text="Weight" textFill="#386641">
@@ -213,39 +147,16 @@
                                     </TextField>
                                  </children>
                               </VBox>
-                              <Pane prefHeight="80.0" prefWidth="109.0" />
-                              <VBox alignment="CENTER">
-                                 <children>
-                                    <Label fx:id="TournamentsNumLabel" prefHeight="35.0" prefWidth="163.0" text="Tournaments #" textFill="#386641">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="TournamentsNumTextField" prefWidth="158.0" promptText="Tournaments Joined" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                              <Pane prefHeight="80.0" prefWidth="109.0" />
-                              <VBox alignment="CENTER" visible="false">
-                                 <children>
-                                    <Label fx:id="nameLable11111" prefHeight="35.0" prefWidth="102.0" text="Password" textFill="#386641">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="nameTextField11111" prefWidth="158.0" promptText="Password" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
+                              <VBox alignment="CENTER" />
+                              <VBox alignment="CENTER" />
                            </children>
                         </HBox>
-                     </top>
+                     </bottom>
+                  </BorderPane>
+                  <BorderPane layoutX="10.0" layoutY="305.0" prefHeight="47.0" prefWidth="722.0">
+                     <center>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+                     </center>
                   </BorderPane>
                   <Button fx:id="EditButton" mnemonicParsing="false" onAction="#regesterButtonOnclicked" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Edit Profile" textFill="#f2e8cf">
                      <font>
@@ -272,6 +183,66 @@
                         <Image url="@Images/Student.png" />
                      </image>
                   </ImageView>
+                  <HBox alignment="CENTER" prefHeight="18.0" prefWidth="178.0">
+                     <children>
+                        <Label text="ID: " textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="IDLabel" text="xxxxxxxxx" textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="22.0" prefWidth="178.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="TiesLabel" prefHeight="50.0" prefWidth="51.0" text="Ties" textFill="#f2e8cf">
+                                 <font>
+                                    <Font name="System Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="TiesTextField" prefHeight="30.0" prefWidth="71.0" promptText="Ties" style="-fx-background-color: #386641; -fx-border-color: F2E8CF; -fx-border-width: 0px 0px 0px 2px; -fx-font-size: 15px; -fx-font-style: italic; -fx-font-weight: bold;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="10.0" prefWidth="178.0">
+                           <children>
+                              <Label fx:id="WinsLabel" prefHeight="35.0" prefWidth="51.0" text="Wins" textFill="#f2e8cf">
+                                 <font>
+                                    <Font name="System Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="WinsTextField" prefHeight="30.0" prefWidth="71.0" promptText="Wins" style="-fx-background-color: #386641; -fx-border-color: #F2E8CF; -fx-border-width: 0px 0px 0px 2px; -fx-font-size: 15px; -fx-font-style: italic; -fx-font-weight: bold;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="35.0" prefWidth="178.0">
+                           <children>
+                              <Label fx:id="LossesLabel" prefHeight="35.0" prefWidth="51.0" text="Losses" textFill="#f2e8cf">
+                                 <font>
+                                    <Font name="System Bold Italic" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="LossesTextField" prefHeight="30.0" prefWidth="71.0" promptText="Losses" style="-fx-background-color: #386641; -fx-border-color: #F2E8CF; -fx-border-width: 0px 0px 0px 2px; -fx-font-size: 15px; -fx-font-style: italic; -fx-font-weight: bold;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
          </center>
