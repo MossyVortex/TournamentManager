@@ -38,7 +38,7 @@
          <right>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="saveButton" layoutX="-116.0" layoutY="21.0" mnemonicParsing="false" onAction="#saveButtonOnClicked" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: #F2E8CF; -fx-background-radius: 12;" text="Save" textFill="#386641">
+                  <Button fx:id="saveButton" layoutX="-116.0" layoutY="21.0" mnemonicParsing="false" onAction="#saveButtonOnClicked" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: #F2E8CF; -fx-background-radius: 12;" text="Save" textFill="#386641" visible="false">
                      <font>
                         <Font size="21.0" />
                      </font>

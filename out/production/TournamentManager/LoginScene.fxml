@@ -30,11 +30,6 @@
                               <Image url="@/Images/logoIcon.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="KFUPMIcon" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/Images/KFUPMLogo.png" />
-                           </image>
-                        </ImageView>
                      </children>
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
