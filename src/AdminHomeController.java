@@ -115,9 +115,9 @@ public class AdminHomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
-            Student student = (Student) objInStream.readObject();
+            Admin admin = (Admin) objInStream.readObject();
 
-            nameLable.setText(student.getName());
+            nameLable.setText(admin.getName());
             objInStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
