@@ -77,7 +77,7 @@ public class StudentHomeController implements Initializable {
     void ViewProfilePaneOnClicked(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditStudentProfileSceneCopy.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditStudentProfileSceneCopy2.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
