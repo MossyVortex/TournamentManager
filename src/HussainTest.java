@@ -11,24 +11,24 @@ public class HussainTest {
     public static void main(String[] args) {
         try {
 
-            FileOutputStream fileOutputStream = new FileOutputStream("src\\StudentsBFile.dat");
-            FileInputStream fileInputStream = new FileInputStream("src\\StudentsBFile.dat");
+//            FileOutputStream fileOutputStream = new FileOutputStream("src\\AdminsBFile.dat");
+//            FileInputStream fileInputStream = new FileInputStream("src\\AdminsBFile.dat");
 //            BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
 //            BufferedInputStream bufferedInputStream =new BufferedInputStream(fileInputStream);
 //            ObjectOutputStream objOutStream = new ObjectOutputStream(bufferedOutputStream);
 //            ObjectInputStream objInStream = new ObjectInputStream(bufferedInputStream);
-            ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
-            ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
+//            ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
+            ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
 
 
-            ArrayList<Tournament> tournaments = new ArrayList<>();
+//            ArrayList<Tournament> tournaments = new ArrayList<>();
 
 //            Student student = new Student("Hussain","0565000000","hussain@hotmail.com","202010000","12345",90,180,tournaments,0,0,0);
 //            Student student1 = new Student("Ali","0565000000","Ali@hotmail.com","202110000","12345",90,180,tournaments,0,0,0);
-            HashMap<String, Admin> adminInfoMap = new HashMap<>();
+//            HashMap<String, Admin> adminInfoMap = new HashMap<>();
 //            studentInfoMap.put(student.getID(),student);
 //            new FileOutputStream("src\\StudentsBFile.dat").close();
-            objOutStream.writeObject(adminInfoMap);
+//            objOutStream.writeObject(adminInfoMap);
 
 //            HashMap<String, Student> studentInfoMap = new HashMap<>();
             HashMap<String, Admin> readStudentInfoMap ;
@@ -36,12 +36,8 @@ public class HussainTest {
             readStudentInfoMap.forEach((x,y) -> System.out.println(y));
 
                 objInStream.close();
-//                objInStream.read();
-//                readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
-//                readStudentInfoMap.forEach((x,y) -> System.out.println(y));
-                objInStream.close();
 
-                objOutStream.close();
+//                objOutStream.close();
 
 
         }
