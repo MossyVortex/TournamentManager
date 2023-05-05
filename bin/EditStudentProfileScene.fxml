@@ -48,7 +48,8 @@
                         <Image url="@Images/edit.png" />
                      </image>
                   </ImageView>
-               </children></Pane>
+               </children>
+            </Pane>
          </right>
       </BorderPane>
    </top>
@@ -136,7 +137,7 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="heightLabel" prefWidth="158.0" promptText="Height" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                                    <TextField fx:id="heightTextField" prefWidth="158.0" promptText="Height" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
