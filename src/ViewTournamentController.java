@@ -1,9 +1,37 @@
+import java.io.IOException;
+import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 public class ViewTournamentController {
 
@@ -123,6 +151,18 @@ public class ViewTournamentController {
 
     @FXML
     void setBackButton(MouseEvent event) {
+
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerPage = new Scene(fxmlLoader);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(registerPage);
+        stage.setTitle("Tournament Manager - Home Page");
+        stage.show();
 
     }
 

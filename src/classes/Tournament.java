@@ -1,6 +1,7 @@
 package classes;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Dictionary;
@@ -10,13 +11,13 @@ import java.util.Set;
 
 public abstract class Tournament {
     private String name, type, gameType, tournamentID, winner;
-    private Date startingDate, endingDate;
+    private LocalDate startingDate, endingDate;
     private ArrayList<Team> teams; private Boolean tournamentRegistrationStatus;
     private int numOfTeams; private Dictionary<Integer,Team> teamPlace; private Dictionary<String,Match[]> matchHistory;
     private String[] bannedStudentsIDs; private ArrayList<Student> students;
     private boolean registerationStatus;
 
-    public Tournament(String name, String gameType, String tournamentID, String winner, Date startingDate, Date endingDate,
+    public Tournament(String name, String gameType, String tournamentID, String winner, LocalDate startingDate, LocalDate endingDate,
      ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students, boolean registerationStatus){ // abstract constructor
 
         this.name = name;
@@ -59,8 +60,8 @@ public abstract class Tournament {
         return teams;
     }
 
-    public  Date[] getDates() {
-        Date[] dates = {startingDate,endingDate};
+    public  LocalDate[] getDates() {
+        LocalDate[] dates = {startingDate,endingDate};
         return dates;
     }
     public int getTeamsLength(){

@@ -1,5 +1,6 @@
 package classes;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
@@ -8,8 +9,8 @@ public class RoundRobin extends Tournament {
     private Hashtable<Integer, ArrayList<Match>> matchHistory;
     private Hashtable<Team, Integer> pointsTable;
 
-    public RoundRobin(String name, String gameType, String tournamentID, String winner,  Date startingDate, Date endingDate,
-    ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students){ // constructor
+    public RoundRobin(String name, String gameType, String tournamentID, String winner,  LocalDate startingDate, LocalDate endingDate,
+    ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students, boolean registerationStatus){ // constructor
 
         super(name, gameType, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, bannedStudentsIDs, students, true);                   
     }
@@ -44,8 +45,8 @@ public class RoundRobin extends Tournament {
 
     }
 
-    public Date[] getDates(){
-        Date[] datesArray = new Date[999999];
+    public LocalDate[] getDates(){
+        LocalDate[] datesArray = new LocalDate[999999];
         return datesArray;
     }
 

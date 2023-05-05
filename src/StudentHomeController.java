@@ -88,6 +88,18 @@ public class StudentHomeController implements Initializable {
     @FXML
     void viewTournamentsButtonOnClicked(ActionEvent event) {
 
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewTournamentScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerPage = new Scene(fxmlLoader);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(registerPage);
+        stage.setTitle("Tournament Manager - View Tournamnets");
+        stage.show();
+
     }
 
     @FXML

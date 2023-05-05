@@ -102,8 +102,6 @@ public class createTournamentController {
             // create Elimination tournament
 
             if (allFilled()){
-
-                Elimination elimTObj = new Elimination();
                 String tempTournamentID = Tournament.generateID();
 
                 HashMap<String, ArrayList<Object>> tournamentsInfoMap = new HashMap<>();
@@ -132,6 +130,18 @@ public class createTournamentController {
                 addTournamentInfo(tournamentsInfoMap,name, tournamenType, gameType, tournamentID, winner, startDate, endDate,
                  bannedStudentsIDs, numOfTeams, students,teams ,registerationStatus);
 
+                Parent fxmlLoader = null;
+                try {
+                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene loginPage = new Scene(fxmlLoader);
+                Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                stage.setScene(loginPage);
+                stage.setTitle("Tournament Manager - Login");
+                stage.show();
+
 
             }
 
@@ -140,7 +150,6 @@ public class createTournamentController {
 
             // create roundrobin tournament
             if(allFilled()){
-                RoundRobin roundTObj = new RoundRobin();
                     String tempTournamentID = Tournament.generateID();
 
                     HashMap<String, ArrayList<Object>> tournamentsInfoMap = new HashMap<>();
@@ -154,6 +163,9 @@ public class createTournamentController {
                     gameType = gameTypeTextField.getText();
                     tournamentID = tempTournamentID;
                     tournamentType = "RoundRobin";
+                    if(eliminationRadioButton.isSelected()){
+                        tournamentType = "Elimination";
+                    }
                     winner = "no winner";
                     startDate = pickedStartDate;
                     endDate = pickedEndDate;
@@ -262,7 +274,7 @@ public class createTournamentController {
             ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
 
             if(tournamentType.equals("Elimination")){
-                Elimination createdTournament = new Elimination(tournamentType, gameType, tournamentID, winner, null, null, teams, 0, null, null, registerationStatus);
+                Elimination createdTournament = new Elimination(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null, null, registerationStatus);
                 HashMap<String, Elimination> tournamentsInfoHashMap ;
                 tournamentsInfoHashMap = (HashMap<String, Elimination>) objInStream.readObject();
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
@@ -276,7 +288,7 @@ public class createTournamentController {
                 objOutStream.close();
             }
             else{
-                RoundRobin createdTournament = new RoundRobin(tournamentType, gameType, tournamentID, winner, null, null, teams, 0, null, null);
+                RoundRobin createdTournament = new RoundRobin(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null, null, registerationStatus);
                 HashMap<String, RoundRobin> tournamentsInfoHashMap ;
                 tournamentsInfoHashMap = (HashMap<String, RoundRobin>) objInStream.readObject();
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");

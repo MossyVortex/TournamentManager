@@ -1,11 +1,12 @@
 package classes;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Elimination extends Tournament{
     private Hashtable<Integer, ArrayList<Match>> matchHistory;
     private int rounds;
-    public Elimination(String name, String gameType, String tournamentID, String winner,  Date startingDate, Date endingDate,
+    public Elimination(String name, String gameType, String tournamentID, String winner,  LocalDate startingDate, LocalDate endingDate,
     ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students, boolean registerationStatus){ // constructor
 
         super(name, gameType, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, bannedStudentsIDs, students, registerationStatus);                   
