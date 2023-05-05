@@ -48,7 +48,8 @@
                         <Image url="@Images/edit.png" />
                      </image>
                   </ImageView>
-               </children></Pane>
+               </children>
+            </Pane>
          </right>
       </BorderPane>
    </top>
