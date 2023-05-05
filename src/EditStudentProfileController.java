@@ -1,76 +1,33 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
-
 import classes.Student;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class EditStudentProfileController implements Initializable {
 
     @FXML
-    private ImageView backButton;
-
-    @FXML
-    private Label nameLable;
-
-    @FXML
-    private Button saveButton;
-
-    @FXML
-    private TextField nameTextField;
-
-    @FXML
-    private Label phoneLable;
-
-    @FXML
-    private TextField phoneTextField;
-
-    @FXML
-    private Label IDLabel;
-
-    @FXML
-    private TextField IDTextField;
-
-    @FXML
-    private Label emailLabel;
+    private ImageView EditButton;
 
     @FXML
     private TextField EmailTextField;
 
     @FXML
-    private Label passwordLable;
-
-    @FXML
-    private TextField passwordTextField;
-
-    @FXML
     private Label HeightLabel;
 
     @FXML
-    private TextField heightLabel;
-
-    @FXML
-    private Label WinsLabel;
-
-    @FXML
-    private TextField WinsTextField;
+    private Label IDLabel;
 
     @FXML
     private Label LossesLabel;
@@ -91,22 +48,43 @@ public class EditStudentProfileController implements Initializable {
     private TextField WeightTextField;
 
     @FXML
-    private Label TournamentsNumLabel;
+    private Label WinsLabel;
 
     @FXML
-    private TextField TournamentsNumTextField;
+    private TextField WinsTextField;
 
     @FXML
-    private Label nameLable11111;
+    private ImageView backButton;
 
     @FXML
-    private TextField nameTextField11111;
+    private Label emailLabel;
 
     @FXML
-    private Button EditButton;
+    private TextField heightTextField;
 
     @FXML
-    void regesterButtonOnclicked(ActionEvent event) {
+    private Label nameLable;
+
+    @FXML
+    private TextField nameTextField;
+
+    @FXML
+    private Label passwordLable;
+
+    @FXML
+    private TextField passwordTextField;
+
+    @FXML
+    private Label phoneLable;
+
+    @FXML
+    private TextField phoneTextField;
+
+    @FXML
+    private Button saveButton;
+
+    @FXML
+    void EditButtonOnClicked(MouseEvent event) {
 
     }
 
@@ -117,17 +95,6 @@ public class EditStudentProfileController implements Initializable {
 
     @FXML
     void setBackButton(MouseEvent event) {
-        Parent fxmlLoader = null;
-        try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene loginStudentPage = new Scene(fxmlLoader);
-        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-        stage.setScene(loginStudentPage);
-        stage.setTitle("Tournament Manager - Student Home");
-        stage.show();
 
     }
 
@@ -136,22 +103,23 @@ public class EditStudentProfileController implements Initializable {
         try {
             ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
             Student student = (Student) objInStream.readObject();
-            nameTextField.setText(student.getName());
-            IDTextField.setText(student.getID());
-            EmailTextField.setText(student.getEmail());
+            objInStream.close();
+
+            IDLabel.setText(student.getID());
             WinsTextField.setText(String.valueOf(student.getWins()));
-            LossesTextField.setText(String.valueOf(student.getLosses()));
             TiesTextField.setText(String.valueOf(student.getTies()));
-            WeightTextField.setText(String.valueOf(student.getWeight()));
-            heightLabel.setText(String.valueOf(student.getHeight()));
+            LossesTextField.setText(String.valueOf(student.getLosses()));
+
+            nameTextField.setText(student.getName());
+            EmailTextField.setText(student.getEmail());
+            heightTextField.setText(String.valueOf(student.getHeight()));
+
             phoneTextField.setText(student.getPhoneNumber());
             passwordTextField.setText(student.getPassword());
-            WinsTextField.setEditable(false);
-            LossesTextField.setEditable(false);
-            TiesTextField.setEditable(false);
-            IDTextField.setEditable(false);
-            objInStream.close();
-//            TournamentsNumTextField.setText(student.getJoinedTournamentsID());
+            WeightTextField.setText(String.valueOf(student.getWeight()));
+
+            WinsTextField.setEditable(false);TiesTextField.setEditable(false);LossesTextField.setEditable(false);nameTextField.setEditable(false);EmailTextField.setEditable(false);
+            heightTextField.setEditable(false);phoneTextField.setEditable(false);passwordTextField.setEditable(false);WeightTextField.setEditable(false);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

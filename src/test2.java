@@ -107,20 +107,30 @@ public static void main(String[] args) {
 
 try {
 
+    HashMap<String, Admin> adminHashMap = new HashMap<>();
+    ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\AdminsBFile.dat"));
+    objectOutputStream.writeObject(adminHashMap);
+    objectOutputStream.close();
+
     FileInputStream fileInputStream = new FileInputStream("src\\AdminsBFile.dat");
     ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
-    ArrayList<Tournament> joinedTournamentsTournament = new ArrayList<>();
+//    ArrayList<Tournament> joinedTournamentsTournament = new ArrayList<>();
 
-    HashMap<String, Student> studentHashMap ;
-    studentHashMap = (HashMap<String, Student>) objInStream.readObject();
+    HashMap<String, Admin> studentHashMap ;
+    studentHashMap = (HashMap<String, Admin>) objInStream.readObject();
+
+    Admin admin= new Admin("Admin","0555555555","admin@gmail.com","admin","admin",0,true);
+    studentHashMap.put(admin.getID(),admin);
     FileOutputStream fileOutputStream = new FileOutputStream("src\\AdminsBFile.dat");
     ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
+    objOutStream.writeObject(studentHashMap);
 
-    if (!studentHashMap.containsKey("202016000")){
-        studentHashMap.put("202016000",new Student("MOSA","123","123", "202016000",
-                "123", Integer.parseInt("0"),Integer.parseInt("0"),joinedTournamentsTournament,0,0,0));
-        objOutStream.writeObject(studentHashMap);
-    }
+
+//    if (!studentHashMap.containsKey("202016000")){
+//        studentHashMap.put("202016000",new Student("MOSA","123","123", "202016000",
+//                "123", Integer.parseInt("0"),Integer.parseInt("0"),joinedTournamentsTournament,0,0,0));
+//        objOutStream.writeObject(studentHashMap);
+//    }
     objInStream.close();
     objOutStream.close();
 }

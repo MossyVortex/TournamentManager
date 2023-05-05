@@ -1,6 +1,8 @@
+import classes.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,22 +15,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class AdminHomeController {
+public class AdminHomeController implements Initializable {
 
     @FXML
     private Button CreateTournamentButton;
 
     @FXML
-    private Button viewTournamentButton;
+    private BorderPane ViewProfilePane;
 
     @FXML
     private ComboBox<?> combo;
-
-    @FXML
-    private BorderPane ViewProfilePane;
 
     @FXML
     private Label nameLable;
@@ -38,6 +42,9 @@ public class AdminHomeController {
 
     @FXML
     private TableView<?> tournamentTableView;
+
+    @FXML
+    private Button viewTournamentButton;
 
     @FXML
     void CreateTournamentButtonOnClicked(ActionEvent event) {
@@ -104,4 +111,20 @@ public class AdminHomeController {
         stage.show();
     }
 
+    @FXML
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+            Student student = (Student) objInStream.readObject();
+
+            nameLable.setText(student.getName());
+            objInStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
