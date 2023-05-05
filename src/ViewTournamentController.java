@@ -55,6 +55,7 @@ public class ViewTournamentController {
     @FXML
     private Button saveButton;
 
+
     @FXML
     private DatePicker startingDateDatePicker;
 
@@ -137,6 +138,11 @@ public class ViewTournamentController {
 
     @FXML
     void generatedPaneOnClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void EditButtonOnClicked(MouseEvent event) {
 
     }
 
