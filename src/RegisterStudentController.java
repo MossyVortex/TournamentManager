@@ -221,7 +221,7 @@ public class RegisterStudentController {
                     stage.setScene(loginPage);
                     stage.setTitle("Tournament Manager - Login");
                     stage.show();
-            }
+                }
                 objInStream.close();
                 objOutStream.close();
             }

@@ -1,19 +1,21 @@
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
-
+import javafx.scene.Node;
 import classes.Elimination;
 import classes.RoundRobin;
+import classes.Student;
 import classes.Team;
 import classes.Tournament;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,6 +30,9 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import classes.Person;
+import java.io.*;
+
 
 public class createTournamentController {
 
@@ -127,6 +132,7 @@ public class createTournamentController {
                 addTournamentInfo(tournamentsInfoMap,name, tournamenType, gameType, tournamentID, winner, startDate, endDate,
                  bannedStudentsIDs, numOfTeams, students,teams ,registerationStatus);
 
+
             }
 
         }
@@ -162,6 +168,18 @@ public class createTournamentController {
                     tournamentsInfoMap.put(tournamentID, temp);
                     addTournamentInfo(tournamentsInfoMap, name, tournamentType, gameType, tournamentID, winner, startDate, endDate,
                     bannedStudentsIDs, numOfTeams, students, teams,registerationStatus);
+
+                    Parent fxmlLoader = null;
+                    try {
+                        fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Scene loginPage = new Scene(fxmlLoader);
+                    Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                    stage.setScene(loginPage);
+                    stage.setTitle("Tournament Manager - Login");
+                    stage.show();
             }
         }
         else{
@@ -237,20 +255,44 @@ public class createTournamentController {
         tournamentData.add(teams);
         tournamentData.add(registerationStatus);
 
+        
         try {
-            // Open the file in binary append mode
-            FileOutputStream fileOutputStream = new FileOutputStream("src\\tournamentInfoBinFile.bin", true);
 
-            // Create an ObjectOutputStream to write objects to the file
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            FileInputStream fileInputStream = new FileInputStream("src\\TournamentsBFile.dat");
+            ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
 
-            // Write the hashmap to the file
-            objectOutputStream.writeObject(tournamentInfoMap);
-
-            // Close the object output stream and file output stream
-            objectOutputStream.close();
-            fileOutputStream.close();
-        } catch (IOException e) {
+            if(tournamentType.equals("Elimination")){
+                Elimination createdTournament = new Elimination(tournamentType, gameType, tournamentID, winner, null, null, teams, 0, null, null, registerationStatus);
+                HashMap<String, Elimination> tournamentsInfoHashMap ;
+                tournamentsInfoHashMap = (HashMap<String, Elimination>) objInStream.readObject();
+                FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
+                ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
+                if (!tournamentsInfoHashMap.containsKey(tournamentID)){
+                    tournamentsInfoHashMap.put(tournamentID, createdTournament);
+                    objOutStream.writeObject(tournamentsInfoHashMap);
+                    
+                }
+                objInStream.close();
+                objOutStream.close();
+            }
+            else{
+                RoundRobin createdTournament = new RoundRobin(tournamentType, gameType, tournamentID, winner, null, null, teams, 0, null, null);
+                HashMap<String, RoundRobin> tournamentsInfoHashMap ;
+                tournamentsInfoHashMap = (HashMap<String, RoundRobin>) objInStream.readObject();
+                FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
+                ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
+                if (!tournamentsInfoHashMap.containsKey(tournamentID)){
+                    tournamentsInfoHashMap.put(tournamentID, createdTournament);
+                    objOutStream.writeObject(tournamentsInfoHashMap);
+                    
+                }
+                objInStream.close();
+                objOutStream.close();
+            }
+        }
+        catch (IOException  e){
+            System.out.println(e.getCause());
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
