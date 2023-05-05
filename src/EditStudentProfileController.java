@@ -1,12 +1,21 @@
+import classes.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class EditStudentProfileController {
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class EditStudentProfileController implements Initializable {
 
     @FXML
     private ImageView EditButton;
@@ -51,7 +60,7 @@ public class EditStudentProfileController {
     private Label emailLabel;
 
     @FXML
-    private TextField heightLabel;
+    private TextField heightTextField;
 
     @FXML
     private Label nameLable;
@@ -89,4 +98,34 @@ public class EditStudentProfileController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+            Student student = (Student) objInStream.readObject();
+            objInStream.close();
+
+            IDLabel.setText(student.getID());
+            WinsTextField.setText(String.valueOf(student.getWins()));
+            TiesTextField.setText(String.valueOf(student.getTies()));
+            LossesTextField.setText(String.valueOf(student.getLosses()));
+
+            nameTextField.setText(student.getName());
+            EmailTextField.setText(student.getEmail());
+            heightTextField.setText(String.valueOf(student.getHeight()));
+
+            phoneTextField.setText(student.getPhoneNumber());
+            passwordTextField.setText(student.getPassword());
+            WeightTextField.setText(String.valueOf(student.getWeight()));
+
+            WinsTextField.setEditable(false);TiesTextField.setEditable(false);LossesTextField.setEditable(false);nameTextField.setEditable(false);EmailTextField.setEditable(false);
+            heightTextField.setEditable(false);phoneTextField.setEditable(false);passwordTextField.setEditable(false);WeightTextField.setEditable(false);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
