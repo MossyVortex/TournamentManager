@@ -53,6 +53,27 @@ public class Person implements Serializable {
     public String getPassword() {
         return password;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }

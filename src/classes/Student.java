@@ -60,6 +60,7 @@ public class Student extends Person implements Serializable {
         this.height = height;
     }
 
+
     public ArrayList<Tournament> getJoinedTournamentsID() {
         return joinedTournamentsTournament;
     }

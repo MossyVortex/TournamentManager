@@ -18,7 +18,20 @@ public class HussainTest {
 //            ObjectOutputStream objOutStream = new ObjectOutputStream(bufferedOutputStream);
 //            ObjectInputStream objInStream = new ObjectInputStream(bufferedInputStream);
 //            ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
-            ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
+
+
+//            ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
+//            HashMap<String, Admin> readStudentInfoMap ;
+//            readStudentInfoMap = (HashMap<String, Admin>) objInStream.readObject();
+//            readStudentInfoMap.forEach((x,y) -> System.out.println(y));
+//            objInStream.close();
+
+            ObjectInputStream objSInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
+            HashMap<String, Student> readStudentInfoMap ;
+            readStudentInfoMap = (HashMap<String, Student>) objSInStream.readObject();
+            readStudentInfoMap.forEach((x,y) -> System.out.println(y));
+            objSInStream.close();
+
 
 
 //            ArrayList<Tournament> tournaments = new ArrayList<>();
@@ -31,11 +44,7 @@ public class HussainTest {
 //            objOutStream.writeObject(adminInfoMap);
 
 //            HashMap<String, Student> studentInfoMap = new HashMap<>();
-            HashMap<String, Admin> readStudentInfoMap ;
-            readStudentInfoMap = (HashMap<String, Admin>) objInStream.readObject();
-            readStudentInfoMap.forEach((x,y) -> System.out.println(y));
 
-                objInStream.close();
 
 //                objOutStream.close();
 

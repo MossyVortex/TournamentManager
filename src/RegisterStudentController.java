@@ -201,14 +201,11 @@ public class RegisterStudentController {
         if (allFilled()) {
             try {
 
-                FileInputStream fileInputStream = new FileInputStream("src\\StudentsBFile.dat");
-                ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
+                ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
+                HashMap<String, Student> studentHashMap = (HashMap<String, Student>) objInStream.readObject();
                 ArrayList<Tournament> joinedTournamentsTournament = new ArrayList<>();
 
-                HashMap<String, Student> studentHashMap ;
-                studentHashMap = (HashMap<String, Student>) objInStream.readObject();
-                FileOutputStream fileOutputStream = new FileOutputStream("src\\StudentsBFile.dat");
-                ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
+                ObjectOutputStream objOutStream = new ObjectOutputStream(new FileOutputStream("src\\StudentsBFile.dat"));
 
                 if (!studentHashMap.containsKey(IDTextField.getText())){
                     studentHashMap.put(IDTextField.getText(),new Student(nameTextField.getText(),phoneTextField.getText(),emailTextField.getText(), IDTextField.getText(),
