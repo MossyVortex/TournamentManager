@@ -6,6 +6,36 @@ import classes.Team;
 import java.util.ArrayList;
 
 public class App {
+        public static void rotate(int[] lst) {
+        int len = lst.length;
+        int last = lst[len - 1];
+        for (int i = len - 1; i >= 1; i--) {
+            lst[i] = lst[i - 1];
+        }
+        lst[0] = last;
+    }
+
+    public static void roundRobin(int n) {
+        int[] lst = new int[n - 1];
+        for (int i = 0; i < lst.length; i++) {
+            lst[i] = i + 2;
+        }
+        if (n % 2 == 1) {
+            lst = Arrays.copyOf(lst, lst.length + 1);
+            lst[lst.length - 1] = 0;
+            n++;
+        }
+        for (int r = 1; r < n; r++) {
+            System.out.printf("Round %2d", r);
+            int[] lst2 = new int[lst.length + 1];
+            lst2[0] = 1;
+            System.arraycopy(lst, 0, lst2, 1, lst.length);
+            for (int i = 0; i < n / 2; i++) {
+                System.out.printf(" (%2d vs %-2d)", lst2[i], lst2[n - 1 - i]);
+            }
+            System.out.println();
+            rotate(lst);
+        }
     public static void main(String[] args) throws Exception {
 
 //        System.out.println("Hello, World!");
