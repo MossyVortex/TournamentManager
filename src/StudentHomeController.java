@@ -23,6 +23,12 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+
+
 public class StudentHomeController implements Initializable {
 
     @FXML
@@ -71,14 +77,14 @@ public class StudentHomeController implements Initializable {
     void ViewProfilePaneOnClicked(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditStudentProfileScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditStudentProfileSceneCopy.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
         Scene registerPage = new Scene(fxmlLoader);
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
-        stage.setTitle("Tournament Manager - View Profile");
+        stage.setTitle("Tournament Manager - Edit Profile (Student)");
         stage.show();
     }
 

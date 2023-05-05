@@ -102,17 +102,18 @@ public class LoginController {
                 ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
                 if (adminRadioButton.isSelected()){
                     ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
-                    HashMap<String, Admin> readAdminInfoMap = (HashMap<String, Admin>) objInStream.readObject();
+                    HashMap<String, Student> readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
                     objInStream.close();
-                    if (readAdminInfoMap.containsKey(IDTextF.getText())){
-                        if (readAdminInfoMap.get(IDTextF.getText()).getPassword().equals(passwordTextF.getText())) {
-                            outputStream.writeObject(readAdminInfoMap.get(IDTextF.getText()));
+                    if (readStudentInfoMap.containsKey(IDTextF.getText())){
+                        if (readStudentInfoMap.get(IDTextF.getText()).getPassword().equals(passwordTextF.getText())) {
+                            outputStream.writeObject(readStudentInfoMap.get(IDTextF.getText()));
                             Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
                             Scene homePage = new Scene(fxmlLoader);
                             Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
                             stage.setScene(homePage);
                             stage.setTitle("Tournament Manager - Home Page");
                             stage.show();
+                    
 
                         }
                         else

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -37,106 +37,39 @@
             </Pane>
          </left>
          <right>
-            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button fx:id="saveButton" layoutX="-97.0" layoutY="21.0" mnemonicParsing="false" onAction="#saveButtonOnClicked" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #F2E8CF; -fx-background-radius: 12;" text="Save" textFill="#386641">
-                     <font>
-                        <Font size="21.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
+            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
          </right>
       </BorderPane>
    </top>
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <left>
+            <Pane prefHeight="502.0" prefWidth="60.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="502.0" prefWidth="60.0" BorderPane.alignment="CENTER" />
+         </right>
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox alignment="CENTER" prefHeight="35.0" prefWidth="722.0" />
-                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
-                     <children>
-                        <VBox alignment="CENTER">
-                           <children>
-                              <Label fx:id="nameLable" prefHeight="28.0" prefWidth="90.0" text="Name" textFill="#386641">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="nameTextField" prefWidth="158.0" promptText="Name" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </VBox>
-                        <Pane prefHeight="80.0" prefWidth="109.0" />
-                        <VBox alignment="CENTER">
-                           <children>
-                              <Label fx:id="StatusLabel" prefHeight="28.0" prefWidth="90.0" text="Status" textFill="#386641">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="StatusTF" prefWidth="158.0" promptText="Status" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <Pane prefHeight="18.0" prefWidth="722.0" />
-                  <BorderPane prefHeight="18.0" prefWidth="722.0" />
-                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
-                     <children>
-                        <VBox alignment="CENTER">
-                           <children>
-                              <Label fx:id="emailLabel" prefHeight="35.0" prefWidth="155.0" text="Starting Date" textFill="#386641">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="startingDateDatePicker" promptText="Starting Date" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;" />
-                           </children>
-                        </VBox>
-                        <Pane prefHeight="80.0" prefWidth="109.0" />
-                        <VBox alignment="CENTER">
-                           <children>
-                              <Label fx:id="passwordLable" prefHeight="35.0" prefWidth="133.0" text="Ending Date" textFill="#386641">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <DatePicker fx:id="endingDateDatePicker" promptText="Ending Date" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0 0 0;" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <Pane prefHeight="18.0" prefWidth="722.0" />
-                  <HBox alignment="CENTER" prefHeight="72.0" prefWidth="722.0">
-                     <children>
-                        <VBox alignment="CENTER">
-                           <children>
-                              <Label prefHeight="28.0" prefWidth="90.0" text="Winner" textFill="#386641">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="WinnerTextField" prefWidth="158.0" promptText="Winner" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
+            <TableView fx:id="teamsTableView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER">
+               <columns>
+                  <TableColumn fx:id="studentNameC" prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Name" />
+                  <TableColumn fx:id="IDC" prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="ID" />
+                  <TableColumn fx:id="phoneC" prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Phone" />
+                  <TableColumn fx:id="emailC" prefWidth="135.20001220703125" style="-fx-background-color: #D6B86A;" text="Email" />
+                  <TableColumn fx:id="WeightC" minWidth="0.0" prefWidth="6.39996337890625" style="-fx-background-color: #C8A038;" text="Weight" />
+                  <TableColumn fx:id="HeightC" prefWidth="186.39999389648438" style="-fx-background-color: #D6B86A;" text="Height" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
          </center>
+         <top>
+            <Pane prefHeight="60.0" prefWidth="722.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Pane prefHeight="60.0" prefWidth="722.0" BorderPane.alignment="CENTER" />
+         </bottom>
       </BorderPane>
    </center>
    <left>
@@ -168,7 +101,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="251.0" prefHeight="10.0" prefWidth="178.0">
+                  <HBox alignment="CENTER" prefHeight="10.0" prefWidth="178.0">
                      <children>
                         <Label fx:id="WinsLabel21" prefHeight="31.0" prefWidth="84.0" text="Type" textFill="#f2e8cf">
                            <font>
@@ -233,11 +166,11 @@
                      </children>
                   </VBox>
                   <Pane prefHeight="28.0" prefWidth="178.0" />
-                  <BorderPane prefHeight="39.0" prefWidth="178.0">
+                  <BorderPane layoutX="10.0" layoutY="392.0" prefHeight="39.0" prefWidth="178.0">
                      <center>
                         <HBox fx:id="teamsPane" alignment="CENTER" onMouseClicked="#teamsPaneOnCklicked" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
                            <children>
-                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="62.0" text="Teams" textFill="#f2e8cf">
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="84.0" text="Teams" textFill="#f2e8cf">
                                  <font>
                                     <Font name="System Bold Italic" size="19.0" />
                                  </font>
@@ -247,11 +180,11 @@
                      </center>
                   </BorderPane>
                   <Pane prefHeight="2.0" prefWidth="178.0" />
-                  <BorderPane layoutX="10.0" layoutY="392.0" prefHeight="39.0" prefWidth="178.0">
+                  <BorderPane prefHeight="39.0" prefWidth="178.0">
                      <center>
-                        <HBox fx:id="studentsPane" alignment="CENTER" onMouseClicked="#studentsPaneOnClicked" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
+                        <HBox fx:id="infoPane" alignment="CENTER" onMouseClicked="#infoPaneOnCklicked" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
                            <children>
-                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="84.0" text="Students" textFill="#f2e8cf">
+                              <Label alignment="CENTER" prefHeight="28.0" prefWidth="62.0" text="Info" textFill="#f2e8cf">
                                  <font>
                                     <Font name="System Bold Italic" size="19.0" />
                                  </font>
@@ -260,8 +193,8 @@
                         </HBox>
                      </center>
                   </BorderPane>
-                  <Pane layoutX="10.0" layoutY="427.0" prefHeight="2.0" prefWidth="178.0" />
-                  <BorderPane layoutX="10.0" layoutY="429.0" prefHeight="39.0" prefWidth="178.0">
+                  <Pane prefHeight="2.0" prefWidth="178.0" />
+                  <BorderPane prefHeight="39.0" prefWidth="178.0">
                      <center>
                         <HBox fx:id="generatedPane" alignment="CENTER" onMouseClicked="#generatedPaneOnClicked" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
                            <children>

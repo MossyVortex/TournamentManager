@@ -1,8 +1,38 @@
 import classes.Student;
+import classes.Tournament;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
+import classes.Person;
+import classes.Student;
+import classes.Tournament;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class test2 {
 //    public static void main(String[] args) {
@@ -58,21 +88,46 @@ public class test2 {
 //    //     return result;
 //    // }
 public static void main(String[] args) {
-    try {
-//        FileOutputStream fileOutputStream = new FileOutputStream("src\\StudentsBFile.dat");
-//        ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
-        FileInputStream fileInputStream = new FileInputStream("src\\StudentsBFile.dat");
-        ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
-        HashMap<String, Student> readStudentInfoMap ;
-        readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
-        readStudentInfoMap.forEach((x,y) -> System.out.println(y));
-        objInStream.close();
-    } catch (FileNotFoundException e) {
-        System.out.println(e.getCause());
-    } catch (IOException e) {
-        System.out.println(e.getCause());
-    } catch (ClassNotFoundException e) {
-        e.printStackTrace();
+//     try {
+// //        FileOutputStream fileOutputStream = new FileOutputStream("src\\StudentsBFile.dat");
+// //        ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
+//         FileInputStream fileInputStream = new FileInputStream("src\\StudentsBFile.dat");
+//         ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
+//         HashMap<String, Student> readStudentInfoMap ;
+//         readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
+//         readStudentInfoMap.forEach((x,y) -> System.out.println(y));
+//         objInStream.close();
+//     } catch (FileNotFoundException e) {
+//         System.out.println(e.getCause());
+//     } catch (IOException e) {
+//         System.out.println(e.getCause());
+//     } catch (ClassNotFoundException e) {
+//         e.printStackTrace();
+//     }
+
+try {
+
+    FileInputStream fileInputStream = new FileInputStream("src\\AdminsBFile.dat");
+    ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
+    ArrayList<Tournament> joinedTournamentsTournament = new ArrayList<>();
+
+    HashMap<String, Student> studentHashMap ;
+    studentHashMap = (HashMap<String, Student>) objInStream.readObject();
+    FileOutputStream fileOutputStream = new FileOutputStream("src\\AdminsBFile.dat");
+    ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
+
+    if (!studentHashMap.containsKey("202016000")){
+        studentHashMap.put("202016000",new Student("MOSA","123","123", "202016000",
+                "123", Integer.parseInt("0"),Integer.parseInt("0"),joinedTournamentsTournament,0,0,0));
+        objOutStream.writeObject(studentHashMap);
     }
+    objInStream.close();
+    objOutStream.close();
+}
+catch (IOException  e){
+    System.out.println(e.getCause());
+} catch (ClassNotFoundException e) {
+    e.printStackTrace();
+}
 }
 }

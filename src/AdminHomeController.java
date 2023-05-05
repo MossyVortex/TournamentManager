@@ -84,7 +84,7 @@ public class AdminHomeController {
         Scene registerPage = new Scene(fxmlLoader);
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
-        stage.setTitle("classes.Tournament Manager - Edit Profile (Admin)");
+        stage.setTitle("Tournament Manager - Edit Profile (Admin)");
         stage.show();
 
     }
@@ -100,7 +100,7 @@ public class AdminHomeController {
         Scene loginStudentPage = new Scene(fxmlLoader);
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(loginStudentPage);
-        stage.setTitle("classes.Tournament Manager - Login");
+        stage.setTitle("Tournament Manager - Login");
         stage.show();
     }
 
