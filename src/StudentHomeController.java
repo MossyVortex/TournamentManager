@@ -94,11 +94,12 @@ public class StudentHomeController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene registerPage = new Scene(fxmlLoader);
-        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-        stage.setScene(registerPage);
-        stage.setTitle("Tournament Manager - View Tournamnets");
+        Scene homePage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(homePage);
+        stage.setTitle("Tournament Manager - View Tournaments");
         stage.show();
+
 
     }
 
