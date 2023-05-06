@@ -43,9 +43,9 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="editButton" fitHeight="68.0" fitWidth="69.0" layoutX="-56.0" layoutY="120.0" onMouseClicked="#editButtonOnClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="editButton" fitHeight="68.0" fitWidth="69.0" layoutX="-32.0" layoutY="11.0" onMouseClicked="#editButtonOnClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Images/edit.png" />
+                        <Image url="@Images/icons8-create-384.png" />
                      </image>
                   </ImageView>
                </children></Pane>

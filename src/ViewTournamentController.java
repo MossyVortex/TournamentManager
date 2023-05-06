@@ -132,6 +132,28 @@ public class ViewTournamentController {
     @FXML
     private TextField typeTextField;
 
+    @FXML
+    private ImageView backTIDButton;
+
+    @FXML
+    private ImageView logoImage;
+
+    @FXML
+    private TextField tournamentIDTextField;
+
+    @FXML
+    private Button viewButton;
+
+    @FXML
+    void ViewButtonOnClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void setTIDBackButton(MouseEvent event) {
+
+    }
+
 
     @FXML
     void infoPaneOnCklicked(MouseEvent event) {
