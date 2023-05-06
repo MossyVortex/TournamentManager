@@ -121,10 +121,22 @@ try {
 
     Admin admin= new Admin("Admin","0555555555","admin@gmail.com","admin","admin",0,true);
     studentHashMap.put(admin.getID(),admin);
-    FileOutputStream fileOutputStream = new FileOutputStream("src\\AdminsBFile.dat");
+    FileOutputStream fileOutputStream = new FileOutputStream("src\\empty.dat");
     ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
     objOutStream.writeObject(studentHashMap);
 
+    // String name, String phoneNumber, String email, String ID, String password,int weight, int height,ArrayList<Tournament> joinedTournamentsTournament, int wins, int losses, int ties){
+    HashMap<String, Student> potatoHashMap;
+    potatoHashMap = (HashMap<String, Student>) objInStream.readObject();
+
+    ArrayList<Tournament> arr = new ArrayList<>();
+    arr.add(0, null);
+
+    Student student= new Student("student","0555555555","student@gmail.com","student","student", 0, 0, arr, 0, 0, 0);
+    potatoHashMap.put("student",student);
+    fileOutputStream = new FileOutputStream("src\\empty2.dat");
+    objOutStream = new ObjectOutputStream(fileOutputStream);
+    objOutStream.writeObject(potatoHashMap);
 
 //    if (!studentHashMap.containsKey("202016000")){
 //        studentHashMap.put("202016000",new Student("MOSA","123","123", "202016000",

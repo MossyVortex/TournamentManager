@@ -101,7 +101,7 @@ public class LoginController {
             try {
                 ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
                 if (adminRadioButton.isSelected()){
-                    ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
+                    ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\empty.dat"));
                     HashMap<String, Admin> readAdminInfoMap = (HashMap<String, Admin>) objInStream.readObject();
                     objInStream.close();
                     if (readAdminInfoMap.containsKey(IDTextF.getText())){
@@ -123,7 +123,7 @@ public class LoginController {
                         Alert("Your ID is Not Valid");
                 }
                 else if (studentRadioButton.isSelected()){
-                    ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
+                    ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\empty2.dat"));
                     HashMap<String, Student> readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
                     objInStream.close();
                     if (readStudentInfoMap.containsKey(IDTextF.getText())){
