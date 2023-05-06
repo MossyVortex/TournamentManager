@@ -110,7 +110,7 @@ public class EditStudentProfileController implements Initializable {
             objInStreamLogedinPerson.close();
 
 
-            String breviousID = student.getID();
+            String breviousUN = student.getUserName();
 
             if (!nameTextField.getText().equals(student.getName())) {
                 student.setName(nameTextField.getText()); isChanged=true;
@@ -130,14 +130,14 @@ public class EditStudentProfileController implements Initializable {
             if (!(Integer.parseInt(WeightTextField.getText())==(student.getWeight()))) {
                 student.setWeight(Integer.parseInt(WeightTextField.getText())); isChanged=true;
             }
-
+            System.out.println(isChanged);
             if (isChanged){
                 ObjectInputStream objInStreamStudentsBFile = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
                 HashMap<String, Student> studentHashMap = (HashMap<String, Student>) objInStreamStudentsBFile.readObject();
                 objInStreamStudentsBFile.close();
 
-                studentHashMap.remove(breviousID);
-                studentHashMap.put(student.getID(),student);
+                studentHashMap.remove(breviousUN);
+                studentHashMap.put(student.getUserName(),student);
 
                 ObjectOutputStream objOutStreamStudentsBFile = new ObjectOutputStream(new FileOutputStream("src\\StudentsBFile.dat"));
                 objOutStreamStudentsBFile.writeObject(studentHashMap);
