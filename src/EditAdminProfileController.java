@@ -98,7 +98,7 @@ public class EditAdminProfileController implements Initializable {
             objInStreamLogedinPerson.close();
 
 
-            String breviousID = admin.getID();
+            String breviousUN = admin.getUserName();
 
             if (!nameTextField.getText().equals(admin.getName())) {
                 admin.setName(nameTextField.getText()); isChanged=true;
@@ -119,8 +119,8 @@ public class EditAdminProfileController implements Initializable {
                 HashMap<String, Admin> AdminHashMap = (HashMap<String, Admin>) objInStreamAdminsBFile.readObject();
                 objInStreamAdminsBFile.close();
 
-                AdminHashMap.remove(breviousID);
-                AdminHashMap.put(admin.getID(),admin);
+                AdminHashMap.remove(breviousUN);
+                AdminHashMap.put(admin.getUserName(),admin);
 
                 ObjectOutputStream objOutStreamAdminsBFile = new ObjectOutputStream(new FileOutputStream("src\\AdminsBFile.dat"));
                 objOutStreamAdminsBFile.writeObject(AdminHashMap);
