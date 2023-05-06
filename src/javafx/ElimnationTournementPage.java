@@ -107,16 +107,25 @@ public class ElimnationTournementPage extends Application {
         VBox matchup = new VBox();
 
         Label team1Label = new Label(match.getTeamOneName() + " ");
+        team1Label.setMaxWidth(100);
+        team1Label.setMinWidth(100);
+
         Text team1Score = new Text(match.getScoreOne() +"");
         TextField team1TextField = new TextField();
+        team1TextField.setMaxWidth(40);
         team1TextField.setId(roundIndex + "-" + matchIndex + "-" + 0);
         HBox team1HBox = new HBox();
         team1HBox.getChildren().addAll(team1Label,team1Score,team1TextField);
         team1HBox.setSpacing(10);
 
         Label team2Label = new Label(match.getTeamTwoName() + "");
+        team2Label.setMaxWidth(100);
+        team2Label.setMinWidth(100);
+
         Text team2Score = new Text(match.getScoreTwo() +"");
         TextField team2TextField = new TextField();
+        team2TextField.setMaxWidth(40);
+
         team2TextField.setId(roundIndex + "-" + matchIndex + "-" + 1 );
         HBox team2HBox = new HBox();
         team2HBox.getChildren().addAll(team2Label,team2Score ,team2TextField);

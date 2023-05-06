@@ -3,7 +3,9 @@ package javafx;
 import classes.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -12,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import static javafx.application.Application.launch;
 
@@ -32,11 +35,12 @@ public class RoundRobinTournementPage extends Application {
         Team t1 = new Team(stu,"ssd");
         addTeams(tourney, t1 , stu);
 
-
+        tourney.createMatchHistory();
+        tourney.createTables();
         VBox mainTourney = createTourneyPage(tourney);
 
-
-        Scene scene = new Scene(mainTourney,1000,800);
+        ScrollPane st = new ScrollPane(mainTourney);
+        Scene scene = new Scene(st,1000,800);
 
 
 
@@ -44,7 +48,92 @@ public class RoundRobinTournementPage extends Application {
         stage.show();
     }
     public static VBox createTourneyPage(RoundRobin tourney){
-       return new VBox();
+        ArrayList<TextField> textFields = new ArrayList<>();
+        VBox roundRobinVBox = new VBox(createTourney(tourney,textFields));
+        HBox pointsTable = createPointsTable(tourney);
+        Button updateScoreButton = new Button();
+        updateScoreButton.setText("calcuateWinners");
+        VBox mainTourney = new VBox(updateScoreButton, roundRobinVBox, pointsTable);
+
+        return mainTourney;
+
+    }
+
+
+    public static VBox createMatchUP(Match match , int roundIndex , int matchIndex , ArrayList<TextField> textFields){
+        VBox matchup = new VBox();
+
+        Label team1Label = new Label(match.getTeamOneName() + " ");
+        team1Label.setMaxWidth(100);
+        team1Label.setMinWidth(100);
+
+        Text team1Score = new Text(match.getScoreOne() +"");
+        TextField team1TextField = new TextField();
+        team1TextField.setMaxWidth(40);
+        team1TextField.setId(roundIndex + "-" + matchIndex + "-" + 0);
+        HBox team1HBox = new HBox();
+        team1HBox.getChildren().addAll(team1Label,team1Score,team1TextField);
+        team1HBox.setSpacing(10);
+
+        Label team2Label = new Label(match.getTeamTwoName() + "");
+        team2Label.setMaxWidth(100);
+        team2Label.setMinWidth(100);
+        Text team2Score = new Text(match.getScoreTwo() +"");
+        TextField team2TextField = new TextField();
+        team2TextField.setMaxWidth(40);
+
+        team2TextField.setId(roundIndex + "-" + matchIndex + "-" + 1 );
+        HBox team2HBox = new HBox();
+        team2HBox.getChildren().addAll(team2Label,team2Score ,team2TextField);
+        team2HBox.setSpacing(10);
+
+        textFields.add(team1TextField);
+        textFields.add(team2TextField);
+        matchup.getChildren().addAll(team1HBox, team2HBox);
+        if(match.getTeamOne().getTeamName().equals("Bye") || match.getTeamTwo().getTeamName().equals("Bye")){
+            System.out.println("bad");
+            team1TextField.setStyle("-fx-background-color: black");
+            team1TextField.setEditable(false);
+            team2TextField.setEditable(false);
+            team2TextField.setStyle("-fx-background-color: black");
+        }
+
+        return matchup;
+    }
+    public static VBox createRound(ArrayList<Match> matches, int roundIndex , ArrayList<TextField> textFields  ){
+        VBox round = new VBox(new Text("round" + roundIndex));
+        round.setSpacing(20);
+        for(int i = 0 ; i < matches.size() ; i++){
+            round.getChildren().add(createMatchUP(matches.get(i),roundIndex , i , textFields));
+        }
+        return round;
+    }
+    public static VBox createTourney(RoundRobin tourney, ArrayList<TextField> textFields){
+        textFields.clear();
+        HBox tourneyHbox = new HBox();
+        tourneyHbox.setSpacing(20);
+        Hashtable<Integer, ArrayList<Match>> matchHistory = tourney.printMatchHistory();
+        for(int i = 0 ; i < matchHistory.size() ; i++){
+            tourneyHbox.getChildren().add(createRound(matchHistory.get(i) , i , textFields));
+        }
+        VBox tourneyVbox = new VBox(new Text("tournement"));
+        tourneyVbox.getChildren().add(tourneyHbox);
+        return tourneyVbox;
+    }
+    public static VBox createTeamPoints(String teamName , int points){
+        Text teamNameText = new Text(teamName);
+        Text pointsText = new Text(points +"");
+        VBox teamPoints = new VBox(teamNameText,pointsText);
+        return teamPoints;
+    }
+    public static HBox createPointsTable(RoundRobin tour){
+        HBox pointsTable = new HBox();
+        pointsTable.setSpacing(20);
+        Hashtable<Team, Integer> pointsHashTable = tour.printPointsTable();
+        pointsHashTable.forEach((key , value) ->{
+            pointsTable.getChildren().add(createTeamPoints(key.getTeamName(),value));
+        });
+        return pointsTable;
     }
     public static void addTeams(RoundRobin tour, Team team , ArrayList<Student> stu){
 
@@ -53,17 +142,17 @@ public class RoundRobinTournementPage extends Application {
         tour.addTeam(new Team(stu,"team3"));
         tour.addTeam(new Team(stu,"team4"));
         tour.addTeam(new Team(stu,"team5"));
-//        tour.addTeam(new Team(stu,"team6"));
-//        tour.addTeam(new Team(stu,"team7"));
-//        tour.addTeam(new Team(stu,"team8"));
-//        tour.addTeam(new Team(stu,"team9"));
-//        tour.addTeam(new Team(stu,"team10"));
-//        tour.addTeam(new Team(stu,"team11"));
-//        tour.addTeam(new Team(stu,"team12"));
-//        tour.addTeam(new Team(stu,"team13"));
-//        tour.addTeam(new Team(stu,"team14"));
-//        tour.addTeam(new Team(stu,"team15"));
-//        tour.addTeam(new classes.Team(stu,"team16"));
+        tour.addTeam(new Team(stu,"team6"));
+        tour.addTeam(new Team(stu,"team7"));
+        tour.addTeam(new Team(stu,"team8"));
+        tour.addTeam(new Team(stu,"team9"));
+        tour.addTeam(new Team(stu,"team10"));
+        tour.addTeam(new Team(stu,"team11"));
+        tour.addTeam(new Team(stu,"team12"));
+        tour.addTeam(new Team(stu,"team13"));
+        tour.addTeam(new Team(stu,"team14"));
+        tour.addTeam(new Team(stu,"team15"));
+        tour.addTeam(new classes.Team(stu,"team16"));
 //        for(int i = 0 ; i < 16 ; i++){
 //            tour.addTeam(team);
 //        }
@@ -74,37 +163,4 @@ public class RoundRobinTournementPage extends Application {
 //    public static VBox createPointsTable(){
 //
 //    }
-
-    public static VBox createMatchUP(Match match , int roundIndex , int matchIndex , ArrayList<TextField> textFields){
-        VBox matchup = new VBox();
-
-        Label team1Label = new Label(match.getTeamOneName() + " ");
-        Text team1Score = new Text(match.getScoreOne() +"");
-        TextField team1TextField = new TextField();
-        team1TextField.setId(roundIndex + "-" + matchIndex + "-" + 0);
-        HBox team1HBox = new HBox();
-        team1HBox.getChildren().addAll(team1Label,team1Score,team1TextField);
-        team1HBox.setSpacing(10);
-
-        Label team2Label = new Label(match.getTeamTwoName() + "");
-        Text team2Score = new Text(match.getScoreTwo() +"");
-        TextField team2TextField = new TextField();
-        team2TextField.setId(roundIndex + "-" + matchIndex + "-" + 1 );
-        HBox team2HBox = new HBox();
-        team2HBox.getChildren().addAll(team2Label,team2Score ,team2TextField);
-        team2HBox.setSpacing(10);
-
-        textFields.add(team1TextField);
-        textFields.add(team2TextField);
-        matchup.getChildren().addAll(team1HBox, team2HBox);
-        return matchup;
-    }
-    public static VBox createRound(ArrayList<Match> matches, int roundIndex , ArrayList<TextField> textFields  ){
-        VBox round = new VBox();
-        round.setSpacing(20);
-        for(int i = 0 ; i < matches.size() ; i++){
-            round.getChildren().add(createMatchUP(matches.get(i),roundIndex , i , textFields));
-        }
-        return round;
-}
 }

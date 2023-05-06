@@ -89,7 +89,7 @@ public class RoundRobin extends Tournament {
     }
 
     public void updatePointsTable(){
-//        createPointTable();
+        createTables();
         for(int i = 0 ; i< matchHistory.size(); i++){
             ArrayList<Match> currentRound = matchHistory.get(i);
             for(int j = 0 ; j < currentRound.size() ; j++){
@@ -131,7 +131,11 @@ public class RoundRobin extends Tournament {
     }
 
 
+    public Hashtable<Team, Integer> printPointsTable(){return this.pointsTable;}
 
+    public Hashtable<Integer, ArrayList<Match>> printMatchHistory(){
+        return matchHistory;
+    }
 
     public void printMatchHistoryBeautified(){
         for(Map.Entry<Integer, ArrayList<Match>> entry : matchHistory.entrySet() ){
@@ -139,7 +143,7 @@ public class RoundRobin extends Tournament {
                     ", Value = " + entry.getValue());
         }
     }
-    public void printPointsTable(){
+    public void printPointsTableBeautifed(){
         for(Map.Entry<Team, Integer> entry : pointsTable.entrySet() ){
             System.out.println("Key = " + entry.getKey() +
                     ", Value = " + entry.getValue());

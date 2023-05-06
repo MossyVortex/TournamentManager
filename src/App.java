@@ -52,7 +52,7 @@ public class App {
         roundTourney.createMatchHistory();
         roundTourney.printMatchHistoryBeautified();
         roundTourney.createTables();
-        roundTourney.printPointsTable();
+//        roundTourney.printPointsTable();
 //        System.out.println("Hello, World!");
 
 //        Elimination tourney = new Elimination();
