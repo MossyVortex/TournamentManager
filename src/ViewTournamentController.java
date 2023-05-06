@@ -1,8 +1,10 @@
 import java.io.IOException;
 import java.util.Objects;
+
+import classes.Person;
+import classes.Student;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,7 +35,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class ViewTournamentController {
+public class ViewTournamentController implements Initializable {
 
     @FXML
     private ImageView EditButton;
@@ -151,18 +153,31 @@ public class ViewTournamentController {
 
     @FXML
     void setTIDBackButton(MouseEvent event) {
+        Parent fxmlLoader = null;
+        try {
+            ObjectInputStream objInStreamLogedinPerson = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+            Person person = (Person) objInStreamLogedinPerson.readObject();
+            objInStreamLogedinPerson.close();
+            if (person instanceof Student)
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\StudentHomeScene.fxml")));
+            else
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\AdminHomeScene.fxml")));
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        Scene homePage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(homePage);
+        stage.setTitle("Tournament Manager - Home Page");
+        stage.show();
     }
 
 
     @FXML
     void infoPaneOnCklicked(MouseEvent event) {
-
-    }
-
-
-    @FXML
-    void editButtonOnClicked(MouseEvent event) {
 
     }
 
@@ -176,8 +191,17 @@ public class ViewTournamentController {
 
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+            ObjectInputStream objInStreamLogedinPerson = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+            Person person = (Person) objInStreamLogedinPerson.readObject();
+            objInStreamLogedinPerson.close();
+            if (person instanceof Student)
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\StudentHomeScene.fxml")));
+            else
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\AdminHomeScene.fxml")));
+
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         Scene registerPage = new Scene(fxmlLoader);
@@ -208,4 +232,22 @@ public class ViewTournamentController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ObjectInputStream objInStreamLogedinPerson = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+            Person person = (Person) objInStreamLogedinPerson.readObject();
+            objInStreamLogedinPerson.close();
+            if (person instanceof Admin)
+                EditButton.setVisible(true);
+            else
+                EditButton.setVisible(false);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -150,8 +150,5 @@ public class StudentHomeController implements Initializable {
             e.printStackTrace();
         }
     }
-//@FXML
-//public void initialize() {
-//
-//}
+
 }
