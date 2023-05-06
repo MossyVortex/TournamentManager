@@ -132,8 +132,8 @@ try {
     ArrayList<Tournament> arr = new ArrayList<>();
     arr.add(0, null);
 
-    Student student= new Student("student","0555555555","student@gmail.com","student","student", 0, 0, arr, 0, 0, 0);
-    potatoHashMap.put("student",student);
+    // Student student= new Student("student","0555555555","student@gmail.com","student","student", 0, 0, arr, 0, 0, 0);
+    // potatoHashMap.put("student",student);
     fileOutputStream = new FileOutputStream("src\\empty2.dat");
     objOutStream = new ObjectOutputStream(fileOutputStream);
     objOutStream.writeObject(potatoHashMap);
