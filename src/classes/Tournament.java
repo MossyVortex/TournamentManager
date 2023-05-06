@@ -56,7 +56,7 @@ public abstract class Tournament {
 
 
 
-    public ArrayList<Team> getTeams() {
+    public  ArrayList<Team> getTeams() {
         return teams;
     }
 
