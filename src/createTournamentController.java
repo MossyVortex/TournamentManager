@@ -273,14 +273,13 @@ public class createTournamentController {
             FileInputStream fileInputStream = new FileInputStream("src\\TournamentsBFile.dat");
             ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
 
+            HashMap<String, Tournament> tournamentsInfoHashMap = (HashMap<String, Tournament>) objInStream.readObject();
+
             if(tournamentType.equals("Elimination")){
-                Elimination createdTournament = new Elimination(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null, null, registerationStatus);
-                HashMap<String, Elimination> tournamentsInfoHashMap ;
-                tournamentsInfoHashMap = (HashMap<String, Elimination>) objInStream.readObject();
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
                 ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
                 if (!tournamentsInfoHashMap.containsKey(tournamentID)){
-                    tournamentsInfoHashMap.put(tournamentID, createdTournament);
+                    tournamentsInfoHashMap.put(tournamentID, new Elimination(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null, null, registerationStatus));
                     objOutStream.writeObject(tournamentsInfoHashMap);
                     
                 }
@@ -288,19 +287,17 @@ public class createTournamentController {
                 objOutStream.close();
             }
             else{
-                RoundRobin createdTournament = new RoundRobin(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null, null, registerationStatus);
-                HashMap<String, RoundRobin> tournamentsInfoHashMap ;
-                tournamentsInfoHashMap = (HashMap<String, RoundRobin>) objInStream.readObject();
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
                 ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
                 if (!tournamentsInfoHashMap.containsKey(tournamentID)){
-                    tournamentsInfoHashMap.put(tournamentID, createdTournament);
+                    tournamentsInfoHashMap.put(tournamentID, new RoundRobin(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null, null, registerationStatus));
                     objOutStream.writeObject(tournamentsInfoHashMap);
-                    
-                }
+                }    
                 objInStream.close();
                 objOutStream.close();
             }
+
+
         }
         catch (IOException  e){
             System.out.println(e.getCause());
