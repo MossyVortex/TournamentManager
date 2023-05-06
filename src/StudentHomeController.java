@@ -63,7 +63,7 @@ public class StudentHomeController implements Initializable {
             e.printStackTrace();
         }
         Scene registerPage = new Scene(fxmlLoader);
-        Stage stage = new Stage();
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
         stage.setTitle("classes.Tournament Manager - Join Tournament");
         stage.show();
@@ -90,7 +90,7 @@ public class StudentHomeController implements Initializable {
 
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewTournamentScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EnterTournamentIDToViewScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
