@@ -155,7 +155,11 @@ public class EditStudentProfileController implements Initializable {
             e.printStackTrace();
         }
 
-        EditButton.setVisible(true);
+        EditButton.setVisible(true); saveButton.setVisible(false);
+        WinsTextField.setEditable(false);TiesTextField.setEditable(false);LossesTextField.setEditable(false);
+        nameTextField.setEditable(false);EmailTextField.setEditable(false);
+        heightTextField.setEditable(false);phoneTextField.setEditable(false);passwordTextField.setEditable(false);WeightTextField.setEditable(false);
+
 
     }
 
