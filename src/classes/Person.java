@@ -10,13 +10,15 @@ public class Person implements Serializable {
     private String email;
     private String ID;
     private String password;
+    private String userName;
     
-    public Person(String name, String phoneNumber, String email, String ID, String password){
+    public Person(String name, String userName ,String phoneNumber, String email, String ID, String password){
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.ID = ID;
         this.password = password;
+        this.userName = userName;
     }
     public Person(String name){
         this.name = name;
@@ -52,6 +54,10 @@ public class Person implements Serializable {
     }
     public String getPassword() {
         return password;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 
     public void setEmail(String email) {

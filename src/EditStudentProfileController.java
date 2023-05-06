@@ -58,6 +58,9 @@ public class EditStudentProfileController implements Initializable {
     private TextField WinsTextField;
 
     @FXML
+    private Label usernameLable;
+
+    @FXML
     private ImageView backButton;
 
     @FXML
@@ -186,7 +189,7 @@ public class EditStudentProfileController implements Initializable {
             objInStream.close();
 
 
-
+            usernameLable.setText(student.getUserName());
             IDLabel.setText(student.getID());
             WinsTextField.setText(String.valueOf(student.getWins()));
             TiesTextField.setText(String.valueOf(student.getTies()));

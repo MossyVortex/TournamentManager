@@ -146,6 +146,15 @@
                   </ImageView>
                   <HBox alignment="CENTER" prefHeight="18.0" prefWidth="178.0">
                      <children>
+                        <Label fx:id="usernameLable" text="xxxxxxxxx" textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="18.0" prefWidth="178.0">
+                     <children>
                         <Label text="ID: " textFill="#f2e8cf">
                            <font>
                               <Font name="System Bold Italic" size="19.0" />
