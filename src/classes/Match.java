@@ -141,6 +141,8 @@ public class Match {
 
         return scoreOne;
     }
+    public Team getTeamOne(){return teamOne;}
+    public Team getTeamTwo(){return teamTwo;}
     public int getScoreTwo(){
         return scoreTwo;
     }

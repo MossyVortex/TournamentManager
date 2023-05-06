@@ -88,16 +88,16 @@ public class ElimnationTournementPage extends Application {
         tour.addTeam(new Team(stu,"team3"));
         tour.addTeam(new Team(stu,"team4"));
         tour.addTeam(new Team(stu,"team5"));
-        tour.addTeam(new Team(stu,"team6"));
-        tour.addTeam(new Team(stu,"team7"));
-        tour.addTeam(new Team(stu,"team8"));
-        tour.addTeam(new Team(stu,"team9"));
-        tour.addTeam(new Team(stu,"team10"));
-        tour.addTeam(new Team(stu,"team11"));
-        tour.addTeam(new Team(stu,"team12"));
-        tour.addTeam(new Team(stu,"team13"));
-        tour.addTeam(new Team(stu,"team14"));
-        tour.addTeam(new Team(stu,"team15"));
+//        tour.addTeam(new Team(stu,"team6"));
+//        tour.addTeam(new Team(stu,"team7"));
+//        tour.addTeam(new Team(stu,"team8"));
+//        tour.addTeam(new Team(stu,"team9"));
+//        tour.addTeam(new Team(stu,"team10"));
+//        tour.addTeam(new Team(stu,"team11"));
+//        tour.addTeam(new Team(stu,"team12"));
+//        tour.addTeam(new Team(stu,"team13"));
+//        tour.addTeam(new Team(stu,"team14"));
+//        tour.addTeam(new Team(stu,"team15"));
 //        tour.addTeam(new classes.Team(stu,"team16"));
 //        for(int i = 0 ; i < 16 ; i++){
 //            tour.addTeam(team);
