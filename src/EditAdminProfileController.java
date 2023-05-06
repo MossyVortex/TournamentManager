@@ -1,5 +1,11 @@
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.Objects;
+import java.util.ResourceBundle;
+
+import classes.Student;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 
 import javafx.event.ActionEvent;
@@ -12,10 +18,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
-public class EditAdminProfileController {
+public class EditAdminProfileController implements Initializable {
+
+    @FXML
+    private TextField EmailTextField;
 
     @FXML
     private Label IDLabel;
@@ -28,6 +38,9 @@ public class EditAdminProfileController {
 
     @FXML
     private ImageView backButton;
+
+    @FXML
+    private ImageView editButton;
 
     @FXML
     private Label emailLable1;
@@ -45,13 +58,13 @@ public class EditAdminProfileController {
     private TextField nameTextField;
 
     @FXML
-    private TextField nameTextField1;
+    private TextField passwordTextField;
 
     @FXML
-    private TextField nameTextField11;
+    private TextField phoneTextField;
 
     @FXML
-    private Button regesterButton;
+    private Button saveButton;
 
     @FXML
     private Label tournamentsNumLabel;
@@ -60,7 +73,13 @@ public class EditAdminProfileController {
     private TextField tournamentsNumTextField;
 
     @FXML
-    private Button saveButton;
+    void editButtonOnClicked(MouseEvent event) {
+        saveButton.setVisible(true); editButton.setVisible(false);
+        nameTextField.setEditable(true);EmailTextField.setEditable(true);
+        phoneTextField.setEditable(true);passwordTextField.setEditable(true);
+
+
+    }
 
     @FXML
     void regesterButtonOnclicked(ActionEvent event) {
@@ -69,7 +88,56 @@ public class EditAdminProfileController {
 
     @FXML
     void SaveButtonOnClicked(ActionEvent event) {
+        boolean isChanged = false;
+        try {
+            ObjectInputStream objInStreamLogedinPerson = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+            Admin admin = (Admin) objInStreamLogedinPerson.readObject();
+            objInStreamLogedinPerson.close();
 
+
+            String breviousID = admin.getID();
+
+            if (!nameTextField.getText().equals(admin.getName())) {
+                admin.setName(nameTextField.getText()); isChanged=true;
+            }
+            if (!EmailTextField.getText().equals(admin.getEmail())) {
+                admin.setEmail(EmailTextField.getText()); isChanged=true;
+            }
+            if (!passwordTextField.getText().equals(admin.getPassword())) {
+                admin.setPassword(passwordTextField.getText()); isChanged=true;
+            }
+            if (!phoneTextField.getText().equals(admin.getPhoneNumber())) {
+                admin.setPhoneNumber(phoneTextField.getText()); isChanged=true;
+            }
+
+
+            if (isChanged){
+                ObjectInputStream objInStreamAdminsBFile = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
+                HashMap<String, Admin> AdminHashMap = (HashMap<String, Admin>) objInStreamAdminsBFile.readObject();
+                objInStreamAdminsBFile.close();
+
+                AdminHashMap.remove(breviousID);
+                AdminHashMap.put(admin.getID(),admin);
+
+                ObjectOutputStream objOutStreamAdminsBFile = new ObjectOutputStream(new FileOutputStream("src\\AdminsBFile.dat"));
+                objOutStreamAdminsBFile.writeObject(AdminHashMap);
+                objOutStreamAdminsBFile.close();
+
+                ObjectOutputStream objOutStreamLogedinPerson = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
+                objOutStreamLogedinPerson.writeObject(admin);
+                objOutStreamLogedinPerson.close();
+            }
+
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        editButton.setVisible(true);
     }
 
     @FXML
@@ -88,4 +156,37 @@ public class EditAdminProfileController {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+            Admin admin = (Admin) objInStream.readObject();
+            objInStream.close();
+
+
+
+            IDLabel.setText(admin.getID());
+
+            nameTextField.setText(admin.getName());
+            EmailTextField.setText(admin.getEmail());
+            authorizedTextField.setText(String.valueOf(admin.getIsAuthorized()));
+            phoneTextField.setText(admin.getPhoneNumber());
+            passwordTextField.setText(admin.getPassword());
+            tournamentsNumTextField.setText(String.valueOf(admin.getTournamentsCreated()));
+
+
+            nameTextField.setEditable(false);EmailTextField.setEditable(false);
+            phoneTextField.setEditable(false);passwordTextField.setEditable(false);
+            authorizedTextField.setEditable(false);tournamentsNumTextField.setEditable(false);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    
+    }
 }
