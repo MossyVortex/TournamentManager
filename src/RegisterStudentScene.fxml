@@ -47,7 +47,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="260.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="260.0">
                            <children>
                               <Label fx:id="nameLable" prefHeight="28.0" prefWidth="90.0" text="Name:" textFill="#386641">
                                  <font>
@@ -62,14 +62,14 @@
                            </children>
                         </HBox>
                         <Pane prefHeight="100.0" prefWidth="20.0" />
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="290.0">
                            <children>
-                              <Label fx:id="phoneLable" prefHeight="35.0" prefWidth="120.0" text="Phone:" textFill="#386641">
+                              <Label fx:id="usernameLable" prefWidth="120.0" text="Username:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="phoneTextField" prefWidth="158.0" promptText="Enter your phone " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="usernameTextField" prefWidth="158.0" promptText="Enter your ID" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -78,16 +78,16 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="161.0" prefHeight="80.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="262.0" prefHeight="80.0" prefWidth="722.0">
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="260.0">
                            <children>
-                              <Label fx:id="heightLable" prefWidth="90.0" text="Height:" textFill="#386641">
+                              <Label fx:id="IDLable" prefWidth="90.0" text="ID:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="heightTextField" prefWidth="158.0" promptText="Enter your height" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="IDTextField" prefWidth="158.0" promptText="Enter your ID" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -95,14 +95,14 @@
                            </children>
                         </HBox>
                         <Pane prefHeight="100.0" prefWidth="20.0" />
-                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="290.0">
                            <children>
-                              <Label fx:id="weightLable" prefWidth="120.0" text="Weight:" textFill="#386641">
+                              <Label fx:id="phoneLable" prefHeight="35.0" prefWidth="120.0" text="Phone:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="weightTextField" prefWidth="158.0" promptText="Enter your weight " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="phoneTextField" prefWidth="158.0" promptText="Enter your phone " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -144,17 +144,16 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="262.0" prefHeight="80.0" prefWidth="722.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="161.0" prefHeight="80.0" prefWidth="200.0">
                      <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0" />
                         <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="260.0">
                            <children>
-                              <Label fx:id="IDLable" prefWidth="90.0" text="ID:" textFill="#386641">
+                              <Label fx:id="heightLable" prefWidth="90.0" text="Height:" textFill="#386641">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="IDTextField" prefWidth="158.0" promptText="Enter your ID" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                              <TextField fx:id="heightTextField" prefWidth="158.0" promptText="Enter your height" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -162,6 +161,20 @@
                            </children>
                         </HBox>
                         <Pane prefHeight="100.0" prefWidth="20.0" />
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
+                           <children>
+                              <Label fx:id="weightLable" prefWidth="120.0" text="Weight:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="weightTextField" prefWidth="158.0" promptText="Enter your weight " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
                      </children>
                   </HBox>
                   <BorderPane prefHeight="30.0" prefWidth="722.0" />

@@ -10,10 +10,11 @@ public class Student extends Person implements Serializable {
     private int ties;
     private int weight;
     private int height;
+
     private ArrayList<Tournament> joinedTournamentsTournament;
 
-    public Student(String name, String phoneNumber, String email, String ID, String password,int weight, int height,ArrayList<Tournament> joinedTournamentsTournament, int wins, int losses, int ties){
-        super(name,phoneNumber,email,ID,password);
+    public Student(String name, String userName , String phoneNumber, String email, String ID, String password,int weight, int height,ArrayList<Tournament> joinedTournamentsTournament, int wins, int losses, int ties){
+        super(name,userName,phoneNumber,email,ID,password);
         this.height = height;
         this.weight = weight;
         this.wins = wins;

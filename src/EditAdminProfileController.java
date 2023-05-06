@@ -40,6 +40,9 @@ public class EditAdminProfileController implements Initializable {
     private ImageView backButton;
 
     @FXML
+    private Label usernameLable;
+
+    @FXML
     private ImageView editButton;
 
     @FXML
@@ -95,7 +98,7 @@ public class EditAdminProfileController implements Initializable {
             objInStreamLogedinPerson.close();
 
 
-            String breviousID = admin.getID();
+            String breviousUN = admin.getUserName();
 
             if (!nameTextField.getText().equals(admin.getName())) {
                 admin.setName(nameTextField.getText()); isChanged=true;
@@ -116,8 +119,8 @@ public class EditAdminProfileController implements Initializable {
                 HashMap<String, Admin> AdminHashMap = (HashMap<String, Admin>) objInStreamAdminsBFile.readObject();
                 objInStreamAdminsBFile.close();
 
-                AdminHashMap.remove(breviousID);
-                AdminHashMap.put(admin.getID(),admin);
+                AdminHashMap.remove(breviousUN);
+                AdminHashMap.put(admin.getUserName(),admin);
 
                 ObjectOutputStream objOutStreamAdminsBFile = new ObjectOutputStream(new FileOutputStream("src\\AdminsBFile.dat"));
                 objOutStreamAdminsBFile.writeObject(AdminHashMap);
@@ -165,11 +168,13 @@ public class EditAdminProfileController implements Initializable {
             ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
             Admin admin = (Admin) objInStream.readObject();
             objInStream.close();
+            saveButton.setVisible(false);
 
 
 
             IDLabel.setText(admin.getID());
-            saveButton.setVisible(false);
+            usernameLable.setText(admin.getUserName());
+
             nameTextField.setText(admin.getName());
             EmailTextField.setText(admin.getEmail());
             authorizedTextField.setText(String.valueOf(admin.getIsAuthorized()));

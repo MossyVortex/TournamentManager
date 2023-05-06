@@ -38,14 +38,14 @@
          <right>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="saveButton" layoutX="-97.0" layoutY="21.0" mnemonicParsing="false" onAction="#SaveButtonOnClicked" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #F2E8CF; -fx-background-radius: 12;" text="Save" textFill="#386641">
+                  <Button fx:id="saveButton" layoutX="-97.0" layoutY="21.0" mnemonicParsing="false" onAction="#SaveButtonOnClicked" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: #F2E8CF; -fx-background-radius: 12;" text="Save" textFill="#386641" visible="false">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="68.0" fitWidth="69.0" layoutX="-56.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="editButton" fitHeight="68.0" fitWidth="69.0" layoutX="-32.0" layoutY="11.0" onMouseClicked="#editButtonOnClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Images/edit.png" />
+                        <Image url="@Images/icons8-create-384.png" />
                      </image>
                   </ImageView>
                </children></Pane>
@@ -81,7 +81,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="nameTextField1" prefWidth="158.0" promptText="Phone" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                              <TextField fx:id="phoneTextField" prefWidth="158.0" promptText="Phone" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -100,7 +100,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="nameTextField1" prefWidth="158.0" promptText="Email" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                              <TextField fx:id="EmailTextField" prefWidth="158.0" promptText="Email" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -115,7 +115,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="nameTextField11" prefWidth="158.0" promptText="Password" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
+                              <TextField fx:id="passwordTextField" prefWidth="158.0" promptText="Password" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 1px 0px 0px 0px;">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -144,6 +144,15 @@
                         <Image url="@Images/administrator.png" />
                      </image>
                   </ImageView>
+                  <HBox alignment="CENTER" prefHeight="18.0" prefWidth="178.0">
+                     <children>
+                        <Label fx:id="usernameLable" text="xxxxxxxxx" textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="18.0" prefWidth="178.0">
                      <children>
                         <Label text="ID: " textFill="#f2e8cf">

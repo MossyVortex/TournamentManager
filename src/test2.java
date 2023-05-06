@@ -119,9 +119,9 @@ try {
     HashMap<String, Admin> studentHashMap ;
     studentHashMap = (HashMap<String, Admin>) objInStream.readObject();
 
-    Admin admin= new Admin("Admin","0555555555","admin@gmail.com","admin","admin",0,true);
-    studentHashMap.put(admin.getID(),admin);
-    FileOutputStream fileOutputStream = new FileOutputStream("src\\empty.dat");
+    Admin admin= new Admin("Admin","admin","0555555555","admin@gmail.com","admin","admin",0,true);
+    studentHashMap.put(admin.getUserName(),admin);
+    FileOutputStream fileOutputStream = new FileOutputStream("src\\AdminsBFile.dat");
     ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
     objOutStream.writeObject(studentHashMap);
 

@@ -43,9 +43,9 @@
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="EditButton" fitHeight="68.0" fitWidth="69.0" layoutX="-56.0" layoutY="120.0" onMouseClicked="#EditButtonOnClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="EditButton" fitHeight="68.0" fitWidth="69.0" layoutX="-32.0" layoutY="11.0" onMouseClicked="#EditButtonOnClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Images/edit.png" />
+                        <Image url="@Images/icons8-create-384.png" />
                      </image>
                   </ImageView>
                </children>
@@ -191,6 +191,15 @@
                         <Image url="@Images/Student.png" />
                      </image>
                   </ImageView>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="293.0" prefHeight="18.0" prefWidth="178.0">
+                     <children>
+                        <Label fx:id="usernameLable" text="xxxxxxxxx" textFill="#f2e8cf">
+                           <font>
+                              <Font name="System Bold Italic" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="18.0" prefWidth="178.0">
                      <children>
                         <Label text="ID: " textFill="#f2e8cf">

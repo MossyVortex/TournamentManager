@@ -58,6 +58,9 @@ public class EditStudentProfileController implements Initializable {
     private TextField WinsTextField;
 
     @FXML
+    private Label usernameLable;
+
+    @FXML
     private ImageView backButton;
 
     @FXML
@@ -107,7 +110,7 @@ public class EditStudentProfileController implements Initializable {
             objInStreamLogedinPerson.close();
 
 
-            String breviousID = student.getID();
+            String breviousUN = student.getUserName();
 
             if (!nameTextField.getText().equals(student.getName())) {
                 student.setName(nameTextField.getText()); isChanged=true;
@@ -127,14 +130,14 @@ public class EditStudentProfileController implements Initializable {
             if (!(Integer.parseInt(WeightTextField.getText())==(student.getWeight()))) {
                 student.setWeight(Integer.parseInt(WeightTextField.getText())); isChanged=true;
             }
-
+            System.out.println(isChanged);
             if (isChanged){
                 ObjectInputStream objInStreamStudentsBFile = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
                 HashMap<String, Student> studentHashMap = (HashMap<String, Student>) objInStreamStudentsBFile.readObject();
                 objInStreamStudentsBFile.close();
 
-                studentHashMap.remove(breviousID);
-                studentHashMap.put(student.getID(),student);
+                studentHashMap.remove(breviousUN);
+                studentHashMap.put(student.getUserName(),student);
 
                 ObjectOutputStream objOutStreamStudentsBFile = new ObjectOutputStream(new FileOutputStream("src\\StudentsBFile.dat"));
                 objOutStreamStudentsBFile.writeObject(studentHashMap);
@@ -186,7 +189,7 @@ public class EditStudentProfileController implements Initializable {
             objInStream.close();
 
 
-
+            usernameLable.setText(student.getUserName());
             IDLabel.setText(student.getID());
             WinsTextField.setText(String.valueOf(student.getWins()));
             TiesTextField.setText(String.valueOf(student.getTies()));

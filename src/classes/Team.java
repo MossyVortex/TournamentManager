@@ -25,6 +25,7 @@ public class Team {
     public Team(ArrayList<Student> e) {
         this.teamMembers = e;
     }
+    public Team(String name ){this.teamName = name;}
 
     public String[] getNameOfEachMember() {
         return nameOfEachMember;
@@ -42,6 +43,9 @@ public class Team {
         return "Member name " + member +" is not exist";
     }
     public String getTeamName() {
+        return teamName;
+    }
+    public String toString(){
         return teamName;
     }
     public int getNumberOFTie() {

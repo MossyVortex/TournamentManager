@@ -75,12 +75,12 @@
                                  <children>
                                     <VBox prefHeight="207.0" prefWidth="308.0">
                                        <children>
-                                          <Label fx:id="IDLable" text="ID" textFill="#386641">
+                                          <Label fx:id="usernameLable" text="Username" textFill="#386641">
                                              <font>
                                                 <Font size="21.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="IDTextF" promptText="Enter your ID" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                          <TextField fx:id="usernameTextF" promptText="Enter your Username" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
