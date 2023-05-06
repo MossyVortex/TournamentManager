@@ -137,7 +137,10 @@ public class EditAdminProfileController implements Initializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        editButton.setVisible(true);
+        editButton.setVisible(true); saveButton.setVisible(false);
+        nameTextField.setEditable(false);EmailTextField.setEditable(false);
+        phoneTextField.setEditable(false);passwordTextField.setEditable(false);
+        authorizedTextField.setEditable(false);tournamentsNumTextField.setEditable(false);
     }
 
     @FXML
@@ -166,7 +169,7 @@ public class EditAdminProfileController implements Initializable {
 
 
             IDLabel.setText(admin.getID());
-
+            saveButton.setVisible(false);
             nameTextField.setText(admin.getName());
             EmailTextField.setText(admin.getEmail());
             authorizedTextField.setText(String.valueOf(admin.getIsAuthorized()));
