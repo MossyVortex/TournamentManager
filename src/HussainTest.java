@@ -26,6 +26,20 @@ public class HussainTest {
 //            readStudentInfoMap.forEach((x,y) -> System.out.println(y));
 //            objInStream.close();
 
+//            PrintWriter printWriter = new PrintWriter(new File("src\\stds.txt"));
+
+
+//
+
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\StudentsBFile.dat"));
+            ArrayList<Tournament> tournaments = new ArrayList<>();
+            HashMap<String, Student> studentHashMap = new HashMap<>() ;
+            Student student = new Student("Student","student","0565000000",
+                    "student@hotmail.com","202000000","student",60,180, tournaments,0,0,0);
+            studentHashMap.put(student.getUserName(),student);
+            objectOutputStream.writeObject(studentHashMap);
+            objectOutputStream.close();
+
             ObjectInputStream objSInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
             HashMap<String, Student> readStudentInfoMap ;
             readStudentInfoMap = (HashMap<String, Student>) objSInStream.readObject();
@@ -33,8 +47,6 @@ public class HussainTest {
             objSInStream.close();
 
 
-
-//            ArrayList<Tournament> tournaments = new ArrayList<>();
 
 //            Student student = new Student("Hussain","0565000000","hussain@hotmail.com","202010000","12345",90,180,tournaments,0,0,0);
 //            Student student1 = new Student("Ali","0565000000","Ali@hotmail.com","202110000","12345",90,180,tournaments,0,0,0);

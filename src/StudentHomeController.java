@@ -140,7 +140,7 @@ public class StudentHomeController implements Initializable {
             ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
             Student student = (Student) objInStream.readObject();
 
-            nameLable.setText(student.getName());
+            nameLable.setText(student.getUserName());
             objInStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -40,6 +40,9 @@ public class EditAdminProfileController implements Initializable {
     private ImageView backButton;
 
     @FXML
+    private Label usernameLable;
+
+    @FXML
     private ImageView editButton;
 
     @FXML
@@ -165,11 +168,13 @@ public class EditAdminProfileController implements Initializable {
             ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
             Admin admin = (Admin) objInStream.readObject();
             objInStream.close();
+            saveButton.setVisible(false);
 
 
 
             IDLabel.setText(admin.getID());
-            saveButton.setVisible(false);
+            usernameLable.setText(admin.getUserName());
+
             nameTextField.setText(admin.getName());
             EmailTextField.setText(admin.getEmail());
             authorizedTextField.setText(String.valueOf(admin.getIsAuthorized()));

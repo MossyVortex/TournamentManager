@@ -74,6 +74,12 @@ public class RegisterStudentController {
     private TextField weightTextField;
 
     @FXML
+    private Label usernameLable;
+
+    @FXML
+    private TextField usernameTextField;
+
+    @FXML
     void backButtonOnClicked(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
@@ -207,8 +213,8 @@ public class RegisterStudentController {
 
                 ObjectOutputStream objOutStream = new ObjectOutputStream(new FileOutputStream("src\\StudentsBFile.dat"));
 
-                if (!studentHashMap.containsKey(IDTextField.getText())){
-                    studentHashMap.put(IDTextField.getText(),new Student(nameTextField.getText(),phoneTextField.getText(),emailTextField.getText(), IDTextField.getText(),
+                if (!studentHashMap.containsKey(usernameTextField.getText())){
+                    studentHashMap.put(usernameTextField.getText(),new Student(nameTextField.getText(),usernameTextField.getText(),phoneTextField.getText(),emailTextField.getText(), IDTextField.getText(),
                             phoneTextField.getText(), Integer.parseInt(weightTextField.getText()),Integer.parseInt(heightTextField.getText()),joinedTournamentsTournament,0,0,0));
                     objOutStream.writeObject(studentHashMap);
 
@@ -234,7 +240,7 @@ public class RegisterStudentController {
         boolean allFilled = true;
         nameLable.setTextFill(Paint.valueOf("#386641")); phoneLable.setTextFill(Paint.valueOf("#386641"));
         passwordLable.setTextFill(Paint.valueOf("#386641")); emailLable.setTextFill(Paint.valueOf("#386641"));
-        weightLable.setTextFill(Paint.valueOf("#386641")); heightLable.setTextFill(Paint.valueOf("#386641"));
+        weightLable.setTextFill(Paint.valueOf("#386641")); heightLable.setTextFill(Paint.valueOf("#386641"));usernameLable.setTextFill(Paint.valueOf("#386641"));
         IDLable.setTextFill(Paint.valueOf("#386641"));
         nameTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         IDTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
@@ -243,6 +249,7 @@ public class RegisterStudentController {
         phoneTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         weightTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
         heightTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
+        usernameTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
 
         if (nameTextField.getText().isEmpty()){
             nameLable.setTextFill(Paint.valueOf("#BC4749"));
@@ -277,6 +284,11 @@ public class RegisterStudentController {
         if (IDTextField.getText().isEmpty()){
             IDLable.setTextFill(Paint.valueOf("#BC4749"));
             IDTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+            allFilled = false;
+        }
+        if (usernameTextField.getText().isEmpty()){
+            usernameLable.setTextFill(Paint.valueOf("#BC4749"));
+            usernameTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
             allFilled = false;
         }
         return allFilled;
