@@ -19,6 +19,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -47,25 +49,25 @@ public class StudentHomeController implements Initializable {
     private TableView<Tournament> tournamentTableView;
 
     @FXML
-    private TableColumn<Tournament, ?> IDColumn;
+    private TableColumn<Tournament, String> IDColumn;
 
     @FXML
-    private TableColumn<Tournament, ?> endingDateColumn;
+    private TableColumn<Tournament, LocalDate> endingDateColumn;
 
     @FXML
-    private TableColumn<Tournament, ?> gameColumn;
+    private TableColumn<Tournament, String> gameColumn;
 
     @FXML
-    private TableColumn<Tournament, ?> nameColumn;
+    private TableColumn<Tournament, String> nameColumn;
 
     @FXML
-    private TableColumn<Tournament, ?> startDateColumn;
+    private TableColumn<Tournament, LocalDate> startDateColumn;
 
     @FXML
-    private TableColumn<Tournament, ?> statusColumn;
+    private TableColumn<Tournament, Boolean> statusColumn;
 
     @FXML
-    private TableColumn<Tournament, ?> typeColumn;
+    private TableColumn<Tournament, String> typeColumn;
 
 
 
@@ -94,7 +96,7 @@ public class StudentHomeController implements Initializable {
     void ViewProfilePaneOnClicked(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\EditStudentProfileScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditStudentProfileScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
