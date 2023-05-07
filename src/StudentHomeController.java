@@ -1,4 +1,5 @@
 import classes.Student;
+import classes.Tournament;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
@@ -17,13 +19,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 
 
 public class StudentHomeController implements Initializable {
@@ -47,7 +46,30 @@ public class StudentHomeController implements Initializable {
     private Button viewTournamentsButton;
 
     @FXML
-    private TableView<?> tournamentTableView;
+    private TableView<Tournament> tournamentTableView;
+
+    @FXML
+    private TableColumn<Tournament, String> IDColumn;
+
+    @FXML
+    private TableColumn<Tournament, LocalDate> endingDateColumn;
+
+    @FXML
+    private TableColumn<Tournament, String> gameColumn;
+
+    @FXML
+    private TableColumn<Tournament, String> nameColumn;
+
+    @FXML
+    private TableColumn<Tournament, LocalDate> startDateColumn;
+
+    @FXML
+    private TableColumn<Tournament, Boolean> statusColumn;
+
+    @FXML
+    private TableColumn<Tournament, String> typeColumn;
+
+
 
 //    @FXML
 //    public void initialize() {
@@ -90,7 +112,7 @@ public class StudentHomeController implements Initializable {
 
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EnterTournamentIDToViewScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EnterTournamentIDToViewScene2.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

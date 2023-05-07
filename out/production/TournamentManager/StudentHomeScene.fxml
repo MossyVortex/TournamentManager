@@ -98,13 +98,13 @@
             </BorderPane>
          </top>
          <left>
-            <BorderPane prefHeight="482.0" prefWidth="73.0" BorderPane.alignment="CENTER" />
+            <BorderPane prefHeight="482.0" prefWidth="45.0" BorderPane.alignment="CENTER" />
          </left>
          <right>
-            <BorderPane prefHeight="482.0" prefWidth="73.0" BorderPane.alignment="CENTER" />
+            <BorderPane prefHeight="482.0" prefWidth="45.0" BorderPane.alignment="CENTER" />
          </right>
          <bottom>
-            <BorderPane prefHeight="82.0" prefWidth="700.0" BorderPane.alignment="CENTER" />
+            <BorderPane prefHeight="70.0" prefWidth="700.0" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -118,12 +118,13 @@
                <center>
                   <TableView fx:id="tournamentTableView" prefHeight="394.0" prefWidth="553.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER">
                      <columns>
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Name" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="Game" />
-                        <TableColumn prefWidth="89.99996948242188" style="-fx-background-color: #C8A038;" text="Starting Date" />
-                        <TableColumn prefWidth="67.00003051757812" style="-fx-background-color: #D6B86A;" text="Ending Date" />
-                        <TableColumn prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Type" />
-                        <TableColumn prefWidth="97.60006713867188" style="-fx-background-color: #D6B86A;" text="Status" />
+                        <TableColumn fx:id="nameColumn" prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Name" />
+                        <TableColumn fx:id="IDColumn" prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="ID" />
+                        <TableColumn fx:id="startDateColumn" prefWidth="89.99996948242188" style="-fx-background-color: #C8A038;" text="Starting Date" />
+                        <TableColumn fx:id="endingDateColumn" prefWidth="67.00003051757812" style="-fx-background-color: #D6B86A;" text="Ending Date" />
+                        <TableColumn fx:id="typeColumn" prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Type" />
+                        <TableColumn fx:id="gameColumn" prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="Game" />
+                        <TableColumn fx:id="statusColumn" prefWidth="97.60006713867188" style="-fx-background-color: #C8A038;" text="Status" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

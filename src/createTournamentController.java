@@ -80,6 +80,12 @@ public class createTournamentController {
     private Label tournamentNameLabel;
 
     @FXML
+    private Label membersPerTeamLabel;
+
+    @FXML
+    private TextField membersPerTeamTextField;
+
+    @FXML
     private TextField tournamentNameTextField;
 
     private LocalDate pickedStartDate, pickedEndDate;
@@ -110,6 +116,7 @@ public class createTournamentController {
                 boolean registerationStatus;
                 LocalDate startDate, endDate;
                 ArrayList<Team> teams;
+                int membersPerTeam;
 
                 name = tournamentNameTextField.getText();
                 tournamenType = "Elimination";
@@ -124,11 +131,12 @@ public class createTournamentController {
                 ArrayList<Team> teamArr = new ArrayList<>();
                 teams = teamArr;
                 registerationStatus = true;
+                membersPerTeam = Integer.parseInt(membersPerTeamTextField.getText());
 
                 ArrayList<Object> temp = new ArrayList<>();
                 tournamentsInfoMap.put(tournamentID, temp);
                 addTournamentInfo(tournamentsInfoMap,name, tournamenType, gameType, tournamentID, winner, startDate, endDate,
-                 bannedStudentsIDs, numOfTeams, students,teams ,registerationStatus);
+                 bannedStudentsIDs, numOfTeams, students,teams ,registerationStatus, membersPerTeam);
 
                 Parent fxmlLoader = null;
                 try {
@@ -158,14 +166,12 @@ public class createTournamentController {
                     boolean registerationStatus;
                     LocalDate startDate, endDate;
                     ArrayList<Team> teams;
+                    int membersPerTeam;
 
                     name = tournamentNameTextField.getText();
                     gameType = gameTypeTextField.getText();
                     tournamentID = tempTournamentID;
                     tournamentType = "RoundRobin";
-                    if(eliminationRadioButton.isSelected()){
-                        tournamentType = "Elimination";
-                    }
                     winner = "no winner";
                     startDate = pickedStartDate;
                     endDate = pickedEndDate;
@@ -175,11 +181,12 @@ public class createTournamentController {
                     registerationStatus = true;
                     ArrayList<Team> teamArr = new ArrayList<>();
                     teams = teamArr;
+                    membersPerTeam = Integer.parseInt(membersPerTeamTextField.getText());
 
                     ArrayList<Object> temp = new ArrayList<>();
                     tournamentsInfoMap.put(tournamentID, temp);
                     addTournamentInfo(tournamentsInfoMap, name, tournamentType, gameType, tournamentID, winner, startDate, endDate,
-                    bannedStudentsIDs, numOfTeams, students, teams,registerationStatus);
+                    bannedStudentsIDs, numOfTeams, students, teams, registerationStatus, membersPerTeam);
 
                     Parent fxmlLoader = null;
                     try {
@@ -250,7 +257,7 @@ public class createTournamentController {
     }
 
     public static void addTournamentInfo(HashMap<String, ArrayList<Object>> tournamentInfoMap ,String name, String tournamentType,String gameType, String tournamentID, String winner, LocalDate startDate,
-    LocalDate endDate, String bannedStudentsIDs, String maxNumOfTeams, String students, ArrayList<Team> teams, boolean registerationStatus){
+    LocalDate endDate, String bannedStudentsIDs, String maxNumOfTeams, String students, ArrayList<Team> teams, boolean registerationStatus, int membersPerTeam){
 
         ArrayList<Object> tournamentData = tournamentInfoMap.get(tournamentID);
 
@@ -279,7 +286,7 @@ public class createTournamentController {
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
                 ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
                 if (!tournamentsInfoHashMap.containsKey(tournamentID)){
-                    tournamentsInfoHashMap.put(tournamentID, new Elimination(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null, null, registerationStatus));
+                    tournamentsInfoHashMap.put(tournamentID, new Elimination(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null, membersPerTeam ,registerationStatus )); // the zero before the reg status is a placeholder we need a textfield!
                     objOutStream.writeObject(tournamentsInfoHashMap);
                     
                 }
@@ -290,7 +297,7 @@ public class createTournamentController {
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
                 ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
                 if (!tournamentsInfoHashMap.containsKey(tournamentID)){
-                    tournamentsInfoHashMap.put(tournamentID, new RoundRobin(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null, null, registerationStatus));
+                    tournamentsInfoHashMap.put(tournamentID, new RoundRobin(tournamentType, gameType, tournamentID, winner, startDate, endDate, teams, 0, null,0 ,registerationStatus));
                     objOutStream.writeObject(tournamentsInfoHashMap);
                 }    
                 objInStream.close();

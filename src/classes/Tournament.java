@@ -2,12 +2,7 @@ package classes;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Dictionary;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public abstract class Tournament {
     private String name, type, gameType, tournamentID, winner;
@@ -16,9 +11,11 @@ public abstract class Tournament {
     private int numOfTeams; private Dictionary<Integer,Team> teamPlace; private Dictionary<String,Match[]> matchHistory;
     private String[] bannedStudentsIDs; private ArrayList<Student> students;
     private boolean registerationStatus;
+    private int membersPerTeam;
 
     public Tournament(String name, String gameType, String tournamentID, String winner, LocalDate startingDate, LocalDate endingDate,
-     ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students, boolean registerationStatus){ // abstract constructor
+     ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, boolean registerationStatus,
+     int membersPerTeam){ // abstract constructor
 
         this.name = name;
         this.gameType = gameType;
@@ -28,9 +25,9 @@ public abstract class Tournament {
         this.endingDate = endingDate;
         this.teams = teams;
         this.numOfTeams = numOfTeams;
-        this.bannedStudentsIDs = bannedStudentsIDs;
         this.students = students;
         this.registerationStatus = registerationStatus;
+        this.membersPerTeam = membersPerTeam;
 
     }
     public Tournament(){ // abstract constructor
@@ -103,5 +100,149 @@ public abstract class Tournament {
 
         existingIDs.add(uniqueID); // Add the new ID to the set of existing IDs
         return uniqueID;
+    }
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getWinner() {
+        return winner;
+    }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
+    }
+
+    public LocalDate getStartingDate() {
+        return startingDate;
+    }
+
+    public LocalDate getEndingDate() {
+        return endingDate;
+    }
+
+    public void setStartingDate(LocalDate startingDate) {
+        this.startingDate = startingDate;
+    }
+
+    public void setEndingDate(LocalDate endingDate) {
+        this.endingDate = endingDate;
+    }
+
+    public String getTournamentID() {
+        return tournamentID;
+    }
+
+    public void setTournamentID(String tournamentID) {
+        this.tournamentID = tournamentID;
+    }
+
+    public Dictionary<Integer, Team> getTeamPlace() {
+        return teamPlace;
+    }
+
+    public Boolean getTournamentRegistrationStatus() {
+        return tournamentRegistrationStatus;
+    }
+
+    public void setTournamentRegistrationStatus(Boolean tournamentRegistrationStatus) {
+        this.tournamentRegistrationStatus = tournamentRegistrationStatus;
+    }
+
+    public void setTeamPlace(Dictionary<Integer, Team> teamPlace) {
+        this.teamPlace = teamPlace;
+    }
+
+    public Dictionary<String, Match[]> getMatchHistory() {
+        return matchHistory;
+    }
+
+    public void setMatchHistory(Dictionary<String, Match[]> matchHistory) {
+        this.matchHistory = matchHistory;
+    }
+
+    public String[] getBannedStudentsIDs() {
+        return bannedStudentsIDs;
+    }
+
+    public void setBannedStudentsIDs(String[] bannedStudentsIDs) {
+        this.bannedStudentsIDs = bannedStudentsIDs;
+    }
+
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
+    }
+
+    public int getNumOfTeams() {
+        return numOfTeams;
+    }
+
+    public void setNumOfTeams(int numOfTeams) {
+        this.numOfTeams = numOfTeams;
+    }
+
+    public int getMembersPerTeam() {
+        return membersPerTeam;
+    }
+
+    public void setMembersPerTeam(int membersPerTeam) {
+        this.membersPerTeam = membersPerTeam;
+    }
+
+    public void setRegisterationStatus(boolean registerationStatus) {
+        this.registerationStatus = registerationStatus;
+    }
+
+    public boolean isRegisterationStatus() {
+        return registerationStatus;
+    }
+
+    public void setTeams(ArrayList<Team> teams) {
+        this.teams = teams;
+    }
+
+    @Override
+    public String toString() {
+        return "Tournament{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", gameType='" + gameType + '\'' +
+                ", tournamentID='" + tournamentID + '\'' +
+                ", winner='" + winner + '\'' +
+                ", startingDate=" + startingDate +
+                ", endingDate=" + endingDate +
+                ", teams=" + teams +
+                ", tournamentRegistrationStatus=" + tournamentRegistrationStatus +
+                ", numOfTeams=" + numOfTeams +
+                ", teamPlace=" + teamPlace +
+                ", matchHistory=" + matchHistory +
+                ", bannedStudentsIDs=" + Arrays.toString(bannedStudentsIDs) +
+                ", students=" + students +
+                ", registerationStatus=" + registerationStatus +
+                ", membersPerTeam=" + membersPerTeam +
+                '}';
     }
 }
