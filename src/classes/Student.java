@@ -26,6 +26,10 @@ public class Student extends Person implements Serializable {
         super(name);
     }
 
+    public Student(String name, String userName,String email, String password){
+        super(name,userName,email,password);
+    }
+
     @Override
     public String getName() {
         

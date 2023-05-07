@@ -98,8 +98,47 @@ public class LoginController {
 
 
     @FXML
-    void loginButtonOnClicked(ActionEvent event) throws IOException {
+    void loginButtonOnClicked(ActionEvent event) throws IOException, ClassNotFoundException {
         if(allFilled()) {
+            if(studentRadioButton.isSelected()){
+                if(APIStudent(usernameTextF.getText(), passwordTextF.getText())>299){
+                    if(logInBinaryFileStudent(usernameTextF.getText(),passwordTextF.getText())){
+                        Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
+                        Scene homePage = new Scene(fxmlLoader);
+                        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                        stage.setScene(homePage);
+                        stage.setTitle("Tournament Manager - Home Page");
+                        stage.show();
+                    }else{
+                        Alert("Wrong Password!");
+                    }
+                }else{
+                    Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
+                    Scene homePage = new Scene(fxmlLoader);
+                    Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                    stage.setScene(homePage);
+                    stage.setTitle("Tournament Manager - Home Page");
+                    stage.show();
+                }
+            }else{
+                if(APIAdmin(usernameTextF.getText(),passwordTextF.getText())>299){
+                        Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+                        Scene homePage = new Scene(fxmlLoader);
+                        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                        stage.setScene(homePage);
+                        stage.setTitle("Tournament Manager - Home Page");
+                        stage.show();
+                    
+    
+                }else{
+                    Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+                    Scene homePage = new Scene(fxmlLoader);
+                    Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                    stage.setScene(homePage);
+                    stage.setTitle("Tournament Manager - Home Page");
+                    stage.show();
+                }
+            }
 //            if(studentRadioButton.isSelected()){
 //                String ID = IDTextF.getText();
 //                String password = passwordTextF.getText();
@@ -145,61 +184,136 @@ public class LoginController {
 //                    Alert("ID or Password is/are wrong!");
 //                }
 //            }
-             try {
-                 ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
-                 if (adminRadioButton.isSelected()){
-                     ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
-                     HashMap<String, Admin> readAdminInfoMap = (HashMap<String, Admin>) objInStream.readObject();
-                     objInStream.close();
-                     if (readAdminInfoMap.containsKey(usernameTextF.getText())){
-                         if (readAdminInfoMap.get(usernameTextF.getText()).getPassword().equals(passwordTextF.getText())) {
-                             outputStream.writeObject(readAdminInfoMap.get(usernameTextF.getText()));
-                             Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
-                             Scene homePage = new Scene(fxmlLoader);
-                             Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-                             stage.setScene(homePage);
-                             stage.setTitle("Tournament Manager - Home Page");
-                             stage.show();
+            //  try {
+            //      ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
+            //      if (adminRadioButton.isSelected()){
+            //          ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
+            //          HashMap<String, Admin> readAdminInfoMap = (HashMap<String, Admin>) objInStream.readObject();
+            //          objInStream.close();
+            //          if (readAdminInfoMap.containsKey(usernameTextF.getText())){
+            //              if (readAdminInfoMap.get(usernameTextF.getText()).getPassword().equals(passwordTextF.getText())) {
+            //                  outputStream.writeObject(readAdminInfoMap.get(usernameTextF.getText()));
+            //                  Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
+            //                  Scene homePage = new Scene(fxmlLoader);
+            //                  Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+            //                  stage.setScene(homePage);
+            //                  stage.setTitle("Tournament Manager - Home Page");
+            //                  stage.show();
                     
 
-                         }
-                         else
-                             Alert("Wrong Password!");
-                     }
-                     else
-                         Alert("Your ID is Not Valid");
-                 }
-                 else if (studentRadioButton.isSelected()){
-                     ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
-                     HashMap<String, Student> readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
-                     objInStream.close();
-                     if (readStudentInfoMap.containsKey(usernameTextF.getText())){
-                         if (readStudentInfoMap.get(usernameTextF.getText()).getPassword().equals(passwordTextF.getText())) {
-                             outputStream.writeObject(readStudentInfoMap.get(usernameTextF.getText()));
-                             Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
-                             Scene homePage = new Scene(fxmlLoader);
-                             Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-                             stage.setScene(homePage);
-                             stage.setTitle("Tournament Manager - Home Page");
-                             stage.show();
-                         }
-                         else
-                             Alert("Wrong Password!");
-                     }
-                     else
-                         Alert("Your ID is Not Valid");
-                 }
-                 outputStream.close();
+            //              }
+            //              else
+            //                  Alert("Wrong Password!");
+            //          }
+            //          else
+            //              Alert("Your ID is Not Valid");
+            //      }
+            //      else if (studentRadioButton.isSelected()){
+            //          ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
+            //          HashMap<String, Student> readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
+            //          objInStream.close();
+            //          if (readStudentInfoMap.containsKey(usernameTextF.getText())){
+            //              if (readStudentInfoMap.get(usernameTextF.getText()).getPassword().equals(passwordTextF.getText())) {
+            //                  outputStream.writeObject(readStudentInfoMap.get(usernameTextF.getText()));
+            //                  Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
+            //                  Scene homePage = new Scene(fxmlLoader);
+            //                  Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+            //                  stage.setScene(homePage);
+            //                  stage.setTitle("Tournament Manager - Home Page");
+            //                  stage.show();
+            //              }
+            //              else
+            //                  Alert("Wrong Password!");
+            //          }
+            //          else
+            //              Alert("Your ID is Not Valid");
+            //      }
+            //      outputStream.close();
 
 
-             }
-             catch (ClassNotFoundException e) {
-                 e.printStackTrace();
-             }
+            //  }
+            //  catch (ClassNotFoundException e) {
+            //      e.printStackTrace();
+            //  }
 
         }
     }
     private static HttpURLConnection connection;
+    
+    public boolean logInBinaryFileStudent(String ID, String password) throws FileNotFoundException, IOException, ClassNotFoundException{
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
+        ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
+        HashMap<String, Student> readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
+        objInStream.close();
+        if(readStudentInfoMap.containsKey(ID)){
+            if(readStudentInfoMap.get(ID).getPassword().equals(password)){
+                outputStream.writeObject(readStudentInfoMap.get(ID));
+                outputStream.close();
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+    public int APIStudent(String ID, String password) throws IOException{
+        
+        String path = "https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn?username="+ID+"&password="+password;
+        URL url = new URL(path);
+        
+        connection = (HttpURLConnection) url.openConnection();
+
+        connection.setRequestMethod("GET");
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+
+        int status = connection.getResponseCode();
+
+        if (status<=299){
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            String line ="";
+            StringBuffer responseContent = new StringBuffer();
+            while((line = reader.readLine()) != null){
+                responseContent.append(line);
+            }
+            reader.close();
+            String dataFromAPI = responseContent.substring(9);
+            String name = "";
+            int i =0;
+            while(dataFromAPI.charAt(i)!='"'){
+                name+= dataFromAPI.charAt(i);
+                i++;
+            }
+            Student student = new Student(name,ID,"Abdulmjeed.alothman222@gmail.com",password);
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
+            outputStream.writeObject(student);
+            outputStream.close();
+        }
+
+        return status;
+    }
+    public int APIAdmin(String ID, String password) throws IOException{
+        String path = "https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn?username="+ID+"&password="+password;
+        URL url = new URL(path);
+        
+        connection = (HttpURLConnection) url.openConnection();
+
+        connection.setRequestMethod("GET");
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+
+        int status = connection.getResponseCode();
+
+        if (status<=299){
+            Admin admin = new Admin(ID, password);
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
+            outputStream.writeObject(admin);
+            outputStream.close();
+        }
+        return status;
+   
+    }
     public void Alert(String error){
         Alert errorAlert = new Alert(Alert.AlertType.ERROR);
         errorAlert.setHeaderText("Input not valid");

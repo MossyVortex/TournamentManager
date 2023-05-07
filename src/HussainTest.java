@@ -31,14 +31,14 @@ public class HussainTest {
 
 //
 
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\StudentsBFile.dat"));
-            ArrayList<Tournament> tournaments = new ArrayList<>();
-            HashMap<String, Student> studentHashMap = new HashMap<>() ;
-            Student student = new Student("Student","student","0565000000",
-                    "student@hotmail.com","202000000","student",60,180, tournaments,0,0,0);
-            studentHashMap.put(student.getUserName(),student);
-            objectOutputStream.writeObject(studentHashMap);
-            objectOutputStream.close();
+            // ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\StudentsBFile.dat"));
+            // ArrayList<Tournament> tournaments = new ArrayList<>();
+            // HashMap<String, Student> studentHashMap = new HashMap<>() ;
+            // Student student = new Student("Student","student","0565000000",
+            //         "student@hotmail.com","202000000","student",60,180, tournaments,0,0,0);
+            // studentHashMap.put(student.getUserName(),student);
+            // objectOutputStream.writeObject(studentHashMap);
+            // objectOutputStream.close();
 
             ObjectInputStream objSInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
             HashMap<String, Student> readStudentInfoMap ;

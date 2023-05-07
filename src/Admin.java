@@ -9,6 +9,10 @@ public class Admin extends Person {
         this.tournamentsCreated = tournamentsCreated;
         this.IsAuthorized = IsAuthorized;
     }
+
+    public Admin(String userName, String password){
+        super(userName,password);
+    }
      public int getTournamentsCreated() {
          return tournamentsCreated;
      }
