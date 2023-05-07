@@ -85,4 +85,6 @@ public class JoinTournamentController {
         individualRB.setSelected(false);
     }
 
+    public void ViweButtonOnClicked1(ActionEvent actionEvent) {
+    }
 }

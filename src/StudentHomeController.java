@@ -1,4 +1,5 @@
 import classes.Student;
+import classes.Tournament;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
@@ -19,11 +21,6 @@ import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 
 
 public class StudentHomeController implements Initializable {
@@ -47,7 +44,30 @@ public class StudentHomeController implements Initializable {
     private Button viewTournamentsButton;
 
     @FXML
-    private TableView<?> tournamentTableView;
+    private TableView<Tournament> tournamentTableView;
+
+    @FXML
+    private TableColumn<Tournament, ?> IDColumn;
+
+    @FXML
+    private TableColumn<Tournament, ?> endingDateColumn;
+
+    @FXML
+    private TableColumn<Tournament, ?> gameColumn;
+
+    @FXML
+    private TableColumn<Tournament, ?> nameColumn;
+
+    @FXML
+    private TableColumn<Tournament, ?> startDateColumn;
+
+    @FXML
+    private TableColumn<Tournament, ?> statusColumn;
+
+    @FXML
+    private TableColumn<Tournament, ?> typeColumn;
+
+
 
 //    @FXML
 //    public void initialize() {
@@ -74,7 +94,7 @@ public class StudentHomeController implements Initializable {
     void ViewProfilePaneOnClicked(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EditStudentProfileScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\EditStudentProfileScene.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -90,7 +110,7 @@ public class StudentHomeController implements Initializable {
 
         Parent fxmlLoader = null;
         try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EnterTournamentIDToViewScene.fxml")));
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EnterTournamentIDToViewScene2.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

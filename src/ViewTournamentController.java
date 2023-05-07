@@ -147,6 +147,19 @@ public class ViewTournamentController implements Initializable {
     private Button viewButton;
 
     @FXML
+    private TextField tournamentIDTextField1;
+
+    @FXML
+    private Button viewButton1;
+
+    @FXML
+    void ViweButtonOnClicked1(ActionEvent event) {
+
+    }
+
+
+
+    @FXML
     void ViewButtonOnClicked(ActionEvent event) {
 
     }
