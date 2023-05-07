@@ -16,9 +16,11 @@ public abstract class Tournament {
     private int numOfTeams; private Dictionary<Integer,Team> teamPlace; private Dictionary<String,Match[]> matchHistory;
     private String[] bannedStudentsIDs; private ArrayList<Student> students;
     private boolean registerationStatus;
+    private int membersPerTeam;
 
     public Tournament(String name, String gameType, String tournamentID, String winner, LocalDate startingDate, LocalDate endingDate,
-     ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students, boolean registerationStatus){ // abstract constructor
+     ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students, boolean registerationStatus,
+     int membersPerTeam){ // abstract constructor
 
         this.name = name;
         this.gameType = gameType;
@@ -31,6 +33,7 @@ public abstract class Tournament {
         this.bannedStudentsIDs = bannedStudentsIDs;
         this.students = students;
         this.registerationStatus = registerationStatus;
+        this.membersPerTeam = membersPerTeam;
 
     }
     public Tournament(){ // abstract constructor
@@ -103,5 +106,9 @@ public abstract class Tournament {
 
         existingIDs.add(uniqueID); // Add the new ID to the set of existing IDs
         return uniqueID;
+    }
+
+    public String getID(){
+        return this.tournamentID;
     }
 }
