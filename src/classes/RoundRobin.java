@@ -1,9 +1,10 @@
 package classes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 
-public class RoundRobin extends Tournament {
+public class RoundRobin extends Tournament implements Serializable {
     private Hashtable<Integer, ArrayList<Match>> matchHistory;
     private Hashtable<Team, Integer> winsHistory;
     private Hashtable<Team, Integer> goalDifferance;
@@ -13,9 +14,9 @@ public class RoundRobin extends Tournament {
 
 
     public RoundRobin(String name, String gameType, String tournamentID, String winner,  LocalDate startingDate, LocalDate endingDate,
-    ArrayList<Team> teams, int numOfTeams, String[] bannedStudentsIDs, ArrayList<Student> students, int membersPerTeam, boolean registerationStatus){ // constructor
+    ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, int membersPerTeam, boolean registerationStatus){ // constructor
 
-        super(name, gameType, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, bannedStudentsIDs, students, true, membersPerTeam);                   
+        super(name, gameType, tournamentID, winner, startingDate, endingDate, teams, numOfTeams,  students, true, membersPerTeam);
     }
 
     public RoundRobin(){
