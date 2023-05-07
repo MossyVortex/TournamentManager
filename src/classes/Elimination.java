@@ -7,10 +7,10 @@ import java.util.*;
 public class Elimination extends Tournament implements Serializable {
     private Hashtable<Integer, ArrayList<Match>> matchHistory;
     private int rounds;
-    public Elimination(String name, String gameType, String tournamentID, String winner,  LocalDate startingDate, LocalDate endingDate,
+    public Elimination(String name, String gameType, String type, String tournamentID, String winner,  LocalDate startingDate, LocalDate endingDate,
     ArrayList<Team> teams, int numOfTeams,  ArrayList<Student> students, int membersPerTeam, boolean registerationStatus){ // constructor
 
-        super(name, gameType, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, students, registerationStatus, membersPerTeam);
+        super(name, gameType,type, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, students, registerationStatus, membersPerTeam);
     }
     public Elimination(){
         super();

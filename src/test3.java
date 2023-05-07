@@ -17,7 +17,7 @@ public class test3 {
 
             HashMap<String, Tournament> tournaments = new HashMap<>() ;
             ArrayList<Team > teams = new ArrayList<>();
-            Tournament tournament =new RoundRobin("Term221","RoundRobin","10000","", LocalDate.now(),LocalDate.now(),teams,5,null,3,true);
+            Tournament tournament =new RoundRobin("Term221","Football","RoundRobin","10000","", LocalDate.now(),LocalDate.now(),teams,5,null,3,true);
             tournaments.put(tournament.getTournamentID(),tournament);
             objectOutputStream.writeObject(tournaments);
             objectOutputStream.close();

@@ -1,5 +1,6 @@
 import classes.Student;
 import classes.Tournament;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
@@ -20,9 +22,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class StudentHomeController implements Initializable {
@@ -162,9 +162,27 @@ public class StudentHomeController implements Initializable {
           try {
             ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
             Student student = (Student) objInStream.readObject();
+//
+//              ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+//              HashMap<String,Tournament> tournamentHashMap = (HashMap<String,Tournament>) objInStreamTournament.readObject();
+//              ArrayList<Tournament> list = new ArrayList<>();
+//
+//              tournamentHashMap.forEach((x,y) -> list.add(y));
+//
+//              nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+//              IDColumn.setCellValueFactory(new PropertyValueFactory<>("TournamentID"));
+//              typeColumn.setCellValueFactory(new PropertyValueFactory<>("Type"));
+//              gameColumn.setCellValueFactory(new PropertyValueFactory<>("GameType"));
+//              statusColumn.setCellValueFactory(new PropertyValueFactory<>("RegisterationStatus"));
+//              startDateColumn.setCellValueFactory(new PropertyValueFactory<>("StartingDate"));
+//              endingDateColumn.setCellValueFactory(new PropertyValueFactory<>("EndingDate"));
+//
+//              tournamentTableView.setItems((ObservableList<Tournament>) list);
+//
+//
 
-            nameLable.setText(student.getUserName());
-            objInStream.close();
+              nameLable.setText(student.getUserName());
+            objInStream.close(); //objInStreamTournament.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

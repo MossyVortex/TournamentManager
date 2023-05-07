@@ -13,12 +13,13 @@ public abstract class Tournament {
     private boolean registerationStatus;
     private int membersPerTeam;
 
-    public Tournament(String name, String gameType, String tournamentID, String winner, LocalDate startingDate, LocalDate endingDate,
+    public Tournament(String name, String gameType, String type, String tournamentID, String winner, LocalDate startingDate, LocalDate endingDate,
      ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, boolean registerationStatus,
      int membersPerTeam){ // abstract constructor
 
         this.name = name;
         this.gameType = gameType;
+        this.type = type;
         this.tournamentID = tournamentID;
         this.winner = winner;
         this.startingDate = startingDate;

@@ -13,10 +13,10 @@ public class RoundRobin extends Tournament implements Serializable {
     private ArrayList<Team> placement;
 
 
-    public RoundRobin(String name, String gameType, String tournamentID, String winner,  LocalDate startingDate, LocalDate endingDate,
+    public RoundRobin(String name, String gameType, String type, String tournamentID, String winner,  LocalDate startingDate, LocalDate endingDate,
     ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, int membersPerTeam, boolean registerationStatus){ // constructor
 
-        super(name, gameType, tournamentID, winner, startingDate, endingDate, teams, numOfTeams,  students, true, membersPerTeam);
+        super(name, gameType,type, tournamentID, winner, startingDate, endingDate, teams, numOfTeams,  students, true, membersPerTeam);
     }
 
     public RoundRobin(){
@@ -163,4 +163,49 @@ public class RoundRobin extends Tournament implements Serializable {
         }
     }
 
+    @Override
+    public String getName() {
+        return super.getName();
+    }
+
+    @Override
+    public LocalDate getStartingDate() {
+        return super.getStartingDate();
+    }
+
+    @Override
+    public LocalDate getEndingDate() {
+        return super.getEndingDate();
+    }
+
+    @Override
+    public String getGameType() {
+        return super.getGameType();
+    }
+
+    @Override
+    public String getType() {
+        return super.getType();
+    }
+
+    @Override
+    public boolean getRegisterationStatus() {
+        return super.getRegisterationStatus();
+    }
+
+    @Override
+    public String getTournamentID() {
+        return super.getTournamentID();
+    }
+
+    @Override
+    public String toString() {
+        return "RoundRobin{" + super.toString()+
+                "matchHistory=" + matchHistory +
+                ", winsHistory=" + winsHistory +
+                ", goalDifferance=" + goalDifferance +
+                ", pointsTable=" + pointsTable +
+                ", placement=" + placement +
+                '}';
+    }
 }
