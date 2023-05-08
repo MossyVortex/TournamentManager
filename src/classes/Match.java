@@ -1,5 +1,6 @@
 package classes;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Match {
@@ -7,7 +8,7 @@ public class Match {
     private Team teamTwo;
     private int scoreOne;
     private int scoreTwo;
-    private Date matchDate;
+    private LocalDate matchDate;
     private String timeOfMatch;
     private String gameType;
     private String matchStatus;
@@ -18,19 +19,21 @@ public class Match {
         this.teamTwo = teamTwo;
         this.gameType = gameType;
         this.matchNum = matchNum;
-        this.matchDate = new Date();
+        this.matchDate = null;
 
     }
     public Match(Team teamOne, Team teamTwo, String gameType){
         this.teamOne = teamOne;
         this.teamTwo = teamTwo;
         this.gameType = gameType;
-        this.matchDate = new Date();
+        this.matchDate = null;
 
     }
     public Match(Team teamOne, Team teamTwo){
         this.teamOne = teamOne;
         this.teamTwo = teamTwo;
+        this.scoreOne = -1;
+        this.scoreTwo = -1;
     }
     public Match(){
 
@@ -70,9 +73,9 @@ public class Match {
         }
     }
 
-    public void updateDate(Date newDate){
+    public void updateDate(LocalDate newDate){
 
-        // why does this exist in the class diagram ?
+        matchDate = newDate;
     }
 
     public int[] returnScore(){
@@ -99,11 +102,17 @@ public class Match {
         else if(scoreOne < scoreTwo){
             return teamTwo;
         }
-        else return "draw";
+        else if(scoreOne == -1 || scoreTwo == -1){
+            return "undefined";
+        }
+        else {
+            return "draw";
+        }
     }
 
     @Override
     public String toString() {
+
         String teamOneName = "";
         String teamTwoName = "";
         int teamOneScore = -1;
@@ -125,7 +134,7 @@ public class Match {
         }
 
 
-        return teamOneName + " " + teamOneScore + " VS " + teamTwoName + " " + teamTwoScore;
+        return teamOneName + " " + teamOneScore + " VS " + teamTwoName + " " + teamTwoScore + " " + matchDate ;
     }
     public String getTeamOneName(){
         if (teamOne != null)
@@ -140,6 +149,10 @@ public class Match {
     public int getScoreOne(){
 
         return scoreOne;
+    }
+    public String getDate(){
+        if(matchDate == null) return "date not selected";
+        return matchDate.toString();
     }
     public Team getTeamOne(){return teamOne;}
     public Team getTeamTwo(){return teamTwo;}

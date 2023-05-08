@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class Elimination extends Tournament implements Serializable {
     private Hashtable<Integer, ArrayList<Match>> matchHistory;
     private int rounds;
-    public Elimination(String name, String gameType, String type, String tournamentID, String winner,  LocalDate startingDate, LocalDate endingDate,
+    public Elimination(String name, String gameType, String type, String tournamentID, Team winner,  LocalDate startingDate, LocalDate endingDate,
     ArrayList<Team> teams, int numOfTeams,  ArrayList<Student> students, int membersPerTeam, boolean registerationStatus){ // constructor
 
         super(name, gameType,type, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, students, registerationStatus, membersPerTeam);
@@ -23,6 +25,7 @@ public class Elimination extends Tournament implements Serializable {
         ArrayList<Team> availableTeams = getTeams();
         calculateRounds();
         int originalLength =allTeams.size();
+        double increment = calcuateDayIncrement();
         System.out.println("teams length " + allTeams.size());
         System.out.println("rounds "+rounds);
         for(int i = rounds; i > 0 ; i--){
@@ -37,6 +40,8 @@ public class Elimination extends Tournament implements Serializable {
                 for(int j = numMatchesCurrentRound; j > 0 ; j--){
                     int z = 0;
                     Match currentMatch = new Match();
+                    if(getStartingDate() != null && getEndingDate()!= null) currentMatch.updateDate(getStartingDate().plusDays((long) Math.floor(increment * (rounds-i))));
+
                     if(availableTeams.size() == 1){
                         currentMatch.addTeam(availableTeams.remove(0));
                     } else if(availableTeams.size() != 0){
@@ -60,6 +65,7 @@ public class Elimination extends Tournament implements Serializable {
                 for(int j =numMatchesCurrentRound ; j > 0 ; j-- ){
 
                     Match currentMatch = new Match();
+                    if(getStartingDate() != null && getEndingDate() != null) currentMatch.updateDate(getStartingDate().plusDays((long) Math.floor(increment * (rounds-i))));
                     if(availableTeams.size() == 1){
                         currentMatch.addTeam(availableTeams.remove(0));
                     } else if(availableTeams.size() != 0){
@@ -75,6 +81,27 @@ public class Elimination extends Tournament implements Serializable {
             }
         }
         this.matchHistory = matchHistory;
+    }
+    public double calcuateDayIncrement(){
+        double increment = 0;
+
+        if(getStartingDate() == null || getEndingDate() == null) return 0;
+        int diffInDays = (int) DAYS.between(getStartingDate(), getEndingDate());
+        System.out.println(diffInDays);
+        if(rounds == 0) return 0;
+        increment = diffInDays/ rounds;
+        if(increment < 0) return 0;
+        return increment;
+
+    }
+    public String getWinner(){
+        if(matchHistory.get(rounds-1).get(0).returnWinnerTeam().equals("draw") || matchHistory.get(rounds-1).get(0).returnWinnerTeam().equals("undefined")){
+            return "undefined";
+        }
+        else{
+            winner = (Team) matchHistory.get(rounds-1).get(0).returnWinnerTeam();
+            return winner.getTeamName();
+        }
     }
     public void updateMatch(int roundIndex , int matchIndex , int scoreOne , int scoreTwo){
         Match currentMatch =  matchHistory.get(roundIndex).get(matchIndex);

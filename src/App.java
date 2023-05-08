@@ -1,5 +1,5 @@
 import classes.*;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -40,18 +40,29 @@ public class App {
     }
 
     public static void main(String[] args) {
-        roundRobin(5);
-        RoundRobin roundTourney = new RoundRobin();
-        roundTourney.setName("roundy");
+
+        LocalDate today = LocalDate.now();
+        LocalDate yesterDay = LocalDate.of(2023,05,07);
+
+        Elimination tourney = new Elimination();
+//        roundRobin(5);
+//        RoundRobin roundTourney = new RoundRobin();
+//        roundTourney.setName("roundy");
         ArrayList<Student> stu = new ArrayList<>();
         stu.add(new Student("mads"));
         stu.add(new Student("sads"));
         stu.add(new Student("aads"));
         Team t1 = new Team(stu, "ssd");
-        addTeams(roundTourney, t1, stu);
-        roundTourney.createMatchHistory();
-        roundTourney.printMatchHistoryBeautified();
-        roundTourney.createTables();
+        addTeams(tourney, t1, stu);
+        LocalDate startDate = LocalDate.of(2023,5,1);
+        LocalDate endingDate = LocalDate.of(2023,5,5);
+
+        tourney.createMatchHistory();
+        tourney.printMatchHistoryBeautified();
+        System.out.println(tourney.calcuateDayIncrement());
+//        roundTourney.createMatchHistory();
+//        roundTourney.printMatchHistoryBeautified();
+//        roundTourney.createTables();
 //        roundTourney.printPointsTable();
 //        System.out.println("Hello, World!");
 

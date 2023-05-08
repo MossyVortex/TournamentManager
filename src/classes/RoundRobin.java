@@ -4,16 +4,19 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 
+import static java.time.temporal.ChronoUnit.DAYS;
+
 public class RoundRobin extends Tournament implements Serializable {
     private Hashtable<Integer, ArrayList<Match>> matchHistory;
     private Hashtable<Team, Integer> winsHistory;
     private Hashtable<Team, Integer> goalDifferance;
-    private Hashtable<Team, Integer> pointsTable;
+    private LinkedHashMap<Team, Integer> pointsTable;
 
     private ArrayList<Team> placement;
+    private int rounds;
 
 
-    public RoundRobin(String name, String gameType, String type, String tournamentID, String winner,  LocalDate startingDate, LocalDate endingDate,
+    public RoundRobin(String name, String gameType, String type, String tournamentID, Team winner,  LocalDate startingDate, LocalDate endingDate,
     ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, int membersPerTeam, boolean registerationStatus){ // constructor
 
         super(name, gameType,type, tournamentID, winner, startingDate, endingDate, teams, numOfTeams,  students, true, membersPerTeam);
@@ -49,7 +52,7 @@ public class RoundRobin extends Tournament implements Serializable {
     }
 
     public void createTables(){
-        Hashtable<Team, Integer> pointsTable = new Hashtable<>();
+        LinkedHashMap<Team, Integer> pointsTable = new LinkedHashMap<>();
         Hashtable<Team, Integer> winsHistory = new Hashtable<>();
         Hashtable<Team, Integer> goalDiffernce = new Hashtable<>();
         ArrayList<Team> teams = getTeams();
@@ -101,11 +104,12 @@ public class RoundRobin extends Tournament implements Serializable {
                     pointsTable.put(team1,pointsTable.get(team1) + 1);
                     pointsTable.put(team2,pointsTable.get(team2) + 1);
                 }
-                else{
+                else if (!currentMatch.returnWinnerTeam().equals("undefined")){
                     pointsTable.put((Team) currentMatch.returnWinnerTeam(),pointsTable.get((Team) currentMatch.returnWinnerTeam()) + 3);
                 }
             }
         }
+        sortPointsTable();
     }
     public  void rotate(Team[] lst) {
         int len = lst.length;
@@ -130,9 +134,37 @@ public class RoundRobin extends Tournament implements Serializable {
         LocalDate[] datesArray = new LocalDate[999999];
         return datesArray;
     }
+    public void sortPointsTable(){
+        List<Map.Entry<Team, Integer>> list = new ArrayList<Map.Entry<Team, Integer>>(pointsTable.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<Team, Integer>>(){
 
+            public int compare(Map.Entry<Team, Integer> entry1, Map.Entry<Team, Integer> entry2) {
+                return entry2.getValue().compareTo( entry1.getValue() );
+            }
 
-    public Hashtable<Team, Integer> printPointsTable(){return this.pointsTable;}
+        });
+        LinkedHashMap <Team, Integer> mapSortedByValues = new LinkedHashMap <Team, Integer>();
+        for( Map.Entry<Team, Integer> entry : list  ){
+            mapSortedByValues.put(entry.getKey(), entry.getValue());
+        }
+        System.out.println(mapSortedByValues);
+        this.pointsTable = mapSortedByValues;
+    }
+
+    public double calcuateDayIncrement(){
+        double increment = 0;
+
+        if(getStartingDate() == null || getEndingDate() == null) return 0;
+        int diffInDays = (int) DAYS.between(getStartingDate(), getEndingDate());
+        System.out.println(diffInDays);
+        getRounds();
+        if(rounds == 0) return 0;
+        increment = diffInDays/ rounds;
+        if(increment < 0) return 0;
+        return increment;
+
+    }
+    public LinkedHashMap<Team, Integer> printPointsTable(){return this.pointsTable;}
 
     public Hashtable<Integer, ArrayList<Match>> printMatchHistory(){
         return matchHistory;
@@ -163,6 +195,10 @@ public class RoundRobin extends Tournament implements Serializable {
         }
     }
 
+    public void getRounds(){
+        if(getTeams().size() % 2 == 0) rounds= getTeams().size();
+        else rounds = getTeams().size() - 1;
+    }
     @Override
     public String getName() {
         return super.getName();

@@ -112,7 +112,8 @@ public class createTournamentController {
 
                 HashMap<String, ArrayList<Object>> tournamentsInfoMap = new HashMap<>();
 
-                String name, tournamenType, gameType, tournamentID, winner, bannedStudentsIDs, numOfTeams, students; 
+                String name, tournamenType, gameType, tournamentID, bannedStudentsIDs, numOfTeams, students;
+                Team winner;
                 boolean registerationStatus;
                 LocalDate startDate, endDate;
                 ArrayList<Team> teams;
@@ -122,7 +123,7 @@ public class createTournamentController {
                 tournamenType = "Elimination";
                 gameType = gameTypeTextField.getText();
                 tournamentID = tempTournamentID;
-                winner = "no winner";
+                winner = null;
                 startDate = pickedStartDate;
                 endDate = pickedEndDate;
                 bannedStudentsIDs = "";
@@ -162,7 +163,8 @@ public class createTournamentController {
 
                     HashMap<String, ArrayList<Object>> tournamentsInfoMap = new HashMap<>();
 
-                    String name, gameType, tournamentID, winner, bannedStudentsIDs, numOfTeams, students, tournamentType; 
+                    String name, gameType, tournamentID, bannedStudentsIDs, numOfTeams, students, tournamentType;
+                    Team winner;
                     boolean registerationStatus;
                     LocalDate startDate, endDate;
                     ArrayList<Team> teams;
@@ -172,7 +174,7 @@ public class createTournamentController {
                     gameType = gameTypeTextField.getText();
                     tournamentID = tempTournamentID;
                     tournamentType = "RoundRobin";
-                    winner = "no winner";
+                    winner = null;
                     startDate = pickedStartDate;
                     endDate = pickedEndDate;
                     bannedStudentsIDs = "";
@@ -256,7 +258,7 @@ public class createTournamentController {
         return true; // placeHolder
     }
 
-    public static void addTournamentInfo(HashMap<String, ArrayList<Object>> tournamentInfoMap ,String name, String tournamentType,String gameType, String tournamentID, String winner, LocalDate startDate,
+    public static void addTournamentInfo(HashMap<String, ArrayList<Object>> tournamentInfoMap ,String name, String tournamentType,String gameType, String tournamentID, Team winner, LocalDate startDate,
     LocalDate endDate, String bannedStudentsIDs, String maxNumOfTeams, String students, ArrayList<Team> teams, boolean registerationStatus, int membersPerTeam){
 
         ArrayList<Object> tournamentData = tournamentInfoMap.get(tournamentID);

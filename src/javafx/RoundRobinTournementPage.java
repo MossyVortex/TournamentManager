@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.LinkedHashMap;
 
 import static javafx.application.Application.launch;
 
@@ -37,25 +38,46 @@ public class RoundRobinTournementPage extends Application {
 
         tourney.createMatchHistory();
         tourney.createTables();
-        VBox mainTourney = createTourneyPage(tourney);
+        ScrollPane mainTourney = createTourneyPage(tourney);
 
-        ScrollPane st = new ScrollPane(mainTourney);
-        Scene scene = new Scene(st,1000,800);
+
+        Scene scene = new Scene(mainTourney,1000,800);
 
 
 
         stage.setScene(scene);
         stage.show();
     }
-    public static VBox createTourneyPage(RoundRobin tourney){
+    public static ScrollPane createTourneyPage(RoundRobin tourney){
         ArrayList<TextField> textFields = new ArrayList<>();
         VBox roundRobinVBox = new VBox(createTourney(tourney,textFields));
         HBox pointsTable = createPointsTable(tourney);
-        Button updateScoreButton = new Button();
-        updateScoreButton.setText("calcuateWinners");
-        VBox mainTourney = new VBox(updateScoreButton, roundRobinVBox, pointsTable);
 
-        return mainTourney;
+        Button calculateWinnerButton = new Button();
+
+        Button updatePointsButton = new Button();
+
+        Button returnToTournementPage = new Button("return to tournement page");
+
+        HBox buttonsBox = new HBox(updatePointsButton, calculateWinnerButton, returnToTournementPage);
+        calculateWinnerButton.setText("calcuate winners ");
+        updatePointsButton.setText("updatePoints");
+        VBox mainTourney = new VBox(buttonsBox, roundRobinVBox, pointsTable);
+
+        ScrollPane tourneyPage = new ScrollPane(mainTourney);
+        updatePointsButton.setOnAction(e ->{
+            updateMatches(tourney,textFields);
+            tourney.updatePointsTable();
+//            tourney.printMatchHistoryBeautified();
+            VBox updatedRoundRobin = new VBox(createTourney(tourney,textFields));
+            HBox updatedPointsTable = createPointsTable(tourney);
+            mainTourney.getChildren().remove(1);
+            mainTourney.getChildren().remove(1);
+            mainTourney.getChildren().add(updatedRoundRobin);
+            mainTourney.getChildren().add(updatedPointsTable);
+            System.out.println(tourney.printPointsTable());
+        });
+        return tourneyPage;
 
     }
 
@@ -129,7 +151,7 @@ public class RoundRobinTournementPage extends Application {
     public static HBox createPointsTable(RoundRobin tour){
         HBox pointsTable = new HBox();
         pointsTable.setSpacing(20);
-        Hashtable<Team, Integer> pointsHashTable = tour.printPointsTable();
+        LinkedHashMap<Team, Integer> pointsHashTable = tour.printPointsTable();
         pointsHashTable.forEach((key , value) ->{
             pointsTable.getChildren().add(createTeamPoints(key.getTeamName(),value));
         });
@@ -141,21 +163,36 @@ public class RoundRobinTournementPage extends Application {
         tour.addTeam(new Team(stu,"team2"));
         tour.addTeam(new Team(stu,"team3"));
         tour.addTeam(new Team(stu,"team4"));
-        tour.addTeam(new Team(stu,"team5"));
-        tour.addTeam(new Team(stu,"team6"));
-        tour.addTeam(new Team(stu,"team7"));
-        tour.addTeam(new Team(stu,"team8"));
-        tour.addTeam(new Team(stu,"team9"));
-        tour.addTeam(new Team(stu,"team10"));
-        tour.addTeam(new Team(stu,"team11"));
-        tour.addTeam(new Team(stu,"team12"));
-        tour.addTeam(new Team(stu,"team13"));
-        tour.addTeam(new Team(stu,"team14"));
-        tour.addTeam(new Team(stu,"team15"));
-        tour.addTeam(new classes.Team(stu,"team16"));
+//        tour.addTeam(new Team(stu,"team5"));
+//        tour.addTeam(new Team(stu,"team6"));
+//        tour.addTeam(new Team(stu,"team7"));
+//        tour.addTeam(new Team(stu,"team8"));
+//        tour.addTeam(new Team(stu,"team9"));
+//        tour.addTeam(new Team(stu,"team10"));
+//        tour.addTeam(new Team(stu,"team11"));
+//        tour.addTeam(new Team(stu,"team12"));
+//        tour.addTeam(new Team(stu,"team13"));
+//        tour.addTeam(new Team(stu,"team14"));
+//        tour.addTeam(new Team(stu,"team15"));
+//        tour.addTeam(new classes.Team(stu,"team16"));
 //        for(int i = 0 ; i < 16 ; i++){
 //            tour.addTeam(team);
 //        }
+    }
+    public static void updateMatches(RoundRobin tourney, ArrayList<TextField> textFields){
+        for(int i = 0 ; i < textFields.size() ; i++){
+            String textInput = textFields.get(i).getText();
+            if(textInput.isEmpty()){
+                continue;
+            }
+            int score =Integer.parseInt(textFields.get(i).getText()) ;
+
+            String[] info =  textFields.get(i).getId().split("-");
+            int roundIndex = Integer.parseInt(info[0]) ;
+            int matchIndex = Integer.parseInt(info[1]) ;
+            int teamIndex = Integer.parseInt(info[2]) ;
+            tourney.updateMatchSingleteam(roundIndex , matchIndex, score , teamIndex );
+        }
     }
 
 

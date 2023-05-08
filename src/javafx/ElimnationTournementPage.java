@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -34,6 +35,8 @@ public class ElimnationTournementPage extends Application {
         stu.add(new Student("aads"));
         Team t1 = new Team(stu,"ssd");
         addTeams(tourney, t1 , stu);
+        tourney.setEndingDate(LocalDate.of(2023,5,10));
+        tourney.setStartingDate(LocalDate.of(2023,5,5));
 //        tourney.createMatchHistory();
 //        ArrayList<TextField> textFields = new ArrayList<>();
 //        VBox elimnationVbox = new VBox(createTourney(tourney,textFields));
@@ -68,14 +71,18 @@ public class ElimnationTournementPage extends Application {
         System.out.println(textFields);
         Button updateScoreButton = new Button();
         updateScoreButton.setText("calcuateWinners");
-        VBox mainTourney = new VBox(updateScoreButton, elimnationVbox);
+        Text winnerText = new Text("tournement winner :  "  + tourney.getWinner());
+        VBox mainTourney = new VBox(updateScoreButton, elimnationVbox, winnerText);
         updateScoreButton.setOnAction(e ->{
             updateMatches(tourney, textFields);
             tourney.calcuateWinnersMatches();
             tourney.printMatchHistoryBeautified();
             VBox elimnationVboxUpdated = new VBox(createTourney(tourney, textFields));
+            Text winnerTextUpdated = new Text("tournement winner :  "  + tourney.getWinner());
+            mainTourney.getChildren().remove(1);
             mainTourney.getChildren().remove(1);
             mainTourney.getChildren().add(elimnationVboxUpdated);
+            mainTourney.getChildren().add(winnerTextUpdated);
 
             System.out.println("no errors");
         });
@@ -87,7 +94,7 @@ public class ElimnationTournementPage extends Application {
         tour.addTeam(new Team(stu,"team2"));
         tour.addTeam(new Team(stu,"team3"));
         tour.addTeam(new Team(stu,"team4"));
-        tour.addTeam(new Team(stu,"team5"));
+//        tour.addTeam(new Team(stu,"team5"));
 //        tour.addTeam(new Team(stu,"team6"));
 //        tour.addTeam(new Team(stu,"team7"));
 //        tour.addTeam(new Team(stu,"team8"));
@@ -134,6 +141,11 @@ public class ElimnationTournementPage extends Application {
         textFields.add(team1TextField);
         textFields.add(team2TextField);
         matchup.getChildren().addAll(team1HBox, team2HBox);
+
+        Text dateText = new Text(match.getDate());
+        matchup.getChildren().add(dateText);
+
+
         return matchup;
     }
     public static VBox createRound(ArrayList<Match> matches, int roundIndex , ArrayList<TextField> textFields  ){

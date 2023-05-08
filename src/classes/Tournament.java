@@ -6,7 +6,8 @@ import java.time.LocalDate;
 import java.util.*;
 
 public abstract class Tournament implements Serializable {
-    private String name, type, gameType, tournamentID, winner;
+    private String name, type, gameType, tournamentID;
+    Team winner;
     private LocalDate startingDate, endingDate;
     private ArrayList<Team> teams; private Boolean tournamentRegistrationStatus;
     private int numOfTeams; private Dictionary<Integer,Team> teamPlace; private Dictionary<String,Match[]> matchHistory;
@@ -14,7 +15,7 @@ public abstract class Tournament implements Serializable {
     private boolean registerationStatus;
     private int membersPerTeam;
 
-    public Tournament(String name, String gameType, String type, String tournamentID, String winner, LocalDate startingDate, LocalDate endingDate,
+    public Tournament(String name, String gameType, String type, String tournamentID, Team winner, LocalDate startingDate, LocalDate endingDate,
      ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, boolean registerationStatus,
      int membersPerTeam){ // abstract constructor
 
@@ -37,7 +38,7 @@ public abstract class Tournament implements Serializable {
         this.name = "";
         this.gameType = "" ;
         this.tournamentID = "";
-        this.winner = "";
+        this.winner = null;
         this.startingDate = null;
         this.endingDate = null;
         this.teams = new ArrayList<>();
@@ -126,13 +127,13 @@ public abstract class Tournament implements Serializable {
         this.type = type;
     }
 
-    public String getWinner() {
-        return winner;
-    }
-
-    public void setWinner(String winner) {
-        this.winner = winner;
-    }
+//    public Team getWinner() {
+//        return winner;
+//    }
+//
+//    public void setWinner(String winner) {
+//        this.winner = winner;
+//    }
 
     public LocalDate getStartingDate() {
         return startingDate;
