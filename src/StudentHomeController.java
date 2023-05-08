@@ -35,7 +35,7 @@ public class StudentHomeController implements Initializable {
     private BorderPane ViewProfilePane;
 
     @FXML
-    private ComboBox<?> combo;
+    private ComboBox<String> combo;
 
     @FXML
     private Label nameLable;
@@ -53,8 +53,7 @@ public class StudentHomeController implements Initializable {
     private TableColumn<Tournament, String> IDColumn;
 
     @FXML
-    private TableColumn<Tournament, String> endingDateColumn;
-//    private TableColumn<Tournament, LocalDate> endingDateColumn;
+    private TableColumn<Tournament, LocalDate> endingDateColumn;
 
     @FXML
     private TableColumn<Tournament, String> gameColumn;
@@ -63,12 +62,10 @@ public class StudentHomeController implements Initializable {
     private TableColumn<Tournament, String> nameColumn;
 
     @FXML
-    private TableColumn<Tournament, String> startDateColumn;
-//    private TableColumn<Tournament, LocalDate> startDateColumn;
+    private TableColumn<Tournament, LocalDate> startDateColumn;
 
     @FXML
-    private TableColumn<Tournament, String> statusColumn;
-//    private TableColumn<Tournament, Boolean> statusColumn;
+    private TableColumn<Tournament, Boolean> statusColumn;
 
     @FXML
     private TableColumn<Tournament, String> typeColumn;
@@ -167,27 +164,27 @@ public class StudentHomeController implements Initializable {
             ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
             Student student = (Student) objInStream.readObject();
 
-//              ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
-//              HashMap<String,Tournament> tournamentHashMap = (HashMap<String,Tournament>) objInStreamTournament.readObject();
-//              ArrayList<Tournament> list = new ArrayList<>();
-//
-//              tournamentHashMap.forEach((x,y) -> list.add(y));
-//
-//              nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-//              IDColumn.setCellValueFactory(new PropertyValueFactory<>("tournamentID"));
-//              typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-//              gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameType"));
-//              statusColumn.setCellValueFactory(new PropertyValueFactory<>("registerationStatus"));
-//              startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startingDate"));
-//              endingDateColumn.setCellValueFactory(new PropertyValueFactory<>("endingDate"));
-//
-//              ObservableList<Tournament> dhsfh = FXCollections.observableArrayList(list);
-////              tournamentTableView.getItems().addAll(list);
-//              tournamentTableView.setItems(dhsfh);
-//
-//              nameLable.setText(student.getName());
+              ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentsBFile.dat"));
+              HashMap<String,Tournament> tournamentHashMap = (HashMap<String,Tournament>) objInStreamTournament.readObject();
+              ArrayList<Tournament> list = new ArrayList<>();
+
+              tournamentHashMap.forEach((x,y) -> list.add(y));
+
+              nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+              IDColumn.setCellValueFactory(new PropertyValueFactory<>("tournamentID"));
+              typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+              gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameType"));
+              statusColumn.setCellValueFactory(new PropertyValueFactory<>("registerationStatus"));
+              startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startingDate"));
+              endingDateColumn.setCellValueFactory(new PropertyValueFactory<>("endingDate"));
+
+              ObservableList<Tournament> dhsfh = FXCollections.observableArrayList(list);
+              tournamentTableView.getItems().addAll(list);
+              tournamentTableView.setItems(dhsfh);
+
+              nameLable.setText(student.getName());
             objInStream.close();
-//            objInStreamTournament.close();
+            objInStreamTournament.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
