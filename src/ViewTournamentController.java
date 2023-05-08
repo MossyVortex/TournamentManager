@@ -3,6 +3,7 @@ import java.util.Objects;
 
 import classes.Person;
 import classes.Student;
+import classes.Tournament;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Node;
@@ -208,9 +209,9 @@ public class ViewTournamentController implements Initializable {
             Person person = (Person) objInStreamLogedinPerson.readObject();
             objInStreamLogedinPerson.close();
             if (person instanceof Student)
-                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\StudentHomeScene.fxml")));
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
             else
-                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\AdminHomeScene.fxml")));
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminHomeScene.fxml")));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -255,6 +256,20 @@ public class ViewTournamentController implements Initializable {
                 EditButton.setVisible(true);
             else
                 EditButton.setVisible(false);
+
+            ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentView.dat"));
+            Tournament tournament = (Tournament) objInStreamTournament.readObject();
+            IDLabel.setText(tournament.getTournamentID());
+            typeTextField.setText(tournament.getType());
+            gameTextField.setText(tournament.getGameType());
+            teamsNumTextField.setText(String.valueOf(tournament.getNumOfTeams()));
+            stdNumTextField.setText(String.valueOf(tournament.getMembersPerTeam()));
+            nameTextField.setText(tournament.getName());
+            StatusTF.setText(String.valueOf(tournament.getRegisterationStatus()));
+            WinnerTextField.setText(tournament.getWinner());
+
+
+            objInStreamTournament.close();
 
 
         } catch (IOException e) {
