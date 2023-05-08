@@ -56,5 +56,13 @@ public class Team {
     }
     public int getNumberOfLosses() {
         return numberOfLosses;
-    } 
+    }
+
+    public ArrayList<Student> getTeamMembers() {
+        return teamMembers;
+    }
+
+    public void setTeamMembers(ArrayList<Student> teamMembers) {
+        this.teamMembers = teamMembers;
+    }
 }
