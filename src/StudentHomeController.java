@@ -17,10 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
@@ -183,8 +180,37 @@ public class StudentHomeController implements Initializable {
               tournamentTableView.setItems(dhsfh);
 
               nameLable.setText(student.getName());
-            objInStream.close();
-            objInStreamTournament.close();
+              objInStreamTournament.close();
+              objInStream.close();
+
+              tournamentTableView.setRowFactory( tv -> {
+                  TableRow<Tournament> row = new TableRow<>();
+                  row.setOnMouseClicked(event -> {
+                      if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                          Tournament rowData = row.getItem();
+                          try {
+                              ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\TournamentView.dat"));
+                              objectOutputStream.writeObject(rowData);
+                              objectOutputStream.close();
+
+                              Parent fxmlLoader = null;
+                              try {
+                                  fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewTournamentScene.fxml")));
+                              } catch (IOException e) {
+                                  e.printStackTrace();
+                              }
+                              Scene registerPage = new Scene(fxmlLoader);
+                              Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+                              stage.setScene(registerPage);
+                              stage.setTitle("Tournament Manager - View Tournament");
+                              stage.show();
+                          } catch (IOException e) {
+                              e.printStackTrace();
+                          }
+                      }
+                  });
+                  return row ;
+              });
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
