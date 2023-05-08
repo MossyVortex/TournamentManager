@@ -49,7 +49,7 @@
                         </ImageView>
                         <Label fx:id="nameLable" onInputMethodTextChanged="#nameLableSetText" text="UserName" textFill="#f2e8cf">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
                         <Pane prefHeight="14.0" prefWidth="190.0" />

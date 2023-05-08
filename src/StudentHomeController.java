@@ -1,5 +1,6 @@
 import classes.Student;
 import classes.Tournament;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,7 +53,8 @@ public class StudentHomeController implements Initializable {
     private TableColumn<Tournament, String> IDColumn;
 
     @FXML
-    private TableColumn<Tournament, LocalDate> endingDateColumn;
+    private TableColumn<Tournament, String> endingDateColumn;
+//    private TableColumn<Tournament, LocalDate> endingDateColumn;
 
     @FXML
     private TableColumn<Tournament, String> gameColumn;
@@ -61,10 +63,12 @@ public class StudentHomeController implements Initializable {
     private TableColumn<Tournament, String> nameColumn;
 
     @FXML
-    private TableColumn<Tournament, LocalDate> startDateColumn;
+    private TableColumn<Tournament, String> startDateColumn;
+//    private TableColumn<Tournament, LocalDate> startDateColumn;
 
     @FXML
-    private TableColumn<Tournament, Boolean> statusColumn;
+    private TableColumn<Tournament, String> statusColumn;
+//    private TableColumn<Tournament, Boolean> statusColumn;
 
     @FXML
     private TableColumn<Tournament, String> typeColumn;
@@ -162,27 +166,28 @@ public class StudentHomeController implements Initializable {
           try {
             ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
             Student student = (Student) objInStream.readObject();
-//
+
 //              ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
 //              HashMap<String,Tournament> tournamentHashMap = (HashMap<String,Tournament>) objInStreamTournament.readObject();
 //              ArrayList<Tournament> list = new ArrayList<>();
 //
 //              tournamentHashMap.forEach((x,y) -> list.add(y));
 //
-//              nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-//              IDColumn.setCellValueFactory(new PropertyValueFactory<>("TournamentID"));
-//              typeColumn.setCellValueFactory(new PropertyValueFactory<>("Type"));
-//              gameColumn.setCellValueFactory(new PropertyValueFactory<>("GameType"));
-//              statusColumn.setCellValueFactory(new PropertyValueFactory<>("RegisterationStatus"));
-//              startDateColumn.setCellValueFactory(new PropertyValueFactory<>("StartingDate"));
-//              endingDateColumn.setCellValueFactory(new PropertyValueFactory<>("EndingDate"));
+//              nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+//              IDColumn.setCellValueFactory(new PropertyValueFactory<>("tournamentID"));
+//              typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+//              gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameType"));
+//              statusColumn.setCellValueFactory(new PropertyValueFactory<>("registerationStatus"));
+//              startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startingDate"));
+//              endingDateColumn.setCellValueFactory(new PropertyValueFactory<>("endingDate"));
 //
-//              tournamentTableView.setItems((ObservableList<Tournament>) list);
+//              ObservableList<Tournament> dhsfh = FXCollections.observableArrayList(list);
+////              tournamentTableView.getItems().addAll(list);
+//              tournamentTableView.setItems(dhsfh);
 //
-//
-
-              nameLable.setText(student.getUserName());
-            objInStream.close(); //objInStreamTournament.close();
+//              nameLable.setText(student.getName());
+            objInStream.close();
+//            objInStreamTournament.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

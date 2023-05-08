@@ -18,14 +18,14 @@ public class test3 {
             HashMap<String, Tournament> tournaments = new HashMap<>() ;
             ArrayList<Team > teams = new ArrayList<>();
             Tournament tournament =new RoundRobin("Term221","Football","RoundRobin","10000","", LocalDate.now(),LocalDate.now(),teams,5,null,3,true);
-            tournaments.put(tournament.getTournamentID(),tournament);
+            tournaments.put(tournament.getTournamentID(), tournament);
             objectOutputStream.writeObject(tournaments);
             objectOutputStream.close();
-
             ObjectInputStream objSInStream = new ObjectInputStream(new FileInputStream("src\\TournamentsBFile.dat"));
             HashMap<String, Tournament> readStudentInfoMap ;
             readStudentInfoMap = (HashMap<String, Tournament>) objSInStream.readObject();
             readStudentInfoMap.forEach((x,y) -> System.out.println(y));
+
             objSInStream.close();
         }
 

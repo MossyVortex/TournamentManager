@@ -1,10 +1,11 @@
 package classes;
 
 import java.io.File;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class Tournament {
+public abstract class Tournament implements Serializable {
     private String name, type, gameType, tournamentID, winner;
     private LocalDate startingDate, endingDate;
     private ArrayList<Team> teams; private Boolean tournamentRegistrationStatus;
