@@ -94,13 +94,13 @@ public class Elimination extends Tournament implements Serializable {
         return increment;
 
     }
-    public String getWinner(){
+    public Team getWinner(){
         if(matchHistory.get(rounds-1).get(0).returnWinnerTeam().equals("draw") || matchHistory.get(rounds-1).get(0).returnWinnerTeam().equals("undefined")){
-            return "undefined";
+            return null;
         }
         else{
             winner = (Team) matchHistory.get(rounds-1).get(0).returnWinnerTeam();
-            return winner.getTeamName();
+            return winner;
         }
     }
     public void updateMatch(int roundIndex , int matchIndex , int scoreOne , int scoreTwo){

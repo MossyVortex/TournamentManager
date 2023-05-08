@@ -127,9 +127,9 @@ public abstract class Tournament implements Serializable {
         this.type = type;
     }
 
-//    public Team getWinner() {
-//        return winner;
-//    }
+    public Team getWinner() {
+        return winner;
+    }
 //
 //    public void setWinner(String winner) {
 //        this.winner = winner;

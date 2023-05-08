@@ -192,7 +192,17 @@ public class ViewTournamentController implements Initializable {
 
     @FXML
     void infoPaneOnCklicked(MouseEvent event) {
-
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewTournamentScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerPage = new Scene(fxmlLoader);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(registerPage);
+        stage.setTitle("Tournament Manager - View Tournament");
+        stage.show();
     }
 
     @FXML
@@ -228,17 +238,47 @@ public class ViewTournamentController implements Initializable {
 
     @FXML
     void studentsPaneOnClicked(MouseEvent event) {
-
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentsViewScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerStudentPage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(registerStudentPage);
+        stage.setTitle("Tournament Manager - Students View");
+        stage.show();
     }
 
     @FXML
     void teamsPaneOnCklicked(MouseEvent event) {
-
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TeamsViewScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerStudentPage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(registerStudentPage);
+        stage.setTitle("Tournament Manager - Teams View");
+        stage.show();
     }
 
     @FXML
     void generatedPaneOnClicked(MouseEvent event) {
-
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GeneratedTablesScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerStudentPage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(registerStudentPage);
+        stage.setTitle("Tournament Manager - Generated Tables View");
+        stage.show();
     }
 
     @FXML
@@ -266,7 +306,10 @@ public class ViewTournamentController implements Initializable {
             stdNumTextField.setText(String.valueOf(tournament.getMembersPerTeam()));
             nameTextField.setText(tournament.getName());
             StatusTF.setText(String.valueOf(tournament.getRegisterationStatus()));
-            WinnerTextField.setText(tournament.getWinner());
+//            WinnerTextField.setText((tournament.getWinner()).toString());
+
+            typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
+            stdNumTextField.setEditable(false);nameTextField.setEditable(false);StatusTF.setEditable(false);WinnerTextField.setEditable(false);
 
 
             objInStreamTournament.close();
