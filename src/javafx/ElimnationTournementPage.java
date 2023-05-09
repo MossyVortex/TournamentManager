@@ -37,7 +37,7 @@ public class ElimnationTournementPage extends Application {
         addTeams(tourney, t1 , stu);
         tourney.setEndingDate(LocalDate.of(2023,5,10));
         tourney.setStartingDate(LocalDate.of(2023,5,5));
-//        tourney.createMatchHistory();
+        tourney.createMatchHistory();
 //        ArrayList<TextField> textFields = new ArrayList<>();
 //        VBox elimnationVbox = new VBox(createTourney(tourney,textFields));
 //        System.out.println(textFields);

@@ -22,6 +22,9 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static javafx.RoundRobinTournementPage.createTourneyPage;
+import static javafx.ElimnationTournementPage.createTourneyPage;
+
 public class GeneratedTablesController implements Initializable {
 
     @FXML
@@ -138,6 +141,15 @@ public class GeneratedTablesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+//            if(tournamentType == "roundRobin"){
+//                tourney.createMatchHistory(); // do this 1 time only
+//                tourney.createTables(); //  do this one time only
+//                ScrollPane mainTourney = createTourneyPage(tourney);
+//            }else if(tournmaneType == "elimnation"){
+//                tourney.createMatchHistory(); // do this one time only
+//                VBox mainTourney = createTourneyPage(tourney);
+            }
+
             ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentView.dat"));
             Tournament tournament = (Tournament) objInStreamTournament.readObject();
             IDLabel.setText(tournament.getTournamentID());

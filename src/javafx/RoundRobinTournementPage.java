@@ -44,7 +44,6 @@ public class RoundRobinTournementPage extends Application {
         tourney.createTables();
         ScrollPane mainTourney = createArchivedTourneyPage(tourney);
 
-
         Scene scene = new Scene(mainTourney,1000,800);
 
 
