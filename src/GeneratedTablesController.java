@@ -1,7 +1,9 @@
 import classes.Person;
 import classes.Student;
+import classes.Tournament;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,9 +17,11 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class GeneratedTablesController {
+public class GeneratedTablesController implements Initializable {
 
     @FXML
     private Label IDLabel;
@@ -127,4 +131,26 @@ public class GeneratedTablesController {
         stage.show();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentView.dat"));
+            Tournament tournament = (Tournament) objInStreamTournament.readObject();
+            IDLabel.setText(tournament.getTournamentID());
+            typeTextField.setText(tournament.getType());
+            gameTextField.setText(tournament.getGameType());
+            teamsNumTextField.setText(String.valueOf(tournament.getNumOfTeams()));
+            stdNumTextField.setText(String.valueOf(tournament.getMembersPerTeam()));
+
+            typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
+            stdNumTextField.setEditable(false);
+
+            objInStreamTournament.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
