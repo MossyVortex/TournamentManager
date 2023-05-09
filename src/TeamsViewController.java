@@ -1,5 +1,6 @@
 import classes.Person;
 import classes.Student;
+import classes.Team;
 import classes.Tournament;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +9,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -21,7 +25,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class GeneratedTablesController implements Initializable {
+public class TeamsViewController implements Initializable {
 
     @FXML
     private Label IDLabel;
@@ -45,6 +49,9 @@ public class GeneratedTablesController implements Initializable {
     private TextField gameTextField;
 
     @FXML
+    private HBox generatedPane;
+
+    @FXML
     private HBox infoPane;
 
     @FXML
@@ -54,13 +61,36 @@ public class GeneratedTablesController implements Initializable {
     private HBox studentsPane;
 
     @FXML
+    private TableColumn<Team, String> teamNameC;
+
+
+    @FXML
+    private TableColumn<Team, String> membersCountC;
+
+
+    @FXML
     private TextField teamsNumTextField;
 
     @FXML
-    private HBox teamsPane;
+    private TableView<Team> teamsTableView;
 
     @FXML
     private TextField typeTextField;
+
+    @FXML
+    void generatedPaneOnClicked(MouseEvent event) {
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GeneratedTablesScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerStudentPage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(registerStudentPage);
+        stage.setTitle("Tournament Manager - Generated Tables View");
+        stage.show();
+    }
 
     @FXML
     void infoPaneOnCklicked(MouseEvent event) {
@@ -116,21 +146,6 @@ public class GeneratedTablesController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    void teamsPaneOnCklicked(MouseEvent event) {
-        Parent fxmlLoader = null;
-        try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TeamsViewScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene registerStudentPage = new Scene(fxmlLoader);
-        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-        stage.setScene(registerStudentPage);
-        stage.setTitle("Tournament Manager - Teams View");
-        stage.show();
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -144,6 +159,10 @@ public class GeneratedTablesController implements Initializable {
 
             typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
             stdNumTextField.setEditable(false);
+
+            membersCountC.setCellValueFactory(new PropertyValueFactory<>("NumberOfMembers"));
+            teamNameC.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+
 
             objInStreamTournament.close();
 

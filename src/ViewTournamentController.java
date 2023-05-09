@@ -63,6 +63,9 @@ public class ViewTournamentController implements Initializable {
     private Label WinsLabel2;
 
     @FXML
+    private Label WinsLabel21;
+
+    @FXML
     private ImageView backButton;
 
     @FXML
@@ -75,6 +78,9 @@ public class ViewTournamentController implements Initializable {
     private TextField gameTextField;
 
     @FXML
+    private HBox generatedPane;
+
+    @FXML
     private Label nameLable;
 
     @FXML
@@ -85,7 +91,6 @@ public class ViewTournamentController implements Initializable {
 
     @FXML
     private Button saveButton;
-
 
     @FXML
     private DatePicker startingDateDatePicker;
@@ -103,55 +108,7 @@ public class ViewTournamentController implements Initializable {
     private HBox teamsPane;
 
     @FXML
-    private HBox generatedPane;
-
-    @FXML
-    private TableColumn<?, ?> HeightC;
-
-    @FXML
-    private TableColumn<?, ?> IDC;
-
-    @FXML
-    private TableColumn<?, ?> WeightC;
-
-    @FXML
-    private TableColumn<?, ?> emailC;
-
-    @FXML
-    private HBox infoPane;
-
-    @FXML
-    private TableColumn<?, ?> phoneC;
-
-    @FXML
-    private TableColumn<?, ?> studentNameC;
-
-    @FXML
-    private TableView<?> teamsTableView;
-
-    @FXML
-    private TableColumn<?, ?> teamNameC;
-
-    @FXML
     private TextField typeTextField;
-
-    @FXML
-    private ImageView backTIDButton;
-
-    @FXML
-    private ImageView logoImage;
-
-    @FXML
-    private TextField tournamentIDTextField;
-
-    @FXML
-    private Button viewButton;
-
-    @FXML
-    private TextField tournamentIDTextField1;
-
-    @FXML
-    private Button viewButton1;
 
     @FXML
     void ViweButtonOnClicked1(ActionEvent event) {
@@ -165,45 +122,32 @@ public class ViewTournamentController implements Initializable {
 
     }
 
-    @FXML
-    void setTIDBackButton(MouseEvent event) {
-        Parent fxmlLoader = null;
-        try {
-            ObjectInputStream objInStreamLogedinPerson = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
-            Person person = (Person) objInStreamLogedinPerson.readObject();
-            objInStreamLogedinPerson.close();
-            if (person instanceof Student)
-                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\StudentHomeScene.fxml")));
-            else
-                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\AdminHomeScene.fxml")));
+//    @FXML
+//    void setTIDBackButton(MouseEvent event) {
+//        Parent fxmlLoader = null;
+//        try {
+//            ObjectInputStream objInStreamLogedinPerson = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+//            Person person = (Person) objInStreamLogedinPerson.readObject();
+//            objInStreamLogedinPerson.close();
+//            if (person instanceof Student)
+//                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\StudentHomeScene.fxml")));
+//            else
+//                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("src\\AdminHomeScene.fxml")));
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        Scene homePage = new Scene(fxmlLoader);
+//        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+//        stage.setScene(homePage);
+//        stage.setTitle("Tournament Manager - Home Page");
+//        stage.show();
+//    }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        Scene homePage = new Scene(fxmlLoader);
-        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-        stage.setScene(homePage);
-        stage.setTitle("Tournament Manager - Home Page");
-        stage.show();
-    }
 
 
-    @FXML
-    void infoPaneOnCklicked(MouseEvent event) {
-        Parent fxmlLoader = null;
-        try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewTournamentScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene registerPage = new Scene(fxmlLoader);
-        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
-        stage.setScene(registerPage);
-        stage.setTitle("Tournament Manager - View Tournament");
-        stage.show();
-    }
 
     @FXML
     void saveButtonOnClicked(ActionEvent event) {

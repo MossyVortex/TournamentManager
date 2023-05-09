@@ -1,6 +1,9 @@
 import classes.Person;
 import classes.Student;
+import classes.Team;
 import classes.Tournament;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,7 +11,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -18,13 +24,23 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class GeneratedTablesController implements Initializable {
+public class StudentsViewController implements Initializable {
+
+    @FXML
+    private TableColumn<Student, Integer> HeightC;
+
+    @FXML
+    private TableColumn<Student, String> IDC;
 
     @FXML
     private Label IDLabel;
+
+    @FXML
+    private TableColumn<Student, Integer> WeightC;
 
     @FXML
     private Label WinsLabel;
@@ -42,7 +58,13 @@ public class GeneratedTablesController implements Initializable {
     private ImageView backButton;
 
     @FXML
+    private TableColumn<Student, String> emailC;
+
+    @FXML
     private TextField gameTextField;
+
+    @FXML
+    private HBox generatedPane;
 
     @FXML
     private HBox infoPane;
@@ -51,7 +73,7 @@ public class GeneratedTablesController implements Initializable {
     private TextField stdNumTextField;
 
     @FXML
-    private HBox studentsPane;
+    private TableColumn<Student, String> studentNameC;
 
     @FXML
     private TextField teamsNumTextField;
@@ -60,7 +82,25 @@ public class GeneratedTablesController implements Initializable {
     private HBox teamsPane;
 
     @FXML
+    private TableView<Student> teamsTableView;
+
+    @FXML
     private TextField typeTextField;
+
+    @FXML
+    void generatedPaneOnClicked(MouseEvent event) {
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GeneratedTablesScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerStudentPage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(registerStudentPage);
+        stage.setTitle("Tournament Manager - Generated Tables View");
+        stage.show();
+    }
 
     @FXML
     void infoPaneOnCklicked(MouseEvent event) {
@@ -102,21 +142,6 @@ public class GeneratedTablesController implements Initializable {
     }
 
     @FXML
-    void studentsPaneOnClicked(MouseEvent event) {
-        Parent fxmlLoader = null;
-        try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentsViewScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene registerStudentPage = new Scene(fxmlLoader);
-        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-        stage.setScene(registerStudentPage);
-        stage.setTitle("Tournament Manager - Students View");
-        stage.show();
-    }
-
-    @FXML
     void teamsPaneOnCklicked(MouseEvent event) {
         Parent fxmlLoader = null;
         try {
@@ -144,6 +169,22 @@ public class GeneratedTablesController implements Initializable {
 
             typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
             stdNumTextField.setEditable(false);
+
+
+            studentNameC.setCellValueFactory(new PropertyValueFactory<>("name"));
+            IDC.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            emailC.setCellValueFactory(new PropertyValueFactory<>("email"));
+            WeightC.setCellValueFactory(new PropertyValueFactory<>("weight"));
+            HeightC.setCellValueFactory(new PropertyValueFactory<>("height"));
+
+            ArrayList<Student> studentArrayList = new ArrayList<>();
+            for (Team team: tournament.getTeams()){
+                studentArrayList.addAll(team.getTeamMembers());
+            }
+
+            ObservableList<Student> observableList = FXCollections.observableArrayList(studentArrayList);
+            teamsTableView.getItems().addAll(studentArrayList);
+            teamsTableView.setItems(observableList);
 
             objInStreamTournament.close();
 

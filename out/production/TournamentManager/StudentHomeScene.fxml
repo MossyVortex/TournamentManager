@@ -74,15 +74,7 @@
          <top>
             <BorderPane prefHeight="98.0" prefWidth="700.0" BorderPane.alignment="CENTER">
                <left>
-                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="viewTournamentsButton" layoutX="72.0" layoutY="44.0" mnemonicParsing="false" onAction="#viewTournamentsButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="View Tournament" textFill="#f2e8cf">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </left>
                <right>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">

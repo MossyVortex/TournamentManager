@@ -175,9 +175,9 @@ public class StudentHomeController implements Initializable {
               startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startingDate"));
               endingDateColumn.setCellValueFactory(new PropertyValueFactory<>("endingDate"));
 
-              ObservableList<Tournament> dhsfh = FXCollections.observableArrayList(list);
+              ObservableList<Tournament> observableList = FXCollections.observableArrayList(list);
               tournamentTableView.getItems().addAll(list);
-              tournamentTableView.setItems(dhsfh);
+              tournamentTableView.setItems(observableList);
 
               nameLable.setText(student.getName());
               objInStreamTournament.close();
