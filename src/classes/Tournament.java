@@ -14,6 +14,7 @@ public abstract class Tournament implements Serializable {
     private String[] bannedStudentsIDs; private ArrayList<Student> students;
     private boolean registerationStatus;
     private int membersPerTeam;
+    private static final long serialVersionUID = 8237865757165260457L;
 
     public Tournament(String name, String gameType, String type, String tournamentID, Team winner, LocalDate startingDate, LocalDate endingDate,
      ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, boolean registerationStatus,

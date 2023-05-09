@@ -94,7 +94,7 @@ public class ElimnationTournementPage extends Application {
         tour.addTeam(new Team(stu,"team2"));
         tour.addTeam(new Team(stu,"team3"));
         tour.addTeam(new Team(stu,"team4"));
-//        tour.addTeam(new Team(stu,"team5"));
+//        tour.addTeam(new Team(stu,"team5"));.
 //        tour.addTeam(new Team(stu,"team6"));
 //        tour.addTeam(new Team(stu,"team7"));
 //        tour.addTeam(new Team(stu,"team8"));
