@@ -9,6 +9,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class Elimination extends Tournament implements Serializable {
     private Hashtable<Integer, ArrayList<Match>> matchHistory;
     private int rounds;
+    private static final long serialVersionUID = -56722074485822064L;
     public Elimination(String name, String gameType, String type, String tournamentID, Team winner,  LocalDate startingDate, LocalDate endingDate,
     ArrayList<Team> teams, int numOfTeams,  ArrayList<Student> students, int membersPerTeam, boolean registerationStatus){ // constructor
 

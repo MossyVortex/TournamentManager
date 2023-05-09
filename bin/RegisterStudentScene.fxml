@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterStudentController">
+   <top>
+      <BorderPane prefHeight="80.0" prefWidth="900.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
+         <center>
+            <ImageView fitHeight="88.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@/Images/HIcon.png" />
+               </image>
+            </ImageView>
+         </center>
+         <bottom>
+            <Pane prefHeight="9.0" prefWidth="900.0" style="-fx-background-color: #6A994E;" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#backButtonOnClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Images/backArrow.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </left>
+         <right>
+            <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="260.0">
+                           <children>
+                              <Label fx:id="nameLable" prefHeight="28.0" prefWidth="90.0" text="Name:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nameTextField" prefWidth="158.0" promptText="Enter your name" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="20.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="290.0">
+                           <children>
+                              <Label fx:id="usernameLable" prefWidth="120.0" text="Username:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="usernameTextField" prefWidth="158.0" promptText="Enter your ID" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="262.0" prefHeight="80.0" prefWidth="722.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="260.0">
+                           <children>
+                              <Label fx:id="IDLable" prefWidth="90.0" text="ID:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="IDTextField" prefWidth="158.0" promptText="Enter your ID" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="20.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="290.0">
+                           <children>
+                              <Label fx:id="phoneLable" prefHeight="35.0" prefWidth="120.0" text="Phone:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="phoneTextField" prefWidth="158.0" promptText="Enter your phone " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="212.0" prefHeight="80.0" prefWidth="722.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="260.0">
+                           <children>
+                              <Label fx:id="emailLable" prefWidth="90.0" text="Email:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="emailTextField" prefWidth="158.0" promptText="Enter your email" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="20.0" />
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
+                           <children>
+                              <Label fx:id="passwordLable" prefHeight="35.0" prefWidth="120.0" text="Password:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="passwordTextField" prefWidth="158.0" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="161.0" prefHeight="80.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="260.0">
+                           <children>
+                              <Label fx:id="heightLable" prefWidth="90.0" text="Height:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="heightTextField" prefWidth="158.0" promptText="Enter your height" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="20.0" />
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="290.0">
+                           <children>
+                              <Label fx:id="weightLable" prefWidth="120.0" text="Weight:" textFill="#386641">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="weightTextField" prefWidth="158.0" promptText="Enter your weight " style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <BorderPane prefHeight="30.0" prefWidth="722.0" />
+                  <BorderPane prefHeight="50.0" prefWidth="722.0">
+                     <center>
+                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButtonOnClicked" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Register" textFill="#f2e8cf" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Button>
+                     </center>
+                  </BorderPane>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </center>
+   <left>
+      <BorderPane prefHeight="502.0" prefWidth="178.0" style="-fx-background-color: #386641;" BorderPane.alignment="CENTER">
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/Images/Student.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Student" textFill="#f2e8cf">
+                     <font>
+                        <Font name="System Bold Italic" size="35.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </left>
+</BorderPane>

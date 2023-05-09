@@ -102,15 +102,29 @@ public class LoginController {
         if(allFilled()) {
             if(studentRadioButton.isSelected()){
                 if(APIStudent(usernameTextF.getText(), passwordTextF.getText())>299){
-                    if(logInBinaryFileStudent(usernameTextF.getText(),passwordTextF.getText())){
-                        Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
-                        Scene homePage = new Scene(fxmlLoader);
-                        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-                        stage.setScene(homePage);
-                        stage.setTitle("Tournament Manager - Home Page");
-                        stage.show();
-                    }else{
-                        Alert("Wrong Password!");
+                    try{
+                        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
+                        ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
+                                 HashMap<String, Student> readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
+                                 objInStream.close();
+                                 if (readStudentInfoMap.containsKey(usernameTextF.getText())){
+                                     if (readStudentInfoMap.get(usernameTextF.getText()).getPassword().equals(passwordTextF.getText())) {
+                                         outputStream.writeObject(readStudentInfoMap.get(usernameTextF.getText()));
+                                         Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
+                                         Scene homePage = new Scene(fxmlLoader);
+                                         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                                         stage.setScene(homePage);
+                                         stage.setTitle("Tournament Manager - Home Page");
+                                         stage.show();
+                                     }
+                                     else
+                                         Alert("Wrong Password!");
+                                 }
+                                 else
+                                     Alert("Your ID is Not Valid");
+                                     outputStream.close();    
+                    }catch(Exception e){
+                        e.printStackTrace();
                     }
                 }else{
                     Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));

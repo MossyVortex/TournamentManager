@@ -3,13 +3,14 @@ package classes;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Student extends Person implements Serializable {
+public class Student extends Person implements Serializable{
     private String name;
     private int wins;
     private int losses;
     private int ties;
     private int weight;
     private int height;
+    private static final long serialVersionUID = -1382814192376511076L;
 
     private ArrayList<Tournament> joinedTournamentsTournament;
 
