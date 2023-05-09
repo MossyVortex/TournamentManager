@@ -173,8 +173,14 @@ public class Match {
         return teamsArray;
     }
     public void forceTeamChange(Team team1 , Team team2){
-        teamOne = team1;
-        teamTwo = team2;
+        if(!team1.equals(teamOne)){
+            teamOne = team1;
+            teamTwo = team2;
+            int tmp = scoreOne;
+            scoreOne = scoreTwo;
+            scoreTwo = scoreOne;
+        }
+
     }
     public Team getTeamOne(){return teamOne;}
     public Team getTeamTwo(){return teamTwo;}
