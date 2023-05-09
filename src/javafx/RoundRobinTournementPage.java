@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedHashMap;
@@ -28,6 +29,8 @@ public class RoundRobinTournementPage extends Application {
     public void start(Stage stage) {
         System.out.println("Hello, World!");
         RoundRobin tourney = new RoundRobin();
+        tourney.setStartingDate(LocalDate.of(2023,5,5));
+        tourney.setEndingDate(LocalDate.of(2023,5,25));
         tourney.setName("tour");
         ArrayList<Student> stu = new ArrayList<>();
         stu.add(new Student("mads"));
@@ -36,6 +39,7 @@ public class RoundRobinTournementPage extends Application {
         Team t1 = new Team(stu,"ssd");
         addTeams(tourney, t1 , stu);
 
+        System.out.println("meow");
         tourney.createMatchHistory();
         tourney.createTables();
         ScrollPane mainTourney = createTourneyPage(tourney);
@@ -53,21 +57,28 @@ public class RoundRobinTournementPage extends Application {
         VBox roundRobinVBox = new VBox(createTourney(tourney,textFields));
         HBox pointsTable = createPointsTable(tourney);
 
-        Button calculateWinnerButton = new Button();
+//        Button calculateWinnerButton = new Button();
 
         Button updatePointsButton = new Button();
 
-        Button returnToTournementPage = new Button("return to tournement page");
+//        Button returnToTournementPage = new Button("return to tournement page");
 
-        HBox buttonsBox = new HBox(updatePointsButton, calculateWinnerButton, returnToTournementPage);
-        calculateWinnerButton.setText("calcuate winners ");
+        HBox buttonsBox = new HBox(updatePointsButton);
+//        calculateWinnerButton.setText("calcuate winners ");
         updatePointsButton.setText("updatePoints");
         VBox mainTourney = new VBox(buttonsBox, roundRobinVBox, pointsTable);
 
         ScrollPane tourneyPage = new ScrollPane(mainTourney);
         updatePointsButton.setOnAction(e ->{
+            System.out.print("this is the array : ");
+
+
             updateMatches(tourney,textFields);
-            tourney.updatePointsTable();
+            tourney.updateTables();
+            tourney.getPlacement();
+            System.out.print("wins history : ");tourney.printWinsHistory();
+            System.out.print("goal differnce : ");tourney.printGoalDiffernce();
+            System.out.print("points table beautifed : ");tourney.printPointsTableBeautifed();
 //            tourney.printMatchHistoryBeautified();
             VBox updatedRoundRobin = new VBox(createTourney(tourney,textFields));
             HBox updatedPointsTable = createPointsTable(tourney);
@@ -75,7 +86,7 @@ public class RoundRobinTournementPage extends Application {
             mainTourney.getChildren().remove(1);
             mainTourney.getChildren().add(updatedRoundRobin);
             mainTourney.getChildren().add(updatedPointsTable);
-            System.out.println(tourney.printPointsTable());
+//            System.out.println(tourney.printPointsTable());
         });
         return tourneyPage;
 
@@ -119,7 +130,10 @@ public class RoundRobinTournementPage extends Application {
             team2TextField.setEditable(false);
             team2TextField.setStyle("-fx-background-color: black");
         }
-
+        Text dateText = new Text(match.getDate());
+        if(match.getLocalDate().isBefore(LocalDate.now()))
+            matchup.setStyle("-fx-background-color: red");
+        matchup.getChildren().add(dateText);
         return matchup;
     }
     public static VBox createRound(ArrayList<Match> matches, int roundIndex , ArrayList<TextField> textFields  ){

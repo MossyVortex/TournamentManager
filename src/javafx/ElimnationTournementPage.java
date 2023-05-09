@@ -145,7 +145,8 @@ public class ElimnationTournementPage extends Application {
         Text dateText = new Text(match.getDate());
         matchup.getChildren().add(dateText);
 
-
+        if(match.getLocalDate().isBefore(LocalDate.now()))
+            matchup.setStyle("-fx-background-color: red");
         return matchup;
     }
     public static VBox createRound(ArrayList<Match> matches, int roundIndex , ArrayList<TextField> textFields  ){

@@ -1,6 +1,8 @@
 package classes;
 
+import java.sql.Array;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Match {
@@ -34,6 +36,13 @@ public class Match {
         this.teamTwo = teamTwo;
         this.scoreOne = -1;
         this.scoreTwo = -1;
+    }
+    public Match(Team teamOne, Team teamTwo , LocalDate date){
+        this.teamOne = teamOne;
+        this.teamTwo = teamTwo;
+        this.scoreOne = -1;
+        this.scoreTwo = -1;
+        this.matchDate = date;
     }
     public Match(){
 
@@ -153,6 +162,19 @@ public class Match {
     public String getDate(){
         if(matchDate == null) return "date not selected";
         return matchDate.toString();
+    }
+    public LocalDate getLocalDate(){
+        return matchDate;
+    }
+    public ArrayList<Team> getTeams(){
+        ArrayList<Team> teamsArray =new ArrayList<>();
+        teamsArray.add(teamOne);
+        teamsArray.add(teamTwo);
+        return teamsArray;
+    }
+    public void forceTeamChange(Team team1 , Team team2){
+        teamOne = team1;
+        teamTwo = team2;
     }
     public Team getTeamOne(){return teamOne;}
     public Team getTeamTwo(){return teamTwo;}

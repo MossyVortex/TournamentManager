@@ -28,10 +28,11 @@ public class RoundRobin extends Tournament implements Serializable {
 
     public void createMatchHistory(){
         int n = getTeams().size();
+        double incremenByDay = calcuateDayIncrement();
         Hashtable<Integer, ArrayList<Match>> matchHistory = new Hashtable<>();
         Team[] teams = Arrays.copyOfRange(getTeams().toArray(new Team[getTeams().size()]),1,getTeams().size()) ;
         Team pivot = getTeams().get(0);
-        System.out.println(Arrays.toString(teams));
+//        System.out.println(Arrays.toString(teams));
         if(n % 2 == 1 ){
             teams = Arrays.copyOf(teams, teams.length + 1);
             teams[teams.length - 1] = new Team("Bye");
@@ -43,7 +44,10 @@ public class RoundRobin extends Tournament implements Serializable {
             System.arraycopy(teams,0,lst2,1 , teams.length);
             ArrayList<Match> roundMatches = new ArrayList<>();
             for(int i = 0 ; i < n/2 ; i++ ){
-                roundMatches.add(new Match(lst2[i],lst2[n-1-i]));
+                Match currentMatch = new Match(lst2[i],lst2[n-1-i]);
+                if(getStartingDate() != null && getEndingDate() != null)
+                    currentMatch.updateDate(getStartingDate().plusDays((long)Math.floor(incremenByDay *(r -1))));
+                roundMatches.add(currentMatch);
             }
             matchHistory.put(r-1,roundMatches);
             rotate(teams);
@@ -65,6 +69,11 @@ public class RoundRobin extends Tournament implements Serializable {
         this.winsHistory = winsHistory;
         this.goalDifferance = goalDiffernce;
     }
+    public void updateTables(){
+        updateWinsHistory();
+        updateGoalDiffernce();
+        updatePointsTable();
+    }
     public void updateWinsHistory(){
         for(int i = 0 ; i< matchHistory.size(); i++){
             ArrayList<Match> currentRound = matchHistory.get(i);
@@ -72,13 +81,14 @@ public class RoundRobin extends Tournament implements Serializable {
                 Match currentMatch = currentRound.get(j);
                 Team team1 = currentMatch.getTeamOne();
                 Team team2 = currentMatch.getTeamTwo();
-                if(!currentMatch.returnWinnerTeam().equals("draw")){
+                if(!currentMatch.returnWinnerTeam().equals("draw") && !currentMatch.returnWinnerTeam().equals("undefined")){
                     winsHistory.put((Team) currentMatch.returnWinnerTeam(),winsHistory.get((Team) currentMatch.returnWinnerTeam()) + 1);
                 }
             }
         }
     }
     public void updateGoalDiffernce(){
+
         for(int i = 0 ; i< matchHistory.size(); i++){
             ArrayList<Match> currentRound = matchHistory.get(i);
             for(int j = 0 ; j < currentRound.size() ; j++){
@@ -88,12 +98,20 @@ public class RoundRobin extends Tournament implements Serializable {
 
                 goalDifferance.put(team1,goalDifferance.get(team1) + currentMatch.getScoreOne() - currentMatch.getScoreTwo());
                 goalDifferance.put(team2,goalDifferance.get(team2) + currentMatch.getScoreTwo()- currentMatch.getScoreOne());
+                System.out.println("updated");
             }
         }
     }
-
+    public void zeroPointsTable(){
+        for(Map.Entry<Team, Integer> entry : pointsTable.entrySet() ){
+            System.out.println("Key = " + entry.getKey() +
+                    ", Value = " + entry.getValue());
+            pointsTable.put(entry.getKey(), 0);
+        }
+    }
     public void updatePointsTable(){
-        createTables();
+//        createTables();
+        zeroPointsTable();
         for(int i = 0 ; i< matchHistory.size(); i++){
             ArrayList<Match> currentRound = matchHistory.get(i);
             for(int j = 0 ; j < currentRound.size() ; j++){
@@ -147,7 +165,7 @@ public class RoundRobin extends Tournament implements Serializable {
         for( Map.Entry<Team, Integer> entry : list  ){
             mapSortedByValues.put(entry.getKey(), entry.getValue());
         }
-        System.out.println(mapSortedByValues);
+//        System.out.println(mapSortedByValues);
         this.pointsTable = mapSortedByValues;
     }
 
@@ -156,13 +174,92 @@ public class RoundRobin extends Tournament implements Serializable {
 
         if(getStartingDate() == null || getEndingDate() == null) return 0;
         int diffInDays = (int) DAYS.between(getStartingDate(), getEndingDate());
-        System.out.println(diffInDays);
+//        System.out.println(diffInDays);
         getRounds();
         if(rounds == 0) return 0;
         increment = diffInDays/ rounds;
         if(increment < 0) return 0;
         return increment;
 
+    }
+
+    public int twoTeamsbestScorer(Match match){
+        if(match.getScoreOne() > match.getScoreTwo()){
+            return 1;
+        }
+        else if(match.getScoreOne() < match.getScoreTwo()){
+            return -1;
+        }
+        else return 0;
+    }
+    public Match searchForMatch(Team team1 , Team team2){
+        for(int i = 0 ; i < matchHistory.size() ; i++){
+            ArrayList<Match> currentRound = matchHistory.get(i);
+            for(int j = 0 ; j < currentRound.size() ; j++ ){
+                Match currentMatch = currentRound.get(j);
+                if(currentMatch.getTeams().contains(team1) && currentMatch.getTeams().contains(team2))
+                    return currentMatch;
+            }
+
+        }
+        return new Match();
+    }
+    public int compareTo(Team team1, Team team2){
+        if(pointsTable.get(team1) > pointsTable.get(team2)){
+            return 1;
+        }
+        else if(pointsTable.get(team2) > pointsTable.get(team1)){
+            return  -1;
+        }
+        else{
+            Match match = searchForMatch(team1,team2);
+            match.forceTeamChange(team1,team2);
+            if(match.getScoreOne() > match.getScoreTwo() ){
+                return 1;
+            }
+            else if(match.getScoreOne() < match.getScoreTwo()){
+                return -1;
+            }
+            else{
+                if(winsHistory.get(team1) > winsHistory.get(team2)){
+                    return 1;
+                }
+                else if(winsHistory.get(team1) < winsHistory.get(team2)){
+                    return -1;
+                }
+                else{
+                    if(goalDifferance.get(team1) > goalDifferance.get(team2)){
+                        return 1;
+                    }
+                    else if(goalDifferance.get(team2) > goalDifferance.get(team1)){
+                        return -1;
+                    }
+                    else return 1;
+                }
+            }
+        }
+    }
+    public Team[] getPlacement(){
+        Team[] placement = getTeams().toArray(new Team[0]);
+        sort(placement);
+        System.out.println(Arrays.toString(placement));
+        return placement;
+    }
+    public void sort(Team[] arr){
+        int n = arr.length;
+        do {
+            int newN = 0;
+            for(int i = 1; i < n; i++) {
+                if(compareTo(arr[i-1], arr[i]) == 1) {
+                    Team temp = arr[i-1];
+                    arr[i-1] = arr[i];
+                    arr[i] = temp;
+
+                    newN = i;
+                }
+            }
+            n = newN;
+        } while (n != 0);
     }
     public LinkedHashMap<Team, Integer> printPointsTable(){return this.pointsTable;}
 
