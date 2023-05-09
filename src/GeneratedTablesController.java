@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -61,6 +62,9 @@ public class GeneratedTablesController implements Initializable {
 
     @FXML
     private TextField typeTextField;
+
+    @FXML
+    private ScrollPane scrollPane;
 
     @FXML
     void infoPaneOnCklicked(MouseEvent event) {
