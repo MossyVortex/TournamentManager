@@ -58,9 +58,13 @@ public class Team {
         return numberOfLosses;
     }
 
+    public int getNumberOfMembers(){
+        return teamMembers.size();
+    }
     public ArrayList<Student> getTeamMembers() {
         return teamMembers;
     }
+
 
     public void setTeamMembers(ArrayList<Student> teamMembers) {
         this.teamMembers = teamMembers;

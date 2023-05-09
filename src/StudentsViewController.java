@@ -1,6 +1,9 @@
 import classes.Person;
 import classes.Student;
+import classes.Team;
 import classes.Tournament;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -20,22 +24,23 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class StudentsViewController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> HeightC;
+    private TableColumn<Student, Integer> HeightC;
 
     @FXML
-    private TableColumn<?, ?> IDC;
+    private TableColumn<Student, String> IDC;
 
     @FXML
     private Label IDLabel;
 
     @FXML
-    private TableColumn<?, ?> WeightC;
+    private TableColumn<Student, Integer> WeightC;
 
     @FXML
     private Label WinsLabel;
@@ -53,7 +58,7 @@ public class StudentsViewController implements Initializable {
     private ImageView backButton;
 
     @FXML
-    private TableColumn<?, ?> emailC;
+    private TableColumn<Student, String> emailC;
 
     @FXML
     private TextField gameTextField;
@@ -65,13 +70,10 @@ public class StudentsViewController implements Initializable {
     private HBox infoPane;
 
     @FXML
-    private TableColumn<?, ?> phoneC;
-
-    @FXML
     private TextField stdNumTextField;
 
     @FXML
-    private TableColumn<?, ?> studentNameC;
+    private TableColumn<Student, String> studentNameC;
 
     @FXML
     private TextField teamsNumTextField;
@@ -80,7 +82,7 @@ public class StudentsViewController implements Initializable {
     private HBox teamsPane;
 
     @FXML
-    private TableView<?> teamsTableView;
+    private TableView<Student> teamsTableView;
 
     @FXML
     private TextField typeTextField;
@@ -167,6 +169,22 @@ public class StudentsViewController implements Initializable {
 
             typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
             stdNumTextField.setEditable(false);
+
+
+            studentNameC.setCellValueFactory(new PropertyValueFactory<>("name"));
+            IDC.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            emailC.setCellValueFactory(new PropertyValueFactory<>("email"));
+            WeightC.setCellValueFactory(new PropertyValueFactory<>("weight"));
+            HeightC.setCellValueFactory(new PropertyValueFactory<>("height"));
+
+            ArrayList<Student> studentArrayList = new ArrayList<>();
+            for (Team team: tournament.getTeams()){
+                studentArrayList.addAll(team.getTeamMembers());
+            }
+
+            ObservableList<Student> observableList = FXCollections.observableArrayList(studentArrayList);
+            teamsTableView.getItems().addAll(studentArrayList);
+            teamsTableView.setItems(observableList);
 
             objInStreamTournament.close();
 

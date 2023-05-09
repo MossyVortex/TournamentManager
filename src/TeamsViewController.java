@@ -1,5 +1,6 @@
 import classes.Person;
 import classes.Student;
+import classes.Team;
 import classes.Tournament;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -59,13 +61,18 @@ public class TeamsViewController implements Initializable {
     private HBox studentsPane;
 
     @FXML
-    private TableColumn<?, ?> teamNameC;
+    private TableColumn<Team, String> teamNameC;
+
+
+    @FXML
+    private TableColumn<Team, String> membersCountC;
+
 
     @FXML
     private TextField teamsNumTextField;
 
     @FXML
-    private TableView<?> teamsTableView;
+    private TableView<Team> teamsTableView;
 
     @FXML
     private TextField typeTextField;
@@ -152,6 +159,10 @@ public class TeamsViewController implements Initializable {
 
             typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
             stdNumTextField.setEditable(false);
+
+            membersCountC.setCellValueFactory(new PropertyValueFactory<>("NumberOfMembers"));
+            teamNameC.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+
 
             objInStreamTournament.close();
 
