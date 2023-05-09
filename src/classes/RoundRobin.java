@@ -76,6 +76,7 @@ public class RoundRobin extends Tournament implements Serializable {
         updatePointsTable();
     }
     public void updateWinsHistory(){
+        zeroWinsTable();
         for(int i = 0 ; i< matchHistory.size(); i++){
             ArrayList<Match> currentRound = matchHistory.get(i);
             for(int j = 0 ; j < currentRound.size() ; j++){
@@ -89,7 +90,7 @@ public class RoundRobin extends Tournament implements Serializable {
         }
     }
     public void updateGoalDiffernce(){
-
+        zeroGoalsTable();
         for(int i = 0 ; i< matchHistory.size(); i++){
             ArrayList<Match> currentRound = matchHistory.get(i);
             for(int j = 0 ; j < currentRound.size() ; j++){
@@ -99,7 +100,7 @@ public class RoundRobin extends Tournament implements Serializable {
 
                 goalDifferance.put(team1,goalDifferance.get(team1) + currentMatch.getScoreOne() - currentMatch.getScoreTwo());
                 goalDifferance.put(team2,goalDifferance.get(team2) + currentMatch.getScoreTwo()- currentMatch.getScoreOne());
-                System.out.println("updated");
+
             }
         }
     }
@@ -108,6 +109,21 @@ public class RoundRobin extends Tournament implements Serializable {
             System.out.println("Key = " + entry.getKey() +
                     ", Value = " + entry.getValue());
             pointsTable.put(entry.getKey(), 0);
+        }
+    }
+    public void zeroWinsTable(){
+        for(Map.Entry<Team, Integer> entry : winsHistory.entrySet() ){
+            System.out.println("Key = " + entry.getKey() +
+                    ", Value = " + entry.getValue());
+            winsHistory.put(entry.getKey(), 0);
+        }
+    }
+
+    public void zeroGoalsTable(){
+        for(Map.Entry<Team, Integer> entry : goalDifferance.entrySet() ){
+            System.out.println("Key = " + entry.getKey() +
+                    ", Value = " + entry.getValue());
+            goalDifferance.put(entry.getKey(), 0);
         }
     }
     public void updatePointsTable(){
@@ -251,7 +267,7 @@ public class RoundRobin extends Tournament implements Serializable {
         do {
             int newN = 0;
             for(int i = 1; i < n; i++) {
-                if(compareTo(arr[i-1], arr[i]) == 1) {
+                if(compareTo(arr[i], arr[i-1]) == 1) {
                     Team temp = arr[i-1];
                     arr[i-1] = arr[i];
                     arr[i] = temp;

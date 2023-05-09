@@ -42,7 +42,7 @@ public class RoundRobinTournementPage extends Application {
         System.out.println("meow");
         tourney.createMatchHistory();
         tourney.createTables();
-        ScrollPane mainTourney = createTourneyPage(tourney);
+        ScrollPane mainTourney = createArchivedTourneyPage(tourney);
 
 
         Scene scene = new Scene(mainTourney,1000,800);
@@ -52,11 +52,25 @@ public class RoundRobinTournementPage extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    public static ScrollPane createArchivedTourneyPage(RoundRobin tourney){
+        VBox roundRobinVBox = new VBox(createArchivedTourney(tourney));
+        HBox pointsTable = createPointsTable(tourney);
+        HBox realPlacmentTable = makeTruePlacement(tourney);
+        Button returnButton = new Button("return to previous page");
+
+//        Button returnToTournementPage = new Button("return to tournement page");
+
+        HBox buttonsBox = new HBox(returnButton);
+        VBox mainTourney = new VBox(buttonsBox, roundRobinVBox, pointsTable, realPlacmentTable);
+
+        ScrollPane tourneyPage = new ScrollPane(mainTourney);
+        return tourneyPage;
+    }
     public static ScrollPane createTourneyPage(RoundRobin tourney){
         ArrayList<TextField> textFields = new ArrayList<>();
         VBox roundRobinVBox = new VBox(createTourney(tourney,textFields));
         HBox pointsTable = createPointsTable(tourney);
-
+        HBox realPlacmentTable = makeTruePlacement(tourney);
 //        Button calculateWinnerButton = new Button();
 
         Button updatePointsButton = new Button();
@@ -66,7 +80,7 @@ public class RoundRobinTournementPage extends Application {
         HBox buttonsBox = new HBox(updatePointsButton);
 //        calculateWinnerButton.setText("calcuate winners ");
         updatePointsButton.setText("updatePoints");
-        VBox mainTourney = new VBox(buttonsBox, roundRobinVBox, pointsTable);
+        VBox mainTourney = new VBox(buttonsBox, roundRobinVBox, pointsTable, realPlacmentTable);
 
         ScrollPane tourneyPage = new ScrollPane(mainTourney);
         updatePointsButton.setOnAction(e ->{
@@ -76,20 +90,68 @@ public class RoundRobinTournementPage extends Application {
             updateMatches(tourney,textFields);
             tourney.updateTables();
             tourney.getPlacement();
-            System.out.print("wins history : ");tourney.printWinsHistory();
-            System.out.print("goal differnce : ");tourney.printGoalDiffernce();
-            System.out.print("points table beautifed : ");tourney.printPointsTableBeautifed();
+            System.out.print("match history : ");tourney.printMatchHistoryBeautified();
+//            System.out.print("goal differnce : ");tourney.printGoalDiffernce();
+//            System.out.print("points table beautifed : ");tourney.printPointsTableBeautifed();
 //            tourney.printMatchHistoryBeautified();
             VBox updatedRoundRobin = new VBox(createTourney(tourney,textFields));
             HBox updatedPointsTable = createPointsTable(tourney);
+            HBox updatedPlacmentTable = makeTruePlacement(tourney);
+
+            mainTourney.getChildren().remove(1);
             mainTourney.getChildren().remove(1);
             mainTourney.getChildren().remove(1);
             mainTourney.getChildren().add(updatedRoundRobin);
             mainTourney.getChildren().add(updatedPointsTable);
+            mainTourney.getChildren().add(updatedPlacmentTable);
 //            System.out.println(tourney.printPointsTable());
         });
         return tourneyPage;
 
+    }
+    public static VBox createArchivedMatchUp(Match match){
+        VBox matchup = new VBox();
+
+        Label team1Label = new Label(match.getTeamOneName() + " ");
+        team1Label.setMaxWidth(100);
+        team1Label.setMinWidth(100);
+
+        Text team1Score = new Text(match.getScoreOne() +"");
+        HBox team1HBox = new HBox();
+        team1HBox.getChildren().addAll(team1Label,team1Score);
+        team1HBox.setSpacing(10);
+
+        Label team2Label = new Label(match.getTeamTwoName() + "");
+        team2Label.setMaxWidth(100);
+        team2Label.setMinWidth(100);
+        Text team2Score = new Text(match.getScoreTwo() +"");
+        HBox team2HBox = new HBox();
+        team2HBox.getChildren().addAll(team2Label,team2Score );
+        team2HBox.setSpacing(10);
+        matchup.getChildren().addAll(team1HBox, team2HBox);
+        Text dateText = new Text(match.getDate());
+        matchup.getChildren().add(dateText);
+        return matchup;
+        
+    }
+    public static VBox createArchivedRound(ArrayList<Match> matches, int roundIndex ){
+        VBox round = new VBox(new Text("round" + roundIndex));
+        round.setSpacing(20);
+        for(int i = 0 ; i < matches.size() ; i++){
+            round.getChildren().add(createArchivedMatchUp(matches.get(i)));
+        }
+        return round;
+    }
+    public static VBox createArchivedTourney(RoundRobin tourney){
+        HBox tourneyHbox = new HBox();
+        tourneyHbox.setSpacing(20);
+        Hashtable<Integer, ArrayList<Match>> matchHistory = tourney.printMatchHistory();
+        for(int i = 0 ; i < matchHistory.size() ; i++){
+            tourneyHbox.getChildren().add(createArchivedRound(matchHistory.get(i), i));
+        }
+        VBox tourneyVbox = new VBox(new Text("tournement"));
+        tourneyVbox.getChildren().add(tourneyHbox);
+        return tourneyVbox;
     }
 
 
@@ -208,8 +270,23 @@ public class RoundRobinTournementPage extends Application {
             tourney.updateMatchSingleteam(roundIndex , matchIndex, score , teamIndex );
         }
     }
-
-
+    public static HBox makeTruePlacement(RoundRobin tourney){
+        HBox placementTable = new HBox();
+        placementTable.setSpacing(20);
+        placementTable.getChildren().add(new Text("real placement"));
+        Team[] placementTeams  = tourney.getPlacement();
+        for(int i = 0 ; i < placementTeams.length ; i++ ){
+            placementTable.getChildren().add(createPlacmentTeam(placementTeams[i].getTeamName(),i+1));
+        }
+        return placementTable;
+    }
+    public static VBox createPlacmentTeam(String teamName , int placement){
+        Text teamNameText = new Text(teamName);
+        Text placmentText = new Text(placement +"");
+        VBox teamPoints = new VBox(teamNameText,placmentText);
+        return teamPoints;
+    }
+    
 
 //    public static VBox createPointsTable(){
 //
