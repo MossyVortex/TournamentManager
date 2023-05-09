@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "test3",
+            "request": "launch",
+            "mainClass": "test3",
+            "projectName": "TournamentManager_9c4af4d7"
+        },
+        {
+            "type": "java",
             "name": "HussainTest",
             "request": "launch",
             "mainClass": "HussainTest",

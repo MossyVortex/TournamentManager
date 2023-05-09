@@ -11,7 +11,8 @@ public class Person implements Serializable {
     private String ID;
     private String password;
     private String userName;
-    
+    private static final long serialVersionUID = -4584107448582206664L;
+
     public Person(String name, String userName ,String phoneNumber, String email, String ID, String password){
         this.name = name;
         this.phoneNumber = phoneNumber;

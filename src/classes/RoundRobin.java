@@ -11,6 +11,7 @@ public class RoundRobin extends Tournament implements Serializable {
     private Hashtable<Team, Integer> winsHistory;
     private Hashtable<Team, Integer> goalDifferance;
     private LinkedHashMap<Team, Integer> pointsTable;
+    private static final long serialVersionUID = -56722074485822064L;
 
     private ArrayList<Team> placement;
     private int rounds;
