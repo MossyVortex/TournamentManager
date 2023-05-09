@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ElimnationTournementPage",
+            "request": "launch",
+            "mainClass": "javafx.ElimnationTournementPage",
+            "projectName": "TournamentManager_9c4af4d7"
+        },
+        {
+            "type": "java",
+            "name": "RoundRobinTournementPage",
+            "request": "launch",
+            "mainClass": "javafx.RoundRobinTournementPage",
+            "projectName": "TournamentManager_9c4af4d7"
+        },
+        {
+            "type": "java",
             "name": "test3",
             "request": "launch",
             "mainClass": "test3",

@@ -170,6 +170,12 @@ public class StudentsViewController implements Initializable {
             typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
             stdNumTextField.setEditable(false);
 
+            if(tournament.getIsGenerated())
+                generatedPane.setVisible(true);
+            else
+                generatedPane.setVisible(false);
+
+
 
             studentNameC.setCellValueFactory(new PropertyValueFactory<>("name"));
             IDC.setCellValueFactory(new PropertyValueFactory<>("ID"));

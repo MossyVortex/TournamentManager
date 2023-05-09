@@ -157,6 +157,12 @@ public class TeamsViewController implements Initializable {
             teamsNumTextField.setText(String.valueOf(tournament.getNumOfTeams()));
             stdNumTextField.setText(String.valueOf(tournament.getMembersPerTeam()));
 
+            if(tournament.getIsGenerated())
+                generatedPane.setVisible(true);
+            else
+                generatedPane.setVisible(false);
+
+
             typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
             stdNumTextField.setEditable(false);
 

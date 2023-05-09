@@ -139,6 +139,15 @@
                         </VBox>
                      </children>
                   </HBox>
+                  <BorderPane prefHeight="91.0" prefWidth="722.0">
+                     <center>
+                        <Button fx:id="generateButton" mnemonicParsing="false" onAction="#GenerateButtonOnClicked" prefHeight="51.0" prefWidth="189.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Generate Tables" textFill="#f2e8cf" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="20.0" />
+                           </font>
+                        </Button>
+                     </center>
+                  </BorderPane>
                </children>
             </VBox>
          </center>

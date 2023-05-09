@@ -111,6 +111,14 @@ public class ViewTournamentController implements Initializable {
     private TextField typeTextField;
 
     @FXML
+    private Button generateButton;
+
+    @FXML
+    void GenerateButtonOnClicked(ActionEvent event) {
+
+    }
+
+    @FXML
     void ViweButtonOnClicked1(ActionEvent event) {
 
     }
@@ -236,11 +244,7 @@ public class ViewTournamentController implements Initializable {
             ObjectInputStream objInStreamLogedinPerson = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
             Person person = (Person) objInStreamLogedinPerson.readObject();
             objInStreamLogedinPerson.close();
-            if (person instanceof Admin)
-                EditButton.setVisible(true);
-            else
-                EditButton.setVisible(false);
-
+            
             ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentView.dat"));
             Tournament tournament = (Tournament) objInStreamTournament.readObject();
             IDLabel.setText(tournament.getTournamentID());
@@ -251,6 +255,25 @@ public class ViewTournamentController implements Initializable {
             nameTextField.setText(tournament.getName());
             StatusTF.setText(String.valueOf(tournament.getRegisterationStatus()));
 //            WinnerTextField.setText((tournament.getWinner()).toString());
+
+            if (person instanceof Admin){
+                if(!tournament.getIsGenerated())
+                    generateButton.setVisible(true);
+                else
+                    generateButton.setVisible(false);
+
+                EditButton.setVisible(true);
+            }else{
+                generateButton.setVisible(false);
+                EditButton.setVisible(false);
+            }
+
+            if(tournament.getIsGenerated())
+                generatedPane.setVisible(true);
+            else
+                generatedPane.setVisible(false);
+
+
 
             typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
             stdNumTextField.setEditable(false);nameTextField.setEditable(false);StatusTF.setEditable(false);WinnerTextField.setEditable(false);
