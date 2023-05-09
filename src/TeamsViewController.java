@@ -6,6 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -17,7 +19,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Objects;
 
-public class GeneratedTablesController {
+public class TeamsViewController {
 
     @FXML
     private Label IDLabel;
@@ -41,6 +43,9 @@ public class GeneratedTablesController {
     private TextField gameTextField;
 
     @FXML
+    private HBox generatedPane;
+
+    @FXML
     private HBox infoPane;
 
     @FXML
@@ -50,13 +55,31 @@ public class GeneratedTablesController {
     private HBox studentsPane;
 
     @FXML
+    private TableColumn<?, ?> teamNameC;
+
+    @FXML
     private TextField teamsNumTextField;
 
     @FXML
-    private HBox teamsPane;
+    private TableView<?> teamsTableView;
 
     @FXML
     private TextField typeTextField;
+
+    @FXML
+    void generatedPaneOnClicked(MouseEvent event) {
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GeneratedTablesScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerStudentPage = new Scene(fxmlLoader);
+        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+        stage.setScene(registerStudentPage);
+        stage.setTitle("Tournament Manager - Generated Tables View");
+        stage.show();
+    }
 
     @FXML
     void infoPaneOnCklicked(MouseEvent event) {
@@ -109,21 +132,6 @@ public class GeneratedTablesController {
         Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
         stage.setScene(registerStudentPage);
         stage.setTitle("Tournament Manager - Students View");
-        stage.show();
-    }
-
-    @FXML
-    void teamsPaneOnCklicked(MouseEvent event) {
-        Parent fxmlLoader = null;
-        try {
-            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TeamsViewScene.fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene registerStudentPage = new Scene(fxmlLoader);
-        Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
-        stage.setScene(registerStudentPage);
-        stage.setTitle("Tournament Manager - Teams View");
         stage.show();
     }
 
