@@ -11,9 +11,9 @@ public class Elimination extends Tournament implements Serializable {
     private int rounds;
     private static final long serialVersionUID = -56722074485822064L;
     public Elimination(String name, String gameType, String type, String tournamentID, Team winner,  LocalDate startingDate, LocalDate endingDate,
-    ArrayList<Team> teams, int numOfTeams,  ArrayList<Student> students, int membersPerTeam, boolean registerationStatus){ // constructor
+    ArrayList<Team> teams, int numOfTeams,  ArrayList<Student> students, int membersPerTeam, boolean registerationStatus, boolean isGenerated){ // constructor
 
-        super(name, gameType,type, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, students, registerationStatus, membersPerTeam);
+        super(name, gameType,type, tournamentID, winner, startingDate, endingDate, teams, numOfTeams, students, registerationStatus, membersPerTeam, isGenerated);
     }
     public Elimination(){
         super();

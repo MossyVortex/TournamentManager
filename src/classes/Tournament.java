@@ -12,13 +12,13 @@ public abstract class Tournament implements Serializable {
     private ArrayList<Team> teams; private Boolean tournamentRegistrationStatus;
     private int numOfTeams; private Dictionary<Integer,Team> teamPlace; private Dictionary<String,Match[]> matchHistory;
     private String[] bannedStudentsIDs; private ArrayList<Student> students;
-    private boolean registerationStatus;
+    private boolean registerationStatus, isGenerated;
     private int membersPerTeam;
     private static final long serialVersionUID = 8237865757165260457L;
 
     public Tournament(String name, String gameType, String type, String tournamentID, Team winner, LocalDate startingDate, LocalDate endingDate,
      ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, boolean registerationStatus,
-     int membersPerTeam){ // abstract constructor
+     int membersPerTeam, boolean isGenerated){ // abstract constructor
 
         this.name = name;
         this.gameType = gameType;
@@ -32,6 +32,7 @@ public abstract class Tournament implements Serializable {
         this.students = students;
         this.registerationStatus = registerationStatus;
         this.membersPerTeam = membersPerTeam;
+        this.isGenerated = isGenerated;
 
     }
     public Tournament(){ // abstract constructor
@@ -249,4 +250,14 @@ public abstract class Tournament implements Serializable {
                 ", membersPerTeam=" + membersPerTeam +
                 '}';
     }
+
+    public boolean getIsGenerated() {
+        return this.isGenerated;
+    }
+
+    public void setIsGenerated(boolean isGenerated){
+        this.isGenerated = isGenerated;
+    }
+
+
 }

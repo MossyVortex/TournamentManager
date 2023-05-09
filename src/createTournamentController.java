@@ -114,7 +114,7 @@ public class createTournamentController {
 
                 String name, tournamenType, gameType, tournamentID, bannedStudentsIDs, numOfTeams, students;
                 Team winner;
-                boolean registerationStatus;
+                boolean registerationStatus, isGenerated;
                 LocalDate startDate, endDate;
                 ArrayList<Team> teams;
                 int membersPerTeam;
@@ -133,11 +133,12 @@ public class createTournamentController {
                 teams = teamArr;
                 registerationStatus = true;
                 membersPerTeam = Integer.parseInt(membersPerTeamTextField.getText());
+                isGenerated = false;
 
                 ArrayList<Object> temp = new ArrayList<>();
                 tournamentsInfoMap.put(tournamentID, temp);
                 addTournamentInfo(tournamentsInfoMap,name, tournamenType, gameType, tournamentID, winner, startDate, endDate,
-                 bannedStudentsIDs, numOfTeams, students,teams ,registerationStatus, membersPerTeam);
+                 bannedStudentsIDs, numOfTeams, students,teams ,registerationStatus, membersPerTeam, isGenerated);
 
                 Parent fxmlLoader = null;
                 try {
@@ -165,7 +166,7 @@ public class createTournamentController {
 
                     String name, gameType, tournamentID, bannedStudentsIDs, numOfTeams, students, tournamentType;
                     Team winner;
-                    boolean registerationStatus;
+                    boolean registerationStatus, isGenerated;
                     LocalDate startDate, endDate;
                     ArrayList<Team> teams;
                     int membersPerTeam;
@@ -184,11 +185,12 @@ public class createTournamentController {
                     ArrayList<Team> teamArr = new ArrayList<>();
                     teams = teamArr;
                     membersPerTeam = Integer.parseInt(membersPerTeamTextField.getText());
+                    isGenerated = false;
 
                     ArrayList<Object> temp = new ArrayList<>();
                     tournamentsInfoMap.put(tournamentID, temp);
                     addTournamentInfo(tournamentsInfoMap, name, tournamentType, gameType, tournamentID, winner, startDate, endDate,
-                    bannedStudentsIDs, numOfTeams, students, teams, registerationStatus, membersPerTeam);
+                    bannedStudentsIDs, numOfTeams, students, teams, registerationStatus, membersPerTeam, isGenerated);
 
                     Parent fxmlLoader = null;
                     try {
@@ -259,7 +261,7 @@ public class createTournamentController {
     }
 
     public static void addTournamentInfo(HashMap<String, ArrayList<Object>> tournamentInfoMap ,String name, String tournamentType,String gameType, String tournamentID, Team winner, LocalDate startDate,
-    LocalDate endDate, String bannedStudentsIDs, String maxNumOfTeams, String students, ArrayList<Team> teams, boolean registerationStatus, int membersPerTeam){
+    LocalDate endDate, String bannedStudentsIDs, String maxNumOfTeams, String students, ArrayList<Team> teams, boolean registerationStatus, int membersPerTeam, boolean isGenerated){
 
         ArrayList<Object> tournamentData = tournamentInfoMap.get(tournamentID);
 
@@ -275,6 +277,7 @@ public class createTournamentController {
         tournamentData.add(endDate);
         tournamentData.add(teams);
         tournamentData.add(registerationStatus);
+        tournamentData.add(isGenerated);
 
         
         try {
@@ -288,7 +291,7 @@ public class createTournamentController {
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
                 ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
                 if (!tournamentsInfoHashMap.containsKey(tournamentID)){
-                    tournamentsInfoHashMap.put(tournamentID, new Elimination(name, gameType,tournamentType, tournamentID, winner, startDate, endDate, teams, 0, null, membersPerTeam ,registerationStatus )); // the zero before the reg status is a placeholder we need a textfield!
+                    tournamentsInfoHashMap.put(tournamentID, new Elimination(name, gameType,tournamentType, tournamentID, winner, startDate, endDate, teams, 0, null, membersPerTeam ,registerationStatus, isGenerated )); // the zero before the reg status is a placeholder we need a textfield!
                     objOutStream.writeObject(tournamentsInfoHashMap);
                     
                 }
@@ -299,7 +302,7 @@ public class createTournamentController {
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
                 ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
                 if (!tournamentsInfoHashMap.containsKey(tournamentID)){
-                    tournamentsInfoHashMap.put(tournamentID, new RoundRobin(name, gameType,tournamentType, tournamentID, winner, startDate, endDate, teams, 0, null,0 ,registerationStatus));
+                    tournamentsInfoHashMap.put(tournamentID, new RoundRobin(name, gameType,tournamentType, tournamentID, winner, startDate, endDate, teams, 0, null,0 ,registerationStatus, isGenerated));
                     objOutStream.writeObject(tournamentsInfoHashMap);
                 }    
                 objInStream.close();

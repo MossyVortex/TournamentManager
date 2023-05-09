@@ -18,9 +18,9 @@ public class RoundRobin extends Tournament implements Serializable {
 
 
     public RoundRobin(String name, String gameType, String type, String tournamentID, Team winner,  LocalDate startingDate, LocalDate endingDate,
-    ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, int membersPerTeam, boolean registerationStatus){ // constructor
+    ArrayList<Team> teams, int numOfTeams, ArrayList<Student> students, int membersPerTeam, boolean registerationStatus, boolean isGenerated){ // constructor
 
-        super(name, gameType,type, tournamentID, winner, startingDate, endingDate, teams, numOfTeams,  students, true, membersPerTeam);
+        super(name, gameType,type, tournamentID, winner, startingDate, endingDate, teams, numOfTeams,  students, true, membersPerTeam, isGenerated);
     }
 
     public RoundRobin(){
