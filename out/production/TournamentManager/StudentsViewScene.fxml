@@ -54,10 +54,9 @@
                <columns>
                   <TableColumn fx:id="studentNameC" prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Name" />
                   <TableColumn fx:id="IDC" prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="ID" />
-                  <TableColumn fx:id="phoneC" prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Phone" />
-                  <TableColumn fx:id="emailC" prefWidth="135.20001220703125" style="-fx-background-color: #D6B86A;" text="Email" />
-                  <TableColumn fx:id="WeightC" minWidth="0.0" prefWidth="6.39996337890625" style="-fx-background-color: #C8A038;" text="Weight" />
-                  <TableColumn fx:id="HeightC" prefWidth="186.39999389648438" style="-fx-background-color: #D6B86A;" text="Height" />
+                  <TableColumn fx:id="emailC" prefWidth="135.20001220703125" style="-fx-background-color: #C8A038;" text="Email" />
+                  <TableColumn fx:id="WeightC" minWidth="0.0" prefWidth="6.39996337890625" style="-fx-background-color: #D6B86A;" text="Weight" />
+                  <TableColumn fx:id="HeightC" prefWidth="186.39999389648438" style="-fx-background-color: #C8A038;" text="Height" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

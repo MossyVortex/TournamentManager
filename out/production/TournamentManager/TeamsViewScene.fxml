@@ -47,7 +47,7 @@
             <TableView fx:id="teamsTableView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="teamNameC" prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Name" />
-                <TableColumn prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="Members Count" />
+                <TableColumn fx:id="membersCountC" prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="Members Count" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
