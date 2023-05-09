@@ -64,7 +64,7 @@ public class AdminHomeController implements Initializable {
         Scene registerPage = new Scene(fxmlLoader);
         Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
         stage.setScene(registerPage);
-        stage.setTitle("classes.Tournament Manager - Create classes.Tournament");
+        stage.setTitle("Tournament Manager - Create Tournament");
         stage.show();
 
     }

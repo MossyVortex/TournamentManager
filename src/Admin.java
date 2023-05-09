@@ -1,6 +1,8 @@
 import classes.Person;
 
-public class Admin extends Person {
+import java.io.Serializable;
+
+public class Admin extends Person implements Serializable {
     private int tournamentsCreated;
     private boolean IsAuthorized;
     
