@@ -260,5 +260,23 @@ public abstract class Tournament implements Serializable {
         this.isGenerated = isGenerated;
     }
 
+    public boolean isFullOfTeams(){
+        return teams.size() == numOfTeams;
+    }
+
+    public boolean areAllTeamsFilled(){
+        for (Team team : teams){
+            if (team.getTeamMembers().size() < membersPerTeam)
+                return false;
+        }
+        return true;
+    }
+
+    public void addStudentInTeam(Student student, Team team){
+        teams.remove(team);
+        team.addStudent(student);
+        teams.add(team);
+    }
+
 
 }

@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Border;
@@ -19,10 +16,9 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -49,7 +45,6 @@ public class JoinTournamentController {
 
     @FXML
     private Button enterButton;
-
 
     @FXML
     private TextField memberIDTextField;
@@ -85,24 +80,50 @@ public class JoinTournamentController {
                 if (tournamentHashMap.containsKey(tournamentIDTextField.getText())){
                     Tournament tournament = tournamentHashMap.get(tournamentIDTextField.getText());
                     if (individualRB.isSelected()){
-                        ArrayList<Team> teams = tournament.getTeams();
-                        for (int i = 0; i<teams.size(); i++){
-                            Team team = teams.get(i);
-                            ArrayList<Student> studentArrayList = team.getTeamMembers();
-                            if (studentArrayList.size() < tournament.getMembersPerTeam()){
+                        if (tournament.areAllTeamsFilled()){
+                            if (tournament.isFullOfTeams() || !tournament.getRegisterationStatus()){
+                                Alert("Unable to Join This Tournament");
+                            }
+                            else {
+                                ArrayList<Student> studentArrayList = new ArrayList<>();
                                 studentArrayList.add(student);
-                                team.setTeamMembers(studentArrayList);
-                                break;
-                                /* Note Now update the team in "ArrayList<Team> teams"
-                                    Then in "Tournament tournament"
-                                 */
+                                Team team = new Team(studentArrayList, "Team"+tournament.getTeams().size()+1);
+                                tournament.addTeam(team);
                             }
                         }
-                        if (teams.size() < tournament.getNumOfTeams()){
-                            ArrayList<Student> arrayList = new ArrayList<>();
-                            arrayList.add(student);
-                            Team team = new Team(arrayList);
-                            tournament.addTeam(team);
+                        else {
+                            for (Team team : tournament.getTeams()){
+                                if (team.getTeamMembers().size() < tournament.getMembersPerTeam()){
+                                    tournament.addStudentInTeam(student,team);
+                                    break;
+                                }
+                            }
+                        }
+                        tournamentHashMap.remove(tournament.getTournamentID());
+                        tournamentHashMap.put(tournament.getTournamentID(),tournament);
+                        ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\TournamentsBFile.dat"));
+                        objectOutputStream.writeObject(tournamentHashMap);
+                        objectOutputStream.close();
+                    }
+                    else{
+                        if (!tournament.isFullOfTeams()) {
+                            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\TournamentView.dat"));
+                            objectOutputStream.writeObject(tournament);
+                            objectOutputStream.close();
+                            Parent fxmlLoader = null;
+                            try {
+                                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("teamJoinScene.fxml")));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Scene registerAdminPage = new Scene(fxmlLoader);
+                            Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+                            stage.setScene(registerAdminPage);
+                            stage.setTitle("Tournament Manager - Team Join");
+                            stage.show();
+                        }
+                        else {
+                            Alert("Full of Teams");
                         }
                     }
                 }
@@ -160,4 +181,12 @@ public class JoinTournamentController {
 
     public void ViweButtonOnClicked1(ActionEvent actionEvent) {
     }
+
+    public void Alert(String error){
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setHeaderText("Input not valid");
+        errorAlert.setContentText(error);
+        errorAlert.showAndWait();
+    }
+
 }
