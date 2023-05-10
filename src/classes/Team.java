@@ -74,6 +74,10 @@ public class Team {
         return teamMembers;
     }
 
+    public void addStudent(Student student){
+        teamMembers.add(student);
+    }
+
 
     public void setTeamMembers(ArrayList<Student> teamMembers) {
         this.teamMembers = teamMembers;
