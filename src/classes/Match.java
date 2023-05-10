@@ -119,6 +119,20 @@ public class Match implements Serializable {
             return "draw";
         }
     }
+    public Object returnLoserTeam(){
+        if(scoreOne>scoreTwo){
+            return teamTwo;
+        }
+        else if(scoreOne < scoreTwo){
+            return teamOne;
+        }
+        else if(scoreOne == -1 || scoreTwo == -1){
+            return "undefined";
+        }
+        else {
+            return "draw";
+        }
+    }
 
     @Override
     public String toString() {

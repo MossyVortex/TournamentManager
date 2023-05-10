@@ -26,7 +26,7 @@ public class ElimnationTournementPage extends Application {
 
     @Override
     public void start(Stage stage) {
-        System.out.println("Hello, World!");
+
         Elimination tourney = new Elimination();
         tourney.setName("tour");
         ArrayList<Student> stu = new ArrayList<>();
@@ -69,16 +69,17 @@ public class ElimnationTournementPage extends Application {
 
         ArrayList<TextField> textFields = new ArrayList<>();
         VBox elimnationVbox = new VBox(createTourney(tourney,textFields));
-        System.out.println(textFields);
+
         Button updateScoreButton = new Button();
         updateScoreButton.setText("calcuateWinners");
         Text winnerText = new Text("tournement winner :  "  + tourney.getWinner());
         VBox mainTourney = new VBox(updateScoreButton, elimnationVbox, winnerText);
         updateScoreButton.setOnAction(e ->{
-            System.out.println(tourney.getMatches());
+            tourney.updatePlacementTable();
+
             updateMatches(tourney, textFields);
             tourney.calcuateWinnersMatches();
-            tourney.printMatchHistoryBeautified();
+
             VBox elimnationVboxUpdated = new VBox(createTourney(tourney, textFields));
             Text winnerTextUpdated = new Text("tournement winner :  "  + tourney.getWinner());
             mainTourney.getChildren().remove(1);
@@ -86,7 +87,7 @@ public class ElimnationTournementPage extends Application {
             mainTourney.getChildren().add(elimnationVboxUpdated);
             mainTourney.getChildren().add(winnerTextUpdated);
 
-            System.out.println("no errors");
+
         });
         return mainTourney;
     }
