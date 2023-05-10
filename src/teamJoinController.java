@@ -1,4 +1,5 @@
 import classes.Student;
+import classes.Team;
 import classes.Tournament;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,9 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -57,7 +61,7 @@ public class teamJoinController implements Initializable {
     @FXML
     private VBox membersHB;
 
-    private ArrayList<Student> students = new ArrayList<>();
+    private static ArrayList<Student> students = new ArrayList<>();
 
     @FXML
     void enterButtonOnClicked(ActionEvent event) {
@@ -71,16 +75,30 @@ public class teamJoinController implements Initializable {
                 HashMap<String, Student> studentHashMap = (HashMap<String, Student>) objInStream.readObject();
                 objInStream.close();
 
-                if (studentHashMap.containsKey(memberUserNameTextField.getText())) {
-                    if (students.size()<tournament.getMembersPerTeam()) {
-                        students.add(studentHashMap.get(memberUserNameTextField.getText()));
-                        remaningNumLable.setText(String.valueOf(tournament.getMembersPerTeam()-students.size()));
+                if (students.size()<tournament.getMembersPerTeam()) {
+                    if (!alreadyExist(memberUserNameTextField.getText())) {
+                        if (inAPIStudent(memberUserNameTextField.getText()))
+                            remaningNumLable.setText(String.valueOf(tournament.getMembersPerTeam() - students.size()));
+
+                        else if (studentHashMap.containsKey(memberUserNameTextField.getText()) && students.size() < tournament.getMembersPerTeam()) {
+                            students.add(studentHashMap.get(memberUserNameTextField.getText()));
+                            remaningNumLable.setText(String.valueOf(tournament.getMembersPerTeam() - students.size()));
+                        } else
+                            Alert("Student is Unavailable");
                     }
                     else
-                        Alert("Team is Full");
+                        Alert("Student is Already Exist");
                 }
+                else
+                    Alert("Team is Full");
 
-
+                membersHB.getChildren().clear();
+                for (Student student : students) {
+                    Label label = new Label(student.getName());
+                    label.setTextFill(Paint.valueOf("#386641"));
+                    label.setFont(Font.font(20));
+                    membersHB.getChildren().add(label);
+                }
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -102,6 +120,42 @@ public class teamJoinController implements Initializable {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src\\TournamentView.dat"));
             Tournament tournament = (Tournament) objectInputStream.readObject();
             objectInputStream.close();
+
+            if (allFilled()){
+                Team team = new Team(students,teamNameTextField.getText());
+                tournament.addTeam(team);
+
+                ObjectOutputStream objectOutputStream1 = new ObjectOutputStream(new FileOutputStream("src\\TournamentView.dat"));
+                objectOutputStream1.writeObject(tournament);
+                objectOutputStream1.close();
+
+                ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentsBFile.dat"));
+                HashMap<String, Tournament> tournamentHashMap = (HashMap<String,Tournament>) objInStreamTournament.readObject();
+                objInStreamTournament.close();
+
+                tournamentHashMap.remove(tournament.getTournamentID());
+                tournamentHashMap.put(tournament.getTournamentID(),tournament);
+
+                ObjectOutputStream objectOutputStream2 = new ObjectOutputStream(new FileOutputStream("src\\TournamentsBFile.dat"));
+                objectOutputStream2.writeObject(tournamentHashMap);
+                objectOutputStream2.close();
+
+                Parent fxmlLoader = null;
+                try {
+                    fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene registerPage = new Scene(fxmlLoader);
+                Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+                stage.setScene(registerPage);
+                stage.setTitle("Tournament Manager - Home Page");
+                stage.show();
+            }
+            else
+                Alert("Something is Empty");
+
+
 
 
 
@@ -162,9 +216,38 @@ public class teamJoinController implements Initializable {
         }
     }
 
-    public boolean inAPIStudent(String username) {
+    public boolean alreadyExist(String username){
+        for (Student student : students){
+            if(student.getUserName().equals(username))
+                return true;
+        }
+        return false;
+    }
+
+    public boolean allFilled(){
+        boolean allFilled = true;
+        teamNameLable.setTextFill(Paint.valueOf("#386641"));
+        teamNameTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
+        memberUserNameTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#386641"), BorderStrokeStyle.SOLID,null,null)));
+
+
+        if (teamNameTextField.getText().isEmpty()){
+            teamNameLable.setTextFill(Paint.valueOf("#BC4749"));
+            teamNameTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+            allFilled = false;
+        }
+        if (students.isEmpty()){
+            memberUserNameTextField.setBorder(new Border(new BorderStroke(Paint.valueOf("#BC4749"), BorderStrokeStyle.SOLID,null,null)));
+            allFilled = false;
+        }
+
+        return allFilled;
+    }
+
+    public static boolean inAPIStudent(String ID) {
         try {
-            String path = "https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn?username=" + username ;
+            String path = "https://us-central1-swe206-221.cloudfunctions.net/app/User?username=" + ID ;
+
             URL url = new URL(path);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -190,10 +273,8 @@ public class teamJoinController implements Initializable {
                     name += dataFromAPI.charAt(i);
                     i++;
                 }
-                Student student = new Student(name);
-                ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
-                outputStream.writeObject(student);
-                outputStream.close();
+                Student student = new Student(name, ID, "Abdulmjeed.alothman222@gmail.com");
+                students.add(student);
             }
 
             return status<=299;

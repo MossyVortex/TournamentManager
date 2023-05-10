@@ -1,11 +1,12 @@
 package classes;
 
+import java.io.Serializable;
 import java.sql.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Match {
+public class Match implements Serializable {
     private Team teamOne;
     private Team teamTwo;
     private int scoreOne;

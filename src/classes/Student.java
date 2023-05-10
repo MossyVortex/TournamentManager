@@ -30,6 +30,9 @@ public class Student extends Person implements Serializable{
     public Student(String name, String userName,String email, String password){
         super(name,userName,email,password);
     }
+    public Student(String name, String userName,String email){
+        super(name,userName,email);
+    }
 
     @Override
     public String getName() {

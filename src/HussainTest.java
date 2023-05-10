@@ -50,42 +50,15 @@ public class HussainTest {
 //    }
 public static void main(String[] args) {
 
-//    System.out.println(inAPIStudent("6992","3443"));
     System.out.println(inAPIStudent("6992"));
-    System.out.println(checkAdmin("6992"));
+
 
 }
 
-    public static boolean checkAdmin(String username) { // Using the API
-        try {
-            String urlPartI = "https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn?username=";
-
-
-            URL obj = new URL(urlPartI + username );
-            HttpsURLConnection conn = (HttpsURLConnection) obj.openConnection();
-            System.out.println(conn.getResponseCode());
-
-            // Set request method
-            conn.setRequestMethod("GET");
-
-            // Read response
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-
-            return true;
-
-        } catch (Exception ex) {
-            return false;
-        }
-    }
     public static boolean inAPIStudent(String ID) {
         try {
-            String path = "https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn?username=" + ID ;
+            String path = "https://us-central1-swe206-221.cloudfunctions.net/app/User?username=" + ID ;
+
             URL url = new URL(path);
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -111,54 +84,14 @@ public static void main(String[] args) {
                     name += dataFromAPI.charAt(i);
                     i++;
                 }
-                Student student = new Student(name);
+                Student student = new Student(name, ID, "Abdulmjeed.alothman222@gmail.com", "");
+
             }
 
-            System.out.println(status);
             return status<=299;
         }
         catch (Exception e){
             return false;
         }
     }
-//    public static boolean inAPIStudent(String ID,String password) {
-//        try {
-//            String path = "https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn?username=" + ID + "&password=" + password;
-//            URL url = new URL(path);
-//
-//            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//
-//            connection.setRequestMethod("GET");
-//            connection.setConnectTimeout(5000);
-//            connection.setReadTimeout(5000);
-//
-//            int status = connection.getResponseCode();
-//
-//            if (status <= 299) {
-//                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-//                String line = "";
-//                StringBuffer responseContent = new StringBuffer();
-//                while ((line = reader.readLine()) != null) {
-//                    responseContent.append(line);
-//                }
-//                reader.close();
-//                String dataFromAPI = responseContent.substring(9);
-//                String name = "";
-//                int i = 0;
-//                while (dataFromAPI.charAt(i) != '"') {
-//                    name += dataFromAPI.charAt(i);
-//                    i++;
-//                }
-//                Student student = new Student(name, ID, "Abdulmjeed.alothman222@gmail.com", password);
-//                ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
-//                outputStream.writeObject(student);
-//                outputStream.close();
-//            }
-//
-//            return status<=299;
-//        }
-//        catch (Exception e){
-//            return false;
-//        }
-//    }
 }

@@ -104,6 +104,18 @@ public class JoinTournamentController {
                         ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\TournamentsBFile.dat"));
                         objectOutputStream.writeObject(tournamentHashMap);
                         objectOutputStream.close();
+
+                        Parent fxmlLoader = null;
+                        try {
+                            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Scene registerPage = new Scene(fxmlLoader);
+                        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+                        stage.setScene(registerPage);
+                        stage.setTitle("Tournament Manager - Home Page");
+                        stage.show();
                     }
                     else{
                         if (!tournament.isFullOfTeams()) {
