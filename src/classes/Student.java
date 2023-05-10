@@ -38,7 +38,6 @@ public class Student extends Person implements Serializable{
     }
     @Override
     public String getID() {
-        // TODO Auto-generated method stub
         return super.getID();
     }
     public int getWins() {
