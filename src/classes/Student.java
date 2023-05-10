@@ -70,10 +70,6 @@ public class Student extends Person implements Serializable{
         return joinedTournamentsTournament;
     }
 
-    public String getStudentName(){
-        return this.name;
-    }
-
     @Override
     public String toString() {
         return "Student{" +
