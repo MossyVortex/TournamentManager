@@ -50,7 +50,7 @@ public abstract class Tournament implements Serializable {
 
     }
     public void addTeam(Team team){
-        teams.add(team);
+        this.teams.add(team);
     }
     public void setName(String name){
         this.name = name;

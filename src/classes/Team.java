@@ -15,17 +15,23 @@ public class Team {
     private int totalWins;
     private int totalLosses;
     public Team(){
+        this.teamMembers = new ArrayList<Student>();
 
     }
     public Team(ArrayList<Student> teamMembers , String teamName){
+        this.teamMembers = new ArrayList<Student>();
         this.teamMembers = teamMembers;
         this.teamName  = teamName;
     }
 
     public Team(ArrayList<Student> e) {
+        this.teamMembers = new ArrayList<Student>();
         this.teamMembers = e;
     }
-    public Team(String name ){this.teamName = name;}
+    public Team(String name ){
+        this.teamMembers = new ArrayList<Student>();
+        this.teamName = name;
+    }
 
     public String[] getNameOfEachMember() {
         return nameOfEachMember;
@@ -44,6 +50,9 @@ public class Team {
     }
     public String getTeamName() {
         return teamName;
+    }
+    public void setTeamName(String newTeamName){
+        this.teamName = newTeamName;
     }
     public String toString(){
         return teamName;
@@ -68,5 +77,10 @@ public class Team {
 
     public void setTeamMembers(ArrayList<Student> teamMembers) {
         this.teamMembers = teamMembers;
+    }
+
+    public void addStudentToTeam(Student newStudent){
+        
+        this.teamMembers.add(newStudent);
     }
 }
