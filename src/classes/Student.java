@@ -38,7 +38,6 @@ public class Student extends Person implements Serializable{
     }
     @Override
     public String getID() {
-        // TODO Auto-generated method stub
         return super.getID();
     }
     public int getWins() {
@@ -69,6 +68,10 @@ public class Student extends Person implements Serializable{
 
     public ArrayList<Tournament> getJoinedTournamentsID() {
         return joinedTournamentsTournament;
+    }
+
+    public String getStudentName(){
+        return this.name;
     }
 
     @Override
