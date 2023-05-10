@@ -46,8 +46,8 @@ public class Match implements Serializable {
         this.matchDate = date;
     }
     public Match(){
-
-
+        this.scoreOne = -1;
+        this.scoreTwo = -1;
     }
     public void updateScores(int score1, int score2){
 

@@ -64,8 +64,9 @@ public class ElimnationTournementPage extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    //        tourney.createMatchHistory();
     public static VBox createTourneyPage(Elimination tourney){
-        tourney.createMatchHistory();
+
         ArrayList<TextField> textFields = new ArrayList<>();
         VBox elimnationVbox = new VBox(createTourney(tourney,textFields));
         System.out.println(textFields);
@@ -74,6 +75,7 @@ public class ElimnationTournementPage extends Application {
         Text winnerText = new Text("tournement winner :  "  + tourney.getWinner());
         VBox mainTourney = new VBox(updateScoreButton, elimnationVbox, winnerText);
         updateScoreButton.setOnAction(e ->{
+            System.out.println(tourney.getMatches());
             updateMatches(tourney, textFields);
             tourney.calcuateWinnersMatches();
             tourney.printMatchHistoryBeautified();
@@ -145,7 +147,7 @@ public class ElimnationTournementPage extends Application {
         Text dateText = new Text(match.getDate());
         matchup.getChildren().add(dateText);
 
-        if(match.getLocalDate().isBefore(LocalDate.now()))
+        if(match.getLocalDate().isBefore(LocalDate.now()) && match.getScoreOne() == -1 || match.getScoreTwo() == -1 )
             matchup.setStyle("-fx-background-color: red");
         return matchup;
     }

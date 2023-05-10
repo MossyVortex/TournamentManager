@@ -19,6 +19,7 @@ public class Elimination extends Tournament implements Serializable {
         super();
     }
     public void createMatchHistory(){
+        if(matchHistory != null) return;
         Hashtable<Integer, ArrayList<Match>> matchHistory = new Hashtable<Integer, ArrayList<Match>>();
 
         boolean visitedOdd = false;
@@ -119,7 +120,7 @@ public class Elimination extends Tournament implements Serializable {
 
             for(int j = 0 ; j < currentRound.size() ; j++ ){
                 Match currentMatch = currentRound.get(j);
-                if(currentMatch.returnWinnerTeam().equals("draw")){
+                if(currentMatch.returnWinnerTeam().equals("draw") || currentMatch.returnWinnerTeam().equals("undefined")){
                     continue;
                 }
                 Team winnerTeam = (Team) currentMatch.returnWinnerTeam();
@@ -130,6 +131,13 @@ public class Elimination extends Tournament implements Serializable {
         }
 
 
+    }
+    public ArrayList<Match> getMatches(){
+        ArrayList<Match> matches = new ArrayList<>();
+        for(int i = 0 ; i < matchHistory.size() ; i++ ){
+            matches.addAll(matchHistory.get(i));
+        }
+        return  matches;
     }
     private void calculateRounds(){
         this.rounds = (int) Math.ceil((Math.log(getTeams().size())/Math.log(2)));

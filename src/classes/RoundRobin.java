@@ -284,6 +284,13 @@ public class RoundRobin extends Tournament implements Serializable {
         return matchHistory;
     }
 
+    public ArrayList<Match> getMatches(){
+        ArrayList<Match> matches = new ArrayList<>();
+        for(int i = 0 ; i < matchHistory.size() ; i++ ){
+            matches.addAll(matchHistory.get(i));
+        }
+        return  matches;
+    }
     public void printMatchHistoryBeautified(){
         for(Map.Entry<Integer, ArrayList<Match>> entry : matchHistory.entrySet() ){
             System.out.println("Key = " + entry.getKey() +
