@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
@@ -147,8 +148,8 @@ public class GeneratedTablesController implements Initializable {
 //                ScrollPane mainTourney = createTourneyPage(tourney);
 //            }else if(tournmaneType == "elimnation"){
 //                tourney.createMatchHistory(); // do this one time only
-//                VBox mainTourney = createTourneyPage(tourney);
-            }
+//                VBox mainTourney = createTourneyPage(tourney);}
+
 
             ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentView.dat"));
             Tournament tournament = (Tournament) objInStreamTournament.readObject();
@@ -158,15 +159,19 @@ public class GeneratedTablesController implements Initializable {
             teamsNumTextField.setText(String.valueOf(tournament.getNumOfTeams()));
             stdNumTextField.setText(String.valueOf(tournament.getMembersPerTeam()));
 
-            typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
+            typeTextField.setEditable(false);
+            gameTextField.setEditable(false);
+            teamsNumTextField.setEditable(false);
             stdNumTextField.setEditable(false);
 
             objInStreamTournament.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
     }
+
 }

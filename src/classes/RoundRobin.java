@@ -351,11 +351,11 @@ public class RoundRobin extends Tournament implements Serializable {
     @Override
     public String toString() {
         return "RoundRobin{" + super.toString()+
-                "matchHistory=" + matchHistory +
-                ", winsHistory=" + winsHistory +
-                ", goalDifferance=" + goalDifferance +
-                ", pointsTable=" + pointsTable +
-                ", placement=" + placement +
+                "\nmatchHistory=" + matchHistory +
+                ", \nwinsHistory=" + winsHistory +
+                ", \ngoalDifferance=" + goalDifferance +
+                ", \npointsTable=" + pointsTable +
+                ", \nplacement=" + placement +
                 '}';
     }
 }

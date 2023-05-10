@@ -232,22 +232,23 @@ public abstract class Tournament implements Serializable {
     @Override
     public String toString() {
         return "Tournament{" +
-                "name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", gameType='" + gameType + '\'' +
-                ", tournamentID='" + tournamentID + '\'' +
-                ", winner='" + winner + '\'' +
-                ", startingDate=" + startingDate +
-                ", endingDate=" + endingDate +
-                ", teams=" + teams +
-                ", tournamentRegistrationStatus=" + tournamentRegistrationStatus +
-                ", numOfTeams=" + numOfTeams +
-                ", teamPlace=" + teamPlace +
-                ", matchHistory=" + matchHistory +
-                ", bannedStudentsIDs=" + Arrays.toString(bannedStudentsIDs) +
-                ", students=" + students +
-                ", registerationStatus=" + registerationStatus +
-                ", membersPerTeam=" + membersPerTeam +
+                " name='" + name + '\'' +
+                ", \ntype='" + type + '\'' +
+                ", \ngameType='" + gameType + '\'' +
+                ", \ntournamentID='" + tournamentID + '\'' +
+                ", \nwinner=" + winner +
+                ", \nstartingDate=" + startingDate +
+                ", \nendingDate=" + endingDate +
+                ", \nteams=" + teams +
+                ", \ntournamentRegistrationStatus=" + tournamentRegistrationStatus +
+                ", \nnumOfTeams=" + numOfTeams +
+                ", \nteamPlace=" + teamPlace +
+                ", \nmatchHistory=" + matchHistory +
+                ", \nbannedStudentsIDs=" + Arrays.toString(bannedStudentsIDs) +
+                ", \nstudents=" + students +
+                ", \nregisterationStatus=" + registerationStatus +
+                ", \nisGenerated=" + isGenerated +
+                ", \nmembersPerTeam=" + membersPerTeam +
                 '}';
     }
 
