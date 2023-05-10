@@ -30,17 +30,10 @@ import java.util.ResourceBundle;
 
 public class StudentsViewController implements Initializable {
 
-    @FXML
-    private TableColumn<Student, Integer> HeightC;
 
-    @FXML
-    private TableColumn<Student, String> IDC;
 
     @FXML
     private Label IDLabel;
-
-    @FXML
-    private TableColumn<Student, Integer> WeightC;
 
     @FXML
     private Label WinsLabel;
@@ -178,10 +171,8 @@ public class StudentsViewController implements Initializable {
 
 
             studentNameC.setCellValueFactory(new PropertyValueFactory<>("name"));
-            IDC.setCellValueFactory(new PropertyValueFactory<>("ID"));
             emailC.setCellValueFactory(new PropertyValueFactory<>("email"));
-            WeightC.setCellValueFactory(new PropertyValueFactory<>("weight"));
-            HeightC.setCellValueFactory(new PropertyValueFactory<>("height"));
+
 
             ArrayList<Student> studentArrayList = new ArrayList<>();
             for (Team team: tournament.getTeams()){

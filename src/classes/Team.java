@@ -71,8 +71,9 @@ public class Team implements Serializable {
         return numberOfLosses;
     }
 
+
     public int getNumberOfMembers(){
-        return teamMembers.size();
+        return numberOfMembers;
     }
     public ArrayList<Student> getTeamMembers() {
         return teamMembers;
@@ -90,5 +91,9 @@ public class Team implements Serializable {
     public void addStudentToTeam(Student newStudent){
         
         this.teamMembers.add(newStudent);
+    }
+
+    public void setNumberOfMembers(int numberOfMembers) {
+        this.numberOfMembers = numberOfMembers;
     }
 }

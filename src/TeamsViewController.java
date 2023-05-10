@@ -2,6 +2,8 @@ import classes.Person;
 import classes.Student;
 import classes.Team;
 import classes.Tournament;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -65,7 +68,7 @@ public class TeamsViewController implements Initializable {
 
 
     @FXML
-    private TableColumn<Team, String> membersCountC;
+    private TableColumn<Team, Integer> membersCountC;
 
 
     @FXML
@@ -166,8 +169,15 @@ public class TeamsViewController implements Initializable {
             typeTextField.setEditable(false);gameTextField.setEditable(false);teamsNumTextField.setEditable(false);
             stdNumTextField.setEditable(false);
 
-            membersCountC.setCellValueFactory(new PropertyValueFactory<>("NumberOfMembers"));
+            membersCountC.setCellValueFactory(new PropertyValueFactory<>("numberOfMembers"));
             teamNameC.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+
+            ArrayList<Team> teamArrayList = tournament.getTeams();
+
+
+            ObservableList<Team> observableList = FXCollections.observableArrayList(teamArrayList);
+            teamsTableView.getItems().addAll(teamArrayList);
+            teamsTableView.setItems(observableList);
 
 
             objInStreamTournament.close();
