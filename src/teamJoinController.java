@@ -140,6 +140,10 @@ public class teamJoinController implements Initializable {
                 objectOutputStream2.writeObject(tournamentHashMap);
                 objectOutputStream2.close();
 
+                for (Student student : students){
+                    addTournamentToStudent(student.getUserName(),tournament);
+                }
+
                 Parent fxmlLoader = null;
                 try {
                     fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
@@ -282,6 +286,36 @@ public class teamJoinController implements Initializable {
         catch (Exception e){
             return false;
         }
+    }
+
+    public void addTournamentToStudent(String username,Tournament tournament){
+        try {
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src\\StudentsTournaments.dat"));
+            HashMap<String,ArrayList<Tournament>> stringArrayListHashMap = (HashMap<String, ArrayList<Tournament>>) objectInputStream.readObject();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\StudentsTournaments.dat"));
+            objectInputStream.close();
+            if (stringArrayListHashMap.containsKey(username)){
+                ArrayList<Tournament> tournaments = stringArrayListHashMap.get(username);
+                tournaments.add(tournament);
+                stringArrayListHashMap.remove(username);
+                stringArrayListHashMap.put(username,tournaments);
+                objectOutputStream.writeObject(stringArrayListHashMap);
+                objectOutputStream.close();
+            }
+            else {
+                ArrayList<Tournament> tournaments = new ArrayList<>();
+                tournaments.add(tournament);
+                stringArrayListHashMap.put(username,tournaments);
+                objectOutputStream.close();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

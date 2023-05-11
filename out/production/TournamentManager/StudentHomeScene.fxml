@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -96,19 +98,39 @@
             <BorderPane prefHeight="482.0" prefWidth="45.0" BorderPane.alignment="CENTER" />
          </right>
          <bottom>
-            <BorderPane prefHeight="70.0" prefWidth="700.0" BorderPane.alignment="CENTER" />
+            <BorderPane prefHeight="146.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+               <center>
+                  <ScrollPane prefHeight="103.0" prefWidth="700.0" style="-fx-background-color: #1111;" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+                     <content>
+                        <HBox fx:id="machesHB" alignment="CENTER_LEFT" prefHeight="114.0" prefWidth="620.0" />
+                     </content>
+                  </ScrollPane>
+               </center>
+               <left>
+                  <Pane prefHeight="114.0" prefWidth="45.0" BorderPane.alignment="CENTER" />
+               </left>
+               <right>
+                  <Pane prefHeight="114.0" prefWidth="45.0" BorderPane.alignment="CENTER" />
+               </right>
+               <bottom>
+                  <Pane prefHeight="20.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </bottom></BorderPane>
          </bottom>
          <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="340.0" prefWidth="609.0" BorderPane.alignment="CENTER">
                <top>
                   <BorderPane prefHeight="32.0" prefWidth="553.0" BorderPane.alignment="CENTER">
                      <right>
-                        <ComboBox fx:id="combo" prefHeight="27.0" prefWidth="168.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER" />
+                        <RadioButton fx:id="yourTournamentsRB" mnemonicParsing="false" onAction="#YourTournamentsRBActive" prefHeight="34.0" prefWidth="179.0" text="Your Tournaments" textFill="#386641" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </RadioButton>
                      </right>
                   </BorderPane>
                </top>
                <center>
-                  <TableView fx:id="tournamentTableView" prefHeight="394.0" prefWidth="553.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER">
+                  <TableView fx:id="tournamentTableView" prefHeight="315.0" prefWidth="609.0" style="-fx-background-color: #EBDCB6; -fx-border-color: #C8A038;" BorderPane.alignment="CENTER">
                      <columns>
                         <TableColumn fx:id="nameColumn" prefWidth="75.0" style="-fx-background-color: #C8A038;" text="Name" />
                         <TableColumn fx:id="IDColumn" prefWidth="75.0" style="-fx-background-color: #D6B86A;" text="ID" />
