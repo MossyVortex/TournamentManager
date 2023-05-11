@@ -303,7 +303,8 @@ public class createTournamentController {
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
                 ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
                 if (!tournamentsInfoHashMap.containsKey(tournamentID)){
-                    tournamentsInfoHashMap.put(tournamentID, new RoundRobin(name, gameType,tournamentType, tournamentID, winner, startDate, endDate, teams, 0, null,0 ,registerationStatus, isGenerated));
+                    ArrayList<Student> arrStu = new ArrayList<>();
+                    tournamentsInfoHashMap.put(tournamentID, new RoundRobin(name, gameType,tournamentType, tournamentID, winner, startDate, endDate, teams, Integer.parseInt(maxNumOfTeams), arrStu,membersPerTeam ,registerationStatus, isGenerated));
                     objOutStream.writeObject(tournamentsInfoHashMap);
                 }    
                 objInStream.close();
