@@ -180,6 +180,20 @@ public class Elimination extends Tournament implements Serializable {
         }
         return  matches;
     }
+    public void updateMatchup(int roundIndex , int matchIndex){
+        Hashtable<Integer, ArrayList<Match>> matchyHistory = this.matchHistory;
+
+        int originalRoundIndex = roundIndex;
+        for(int i = roundIndex ; i <rounds ;i++){
+            Match currentMatch = matchyHistory.get(i).get(matchIndex);
+            currentMatch.forceScoreZero();
+            if(i != originalRoundIndex){
+                currentMatch.forceScoreZero();
+                currentMatch.forceTeamsVanish();
+            }
+            matchIndex = (int) Math.floor(matchIndex/2);
+        }
+    }
     private void calculateRounds(){
         this.rounds = (int) Math.ceil((Math.log(getTeams().size())/Math.log(2)));
     }

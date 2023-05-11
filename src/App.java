@@ -59,6 +59,7 @@ public class App {
 
         tourney.createMatchHistory();
         tourney.printMatchHistoryBeautified();
+
         System.out.println(tourney.getPlacementTable());
 
 //        roundTourney.createMatchHistory();

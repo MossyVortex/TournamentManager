@@ -197,6 +197,14 @@ public class Match implements Serializable {
         }
 
     }
+    public void forceScoreZero(){
+        this.scoreTwo = -1;
+        this.scoreOne = -1;
+    }
+    public void  forceTeamsVanish(){
+        this.teamOne = null;
+        this.teamTwo = null;
+    }
     public Team getTeamOne(){return teamOne;}
     public Team getTeamTwo(){return teamTwo;}
     public int getScoreTwo(){
