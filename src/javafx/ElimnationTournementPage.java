@@ -1,9 +1,6 @@
 package javafx;
 
-import classes.Elimination;
-import classes.Match;
-import classes.Student;
-import classes.Team;
+import classes.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -72,20 +69,24 @@ public class ElimnationTournementPage extends Application {
 
         Button updateScoreButton = new Button();
         updateScoreButton.setText("calcuateWinners");
-        Text winnerText = new Text("tournement winner :  "  + tourney.getWinner());
-        VBox mainTourney = new VBox(updateScoreButton, elimnationVbox, winnerText);
+//        HBox placementTable = makeTruePlacement(tourney);
+
+//        VBox mainTourney = new VBox(updateScoreButton, elimnationVbox, placementTable);
+        VBox mainTourney = new VBox(updateScoreButton, elimnationVbox);
         updateScoreButton.setOnAction(e ->{
-            tourney.updatePlacementTable();
 
             updateMatches(tourney, textFields);
             tourney.calcuateWinnersMatches();
 
             VBox elimnationVboxUpdated = new VBox(createTourney(tourney, textFields));
-            Text winnerTextUpdated = new Text("tournement winner :  "  + tourney.getWinner());
+//            tourney.updatePlacementTable();
+//            HBox updatedPlacementTable = makeTruePlacement(tourney);
+
+
             mainTourney.getChildren().remove(1);
-            mainTourney.getChildren().remove(1);
+//            mainTourney.getChildren().remove(1);
             mainTourney.getChildren().add(elimnationVboxUpdated);
-            mainTourney.getChildren().add(winnerTextUpdated);
+//            mainTourney.getChildren().add(updatedPlacementTable);
 
 
         });
@@ -187,6 +188,36 @@ public class ElimnationTournementPage extends Application {
             tourney.updateMatchSingleteam(roundIndex , matchIndex, score , teamIndex );
         }
     }
+    public static HBox makeTruePlacement(Elimination tourney){
+        tourney.updatePlacementTable();
+        HBox placementTable = new HBox();
+        placementTable.setSpacing(20);
+        placementTable.getChildren().add(new Text("real placement"));
+        Hashtable<Integer, ArrayList<Team>> placementTeams  = tourney.getPlacementTable();
+        for(int i = tourney.getRounds(); i >= 0 ; i++){
+            ArrayList<Team> currentTeams = placementTeams.get(i);
+            placementTable.getChildren().add(createPlacmentTeam(currentTeams, i));
+        }
+
+        return placementTable;
+    }
+    public static VBox createPlacmentTeam(ArrayList<Team> teams , int placement){
+        Text round = new Text(placement + "");
+        VBox teamsNames = new VBox();
+        if(teams == null) {
+            teamsNames.getChildren().add(new Text("empty"));
+        }
+        else{
+            for(int i = 0 ; i < teams.size() ; i++){
+                teamsNames.getChildren().add(new Text(teams.get(i).getTeamName()));
+            }
+        }
+
+
+        VBox teamPoints = new VBox(round,teamsNames);
+        return teamPoints;
+    }
+
 //    public static Button createUpdateButton(){
 //        Button updateButton = new Button("update");
 //

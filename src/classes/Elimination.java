@@ -152,14 +152,26 @@ public class Elimination extends Tournament implements Serializable {
                     continue;
                 }
                 else{
-                    ArrayList<Team> newRound = placment.get(rounds-j);
+                    ArrayList<Team> newRound = placment.get(rounds-i);
                     newRound.add((Team) currentMatch.returnLoserTeam());
-                    placment.put(rounds-j , newRound );
+                    placment.put(rounds-i , newRound );
                 }
             }
         }
+        Match lastMatch = matchHistory.get(rounds-1).get(0);
+        if(!lastMatch.returnWinnerTeam().equals("draw") && !lastMatch.returnWinnerTeam().equals("undefined")){
+            ArrayList<Team> winner = new ArrayList<>();
+            winner.add((Team)lastMatch.returnWinnerTeam());
+            placment.put(0, winner);
+        }
         this.placementTable = placment;
         System.out.println(placment);
+    }
+    public int getRounds(){
+        return rounds;
+    }
+    public Hashtable<Integer, ArrayList<Team>> getPlacementTable(){
+        return placementTable;
     }
     public ArrayList<Match> getMatches(){
         ArrayList<Match> matches = new ArrayList<>();
