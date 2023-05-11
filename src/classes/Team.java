@@ -1,8 +1,9 @@
 package classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Team {
+public class Team implements Serializable {
     private ArrayList<Student> teamMembers;
     private String teamName;
     private int numberOfMembers;
@@ -22,11 +23,14 @@ public class Team {
         this.teamMembers = new ArrayList<Student>();
         this.teamMembers = teamMembers;
         this.teamName  = teamName;
+        this.numberOfMembers = teamMembers.size();
     }
 
     public Team(ArrayList<Student> e) {
         this.teamMembers = new ArrayList<Student>();
         this.teamMembers = e;
+        this.numberOfMembers = teamMembers.size();
+
     }
     public Team(String name ){
         this.teamMembers = new ArrayList<Student>();
@@ -67,8 +71,9 @@ public class Team {
         return numberOfLosses;
     }
 
+
     public int getNumberOfMembers(){
-        return teamMembers.size();
+        return numberOfMembers;
     }
     public ArrayList<Student> getTeamMembers() {
         return teamMembers;
@@ -86,5 +91,9 @@ public class Team {
     public void addStudentToTeam(Student newStudent){
         
         this.teamMembers.add(newStudent);
+    }
+
+    public void setNumberOfMembers(int numberOfMembers) {
+        this.numberOfMembers = numberOfMembers;
     }
 }

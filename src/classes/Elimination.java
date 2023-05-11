@@ -8,6 +8,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Elimination extends Tournament implements Serializable {
     private Hashtable<Integer, ArrayList<Match>> matchHistory;
+    private Hashtable<Integer, ArrayList<Team>> placementTable;
     private int rounds;
     private static final long serialVersionUID = -56722074485822064L;
     public Elimination(String name, String gameType, String type, String tournamentID, Team winner,  LocalDate startingDate, LocalDate endingDate,
@@ -19,6 +20,7 @@ public class Elimination extends Tournament implements Serializable {
         super();
     }
     public void createMatchHistory(){
+        if(matchHistory != null) return;
         Hashtable<Integer, ArrayList<Match>> matchHistory = new Hashtable<Integer, ArrayList<Match>>();
 
         boolean visitedOdd = false;
@@ -119,7 +121,7 @@ public class Elimination extends Tournament implements Serializable {
 
             for(int j = 0 ; j < currentRound.size() ; j++ ){
                 Match currentMatch = currentRound.get(j);
-                if(currentMatch.returnWinnerTeam().equals("draw")){
+                if(currentMatch.returnWinnerTeam().equals("draw") || currentMatch.returnWinnerTeam().equals("undefined")){
                     continue;
                 }
                 Team winnerTeam = (Team) currentMatch.returnWinnerTeam();
@@ -130,6 +132,53 @@ public class Elimination extends Tournament implements Serializable {
         }
 
 
+    }
+    public void createPlacementTable(){
+        Hashtable<Integer, ArrayList<Team>> placment = new Hashtable<>();
+        for(int i = 0; i <= rounds ; i++){
+            placment.put(i, new ArrayList<Team>());
+        }
+        this.placementTable = placment;
+
+    }
+    public void updatePlacementTable(){
+        createPlacementTable();
+        Hashtable<Integer, ArrayList<Team>> placment = this.placementTable;
+        for(int i = 0 ; i < matchHistory.size() ; i++ ){
+            ArrayList<Match> currentRound = matchHistory.get(i);
+            for(int j = 0 ; j < currentRound.size() ; j++){
+                Match currentMatch = currentRound.get(j);
+                if(currentMatch.returnLoserTeam().equals("draw") || currentMatch.returnLoserTeam().equals("undefined")){
+                    continue;
+                }
+                else{
+                    ArrayList<Team> newRound = placment.get(rounds-i);
+                    newRound.add((Team) currentMatch.returnLoserTeam());
+                    placment.put(rounds-i , newRound );
+                }
+            }
+        }
+        Match lastMatch = matchHistory.get(rounds-1).get(0);
+        if(!lastMatch.returnWinnerTeam().equals("draw") && !lastMatch.returnWinnerTeam().equals("undefined")){
+            ArrayList<Team> winner = new ArrayList<>();
+            winner.add((Team)lastMatch.returnWinnerTeam());
+            placment.put(0, winner);
+        }
+        this.placementTable = placment;
+        System.out.println(placment);
+    }
+    public int getRounds(){
+        return rounds;
+    }
+    public Hashtable<Integer, ArrayList<Team>> getPlacementTable(){
+        return placementTable;
+    }
+    public ArrayList<Match> getMatches(){
+        ArrayList<Match> matches = new ArrayList<>();
+        for(int i = 0 ; i < matchHistory.size() ; i++ ){
+            matches.addAll(matchHistory.get(i));
+        }
+        return  matches;
     }
     private void calculateRounds(){
         this.rounds = (int) Math.ceil((Math.log(getTeams().size())/Math.log(2)));

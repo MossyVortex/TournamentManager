@@ -37,6 +37,12 @@ public class Person implements Serializable {
         this.userName = userName;
     }
 
+    public Person(String name, String userName ,String email){
+        this.name = name;
+        this.email = email;
+        this.userName = userName;
+    }
+
     public void generateID(String registerType){
 
         String csvFileStudent = "src\\StudentsFile.csv";

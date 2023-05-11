@@ -27,7 +27,7 @@ public class RoundRobinTournementPage extends Application {
 
     @Override
     public void start(Stage stage) {
-        System.out.println("Hello, World!");
+
         RoundRobin tourney = new RoundRobin();
         tourney.setStartingDate(LocalDate.of(2023,5,5));
         tourney.setEndingDate(LocalDate.of(2023,5,25));
@@ -39,10 +39,10 @@ public class RoundRobinTournementPage extends Application {
         Team t1 = new Team(stu,"ssd");
         addTeams(tourney, t1 , stu);
 
-        System.out.println("meow");
+
         tourney.createMatchHistory();
         tourney.createTables();
-        ScrollPane mainTourney = createArchivedTourneyPage(tourney);
+        ScrollPane mainTourney = createTourneyPage(tourney);
 
         Scene scene = new Scene(mainTourney,1000,800);
 
@@ -83,13 +83,13 @@ public class RoundRobinTournementPage extends Application {
 
         ScrollPane tourneyPage = new ScrollPane(mainTourney);
         updatePointsButton.setOnAction(e ->{
-            System.out.print("this is the array : ");
+
 
 
             updateMatches(tourney,textFields);
             tourney.updateTables();
             tourney.getPlacement();
-            System.out.print("match history : ");tourney.printMatchHistoryBeautified();
+
 //            System.out.print("goal differnce : ");tourney.printGoalDiffernce();
 //            System.out.print("points table beautifed : ");tourney.printPointsTableBeautifed();
 //            tourney.printMatchHistoryBeautified();
@@ -104,6 +104,7 @@ public class RoundRobinTournementPage extends Application {
             mainTourney.getChildren().add(updatedPointsTable);
             mainTourney.getChildren().add(updatedPlacmentTable);
 //            System.out.println(tourney.printPointsTable());
+
         });
         return tourneyPage;
 
@@ -185,14 +186,14 @@ public class RoundRobinTournementPage extends Application {
         textFields.add(team2TextField);
         matchup.getChildren().addAll(team1HBox, team2HBox);
         if(match.getTeamOne().getTeamName().equals("Bye") || match.getTeamTwo().getTeamName().equals("Bye")){
-            System.out.println("bad");
+
             team1TextField.setStyle("-fx-background-color: black");
             team1TextField.setEditable(false);
             team2TextField.setEditable(false);
             team2TextField.setStyle("-fx-background-color: black");
         }
         Text dateText = new Text(match.getDate());
-        if(match.getLocalDate().isBefore(LocalDate.now()))
+        if(match.getLocalDate().isBefore(LocalDate.now()) && match.getScoreOne() == -1 || match.getScoreTwo() == -1)
             matchup.setStyle("-fx-background-color: red");
         matchup.getChildren().add(dateText);
         return matchup;

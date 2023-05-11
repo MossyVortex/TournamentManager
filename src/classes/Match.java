@@ -1,11 +1,12 @@
 package classes;
 
+import java.io.Serializable;
 import java.sql.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Match {
+public class Match implements Serializable {
     private Team teamOne;
     private Team teamTwo;
     private int scoreOne;
@@ -45,8 +46,8 @@ public class Match {
         this.matchDate = date;
     }
     public Match(){
-
-
+        this.scoreOne = -1;
+        this.scoreTwo = -1;
     }
     public void updateScores(int score1, int score2){
 
@@ -110,6 +111,20 @@ public class Match {
         }
         else if(scoreOne < scoreTwo){
             return teamTwo;
+        }
+        else if(scoreOne == -1 || scoreTwo == -1){
+            return "undefined";
+        }
+        else {
+            return "draw";
+        }
+    }
+    public Object returnLoserTeam(){
+        if(scoreOne>scoreTwo){
+            return teamTwo;
+        }
+        else if(scoreOne < scoreTwo){
+            return teamOne;
         }
         else if(scoreOne == -1 || scoreTwo == -1){
             return "undefined";
