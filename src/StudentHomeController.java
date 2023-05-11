@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -67,12 +68,16 @@ public class StudentHomeController implements Initializable {
     @FXML
     private TableColumn<Tournament, String> typeColumn;
 
+    @FXML
+    private RadioButton yourTournamentsRB;
 
+    @FXML
+    private HBox machesHB;
 
-//    @FXML
-//    public void initialize() {
-//
-//    }
+    @FXML
+    void YourTournamentsRBActive(ActionEvent event) {
+
+    }
 
     @FXML
     void JoinTournamentButtonOnClicked(ActionEvent event) {
