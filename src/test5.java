@@ -33,19 +33,15 @@ public class test5 {
 
         ArrayList<Student> tinin = new ArrayList<>();
         
-        t1.setTeamMembers(tinin);
         t1.addStudentToTeam(s1);
         t1.addStudentToTeam(s2);
 
-        t2.setTeamMembers(tinin);
         t2.addStudentToTeam(s3);
         t2.addStudentToTeam(s4);
 
-        t3.setTeamMembers(tinin);
         t3.addStudentToTeam(s5);
         t3.addStudentToTeam(s6);
 
-        t4.setTeamMembers(tinin);
         t4.addStudentToTeam(s7);
         t4.addStudentToTeam(s8);
 
