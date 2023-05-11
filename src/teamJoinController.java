@@ -140,9 +140,9 @@ public class teamJoinController implements Initializable {
                 objectOutputStream2.writeObject(tournamentHashMap);
                 objectOutputStream2.close();
 
-                for (Student student : students){
-                    addTournamentToStudent(student.getUserName(),tournament);
-                }
+//                for (Student student : students){
+//                    addTournamentToStudent(student.getUserName(),tournament);
+//                }
 
                 Parent fxmlLoader = null;
                 try {

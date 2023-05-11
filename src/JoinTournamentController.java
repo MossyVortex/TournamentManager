@@ -105,7 +105,7 @@ public class JoinTournamentController {
                         objectOutputStream.writeObject(tournamentHashMap);
                         objectOutputStream.close();
 
-                        addTournamentToStudent(student.getUserName(),tournament);
+//                        addTournamentToStudent(student.getUserName(),tournament);
 
                         Parent fxmlLoader = null;
                         try {
