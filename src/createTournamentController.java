@@ -291,7 +291,8 @@ public class createTournamentController {
                 FileOutputStream fileOutputStream = new FileOutputStream("src\\TournamentsBFile.dat");
                 ObjectOutputStream objOutStream = new ObjectOutputStream(fileOutputStream);
                 if (!tournamentsInfoHashMap.containsKey(tournamentID)){
-                    tournamentsInfoHashMap.put(tournamentID, new Elimination(name, gameType,tournamentType, tournamentID, winner, startDate, endDate, teams, 0, null, membersPerTeam ,registerationStatus, isGenerated )); // the zero before the reg status is a placeholder we need a textfield!
+                    ArrayList<Student> arrStu = new ArrayList<>();
+                    tournamentsInfoHashMap.put(tournamentID, new Elimination(name, gameType,tournamentType, tournamentID, winner, startDate, endDate, teams, Integer.parseInt(maxNumOfTeams), arrStu, membersPerTeam ,registerationStatus, isGenerated )); // the zero before the reg status is a placeholder we need a textfield!
                     objOutStream.writeObject(tournamentsInfoHashMap);
                     
                 }
