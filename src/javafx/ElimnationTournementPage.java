@@ -13,8 +13,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 
 public class ElimnationTournementPage extends Application {
@@ -120,7 +122,30 @@ public class ElimnationTournementPage extends Application {
             mainTourney.getChildren().add(elimnationVboxUpdated);
             mainTourney.getChildren().add(updatedPlacementTable);
 
+            try {
+                Tournament tournamentToWrite = tourney;
+                ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentsBFile.dat"));
+                HashMap<String, Tournament> tournamentHashMap = (HashMap<String, Tournament>) objInStreamTournament.readObject();
+                objInStreamTournament.close();
 
+                tournamentHashMap.remove(tournamentToWrite.getTournamentID());
+                tournamentHashMap.put(tournamentToWrite.getTournamentID(), tournamentToWrite);
+
+                ObjectOutputStream objectOutputStream2 = new ObjectOutputStream(new FileOutputStream("src\\TournamentsBFile.dat"));
+                objectOutputStream2.writeObject(tournamentHashMap);
+                objectOutputStream2.close();
+
+                ObjectOutputStream objectOutputStream1 = new ObjectOutputStream(new FileOutputStream("src\\TournamentView.dat"));
+                objectOutputStream1.writeObject(tournamentToWrite);
+                objectOutputStream1.close();
+
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         });
         ScrollPane mainTt = new ScrollPane(mainTourney);
         return mainTt;
