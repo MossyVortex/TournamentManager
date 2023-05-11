@@ -77,6 +77,39 @@ public class StudentHomeController implements Initializable {
     @FXML
     void YourTournamentsRBActive(ActionEvent event) {
 
+        try {
+            ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+            Student student = (Student) objInStream.readObject();
+            objInStream.close();
+
+            if (!yourTournamentsRB.isSelected()) {
+                ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentsBFile.dat"));
+                HashMap<String, Tournament> tournamentHashMap = (HashMap<String, Tournament>) objInStreamTournament.readObject();
+                ArrayList<Tournament> list = new ArrayList<>();
+                tournamentHashMap.forEach((x, y) -> list.add(y));
+                setTableView(list);
+                objInStreamTournament.close();
+            }
+            else {
+                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src\\StudentsTournaments.dat"));
+                HashMap<String, ArrayList<Tournament>> stringArrayListHashMap = (HashMap<String, ArrayList<Tournament>>) objectInputStream.readObject();
+                objectInputStream.close();
+                if (stringArrayListHashMap.containsKey(student.getUserName()))
+                    setTableView(stringArrayListHashMap.get(student.getUserName()));
+                else
+                    setTableView(null);
+
+            }
+
+
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -165,28 +198,17 @@ public class StudentHomeController implements Initializable {
           try {
             ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
             Student student = (Student) objInStream.readObject();
+            objInStream.close();
 
               ObjectInputStream objInStreamTournament = new ObjectInputStream(new FileInputStream("src\\TournamentsBFile.dat"));
               HashMap<String,Tournament> tournamentHashMap = (HashMap<String,Tournament>) objInStreamTournament.readObject();
               ArrayList<Tournament> list = new ArrayList<>();
-
               tournamentHashMap.forEach((x,y) -> list.add(y));
+              setTableView(list);
+              objInStreamTournament.close();
 
-              nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-              IDColumn.setCellValueFactory(new PropertyValueFactory<>("tournamentID"));
-              typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-              gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameType"));
-              statusColumn.setCellValueFactory(new PropertyValueFactory<>("registerationStatus"));
-              startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startingDate"));
-              endingDateColumn.setCellValueFactory(new PropertyValueFactory<>("endingDate"));
-
-              ObservableList<Tournament> observableList = FXCollections.observableArrayList(list);
-              tournamentTableView.getItems().addAll(list);
-              tournamentTableView.setItems(observableList);
 
               nameLable.setText(student.getName());
-              objInStreamTournament.close();
-              objInStream.close();
 
               tournamentTableView.setRowFactory( tv -> {
                   TableRow<Tournament> row = new TableRow<>();
@@ -222,6 +244,25 @@ public class StudentHomeController implements Initializable {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void setTableView(ArrayList<Tournament> tournaments){
+        if (tournaments==null)
+            tournamentTableView.getItems().clear();
+        else {
+            tournamentTableView.getItems().clear();
+            nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+            IDColumn.setCellValueFactory(new PropertyValueFactory<>("tournamentID"));
+            typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+            gameColumn.setCellValueFactory(new PropertyValueFactory<>("gameType"));
+            statusColumn.setCellValueFactory(new PropertyValueFactory<>("registerationStatus"));
+            startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startingDate"));
+            endingDateColumn.setCellValueFactory(new PropertyValueFactory<>("endingDate"));
+
+            ObservableList<Tournament> observableList = FXCollections.observableArrayList(tournaments);
+            tournamentTableView.getItems().addAll(tournaments);
+            tournamentTableView.setItems(observableList);
         }
     }
 
