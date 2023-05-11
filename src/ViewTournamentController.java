@@ -125,7 +125,7 @@ public class ViewTournamentController implements Initializable {
                 HashMap<String, Tournament> tournamentHashMap = (HashMap<String,Tournament>) objInStreamTournament.readObject();
                 objInStreamTournament.close();
                 ObjectInputStream objectInStreamSt = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
-                Student student = (Student) objectInStreamSt.readObject();
+                Admin admin = (Admin) objectInStreamSt.readObject();
                 objectInStreamSt.close();
 
                 ObjectInputStream getTournamentIDStream = new ObjectInputStream(new FileInputStream("src\\TournamentView.dat"));
