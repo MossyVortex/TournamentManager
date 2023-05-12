@@ -28,7 +28,7 @@
          <left>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="backTIDButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setTIDBackButton" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backTIDButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setTIDBackButton" onMouseExited="#backTIDButtonExit" onMouseMoved="#backTIDButtonMoved" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/backArrow.png" />
                      </image>
@@ -59,20 +59,20 @@
                   </TextField>
                   <HBox alignment="CENTER" prefHeight="107.0" prefWidth="519.0">
                      <children>
-                        <RadioButton fx:id="teamRB" mnemonicParsing="false" onAction="#teamRBOn" text="By Team" textFill="#386641">
+                        <RadioButton fx:id="teamRB" mnemonicParsing="false" onAction="#teamRBOn" onMouseExited="#teamRBExit" onMouseMoved="#teamRBMoved" text="By Team" textFill="#386641">
                            <font>
                               <Font name="System Bold Italic" size="25.0" />
                            </font>
                         </RadioButton>
                         <Pane prefHeight="100.0" prefWidth="65.0" />
-                        <RadioButton fx:id="individualRB" mnemonicParsing="false" onAction="#individualRBOn" text="Individually" textFill="#386641">
+                        <RadioButton fx:id="individualRB" mnemonicParsing="false" onAction="#individualRBOn" onMouseExited="#individualRBExit" onMouseMoved="#individualRBMoved" text="Individually" textFill="#386641">
                            <font>
                               <Font name="System Bold Italic" size="25.0" />
                            </font>
                         </RadioButton>
                      </children>
                   </HBox>
-                  <Button fx:id="joinButton" mnemonicParsing="false" onAction="#joinButtonOnClicked" prefHeight="50.0" prefWidth="326.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Join" textFill="#f2e8cf">
+                  <Button fx:id="joinButton" mnemonicParsing="false" onAction="#joinButtonOnClicked" onMouseExited="#joinButtonExit" onMouseMoved="#joinButtonMoved" prefHeight="50.0" prefWidth="326.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Join" textFill="#f2e8cf">
                      <font>
                         <Font name="System Bold Italic" size="30.0" />
                      </font>

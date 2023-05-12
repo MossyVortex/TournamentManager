@@ -238,5 +238,42 @@ public class JoinTournamentController {
         }
 
     }
+    @FXML
+    void backTIDButtonExit(MouseEvent event) {
+        backTIDButton.setOpacity(1);
+    }
+
+    @FXML
+    void backTIDButtonMoved(MouseEvent event) {
+        backTIDButton.setOpacity(0.8);
+    }
+
+    @FXML
+    void individualRBExit(MouseEvent event) {
+        individualRB.setOpacity(1);
+    }
+
+    @FXML
+    void individualRBMoved(MouseEvent event) {
+        individualRB.setOpacity(0.8);
+    }
+    @FXML
+    void joinButtonExit(MouseEvent event) {
+        joinButton.setOpacity(1);
+    }
+
+    @FXML
+    void joinButtonMoved(MouseEvent event) {
+        joinButton.setOpacity(0.8);
+    }
+    @FXML
+    void teamRBExit(MouseEvent event) {
+        teamRB.setOpacity(1);
+    }
+
+    @FXML
+    void teamRBMoved(MouseEvent event) {
+        teamRB.setOpacity(0.8);
+    }
 
 }

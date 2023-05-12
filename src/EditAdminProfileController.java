@@ -76,75 +76,10 @@ public class EditAdminProfileController implements Initializable {
     private TextField tournamentsNumTextField;
 
     @FXML
-    void editButtonOnClicked(MouseEvent event) {
-        saveButton.setVisible(true); editButton.setVisible(false);
-        nameTextField.setEditable(true);EmailTextField.setEditable(true);
-        phoneTextField.setEditable(true);passwordTextField.setEditable(true);
-
-
-    }
-
-    @FXML
     void regesterButtonOnclicked(ActionEvent event) {
 
     }
 
-    @FXML
-    void SaveButtonOnClicked(ActionEvent event) {
-        boolean isChanged = false;
-        try {
-            ObjectInputStream objInStreamLogedinPerson = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
-            Admin admin = (Admin) objInStreamLogedinPerson.readObject();
-            objInStreamLogedinPerson.close();
-
-
-            String breviousUN = admin.getUserName();
-
-            if (!nameTextField.getText().equals(admin.getName())) {
-                admin.setName(nameTextField.getText()); isChanged=true;
-            }
-            if (!EmailTextField.getText().equals(admin.getEmail())) {
-                admin.setEmail(EmailTextField.getText()); isChanged=true;
-            }
-            if (!passwordTextField.getText().equals(admin.getPassword())) {
-                admin.setPassword(passwordTextField.getText()); isChanged=true;
-            }
-            if (!phoneTextField.getText().equals(admin.getPhoneNumber())) {
-                admin.setPhoneNumber(phoneTextField.getText()); isChanged=true;
-            }
-
-
-            if (isChanged){
-                ObjectInputStream objInStreamAdminsBFile = new ObjectInputStream(new FileInputStream("src\\AdminsBFile.dat"));
-                HashMap<String, Admin> AdminHashMap = (HashMap<String, Admin>) objInStreamAdminsBFile.readObject();
-                objInStreamAdminsBFile.close();
-
-                AdminHashMap.remove(breviousUN);
-                AdminHashMap.put(admin.getUserName(),admin);
-
-                ObjectOutputStream objOutStreamAdminsBFile = new ObjectOutputStream(new FileOutputStream("src\\AdminsBFile.dat"));
-                objOutStreamAdminsBFile.writeObject(AdminHashMap);
-                objOutStreamAdminsBFile.close();
-
-                ObjectOutputStream objOutStreamLogedinPerson = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
-                objOutStreamLogedinPerson.writeObject(admin);
-                objOutStreamLogedinPerson.close();
-            }
-
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        editButton.setVisible(true); saveButton.setVisible(false);
-        nameTextField.setEditable(false);EmailTextField.setEditable(false);
-        phoneTextField.setEditable(false);passwordTextField.setEditable(false);
-        authorizedTextField.setEditable(false);tournamentsNumTextField.setEditable(false);
-    }
 
     @FXML
     void setBackButton(MouseEvent event) {

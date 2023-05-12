@@ -203,4 +203,40 @@ public class AdminHomeController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    void CreateTournamentButtonExit(MouseEvent event) {
+        CreateTournamentButton.setOpacity(1);
+    }
+
+    @FXML
+    void CreateTournamentButtonMoved(MouseEvent event) {
+        CreateTournamentButton.setOpacity(0.8);
+    }
+    @FXML
+    void ViewProfilePaneExit(MouseEvent event) {
+        ViewProfilePane.setOpacity(1);
+    }
+
+    @FXML
+    void ViewProfilePaneMoved(MouseEvent event) {
+        ViewProfilePane.setOpacity(0.8);
+    }
+    @FXML
+    void registerStudentPaneExit(MouseEvent event) {
+        registerStudentPane.setOpacity(1);
+    }
+
+    @FXML
+    void registerStudentPaneMoved(MouseEvent event) {
+        registerStudentPane.setOpacity(0.8);
+    }
+    @FXML
+    void signOutIconExit(MouseEvent event) {
+        signOutIcon.setOpacity(1);
+    }
+
+    @FXML
+    void signOutIconMoved(MouseEvent event) {
+        signOutIcon.setOpacity(0.8);
+    }
 }
