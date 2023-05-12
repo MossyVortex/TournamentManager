@@ -85,6 +85,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </TextField>
+                                          <Pane prefHeight="163.0" prefWidth="308.0" />
                                           <Pane prefHeight="60.0" prefWidth="308.0" />
                                           <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
                                              <children>
@@ -94,18 +95,27 @@
                                                    </font>
                                                 </Label>
                                                 <Pane prefHeight="44.0" prefWidth="195.0" />
-                                                <ImageView fx:id="passwordEye" fitHeight="24.0" fitWidth="21.0" onMouseClicked="#passwordEyeOnClicked" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="passwordEye" fitHeight="24.0" fitWidth="21.0" onMouseExited="#passwordEyeExit" onMouseMoved="#passwordEyeMoved" onMousePressed="#passwordEyeOnPressed" onMouseReleased="#passwordEyeReleased" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@Images/eyePassword.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
                                           </HBox>
-                                          <PasswordField fx:id="passwordTextF" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </PasswordField>
+                                          <Pane prefHeight="200.0" prefWidth="308.0">
+                                             <children>
+                                                <TextField fx:id="passwordText" layoutY="9.0" prefHeight="30.0" prefWidth="308.0" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;" visible="false">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </TextField>
+                                                <PasswordField fx:id="passwordTextF" layoutY="9.0" prefHeight="30.0" prefWidth="308.0" promptText="Enter your password" style="-fx-background-color: #F7F0E0; -fx-border-color: #386641;">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </PasswordField>
+                                             </children>
+                                          </Pane>
                                        </children>
                                     </VBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">

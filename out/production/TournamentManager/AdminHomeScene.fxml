@@ -26,7 +26,7 @@
                <top>
                   <BorderPane prefHeight="83.0" prefWidth="190.0" BorderPane.alignment="CENTER">
                      <left>
-                        <ImageView fx:id="signOutIcon" fitHeight="59.0" fitWidth="59.0" onMouseClicked="#signOutIconOnClicked" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="signOutIcon" fitHeight="59.0" fitWidth="59.0" onMouseClicked="#signOutIconOnClicked" onMouseExited="#signOutIconExit" onMouseMoved="#signOutIconMoved" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                            <image>
                               <Image url="@Images/logout.png" />
                            </image>
@@ -53,7 +53,7 @@
                            </font>
                         </Label>
                         <Pane prefHeight="14.0" prefWidth="190.0" />
-                        <BorderPane fx:id="ViewProfilePane" onMouseClicked="#ViewProfilePaneOnClicked" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #2C5033;">
+                        <BorderPane fx:id="ViewProfilePane" onMouseClicked="#ViewProfilePaneOnClicked" onMouseExited="#ViewProfilePaneExit" onMouseMoved="#ViewProfilePaneMoved" prefHeight="39.0" prefWidth="200.0" style="-fx-background-color: #2C5033;">
                            <center>
                               <Label text="View Profile" textFill="#f2e8cf" BorderPane.alignment="CENTER">
                                  <font>
@@ -65,7 +65,7 @@
                         <Pane prefHeight="2.0" prefWidth="178.0" />
                         <BorderPane prefHeight="39.0" prefWidth="178.0">
                            <center>
-                              <HBox fx:id="registerStudentPane" alignment="CENTER" onMouseClicked="#registerStudentPaneOnClicked" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
+                              <HBox fx:id="registerStudentPane" alignment="CENTER" onMouseClicked="#registerStudentPaneOnClicked" onMouseExited="#registerStudentPaneExit" onMouseMoved="#registerStudentPaneMoved" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
                                  <children>
                                     <Label alignment="CENTER" prefHeight="28.0" prefWidth="152.0" text="Register Student" textFill="#f2e8cf">
                                        <font>
@@ -90,7 +90,7 @@
                <right>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Button fx:id="CreateTournamentButton" layoutX="-57.0" layoutY="44.0" mnemonicParsing="false" onAction="#CreateTournamentButtonOnClicked" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Create Tournament" textFill="#f2e8cf">
+                        <Button fx:id="CreateTournamentButton" layoutX="-57.0" layoutY="44.0" mnemonicParsing="false" onAction="#CreateTournamentButtonOnClicked" onMouseExited="#CreateTournamentButtonExit" onMouseMoved="#CreateTournamentButtonMoved" prefHeight="49.0" prefWidth="185.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Create Tournament" textFill="#f2e8cf">
                            <font>
                               <Font size="18.0" />
                            </font>

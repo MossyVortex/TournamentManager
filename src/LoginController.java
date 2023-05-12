@@ -35,6 +35,9 @@ public class LoginController {
     private TextField usernameTextF;
 
     @FXML
+    private TextField passwordText;
+
+    @FXML
     private Label existingLable;
 
     @FXML
@@ -87,35 +90,18 @@ public class LoginController {
     }
 
     @FXML
-    void passwordEyeOnClicked(MouseEvent event) {
-
+    void passwordEyeOnPressed(MouseEvent event) {
+        passwordText.setText(passwordTextF.getText());
+        passwordTextF.setVisible(false);
+        passwordText.setVisible(true);
     }
 
     @FXML
-    void AdminRBOnMoved(MouseEvent event) {
-        adminRadioButton.setOpacity(0.8);
-    }
-    @FXML
-    void AdminRBOnExit(MouseEvent event) {
-        adminRadioButton.setOpacity(1);
+    void passwordEyeReleased(MouseEvent event) {
+        passwordTextF.setVisible(true);
+        passwordText.setVisible(false);
     }
 
-    @FXML
-    void stdRBOnMoved(MouseEvent event) {
-        studentRadioButton.setOpacity(0.8);
-    }
-    @FXML
-    void stdRBOnExit(MouseEvent event) {
-        studentRadioButton.setOpacity(1);
-    }
-    @FXML
-    void loginButtonMovedOn(MouseEvent event) {
-        loginButton.setOpacity(0.8);
-    }
-    @FXML
-    void loginButtonMouseExit(MouseEvent event) {
-        loginButton.setOpacity(1);
-    }
     @FXML
     void RegExit(MouseEvent event) {
         registerLable.setUnderline(false);
@@ -317,5 +303,38 @@ public class LoginController {
             allFilled = false;
         }
         return allFilled;
+    }
+    @FXML
+    void passwordEyeExit(MouseEvent event) {
+        passwordEye.setOpacity(1);
+    }
+    @FXML
+    void passwordEyeMoved(MouseEvent event) {
+        passwordEye.setOpacity(0.8);
+    }
+    @FXML
+    void AdminRBOnMoved(MouseEvent event) {
+        adminRadioButton.setOpacity(0.8);
+    }
+    @FXML
+    void AdminRBOnExit(MouseEvent event) {
+        adminRadioButton.setOpacity(1);
+    }
+
+    @FXML
+    void stdRBOnMoved(MouseEvent event) {
+        studentRadioButton.setOpacity(0.8);
+    }
+    @FXML
+    void stdRBOnExit(MouseEvent event) {
+        studentRadioButton.setOpacity(1);
+    }
+    @FXML
+    void loginButtonMovedOn(MouseEvent event) {
+        loginButton.setOpacity(0.8);
+    }
+    @FXML
+    void loginButtonMouseExit(MouseEvent event) {
+        loginButton.setOpacity(1);
     }
 }
