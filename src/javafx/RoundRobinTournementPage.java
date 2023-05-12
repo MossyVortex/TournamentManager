@@ -219,7 +219,7 @@ public class RoundRobinTournementPage extends Application {
             team2TextField.setStyle("-fx-background-color: black");
         }
         Text dateText = new Text(match.getDate());
-        if(match.getLocalDate().isBefore(LocalDate.now()) && match.getScoreOne() == -1 || match.getScoreTwo() == -1)
+        if(match.getLocalDate().isBefore(LocalDate.now()) && (match.getScoreOne() == -1 || match.getScoreTwo() == -1))
             matchup.setStyle("-fx-background-color: red");
         matchup.getChildren().add(dateText);
         return matchup;
