@@ -140,7 +140,7 @@
                                     </Button>
                                     <HBox alignment="CENTER" prefHeight="43.0" prefWidth="308.0">
                                        <children>
-                                          <Label fx:id="existingLable" text="Don't have existing acount? ">
+                                          <Label fx:id="existingLable" text="Don't have existing account? ">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
