@@ -1,6 +1,11 @@
+import classes.Elimination;
 import classes.Person;
+import classes.RoundRobin;
 import classes.Student;
+import classes.Team;
 import classes.Tournament;
+import javafx.ElimnationTournementPage;
+import javafx.RoundRobinTournementPage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -165,6 +171,44 @@ public class GeneratedTablesController implements Initializable {
             stdNumTextField.setEditable(false);
 
             objInStreamTournament.close();
+
+
+            // code for the elimination and roundrobin genereted tables
+
+            try{
+                ObjectInputStream objInStreamTournament2 = new ObjectInputStream(new FileInputStream("src\\TournamentsBFile.dat"));
+                    HashMap<String, Tournament> tournamentHashMap = (HashMap<String,Tournament>) objInStreamTournament2.readObject();
+                    objInStreamTournament2.close();
+                    ObjectInputStream objectInStreamSt = new ObjectInputStream(new FileInputStream("src\\LogedinPerson.dat"));
+                    Admin admin = (Admin) objectInStreamSt.readObject();
+                    objectInStreamSt.close();
+    
+                    ObjectInputStream getTournamentIDStream = new ObjectInputStream(new FileInputStream("src\\TournamentView.dat"));
+                    Tournament viewedTournament = (Tournament) getTournamentIDStream.readObject();
+                    getTournamentIDStream.close();
+    
+                    if(viewedTournament.getType().equals("Elimination")){
+                        Team noOne = new Team();
+                        Elimination convertedToElim = new Elimination(viewedTournament.getName(),viewedTournament.getGameType(),viewedTournament.getType(),viewedTournament.getTournamentID(),noOne,viewedTournament.getStartingDate(),viewedTournament.getEndingDate(),viewedTournament.getTeams(),viewedTournament.getNumOfTeams(),viewedTournament.getStudents(),viewedTournament.getMembersPerTeam(),viewedTournament.getRegisterationStatus(),viewedTournament.getIsGenerated());
+                        convertedToElim.createMatchHistory();
+                        ScrollPane elimScrollpane = ElimnationTournementPage.createTourneyPage(convertedToElim);
+                        scrollPane.setContent(elimScrollpane);
+                        
+                    }
+                    else{
+                        RoundRobin convertedToRoundRobin = new RoundRobin(viewedTournament.getName(),viewedTournament.getGameType(),viewedTournament.getType(),viewedTournament.getTournamentID(),viewedTournament.getWinner(),viewedTournament.getStartingDate(),viewedTournament.getEndingDate(),viewedTournament.getTeams(),viewedTournament.getNumOfTeams(),viewedTournament.getStudents(),viewedTournament.getMembersPerTeam(),viewedTournament.getRegisterationStatus(),viewedTournament.getIsGenerated());
+                        convertedToRoundRobin.createMatchHistory();
+                        convertedToRoundRobin.createTables();
+                        ScrollPane roundScrollpane = RoundRobinTournementPage.createTourneyPage(convertedToRoundRobin);
+                        scrollPane.setContent(roundScrollpane);
+    
+    
+                    }
+    
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
