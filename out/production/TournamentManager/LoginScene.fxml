@@ -95,11 +95,6 @@
                                                    </font>
                                                 </Label>
                                                 <Pane prefHeight="44.0" prefWidth="195.0" />
-                                                <ImageView fx:id="passwordEye" fitHeight="24.0" fitWidth="21.0" onMouseExited="#passwordEyeExit" onMouseMoved="#passwordEyeMoved" onMousePressed="#passwordEyeOnPressed" onMouseReleased="#passwordEyeReleased" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@Images/eyePassword.png" />
-                                                   </image>
-                                                </ImageView>
                                              </children>
                                           </HBox>
                                           <Pane prefHeight="200.0" prefWidth="308.0">
@@ -114,6 +109,11 @@
                                                       <Font size="15.0" />
                                                    </font>
                                                 </PasswordField>
+                                                <ImageView fx:id="passwordEye" fitHeight="24.0" fitWidth="21.0" layoutX="284.0" layoutY="15.0" onMouseExited="#passwordEyeExit" onMouseMoved="#passwordEyeMoved" onMousePressed="#passwordEyeOnPressed" onMouseReleased="#passwordEyeReleased" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@Images/eyePassword.png" />
+                                                   </image>
+                                                </ImageView>
                                              </children>
                                           </Pane>
                                        </children>
