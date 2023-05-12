@@ -105,7 +105,7 @@ public class JoinTournamentController {
                         objectOutputStream.writeObject(tournamentHashMap);
                         objectOutputStream.close();
 
-//                        addTournamentToStudent(student.getUserName(),tournament);
+                        addTournamentToStudent(student.getUserName(),tournament);
 
                         Parent fxmlLoader = null;
                         try {
@@ -208,20 +208,25 @@ public class JoinTournamentController {
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src\\StudentsTournaments.dat"));
             HashMap<String,ArrayList<Tournament>> stringArrayListHashMap = (HashMap<String, ArrayList<Tournament>>) objectInputStream.readObject();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\StudentsTournaments.dat"));
             objectInputStream.close();
+
             if (stringArrayListHashMap.containsKey(username)){
                 ArrayList<Tournament> tournaments = stringArrayListHashMap.get(username);
-                tournaments.add(tournament);
-                stringArrayListHashMap.remove(username);
-                stringArrayListHashMap.put(username,tournaments);
-                objectOutputStream.writeObject(stringArrayListHashMap);
-                objectOutputStream.close();
+                if (!tournaments.contains(tournament)) {
+                    tournaments.add(tournament);
+                    stringArrayListHashMap.remove(username);
+                    stringArrayListHashMap.put(username, tournaments);
+                    ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\StudentsTournaments.dat"));
+                    objectOutputStream.writeObject(stringArrayListHashMap);
+                    objectOutputStream.close();
+                }
             }
             else {
                 ArrayList<Tournament> tournaments = new ArrayList<>();
                 tournaments.add(tournament);
                 stringArrayListHashMap.put(username,tournaments);
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\StudentsTournaments.dat"));
+                objectOutputStream.writeObject(stringArrayListHashMap);
                 objectOutputStream.close();
             }
         } catch (FileNotFoundException e) {

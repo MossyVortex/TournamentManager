@@ -91,13 +91,13 @@ public class StudentHomeController implements Initializable {
                 objInStreamTournament.close();
             }
             else {
-//                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src\\StudentsTournaments.dat"));
-//                HashMap<String, ArrayList<Tournament>> stringArrayListHashMap = (HashMap<String, ArrayList<Tournament>>) objectInputStream.readObject();
-//                objectInputStream.close();
-//                if (stringArrayListHashMap.containsKey(student.getUserName()))
-//                    setTableView(stringArrayListHashMap.get(student.getUserName()));
-//                else
-//                    setTableView(null);
+                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src\\StudentsTournaments.dat"));
+                HashMap<String, ArrayList<Tournament>> stringArrayListHashMap = (HashMap<String, ArrayList<Tournament>>) objectInputStream.readObject();
+                objectInputStream.close();
+                if (stringArrayListHashMap.containsKey(student.getUserName()))
+                    setTableView(stringArrayListHashMap.get(student.getUserName()));
+                else
+                    setTableView(null);
 
             }
 
