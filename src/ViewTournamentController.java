@@ -122,6 +122,18 @@ public class ViewTournamentController implements Initializable {
     @FXML
     void GenerateButtonOnClicked(ActionEvent event) {
 
+        Parent fxmlLoader = null;
+        try {
+            fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GeneratedTablesScene.fxml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene registerAdminPage = new Scene(fxmlLoader);
+        Stage stage = (Stage) (((Node) event.getSource()).getScene().getWindow());
+        stage.setScene(registerAdminPage);
+        stage.setTitle("Tournament Manager - Team Join");
+        stage.show();
+
         // code for the elimination and roundrobin genereted tables
 
 
