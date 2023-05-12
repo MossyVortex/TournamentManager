@@ -6,8 +6,10 @@ import classes.Elimination;
 import classes.Person;
 import classes.RoundRobin;
 import classes.Student;
+import classes.Team;
 import classes.Tournament;
 import javafx.ElimnationTournementPage;
+import javafx.RoundRobinTournementPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.Node;
@@ -133,7 +135,8 @@ public class ViewTournamentController implements Initializable {
                 getTournamentIDStream.close();
 
                 if(viewedTournament.getType().equals("Elimination")){
-                    Elimination convertedToElim = new Elimination(viewedTournament.getName(),viewedTournament.getGameType(),viewedTournament.getType(),viewedTournament.getTournamentID(),viewedTournament.getWinner(),viewedTournament.getStartingDate(),viewedTournament.getEndingDate(),viewedTournament.getTeams(),viewedTournament.getNumOfTeams(),viewedTournament.getStudents(),viewedTournament.getMembersPerTeam(),viewedTournament.getRegisterationStatus(),viewedTournament.getIsGenerated());
+                    Team noOne = new Team();
+                    Elimination convertedToElim = new Elimination(viewedTournament.getName(),viewedTournament.getGameType(),viewedTournament.getType(),viewedTournament.getTournamentID(),noOne,viewedTournament.getStartingDate(),viewedTournament.getEndingDate(),viewedTournament.getTeams(),viewedTournament.getNumOfTeams(),viewedTournament.getStudents(),viewedTournament.getMembersPerTeam(),viewedTournament.getRegisterationStatus(),viewedTournament.getIsGenerated());
                     convertedToElim.createMatchHistory();
                     ScrollPane elimScrollpane = ElimnationTournementPage.createTourneyPage(convertedToElim);
                     Scene scene = new Scene(elimScrollpane,1000,800);
@@ -148,6 +151,14 @@ public class ViewTournamentController implements Initializable {
                     RoundRobin convertedToRoundRobin = new RoundRobin(viewedTournament.getName(),viewedTournament.getGameType(),viewedTournament.getType(),viewedTournament.getTournamentID(),viewedTournament.getWinner(),viewedTournament.getStartingDate(),viewedTournament.getEndingDate(),viewedTournament.getTeams(),viewedTournament.getNumOfTeams(),viewedTournament.getStudents(),viewedTournament.getMembersPerTeam(),viewedTournament.getRegisterationStatus(),viewedTournament.getIsGenerated());
                     convertedToRoundRobin.createMatchHistory();
                     convertedToRoundRobin.createTables();
+                    ScrollPane roundScrollpane = RoundRobinTournementPage.createTourneyPage(convertedToRoundRobin);
+                    Scene scene = new Scene(roundScrollpane,1000,800);
+                    Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
+                    stage.setScene(scene);
+                    stage.setTitle("Tournament Manager - Students View");
+                    stage.show();
+
+
                 }
 
         }

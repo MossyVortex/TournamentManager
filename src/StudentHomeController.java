@@ -208,7 +208,7 @@ public class StudentHomeController implements Initializable {
               setTableView(list);
               objInStreamTournament.close();
               
-              Match[] MatchDates = list.get(0).getMatchs();
+            //   Match[] MatchDates = list.get(0).getMatchs();
               
 
     
