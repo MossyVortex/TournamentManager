@@ -197,4 +197,22 @@ public class RegisterStudentController {
         }
         return true;
     }
+
+    @FXML
+    void backButtonExit(MouseEvent event) {
+        backButton.setOpacity(1);
+    }
+    @FXML
+    void backButtonMoved(MouseEvent event) {
+        backButton.setOpacity(0.8);
+    }
+    @FXML
+    void registerButtonExit(MouseEvent event) {
+        registerButton.setOpacity(1);
+    }
+    @FXML
+    void registerButtonMoved(MouseEvent event) {
+        registerButton.setOpacity(0.8);
+    }
+
 }

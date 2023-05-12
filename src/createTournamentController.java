@@ -318,9 +318,39 @@ public class createTournamentController {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
 
-
-        
+    @FXML
+    void backButtonExit(MouseEvent event) {
+        backButton.setOpacity(1);
+    }
+    @FXML
+    void backButtonMoved(MouseEvent event) {
+        backButton.setOpacity(0.8);
+    }
+    @FXML
+    void createTournamentButtonExit(MouseEvent event) {
+        createTournamentButton.setOpacity(1);
+    }
+    @FXML
+    void createTournamentButtonMoved(MouseEvent event) {
+        createTournamentButton.setOpacity(0.8);
+    }
+    @FXML
+    void eliminationRadioButtonExit(MouseEvent event) {
+        eliminationRadioButton.setOpacity(1);
+    }
+    @FXML
+    void eliminationRadioButtonMoved(MouseEvent event) {
+        eliminationRadioButton.setOpacity(0.8);
+    }
+    @FXML
+    void roundRobinRadioButtonExit(MouseEvent event) {
+        roundRobinRadioButton.setOpacity(1);
+    }
+    @FXML
+    void roundRobinRadioButtonMoved(MouseEvent event) {
+        roundRobinRadioButton.setOpacity(0.8);
     }
 
 }

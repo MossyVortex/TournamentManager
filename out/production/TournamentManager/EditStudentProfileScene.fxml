@@ -27,7 +27,7 @@
          <left>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setBackButton" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setBackButton" onMouseExited="#backButtonExit" onMouseMoved="#backButtonMoved" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/backArrow.png" />
                      </image>
@@ -38,12 +38,12 @@
          <right>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="saveButton" layoutX="-116.0" layoutY="21.0" mnemonicParsing="false" onAction="#saveButtonOnClicked" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: #F2E8CF; -fx-background-radius: 12;" text="Save" textFill="#386641" visible="false">
+                  <Button fx:id="saveButton" layoutX="-116.0" layoutY="21.0" mnemonicParsing="false" onAction="#saveButtonOnClicked" onMouseExited="#saveButtonExit" onMouseMoved="#saveButtonMoved" prefHeight="45.0" prefWidth="139.0" style="-fx-background-color: #F2E8CF; -fx-background-radius: 12;" text="Save" textFill="#386641" visible="false">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="EditButton" fitHeight="68.0" fitWidth="69.0" layoutX="-32.0" layoutY="11.0" onMouseClicked="#EditButtonOnClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="EditButton" fitHeight="68.0" fitWidth="69.0" layoutX="-32.0" layoutY="11.0" onMouseClicked="#EditButtonOnClicked" onMouseExited="#EditButtonExit" onMouseMoved="#EditButtonMoved" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/icons8-create-384.png" />
                      </image>

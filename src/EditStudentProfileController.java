@@ -188,6 +188,12 @@ public class EditStudentProfileController implements Initializable {
             Student student = (Student) objInStream.readObject();
             objInStream.close();
 
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("src\\LogedinFrom.dat"));
+            String LogedinFrom = (String) objectInputStream.readObject();
+            objectInputStream.close();
+
+            if (LogedinFrom.equals("API"))
+                EditButton.setVisible(false);
 
             usernameLable.setText(student.getUserName());
             IDLabel.setText(student.getID());
@@ -213,5 +219,29 @@ public class EditStudentProfileController implements Initializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    void EditButtonExit(MouseEvent event) {
+        EditButton.setOpacity(1);
+    }
+    @FXML
+    void EditButtonMoved(MouseEvent event) {
+        EditButton.setOpacity(0.8);
+    }
+    @FXML
+    void backButtonExit(MouseEvent event) {
+        backButton.setOpacity(1);
+    }
+    @FXML
+    void backButtonMoved(MouseEvent event) {
+        backButton.setOpacity(0.8);
+    }
+    @FXML
+    void saveButtonExit(MouseEvent event) {
+        saveButton.setOpacity(1);
+    }
+    @FXML
+    void saveButtonMoved(MouseEvent event) {
+        saveButton.setOpacity(0.8);
     }
 }

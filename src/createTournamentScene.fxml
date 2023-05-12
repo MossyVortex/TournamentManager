@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="createTournamentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #F2E8CF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="createTournamentController">
    <center>
       <HBox alignment="CENTER" prefHeight="600.0" prefWidth="924.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +23,7 @@
                      <left>
                         <Pane prefHeight="58.0" prefWidth="78.0" BorderPane.alignment="CENTER">
                            <children>
-                              <ImageView fx:id="backButton" fitHeight="49.0" fitWidth="73.0" layoutX="22.0" layoutY="16.0" onMouseClicked="#backButtonOnClicked" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="backButton" fitHeight="49.0" fitWidth="73.0" layoutX="22.0" layoutY="16.0" onMouseClicked="#backButtonOnClicked" onMouseExited="#backButtonExit" onMouseMoved="#backButtonMoved" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Images/backArrow.png" />
                                  </image>
@@ -88,13 +88,13 @@
                                  </font>
                               </Label>
                               <Pane prefHeight="48.0" prefWidth="11.0" />
-                              <RadioButton fx:id="eliminationRadioButton" mnemonicParsing="false" onAction="#eliminationRadioButtonOnClicked" prefHeight="31.0" prefWidth="110.0" text="Elimination" textFill="#386641">
+                              <RadioButton fx:id="eliminationRadioButton" mnemonicParsing="false" onAction="#eliminationRadioButtonOnClicked" onMouseExited="#eliminationRadioButtonExit" onMouseMoved="#eliminationRadioButtonMoved" prefHeight="31.0" prefWidth="110.0" text="Elimination" textFill="#386641">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </RadioButton>
                               <Pane prefHeight="63.0" prefWidth="26.0" />
-                              <RadioButton fx:id="roundRobinRadioButton" mnemonicParsing="false" onAction="#roundRobinRadioButtonOnClicked" prefHeight="31.0" prefWidth="131.0" text="RoundRobin" textFill="#386641">
+                              <RadioButton fx:id="roundRobinRadioButton" mnemonicParsing="false" onAction="#roundRobinRadioButtonOnClicked" onMouseMoved="#roundRobinRadioButtonMoved" onMousePressed="#roundRobinRadioButtonExit" prefHeight="31.0" prefWidth="131.0" text="RoundRobin" textFill="#386641">
                                  <font>
                                     <Font name="System Bold" size="15.0" />
                                  </font>
@@ -166,7 +166,7 @@
                            </children>
                         </HBox>
                         <Pane prefHeight="19.0" prefWidth="659.0" />
-                        <Button fx:id="createTournamentButton" mnemonicParsing="false" onAction="#createTournamentOnClicked" prefHeight="41.0" prefWidth="132.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Create" textFill="#f4f1de">
+                        <Button fx:id="createTournamentButton" mnemonicParsing="false" onAction="#createTournamentOnClicked" onMouseExited="#createTournamentButtonExit" onMouseMoved="#createTournamentButtonMoved" prefHeight="41.0" prefWidth="132.0" style="-fx-background-color: #386641; -fx-background-radius: 10;" text="Create" textFill="#f4f1de">
                            <font>
                               <Font size="19.0" />
                            </font>

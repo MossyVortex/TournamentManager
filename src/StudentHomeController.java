@@ -265,5 +265,37 @@ public class StudentHomeController implements Initializable {
             tournamentTableView.setItems(observableList);
         }
     }
+    @FXML
+    void signOutIconExit(MouseEvent event) {
+        signOutIcon.setOpacity(1);
+    }
+    @FXML
+    void signOutIconMoved(MouseEvent event) {
+        signOutIcon.setOpacity(0.8);
+    }
+    @FXML
+    void JoinTournamentButtonExit(MouseEvent event) {
+        JoinTournamentButton.setOpacity(1);
+    }
+    @FXML
+    void JoinTournamentButtonMoved(MouseEvent event) {
+        JoinTournamentButton.setOpacity(0.8);
+    }
+    @FXML
+    void yourTournamentsRBExit(MouseEvent event) {
+        yourTournamentsRB.setOpacity(1);
+    }
+    @FXML
+    void yourTournamentsRBMoved(MouseEvent event) {
+        yourTournamentsRB.setOpacity(0.8);
+    }
+    @FXML
+    void ViewProfilePaneExit(MouseEvent event) {
+        ViewProfilePane.setOpacity(1);
+    }
+    @FXML
+    void ViewProfilePaneMoved(MouseEvent event) {
+        ViewProfilePane.setOpacity(0.8);
+    }
 
 }

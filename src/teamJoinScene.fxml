@@ -27,7 +27,7 @@
          <left>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="backTeamJoinButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setTeamBackButton" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backTeamJoinButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setTeamBackButton" onMouseExited="#backTeamJoinButtonExit" onMouseMoved="#backTeamJoinButtonMoved" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/backArrow.png" />
                      </image>
@@ -101,14 +101,14 @@
                                     <Font name="System Bold Italic" size="25.0" />
                                  </font>
                               </TextField>
-                              <Button fx:id="enterButton" mnemonicParsing="false" onAction="#enterButtonOnClicked" prefHeight="58.0" prefWidth="109.0" style="-fx-background-color: #386641;" text="Enter" textFill="#f2e8cf">
+                              <Button fx:id="enterButton" mnemonicParsing="false" onAction="#enterButtonOnClicked" onMouseExited="#enterButtonExit" onMouseMoved="#enterButtonMoved" prefHeight="58.0" prefWidth="109.0" style="-fx-background-color: #386641;" text="Enter" textFill="#f2e8cf">
                                  <font>
                                     <Font name="System Bold Italic" size="17.0" />
                                  </font>
                               </Button>
                            </children>
                         </HBox>
-                        <VBox fx:id="membersHB" prefHeight="72.0" prefWidth="318.0" />
+                        <VBox fx:id="membersHB" alignment="TOP_CENTER" prefHeight="72.0" prefWidth="435.0" />
                      </children>
                   </VBox>
                </children>
@@ -119,9 +119,9 @@
    <bottom>
       <BorderPane prefHeight="96.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <center>
-            <Button fx:id="joinButton" mnemonicParsing="false" onAction="#joinButtonOnClicked" prefHeight="56.0" prefWidth="198.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Join" textFill="#f2e8cf" BorderPane.alignment="CENTER">
+            <Button fx:id="joinButton" mnemonicParsing="false" onAction="#joinButtonOnClicked" onMouseExited="#joinButtonExit" onMouseMoved="#joinButtonMoved" prefHeight="56.0" prefWidth="198.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Join" textFill="#f2e8cf" BorderPane.alignment="CENTER">
                <font>
-                  <Font name="System Bold Italic" size="36.0" />
+                  <Font name="System Bold Italic" size="29.0" />
                </font>
             </Button>
          </center>

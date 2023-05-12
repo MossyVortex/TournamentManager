@@ -191,4 +191,37 @@ public class StudentsViewController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void backButtonExit(MouseEvent event) {
+        backButton.setOpacity(1);
+    }
+    @FXML
+    void backButtonMoved(MouseEvent event) {
+        backButton.setOpacity(0.8);
+    }
+    @FXML
+    void generatedPaneExit(MouseEvent event) {
+        generatedPane.setOpacity(1);
+    }
+    @FXML
+    void generatedPaneMoved(MouseEvent event) {
+        generatedPane.setOpacity(0.8);
+    }
+    @FXML
+    void infoPaneExit(MouseEvent event) {
+        infoPane.setOpacity(1);
+    }
+    @FXML
+    void infoPaneMoved(MouseEvent event) {
+        infoPane.setOpacity(0.8);
+    }
+    @FXML
+    void teamsPaneExit(MouseEvent event) {
+        teamsPane.setOpacity(1);
+    }
+    @FXML
+    void teamsPaneMoved(MouseEvent event) {
+        teamsPane.setOpacity(0.8);
+    }
 }

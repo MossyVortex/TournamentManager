@@ -92,8 +92,37 @@ public class LoginController {
     }
 
     @FXML
+    void AdminRBOnMoved(MouseEvent event) {
+        adminRadioButton.setOpacity(0.8);
+    }
+    @FXML
+    void AdminRBOnExit(MouseEvent event) {
+        adminRadioButton.setOpacity(1);
+    }
+
+    @FXML
+    void stdRBOnMoved(MouseEvent event) {
+        studentRadioButton.setOpacity(0.8);
+    }
+    @FXML
+    void stdRBOnExit(MouseEvent event) {
+        studentRadioButton.setOpacity(1);
+    }
+    @FXML
     void loginButtonMovedOn(MouseEvent event) {
-        loginButton.setBackground(new Background(new BackgroundFill(Color.GREEN,new CornerRadii(12),null)));
+        loginButton.setOpacity(0.8);
+    }
+    @FXML
+    void loginButtonMouseExit(MouseEvent event) {
+        loginButton.setOpacity(1);
+    }
+    @FXML
+    void RegExit(MouseEvent event) {
+        registerLable.setUnderline(false);
+    }
+    @FXML
+    void RegMoved(MouseEvent event) {
+        registerLable.setUnderline(true);
     }
 
 
@@ -104,12 +133,14 @@ public class LoginController {
                 if(!inAPIStudent(usernameTextF.getText(), passwordTextF.getText())){
                     try{
                         ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
+                        ObjectOutputStream outputStreamFrom = new ObjectOutputStream(new FileOutputStream("src\\LogedinFrom.dat"));
                         ObjectInputStream objInStream = new ObjectInputStream(new FileInputStream("src\\StudentsBFile.dat"));
                                  HashMap<String, Student> readStudentInfoMap = (HashMap<String, Student>) objInStream.readObject();
                                  objInStream.close();
                                  if (readStudentInfoMap.containsKey(usernameTextF.getText())){
                                      if (readStudentInfoMap.get(usernameTextF.getText()).getPassword().equals(passwordTextF.getText())) {
                                          outputStream.writeObject(readStudentInfoMap.get(usernameTextF.getText()));
+                                         outputStreamFrom.writeObject("Binary");
                                          Parent fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentHomeScene.fxml")));
                                          Scene homePage = new Scene(fxmlLoader);
                                          Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow()) ;
@@ -122,7 +153,8 @@ public class LoginController {
                                  }
                                  else
                                      Alert("Your ID is Not Valid");
-                                     outputStream.close();    
+                                     outputStream.close();
+                                     outputStreamFrom.close();
                     }catch(Exception e){
                         e.printStackTrace();
                     }
@@ -205,8 +237,11 @@ public class LoginController {
                 }
                 Student student = new Student(name, ID, "Abdulmjeed.alothman222@gmail.com", password);
                 ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("src\\LogedinPerson.dat"));
+                ObjectOutputStream outputStreamFrom = new ObjectOutputStream(new FileOutputStream("src\\LogedinFrom.dat"));
                 outputStream.writeObject(student);
+                outputStreamFrom.writeObject("API");
                 outputStream.close();
+                outputStreamFrom.close();
             }
 
             return status<=299;

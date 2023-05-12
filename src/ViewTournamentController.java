@@ -327,4 +327,53 @@ public class ViewTournamentController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void EditButtonExit(MouseEvent event) {
+        EditButton.setOpacity(1);
+    }
+    @FXML
+    void EditButtonMoved(MouseEvent event) {
+        EditButton.setOpacity(0.8);
+    }
+    @FXML
+    void backButtonExit(MouseEvent event) {
+        backButton.setOpacity(1);
+    }
+    @FXML
+    void backButtonMoved(MouseEvent event) {
+        backButton.setOpacity(0.8);
+    }
+    @FXML
+    void generateButtonExit(MouseEvent event) {
+        generateButton.setOpacity(1);
+    }
+    @FXML
+    void generateButtonMoved(MouseEvent event) {
+        generateButton.setOpacity(0.8);
+    }
+    @FXML
+    void generatedPaneExit(MouseEvent event) {
+        generatedPane.setOpacity(1);
+    }
+    @FXML
+    void generatedPaneMoved(MouseEvent event) {
+        generatedPane.setOpacity(0.8);
+    }
+    @FXML
+    void studentsPaneExit(MouseEvent event) {
+        studentsPane.setOpacity(1);
+    }
+    @FXML
+    void studentsPaneMoved(MouseEvent event) {
+        studentsPane.setOpacity(0.8);
+    }
+    @FXML
+    void teamsPaneExit(MouseEvent event) {
+        teamsPane.setOpacity(1);
+    }
+    @FXML
+    void teamsPaneMoved(MouseEvent event) {
+        teamsPane.setOpacity(0.8);
+    }
 }

@@ -323,4 +323,31 @@ public class teamJoinController implements Initializable {
 
     }
 
+    @FXML
+    void joinButtonExit(MouseEvent event) {
+        joinButton.setOpacity(1);
+    }
+    @FXML
+    void joinButtonMoved(MouseEvent event) {
+        joinButton.setOpacity(0.8);
+    }
+    @FXML
+    void backTeamJoinButtonExit(MouseEvent event) {
+        backTeamJoinButton.setOpacity(1);
+    }
+
+    @FXML
+    void backTeamJoinButtonMoved(MouseEvent event) {
+        backTeamJoinButton.setOpacity(0.8);
+    }
+
+    @FXML
+    void enterButtonExit(MouseEvent event) {
+        enterButton.setOpacity(1);
+    }
+
+    @FXML
+    void enterButtonMoved(MouseEvent event) {
+        enterButton.setOpacity(0.8);
+    }
 }
