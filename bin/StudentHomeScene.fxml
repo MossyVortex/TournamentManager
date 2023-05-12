@@ -102,13 +102,10 @@
                <center>
                   <ScrollPane prefHeight="103.0" prefWidth="700.0" style="-fx-background-color: #1111;" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                      <content>
-                        <HBox fx:id="machesHB" alignment="CENTER" prefHeight="92.0" prefWidth="620.0" />
+                        <HBox fx:id="machesHB" alignment="CENTER_LEFT" prefHeight="114.0" prefWidth="620.0" />
                      </content>
                   </ScrollPane>
                </center>
-               <top>
-                  <Pane prefHeight="20.0" prefWidth="700.0" BorderPane.alignment="CENTER" />
-               </top>
                <left>
                   <Pane prefHeight="114.0" prefWidth="45.0" BorderPane.alignment="CENTER" />
                </left>

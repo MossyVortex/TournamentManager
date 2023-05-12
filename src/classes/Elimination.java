@@ -206,4 +206,9 @@ public class Elimination extends Tournament implements Serializable {
                     ", Value = " + entry.getValue());
         }
     }
+    @Override
+    public int compareTo(Match o) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+    }
 }

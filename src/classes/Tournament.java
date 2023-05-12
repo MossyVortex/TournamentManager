@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class Tournament implements Serializable {
+public abstract class Tournament implements Serializable, Comparable<Match> {
     private String name, type, gameType, tournamentID;
     Team winner;
     private LocalDate startingDate, endingDate;
@@ -278,5 +278,12 @@ public abstract class Tournament implements Serializable {
         teams.add(team);
     }
 
-
+    public Match[] getMatchs(){
+        Match[] matches = new Match[matchHistory.size()];
+        for (int i = 0; i < matches.length; i++) {
+            matches[i] = matchHistory.get(i)[i];
+        }
+        return matches;
+    }
+    
 }

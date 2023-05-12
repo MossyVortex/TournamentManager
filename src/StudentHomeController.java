@@ -1,3 +1,4 @@
+import classes.Match;
 import classes.Student;
 import classes.Tournament;
 import javafx.collections.FXCollections;
@@ -206,8 +207,11 @@ public class StudentHomeController implements Initializable {
               tournamentHashMap.forEach((x,y) -> list.add(y));
               setTableView(list);
               objInStreamTournament.close();
+              
+              Match[] MatchDates = list.get(0).getMatchs();
+              
 
-
+    
               nameLable.setText(student.getName());
 
               tournamentTableView.setRowFactory( tv -> {
