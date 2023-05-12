@@ -210,7 +210,7 @@ public class ElimnationTournementPage extends Application {
 
 
 
-        if(match.getLocalDate().isBefore(LocalDate.now()) && match.getScoreOne() == -1 || match.getScoreTwo() == -1 )
+        if(match.getLocalDate().isBefore(LocalDate.now()) &&( match.getScoreOne() == -1 || match.getScoreTwo() == -1 ))
             matchup.setStyle("-fx-background-color: red");
         matchup.setId(roundIndex + "-" + matchIndex + "-");
         team1HBox.setId(roundIndex + "-" + matchIndex );
