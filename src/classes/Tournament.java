@@ -278,12 +278,8 @@ public abstract class Tournament implements Serializable, Comparable<Match> {
         teams.add(team);
     }
 
-    public Match[] getMatchs(){
-        Match[] matches = new Match[matchHistory.size()];
-        for (int i = 0; i < matches.length; i++) {
-            matches[i] = matchHistory.get(i)[i];
-        }
-        return matches;
+    public String getMatchs(Tournament s){
+       return matchHistory.get(s)[2].getDate();
     }
     
 }

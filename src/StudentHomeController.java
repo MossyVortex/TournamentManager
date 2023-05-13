@@ -208,11 +208,13 @@ public class StudentHomeController implements Initializable {
               setTableView(list);
               objInStreamTournament.close();
               
-            //   Match[] MatchDates = list.get(0).getMatchs();
-              
-
     
               nameLable.setText(student.getName());
+            //   ArrayList<String> matchDate = new ArrayList<>();
+
+            //   tournamentHashMap.forEach((x,y)->{
+            //     matchDate.add(y.getMatchs(y));
+            //   });
 
               tournamentTableView.setRowFactory( tv -> {
                   TableRow<Tournament> row = new TableRow<>();
