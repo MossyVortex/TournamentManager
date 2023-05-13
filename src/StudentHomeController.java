@@ -17,6 +17,7 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -208,11 +209,19 @@ public class StudentHomeController implements Initializable {
               setTableView(list);
               objInStreamTournament.close();
               
-            //   Match[] MatchDates = list.get(0).getMatchs();
-              
-
     
               nameLable.setText(student.getName());
+
+
+
+               ArrayList<Match> matches = new ArrayList<>();
+
+               tournamentHashMap.forEach((x,y)-> matches.addAll(y.getMatches()));
+
+               Collections.sort(matches);
+
+               machesHB.getChildren().addAll(paneArrayList(matches));
+
 
               tournamentTableView.setRowFactory( tv -> {
                   TableRow<Tournament> row = new TableRow<>();
@@ -300,6 +309,23 @@ public class StudentHomeController implements Initializable {
     @FXML
     void ViewProfilePaneMoved(MouseEvent event) {
         ViewProfilePane.setOpacity(0.8);
+    }
+
+    public ArrayList<Pane> paneArrayList(ArrayList<Match> matches){
+        ArrayList<Pane> arrayList = new ArrayList<>();
+        for (Match match : matches){
+            FXMLLoader fxmlLoader = null;
+            try {
+                fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("MatchesPane.fxml")));
+                Pane pane = fxmlLoader.load();
+                MatchesPaneController controller = fxmlLoader.getController();
+                controller.setData(match);
+                arrayList.add(pane);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return arrayList;
     }
 
 }

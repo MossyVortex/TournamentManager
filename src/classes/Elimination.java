@@ -178,8 +178,10 @@ public class Elimination extends Tournament implements Serializable {
     }
     public ArrayList<Match> getMatches(){
         ArrayList<Match> matches = new ArrayList<>();
-        for(int i = 0 ; i < matchHistory.size() ; i++ ){
-            matches.addAll(matchHistory.get(i));
+        if(! (this.matchHistory== null)) {
+            for (int i = 0; i < matchHistory.size(); i++) {
+                matches.addAll(matchHistory.get(i));
+            }
         }
         return  matches;
     }
