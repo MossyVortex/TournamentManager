@@ -16,6 +16,8 @@ public class Match implements Serializable, Comparable<Match> {
     private String gameType;
     private String matchStatus;
     private int matchNum;
+    private boolean undeletedTeam1;
+    private boolean undeletedTeam2;
 
     public Match(Team teamOne, Team teamTwo, String gameType, int matchNum){
         this.teamOne = teamOne;
@@ -178,6 +180,10 @@ public class Match implements Serializable, Comparable<Match> {
         if(matchDate == null) return "date not selected";
         return matchDate.toString();
     }
+    public void undeleteableUpdate(){
+        if(!undeletedTeam1) undeletedTeam1 = true;
+        else if(!undeletedTeam2) undeletedTeam2 = true;
+    }
     public LocalDate getLocalDate(){
         return matchDate;
     }
@@ -206,10 +212,14 @@ public class Match implements Serializable, Comparable<Match> {
         this.teamTwo = null;
     }
     public void forceTeamOneOut(){
-        this.teamOne = null;
+        if(undeletedTeam1 && undeletedTeam2) return;
+        else if(!undeletedTeam1) this.teamOne = null;
+        else this.teamTwo = null;
     }
     public void forceTeamTwoOut(){
-        this.teamOne = null;
+        if(undeletedTeam1 && undeletedTeam2) return;
+        else if(!undeletedTeam2) this.teamTwo = null;
+        else this.teamOne = null;
     }
     public Team getTeamOne(){return teamOne;}
     public Team getTeamTwo(){return teamTwo;}
