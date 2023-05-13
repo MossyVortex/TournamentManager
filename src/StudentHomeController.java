@@ -216,9 +216,7 @@ public class StudentHomeController implements Initializable {
 
                ArrayList<Match> matches = new ArrayList<>();
 
-               tournamentHashMap.forEach((x,y)->{
-                   matches.addAll(y.getMatches());
-               });
+               tournamentHashMap.forEach((x,y)-> matches.addAll(y.getMatches()));
 
                Collections.sort(matches);
 
@@ -318,7 +316,7 @@ public class StudentHomeController implements Initializable {
         for (Match match : matches){
             FXMLLoader fxmlLoader = null;
             try {
-                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewTournamentScene.fxml")));
+                fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("MatchesPane.fxml")));
                 Pane pane = fxmlLoader.load();
                 MatchesPaneController controller = fxmlLoader.getController();
                 controller.setData(match);

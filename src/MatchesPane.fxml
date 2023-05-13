@@ -5,26 +5,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="160.0" style="-fx-background-color: #F2E8CF; -fx-border-color: #386641; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchesPaneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="105.0" prefWidth="160.0" style="-fx-background-color: #6A994E; -fx-border-color: #386641; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MatchesPaneController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="team1Lable" alignment="CENTER" prefHeight="33.0" prefWidth="151.0" text="Team1" textFill="#386641">
+            <Label fx:id="team1Lable" alignment="CENTER" prefHeight="33.0" prefWidth="151.0" text="Team1" textFill="#f2e8cf">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="18.0" prefWidth="59.0" text="VS." textFill="#386641">
+            <Label alignment="CENTER" prefHeight="18.0" prefWidth="59.0" text="VS." textFill="#f2e8cf">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="team2Lable" alignment="CENTER" prefHeight="22.0" prefWidth="154.0" text="Team2" textFill="#386641">
+            <Label fx:id="team2Lable" alignment="CENTER" prefHeight="25.0" prefWidth="154.0" text="Team2" textFill="#f2e8cf">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <Label fx:id="dateLable" alignment="CENTER" prefHeight="12.0" prefWidth="52.0" text="XX/XX/XXXX" textFill="#386641">
+            <Label fx:id="dateLable" alignment="CENTER" prefHeight="12.0" prefWidth="52.0" text="XX/XX/XXXX" textFill="#f2e8cf">
                <font>
                   <Font name="System Bold Italic" size="8.0" />
                </font>
