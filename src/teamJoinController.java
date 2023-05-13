@@ -201,7 +201,6 @@ public class teamJoinController implements Initializable {
         errorAlert.setContentText(error);
         errorAlert.showAndWait();
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

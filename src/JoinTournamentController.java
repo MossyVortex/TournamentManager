@@ -80,15 +80,17 @@ public class JoinTournamentController {
                 if (tournamentHashMap.containsKey(tournamentIDTextField.getText())){
                     Tournament tournament = tournamentHashMap.get(tournamentIDTextField.getText());
                     if (individualRB.isSelected()){
-                        if (tournament.areAllTeamsFilled()){
+                        if (!isAlreadyIn(student,tournament)) {
+                            if (tournament.areAllTeamsFilled()){
                             if (tournament.isFullOfTeams() || !tournament.getRegisterationStatus()){
                                 Alert("Unable to Join This Tournament");
                             }
                             else {
-                                ArrayList<Student> studentArrayList = new ArrayList<>();
-                                studentArrayList.add(student);
-                                Team team = new Team(studentArrayList, "Team"+tournament.getTeams().size()+1);
-                                tournament.addTeam(team);
+                                    ArrayList<Student> studentArrayList = new ArrayList<>();
+                                    studentArrayList.add(student);
+                                    Team team = new Team(studentArrayList, "Team" + tournament.getTeams().size() + 1);
+                                    tournament.addTeam(team);
+
                             }
                         }
                         else {
@@ -99,6 +101,9 @@ public class JoinTournamentController {
                                 }
                             }
                         }
+                        }
+                        else
+                            Alert("Student Is Already In");
                         tournamentHashMap.remove(tournament.getTournamentID());
                         tournamentHashMap.put(tournament.getTournamentID(),tournament);
                         ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("src\\TournamentsBFile.dat"));
@@ -237,6 +242,16 @@ public class JoinTournamentController {
             e.printStackTrace();
         }
 
+    }
+
+    public boolean isAlreadyIn(Student student, Tournament tournament){
+        for (Team team : tournament.getTeams()) {
+            for (Student student1 : team.getTeamMembers()) {
+                if (student1.getName().equals(student.getName()))
+                    return true;
+            }
+        }
+        return false;
     }
     @FXML
     void backTIDButtonExit(MouseEvent event) {

@@ -178,7 +178,7 @@ public class StudentsViewController implements Initializable {
             for (Team team: tournament.getTeams()){
                 studentArrayList.addAll(team.getTeamMembers());
             }
-
+            teamsTableView.getItems().clear();
             ObservableList<Student> observableList = FXCollections.observableArrayList(studentArrayList);
             teamsTableView.getItems().addAll(studentArrayList);
             teamsTableView.setItems(observableList);
