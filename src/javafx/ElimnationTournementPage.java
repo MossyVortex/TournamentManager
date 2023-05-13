@@ -66,6 +66,20 @@ public class ElimnationTournementPage extends Application {
         stage.show();
     }
     //        tourney.createMatchHistory();
+    public static ScrollPane createArchivedTourneyPage(Elimination tourney){
+        VBox roundRobinVBox = new VBox(createArchivedTourney(tourney));
+        HBox pointsTable = makeTruePlacement(tourney);
+
+        Button returnButton = new Button("return to previous page");
+
+//        Button returnToTournementPage = new Button("return to tournement page");
+
+        HBox buttonsBox = new HBox(returnButton);
+        VBox mainTourney = new VBox(buttonsBox, roundRobinVBox, pointsTable);
+
+        ScrollPane tourneyPage = new ScrollPane(mainTourney);
+        return tourneyPage;
+    }
     public static ScrollPane createTourneyPage(Elimination tourney){
 
         ArrayList<TextField> textFields = new ArrayList<>();
@@ -164,14 +178,58 @@ public class ElimnationTournementPage extends Application {
         tour.addTeam(new Team(stu,"team9"));
         tour.addTeam(new Team(stu,"team10"));
         tour.addTeam(new Team(stu,"team11"));
-        tour.addTeam(new Team(stu,"team12"));
-        tour.addTeam(new Team(stu,"team13"));
-        tour.addTeam(new Team(stu,"team14"));
-        tour.addTeam(new Team(stu,"team15"));
+//        tour.addTeam(new Team(stu,"team12"));
+//        tour.addTeam(new Team(stu,"team13"));
+//        tour.addTeam(new Team(stu,"team14"));
+//        tour.addTeam(new Team(stu,"team15"));
 //        tour.addTeam(new classes.Team(stu,"team16"));
 //        for(int i = 0 ; i < 16 ; i++){
 //            tour.addTeam(team);
 //        }
+    }
+    public static VBox createArchivedRound(ArrayList<Match> matches, int roundIndex ){
+        VBox round = new VBox(new Text("round" + roundIndex));
+        round.setSpacing(20);
+        for(int i = 0 ; i < matches.size() ; i++){
+            round.getChildren().add(createArchivedMatchUp(matches.get(i)));
+        }
+        return round;
+    }
+    public static VBox createArchivedTourney(Elimination tourney){
+        HBox tourneyHbox = new HBox();
+        tourneyHbox.setSpacing(20);
+        Hashtable<Integer, ArrayList<Match>> matchHistory = tourney.printMatchHistory();
+        for(int i = 0 ; i < matchHistory.size() ; i++){
+            tourneyHbox.getChildren().add(createArchivedRound(matchHistory.get(i), i));
+        }
+        VBox tourneyVbox = new VBox(new Text("tournement"));
+        tourneyVbox.getChildren().add(tourneyHbox);
+        return tourneyVbox;
+    }
+    public static VBox createArchivedMatchUp(Match match){
+        VBox matchup = new VBox();
+
+        Label team1Label = new Label(match.getTeamOneName() + " ");
+        team1Label.setMaxWidth(100);
+        team1Label.setMinWidth(100);
+
+        Text team1Score = new Text(match.getScoreOne() +"");
+        HBox team1HBox = new HBox();
+        team1HBox.getChildren().addAll(team1Label,team1Score);
+        team1HBox.setSpacing(10);
+
+        Label team2Label = new Label(match.getTeamTwoName() + "");
+        team2Label.setMaxWidth(100);
+        team2Label.setMinWidth(100);
+        Text team2Score = new Text(match.getScoreTwo() +"");
+        HBox team2HBox = new HBox();
+        team2HBox.getChildren().addAll(team2Label,team2Score );
+        team2HBox.setSpacing(10);
+        matchup.getChildren().addAll(team1HBox, team2HBox);
+        Text dateText = new Text(match.getDate());
+        matchup.getChildren().add(dateText);
+        return matchup;
+
     }
     public static VBox createMatchUP(Match match ,int roundIndex ,int matchIndex , ArrayList<TextField> textFields,ArrayList<VBox> matchUps){
         VBox matchup = new VBox();

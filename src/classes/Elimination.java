@@ -47,9 +47,12 @@ public class Elimination extends Tournament implements Serializable {
 
                     if(availableTeams.size() == 1){
                         currentMatch.addTeam(availableTeams.remove(0));
+                        currentMatch.undeleteableUpdate();
                     } else if(availableTeams.size() != 0){
                         currentMatch.addTeam(availableTeams.remove(0));
                         currentMatch.addTeam(availableTeams.remove(0));
+                        currentMatch.undeleteableUpdate();
+                        currentMatch.undeleteableUpdate();
                     }
 //                    System.out.println("teams size" +availableTeams.size());
                     matchesCurrentRound.add(currentMatch);
@@ -192,11 +195,12 @@ public class Elimination extends Tournament implements Serializable {
             currentMatch.forceScoreZero();
             if(i != originalRoundIndex){
 //                currentMatch.forceScoreZero();
-                currentMatch.forceTeamsVanish();
+//                currentMatch.forceTeamsVanish();
                 if(first) currentMatch.forceTeamOneOut();
-                else  currentMatch.forceTeamTwoOut();
+                else if (first == false)  currentMatch.forceTeamTwoOut();
             }
-            if((int) Math.floor(matchIndex/2) == (int) Math.floor(matchIndex/2)){
+
+            if((int) Math.floor((matchIndex+1)/2) == (int) Math.floor(matchIndex/2)){
                 first = true;
             }
             else{

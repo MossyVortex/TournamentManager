@@ -44,7 +44,7 @@ public class RoundRobinTournementPage extends Application {
 
         tourney.createMatchHistory();
         tourney.createTables();
-        ScrollPane mainTourney = createTourneyPage(tourney);
+        ScrollPane mainTourney = createArchivedTourneyPage(tourney);
 
         Scene scene = new Scene(mainTourney,1000,800);
 
