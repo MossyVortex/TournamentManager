@@ -109,7 +109,7 @@
                                                       <Font size="15.0" />
                                                    </font>
                                                 </PasswordField>
-                                                <ImageView fx:id="passwordEye" fitHeight="24.0" fitWidth="21.0" layoutX="284.0" layoutY="15.0" onMouseExited="#passwordEyeExit" onMouseMoved="#passwordEyeMoved" onMousePressed="#passwordEyeOnPressed" onMouseReleased="#passwordEyeReleased" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="passwordEye" fitHeight="24.0" fitWidth="21.0" layoutX="281.0" layoutY="15.0" onMouseExited="#passwordEyeExit" onMouseMoved="#passwordEyeMoved" onMousePressed="#passwordEyeOnPressed" onMouseReleased="#passwordEyeReleased" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@Images/eyePassword.png" />
                                                    </image>
@@ -140,7 +140,7 @@
                                     </Button>
                                     <HBox alignment="CENTER" prefHeight="43.0" prefWidth="308.0">
                                        <children>
-                                          <Label fx:id="existingLable" text="Don't have existing acount? ">
+                                          <Label fx:id="existingLable" text="Don't have existing account? ">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>

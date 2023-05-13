@@ -103,6 +103,7 @@ public class ElimnationTournementPage extends Application {
 
                 updatedMatchups.get(i).getChildren().add(editButton);
                 editButton.setOnAction(y->{
+
                     String[] id = hb.getId().split("-");
                     int roundIndex = Integer.parseInt(id[0]);
                     int matchIndex = Integer.parseInt(id[1]);

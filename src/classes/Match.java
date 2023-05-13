@@ -205,6 +205,12 @@ public class Match implements Serializable, Comparable<Match> {
         this.teamOne = null;
         this.teamTwo = null;
     }
+    public void forceTeamOneOut(){
+        this.teamOne = null;
+    }
+    public void forceTeamTwoOut(){
+        this.teamOne = null;
+    }
     public Team getTeamOne(){return teamOne;}
     public Team getTeamTwo(){return teamTwo;}
     public int getScoreTwo(){
