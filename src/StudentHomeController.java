@@ -1,3 +1,4 @@
+import classes.Match;
 import classes.Student;
 import classes.Tournament;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -206,9 +208,22 @@ public class StudentHomeController implements Initializable {
               tournamentHashMap.forEach((x,y) -> list.add(y));
               setTableView(list);
               objInStreamTournament.close();
-
-
+              
+    
               nameLable.setText(student.getName());
+
+
+
+               ArrayList<Match> matches = new ArrayList<>();
+
+               tournamentHashMap.forEach((x,y)->{
+                   matches.addAll(y.getMatches());
+               });
+
+               Collections.sort(matches);
+
+               machesHB.getChildren().addAll(paneArrayList(matches));
+
 
               tournamentTableView.setRowFactory( tv -> {
                   TableRow<Tournament> row = new TableRow<>();
@@ -296,6 +311,23 @@ public class StudentHomeController implements Initializable {
     @FXML
     void ViewProfilePaneMoved(MouseEvent event) {
         ViewProfilePane.setOpacity(0.8);
+    }
+
+    public ArrayList<Pane> paneArrayList(ArrayList<Match> matches){
+        ArrayList<Pane> arrayList = new ArrayList<>();
+        for (Match match : matches){
+            FXMLLoader fxmlLoader = null;
+            try {
+                fxmlLoader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewTournamentScene.fxml")));
+                Pane pane = fxmlLoader.load();
+                MatchesPaneController controller = fxmlLoader.getController();
+                controller.setData(match);
+                arrayList.add(pane);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return arrayList;
     }
 
 }

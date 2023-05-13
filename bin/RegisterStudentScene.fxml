@@ -27,7 +27,7 @@
          <left>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#backButtonOnClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#backButtonOnClicked" onMouseExited="#backButtonExit" onMouseMoved="#backButtonMoved" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@/Images/backArrow.png" />
                      </image>
@@ -180,7 +180,7 @@
                   <BorderPane prefHeight="30.0" prefWidth="722.0" />
                   <BorderPane prefHeight="50.0" prefWidth="722.0">
                      <center>
-                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButtonOnClicked" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Register" textFill="#f2e8cf" BorderPane.alignment="CENTER">
+                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#registerButtonOnClicked" onMouseExited="#registerButtonExit" onMouseMoved="#registerButtonMoved" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #386641; -fx-background-radius: 12;" text="Register" textFill="#f2e8cf" BorderPane.alignment="CENTER">
                            <font>
                               <Font size="19.0" />
                            </font>

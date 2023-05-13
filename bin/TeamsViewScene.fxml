@@ -28,7 +28,7 @@
          <left>
             <Pane prefHeight="88.0" prefWidth="46.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setBackButton" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="45.0" layoutX="28.0" layoutY="24.0" onMouseClicked="#setBackButton" onMouseExited="#backButtonExit" onMouseMoved="#backButtonMoved" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/backArrow.png" />
                      </image>
@@ -164,7 +164,7 @@
                   <Pane prefHeight="28.0" prefWidth="178.0" />
                   <BorderPane prefHeight="39.0" prefWidth="178.0">
                      <center>
-                        <HBox fx:id="infoPane" alignment="CENTER" onMouseClicked="#infoPaneOnCklicked" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
+                        <HBox fx:id="infoPane" alignment="CENTER" onMouseClicked="#infoPaneOnCklicked" onMouseExited="#infoPaneExit" onMouseMoved="#infoPaneMoved" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
                            <children>
                               <Label alignment="CENTER" prefHeight="28.0" prefWidth="62.0" text="Info" textFill="#f2e8cf">
                                  <font>
@@ -178,7 +178,7 @@
                   <Pane prefHeight="2.0" prefWidth="178.0" />
                   <BorderPane layoutX="10.0" layoutY="392.0" prefHeight="39.0" prefWidth="178.0">
                      <center>
-                        <HBox fx:id="studentsPane" alignment="CENTER" onMouseClicked="#studentsPaneOnClicked" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
+                        <HBox fx:id="studentsPane" alignment="CENTER" onMouseClicked="#studentsPaneOnClicked" onMouseExited="#studentsPaneExit" onMouseMoved="#studentsPaneMoved" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
                            <children>
                               <Label alignment="CENTER" prefHeight="28.0" prefWidth="84.0" text="Students" textFill="#f2e8cf">
                                  <font>
@@ -192,7 +192,7 @@
                   <Pane prefHeight="2.0" prefWidth="178.0" />
                   <BorderPane prefHeight="39.0" prefWidth="178.0">
                      <center>
-                        <HBox fx:id="generatedPane" alignment="CENTER" onMouseClicked="#generatedPaneOnClicked" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
+                        <HBox fx:id="generatedPane" alignment="CENTER" onMouseClicked="#generatedPaneOnClicked" onMouseExited="#generatedPaneExit" onMouseMoved="#generatedPaneMoved" prefHeight="13.0" prefWidth="178.0" style="-fx-background-color: #2C5033;" BorderPane.alignment="CENTER">
                            <children>
                               <Label alignment="CENTER" prefHeight="28.0" prefWidth="170.0" text="Generated Tables" textFill="#f2e8cf">
                                  <font>

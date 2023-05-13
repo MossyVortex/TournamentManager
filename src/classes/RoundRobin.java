@@ -365,4 +365,10 @@ public class RoundRobin extends Tournament implements Serializable {
                 ", \nplacement=" + placement +
                 '}';
     }
+
+    @Override
+    public int compareTo(Match o) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+    }
 }

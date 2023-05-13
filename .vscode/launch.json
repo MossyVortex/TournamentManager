@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TournamentApplication",
+            "request": "launch",
+            "mainClass": "TournamentApplication",
+            "projectName": "TournamentManager-3_b90d62a1"
+        },
+        {
+            "type": "java",
             "name": "ElimnationTournementPage",
             "request": "launch",
             "mainClass": "javafx.ElimnationTournementPage",

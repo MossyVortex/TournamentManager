@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Match implements Serializable {
+public class Match implements Serializable, Comparable<Match> {
     private Team teamOne;
     private Team teamTwo;
     private int scoreOne;
@@ -205,9 +205,30 @@ public class Match implements Serializable {
         this.teamOne = null;
         this.teamTwo = null;
     }
+    public void forceTeamOneOut(){
+        this.teamOne = null;
+    }
+    public void forceTeamTwoOut(){
+        this.teamOne = null;
+    }
     public Team getTeamOne(){return teamOne;}
     public Team getTeamTwo(){return teamTwo;}
     public int getScoreTwo(){
         return scoreTwo;
     }
+    @Override
+    public int compareTo(Match o) {
+
+        if(getDate().compareTo(o.getDate())>0)
+            return 1;
+        else if(getDate().compareTo(o.getDate())<0)
+            return -1;
+        else 
+            return 0;
+    }
+//    @Override
+//    public int compareTo(Match o) {
+//        return this.matchDate.compareTo(o.matchDate);
+//    }
+
 }

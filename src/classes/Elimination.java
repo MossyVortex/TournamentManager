@@ -182,14 +182,23 @@ public class Elimination extends Tournament implements Serializable {
     }
     public void updateMatchup(int roundIndex , int matchIndex){
         Hashtable<Integer, ArrayList<Match>> matchyHistory = this.matchHistory;
+        Boolean first = false;
 
         int originalRoundIndex = roundIndex;
         for(int i = roundIndex ; i <rounds ;i++){
             Match currentMatch = matchyHistory.get(i).get(matchIndex);
             currentMatch.forceScoreZero();
             if(i != originalRoundIndex){
-                currentMatch.forceScoreZero();
+//                currentMatch.forceScoreZero();
                 currentMatch.forceTeamsVanish();
+                if(first) currentMatch.forceTeamOneOut();
+                else  currentMatch.forceTeamTwoOut();
+            }
+            if((int) Math.floor(matchIndex/2) == (int) Math.floor(matchIndex/2)){
+                first = true;
+            }
+            else{
+                first = false;
             }
             matchIndex = (int) Math.floor(matchIndex/2);
         }
@@ -205,5 +214,10 @@ public class Elimination extends Tournament implements Serializable {
             System.out.println("Key = " + entry.getKey() +
                     ", Value = " + entry.getValue());
         }
+    }
+    @Override
+    public int compareTo(Match o) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
     }
 }
